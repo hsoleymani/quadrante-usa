@@ -78,14 +78,6 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            animation: marquee 40s linear infinite;
-        }
-
         /* AI Button Pulse */
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
@@ -111,7 +103,6 @@
             opacity: 0;
             pointer-events: none;
         }
-
     </style>
 </head>
 <body class="font-sans text-slate-900 bg-white selection:bg-red-100 selection:text-red-900">
@@ -120,12 +111,12 @@
 
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white py-6 border-b border-gray-100">
         <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <div class="bg-brand-red w-11 h-11 flex items-center justify-center text-white font-serif font-bold text-2xl shadow-md">Q</div>
-                <div>
-                    <div class="text-xl font-serif font-bold text-slate-900 tracking-tight leading-none">QUADRANTE</div>
-                    <div class="text-[10px] font-sans font-bold text-slate-500 uppercase tracking-widest mt-0.5">USA</div>
-                </div>
+            <div class="flex items-center gap-6 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <img src="assets/images/media/image3.png" alt="Quadrante Logo" class="h-8 w-auto" />
+                
+                <div class="h-8 w-px bg-slate-300"></div>
+                
+                <img src="assets/images/media/image1.png" alt="Right Analytics Logo" class="h-10 w-auto object-contain" />
             </div>
 
             <nav class="hidden md:flex items-center gap-8">
@@ -154,51 +145,45 @@
     </header>
 
     <main>
-
-        <!-- HERO SLIDER -->
         <div id="hero-slider" class="relative h-screen w-full bg-slate-900 overflow-hidden">
             
             <div class="slide active">
-                
                 <img 
                     src="assets/images/light_bulb_2.jpg" 
-                    class="absolute min-w-full min-h-full object-contain opacity-40 object-[center_10%] -translate-y-[1500px]"
+                    class="absolute min-w-full min-h-full object-contain opacity-40 object-[center_30%] -translate-y-[50px]"
                 />
+                <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
                 <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
                     <div class="max-w-4xl pt-20 slide-content">
-                        <div class="w-20 h-1.5 bg-brand-red mb-8 shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
-                        <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Strategic Acquisition</div>
-                        <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">Driving Grid Decarbonization, Together</h1>
-                        <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">Right Analytics Joins Quadrante Global to Launch Quadrante USA LLC.</p>
-                        <a href="#about" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
-                            Read Our Story <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
+                        <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Global Capabilities</div>
+                        <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Uniting U.S. Expertise with Global Scale</h1>
+                        <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
+                        1,200+ People. 11,100+ Projects. Leading sustainable engineering across the US, Europe, and LatAm.
+                        </p>
+                        <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
+                        Explore Capabilities <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 2: Capabilities -->
             <div class="slide">
-            <div class="relative h-full w-full">
-                <!-- The image -->
-                <img src="assets/images/usa_ski.jpg" alt="USA Ski" class="absolute min-w-full min-h-full object-contain opacity-70 object-[center_10%] -translate-y-[100px]" />
-                <!-- Overlay gradient for readability -->
-                <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-                <!-- Slider content -->
-                <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
-                <div class="max-w-4xl pt-20 slide-content">
-                    <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
-                    <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Global Capabilities</div>
-                    <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Uniting U.S. Expertise with Global Scale</h1>
-                    <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
-                    1,200+ People. 11,100+ Projects. Leading sustainable engineering across the US, Europe, and LatAm.
-                    </p>
-                    <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
-                    Explore Capabilities <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </a>
+                <div class="relative h-full w-full">
+                    <img src="assets/images/media/image50.png" alt="Wind Farm" class="absolute min-w-full min-h-full object-cover opacity-60" />
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
+                    <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
+                        <div class="max-w-4xl pt-20 slide-content">
+                            <div class="w-20 h-1.5 bg-brand-red mb-8 shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                            <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Strategic Acquisition</div>
+                            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">Driving Grid Decarbonization, Together</h1>
+                            <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">Right Analytics Joins Quadrante Global to Launch Quadrante USA LLC.</p>
+                            <a href="#about" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
+                                Read Our Story <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
 
             <div class="absolute bottom-12 right-12 z-20 flex gap-4">
@@ -220,6 +205,7 @@
                     <p class="text-2xl text-slate-600 leading-relaxed font-light border-l-4 border-brand-red pl-8">
                         Quadrante USA is incorporating <strong>Right Analytics</strong>, a highly specialized US-based power systems consultancy. Together, these companies form a unified entity positioned to lead sustainable engineering across the United States, Europe, Latin America, and Africa.
                     </p>
+                    
                     <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-slate-100 pt-8">
                         <div>
                             <div class="text-4xl font-bold text-brand-red mb-2">1,200+</div>
@@ -237,6 +223,15 @@
                             <div class="text-4xl font-bold text-brand-red mb-2">38</div>
                             <div class="text-xs uppercase tracking-widest text-slate-500">Offices</div>
                         </div>
+                    </div>
+
+                    <div class="mt-16 flex flex-wrap items-center justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                        <img src="assets/images/media/image23.png" class="h-8 object-contain" alt="Google">
+                        <img src="assets/images/media/image18.png" class="h-10 object-contain" alt="NYPA">
+                        <img src="assets/images/media/image22.jpeg" class="h-8 object-contain" alt="MISO">
+                        <img src="assets/images/media/image20.png" class="h-12 object-contain" alt="Dominion">
+                        <img src="assets/images/media/image19.png" class="h-12 object-contain" alt="Edison">
+                        <img src="assets/images/media/image29.jpeg" class="h-10 object-contain" alt="World Bank">
                     </div>
                 </div>
             </div>
@@ -305,7 +300,6 @@
                         <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Advanced data analytics and machine learning techniques to predict extra load from vehicle electrification.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -326,7 +320,7 @@
                     <div class="project-card reveal group cursor-pointer" data-category="power">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=800&q=80" alt="Google DC" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                            <img src="assets/images/media/image14.png" alt="Google DC" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
                             <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA</div>
                         </div>
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Google</div>
@@ -337,7 +331,7 @@
                     <div class="project-card reveal group cursor-pointer" data-category="power" style="transition-delay: 100ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80" alt="NYPA" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                            <img src="assets/images/media/image63.png" alt="NYPA" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
                             <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">New York</div>
                         </div>
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">NYPA</div>
@@ -348,7 +342,7 @@
                     <div class="project-card reveal group cursor-pointer" data-category="transmission" style="transition-delay: 200ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" alt="Ignis" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                            <img src="assets/images/media/image67.jpeg" alt="Ignis" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
                             <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA / Mexico</div>
                         </div>
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Ignis</div>
@@ -359,7 +353,7 @@
                     <div class="project-card reveal group cursor-pointer" data-category="power" style="transition-delay: 300ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=800&q=80" alt="Dominion" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                            <img src="assets/images/media/image76.jpeg" alt="Dominion" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
                             <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Virginia</div>
                         </div>
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Dominion Energy</div>
@@ -370,7 +364,7 @@
                     <div class="project-card reveal group cursor-pointer" data-category="power" style="transition-delay: 400ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="MISO" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                            <img src="assets/images/media/image59.png" alt="MISO" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
                             <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Midwest</div>
                         </div>
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">MISO</div>
@@ -381,7 +375,7 @@
                     <div class="project-card reveal group cursor-pointer" data-category="transmission" style="transition-delay: 500ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?auto=format&fit=crop&w=800&q=80" alt="Naturgy" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                            <img src="assets/images/media/image70.jpeg" alt="Naturgy" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
                             <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Texas (ERCOT)</div>
                         </div>
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Naturgy</div>
@@ -401,7 +395,7 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-16">
                     <div class="reveal group text-center">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image34.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Dr. Saman Babaei</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Founder / Chief Power Systems</div>
@@ -409,7 +403,7 @@
                     </div>
                     <div class="reveal group text-center" style="transition-delay: 100ms;">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image37.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Eduardo Llorente</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">CEO - USA</div>
@@ -417,7 +411,7 @@
                     </div>
                     <div class="reveal group text-center" style="transition-delay: 200ms;">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image35.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Prof. Hanif Livani</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Lead Power Systems Engineer</div>
@@ -425,7 +419,7 @@
                     </div>
                     <div class="reveal group text-center" style="transition-delay: 300ms;">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image36.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Prof. Ali Mehrizi-Sani</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Lead Power Systems Engineer</div>
@@ -433,7 +427,7 @@
                     </div>
                     <div class="reveal group text-center">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image33.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Nuno Costa</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Global CEO</div>
@@ -441,7 +435,7 @@
                     </div>
                      <div class="reveal group text-center" style="transition-delay: 100ms;">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image31.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Isabel López Ferrer</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Head of Energy Sector</div>
@@ -449,7 +443,7 @@
                     </div>
                     <div class="reveal group text-center" style="transition-delay: 200ms;">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image30.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">Armando Santos</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Head of Energy Business Unit</div>
@@ -457,7 +451,7 @@
                     </div>
                      <div class="reveal group text-center" style="transition-delay: 300ms;">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img src="assets/images/media/image32.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                         </div>
                         <h4 class="text-lg font-bold text-slate-900">João Rocha</h4>
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Client Manager - Data Centers</div>
@@ -485,7 +479,6 @@
                                     <span>Auto-Draft with AI</span>
                                 </button>
                             </div>
-                            
                             <div class="flex items-center gap-4">
                                 <button type="submit" class="bg-brand-red text-white px-12 py-5 font-bold uppercase tracking-widest text-xs hover:bg-slate-900 transition-colors shadow-lg">
                                     Send Message
@@ -526,8 +519,10 @@
             <div class="grid md:grid-cols-4 gap-16 mb-24">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-10 cursor-pointer" onclick="window.scrollTo(0,0)">
-                        <div class="bg-brand-red w-10 h-10 flex items-center justify-center text-white font-serif font-bold text-2xl">Q</div>
-                        <span class="text-3xl font-serif font-bold text-white tracking-tight">QUADRANTE <span class="text-slate-500">USA</span></span>
+                        <img src="assets/images/media/image3.png" alt="Quadrante Logo" class="h-8 w-auto brightness-0 invert" />
+                         <div class="border-l border-slate-700 pl-3 ml-1">
+                            <div class="text-[10px] font-sans font-bold text-slate-500 uppercase tracking-widest">USA</div>
+                        </div>
                     </div>
                     <p class="text-slate-400 max-w-md mb-10 leading-relaxed text-lg font-light">
                         Uniting U.S. market expertise with global capabilities to drive grid decarbonization and sustainable infrastructure.
@@ -544,8 +539,11 @@
                 </div>
                 <div>
                     <h5 class="font-bold text-white uppercase tracking-widest mb-8 text-xs border-b border-slate-700 pb-4 inline-block">Client Trust</h5>
-                    <div class="flex flex-wrap gap-x-6 gap-y-3 text-xs text-slate-500 font-bold uppercase tracking-wider">
-                        <span>Google</span> <span>NYPA</span> <span>Dominion</span> <span>MISO</span> <span>Siemens</span> <span>World Bank</span>
+                    <div class="flex flex-wrap gap-6 opacity-50 grayscale hover:grayscale-0 transition-all">
+                        <img src="assets/images/media/image23.png" class="h-6 object-contain" alt="Google">
+                        <img src="assets/images/media/image18.png" class="h-8 object-contain" alt="NYPA">
+                        <img src="assets/images/media/image22.jpeg" class="h-6 object-contain" alt="MISO">
+                        <img src="assets/images/media/image20.png" class="h-8 object-contain" alt="Dominion">
                     </div>
                 </div>
             </div>
@@ -651,7 +649,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
         // 1. Initialize Icons
