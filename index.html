@@ -27,6 +27,20 @@
                             dark: '#0F172A',
                             blue: '#1e40af',
                         }
+                    },
+                    animation: {
+                        'marquee': 'marquee 40s linear infinite',
+                        'marquee-reverse': 'marquee-reverse 40s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        'marquee-reverse': {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
                     }
                 }
             }
@@ -68,17 +82,19 @@
             transform: translateY(0);
         }
 
-        .loader {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #DC2626;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
+        /* Pause marquee on hover */
+        .hover-pause:hover .animate-marquee,
+        .hover-pause:hover .animate-marquee-reverse {
+            animation-play-state: paused;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* AI Button Pulse */
+        /* Gradient Masks for Carousel */
+        .mask-gradient {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        
+        /* AI Widget Pulse */
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
             50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
@@ -113,9 +129,7 @@
         <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
             <div class="flex items-center gap-6 cursor-pointer" onclick="window.scrollTo(0,0)">
                 <img src="assets/images/media/image3.png" alt="Quadrante Logo" class="h-8 w-auto" />
-                
                 <div class="h-8 w-px bg-slate-300"></div>
-                
                 <img src="assets/images/media/image1.png" alt="Right Analytics Logo" class="h-10 w-auto object-contain" />
             </div>
 
@@ -155,14 +169,12 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
                 <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
                     <div class="max-w-4xl pt-20 slide-content">
-                        <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
-                        <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Global Capabilities</div>
-                        <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Uniting U.S. Expertise with Global Scale</h1>
-                        <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
-                        1,200+ People. 11,100+ Projects. Leading sustainable engineering across the US, Europe, and LatAm.
-                        </p>
-                        <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
-                        Explore Capabilities <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <div class="w-20 h-1.5 bg-brand-red mb-8 shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                        <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Strategic Acquisition</div>
+                        <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">Driving Grid Decarbonization, Together</h1>
+                        <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">Right Analytics Joins Quadrante Global to Launch Quadrante USA LLC.</p>
+                        <a href="#about" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
+                            Read Our Story <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
@@ -174,12 +186,14 @@
                     <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
                     <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
                         <div class="max-w-4xl pt-20 slide-content">
-                            <div class="w-20 h-1.5 bg-brand-red mb-8 shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
-                            <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Strategic Acquisition</div>
-                            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1] drop-shadow-2xl">Driving Grid Decarbonization, Together</h1>
-                            <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">Right Analytics Joins Quadrante Global to Launch Quadrante USA LLC.</p>
-                            <a href="#about" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
-                                Read Our Story <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
+                            <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Global Capabilities</div>
+                            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Uniting U.S. Expertise with Global Scale</h1>
+                            <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
+                            1,200+ People. 11,100+ Projects. Leading sustainable engineering across the US, Europe, and LatAm.
+                            </p>
+                            <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
+                            Explore Capabilities <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </a>
                         </div>
                     </div>
@@ -204,7 +218,7 @@
                 </div>
             </div>
 
-            <div class="slide">
+             <div class="slide">
                 <div class="relative h-full w-full">
                     <img src="assets/images/media/image56.png" alt="Data Center" class="absolute min-w-full min-h-full object-cover opacity-70" />
                     <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
@@ -250,42 +264,73 @@
             </div>
         </div>
 
-        <section id="about" class="py-32 bg-white border-t border-slate-100">
+        <section id="about" class="py-32 bg-white border-t border-slate-100 overflow-hidden">
             <div class="container mx-auto px-6 md:px-12">
-                <div class="max-w-5xl reveal">
-                    <h2 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 mb-10 leading-tight">
-                        A unified force for <span class="text-brand-red decoration-red-200 underline decoration-4 underline-offset-8">U.S. power infrastructure.</span>
-                    </h2>
-                    <p class="text-2xl text-slate-600 leading-relaxed font-light border-l-4 border-brand-red pl-8">
-                        Quadrante USA is incorporating <strong>Right Analytics</strong>, a highly specialized US-based power systems consultancy. Together, these companies form a unified entity positioned to lead sustainable engineering across the United States, Europe, Latin America, and Africa.
-                    </p>
+                <div class="grid lg:grid-cols-2 gap-20">
+                    <div class="reveal">
+                        <h2 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 mb-10 leading-tight">
+                            A unified force for <span class="text-brand-red decoration-red-200 underline decoration-4 underline-offset-8">U.S. power infrastructure.</span>
+                        </h2>
+                        <p class="text-xl text-slate-600 leading-relaxed mb-8">
+                            Quadrante USA is incorporating <strong>Right Analytics</strong>, a highly specialized US-based power systems consultancy. Together, these companies form a unified entity positioned to lead sustainable engineering across the United States, Europe, Latin America, and Africa.
+                        </p>
+                    </div>
                     
-                    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-slate-100 pt-8">
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red mb-2">1,200+</div>
-                            <div class="text-xs uppercase tracking-widest text-slate-500">People</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red mb-2">11,100+</div>
-                            <div class="text-xs uppercase tracking-widest text-slate-500">Projects</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red mb-2">105 M€</div>
-                            <div class="text-xs uppercase tracking-widest text-slate-500">Revenues</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red mb-2">38</div>
-                            <div class="text-xs uppercase tracking-widest text-slate-500">Offices</div>
+                    <div class="reveal relative bg-slate-50 p-12 rounded-2xl border border-slate-100">
+                        <div class="grid grid-cols-2 gap-12">
+                            <div>
+                                <div class="text-5xl font-bold text-brand-red mb-2">1,200+</div>
+                                <div class="text-xs uppercase tracking-widest text-slate-500">People</div>
+                            </div>
+                            <div>
+                                <div class="text-5xl font-bold text-brand-red mb-2">11,100+</div>
+                                <div class="text-xs uppercase tracking-widest text-slate-500">Projects</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-brand-red mb-2">105 M€</div>
+                                <div class="text-xs uppercase tracking-widest text-slate-500">Revenues</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-brand-red mb-2">38</div>
+                                <div class="text-xs uppercase tracking-widest text-slate-500">Offices</div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="mt-16 flex flex-wrap items-center justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                        <img src="assets/images/media/image23.png" class="h-8 object-contain" alt="Google">
-                        <img src="assets/images/media/image18.png" class="h-10 object-contain" alt="NYPA">
-                        <img src="assets/images/media/image22.jpeg" class="h-8 object-contain" alt="MISO">
-                        <img src="assets/images/media/image20.png" class="h-12 object-contain" alt="Dominion">
-                        <img src="assets/images/media/image19.png" class="h-12 object-contain" alt="Edison">
-                        <img src="assets/images/media/image29.jpeg" class="h-10 object-contain" alt="World Bank">
+                <div class="mt-24 border-t border-slate-100 pt-12">
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-12 text-center">Trusted By Industry Leaders</div>
+                    
+                    <div class="relative w-full overflow-hidden hover-pause mask-gradient">
+                        <div class="flex gap-20 items-center animate-marquee whitespace-nowrap mb-12">
+                            <img src="assets/images/media/image23.png" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Google">
+                            <img src="assets/images/media/image18.png" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="NYPA">
+                            <img src="assets/images/media/image22.jpeg" class="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="MISO">
+                            <img src="assets/images/media/image20.png" class="h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Dominion">
+                            <img src="assets/images/media/image19.png" class="h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Edison">
+                            <img src="assets/images/media/image29.jpeg" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="World Bank">
+                            
+                            <img src="assets/images/media/image23.png" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Google">
+                            <img src="assets/images/media/image18.png" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="NYPA">
+                            <img src="assets/images/media/image22.jpeg" class="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="MISO">
+                            <img src="assets/images/media/image20.png" class="h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Dominion">
+                            <img src="assets/images/media/image19.png" class="h-16 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Edison">
+                            <img src="assets/images/media/image29.jpeg" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="World Bank">
+                        </div>
+
+                        <div class="flex gap-20 items-center animate-marquee-reverse whitespace-nowrap">
+                             <img src="assets/images/media/image24.png" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="NYSERDA">
+                             <img src="assets/images/media/image25.png" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Lawrence Livermore">
+                             <img src="assets/images/media/image27.png" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Efacec">
+                             <img src="assets/images/media/image28.jpeg" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="IDB">
+                             <img src="assets/images/media/image7.png" class="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Izharia">
+                             
+                             <img src="assets/images/media/image24.png" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="NYSERDA">
+                             <img src="assets/images/media/image25.png" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Lawrence Livermore">
+                             <img src="assets/images/media/image27.png" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Efacec">
+                             <img src="assets/images/media/image28.jpeg" class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="IDB">
+                             <img src="assets/images/media/image7.png" class="h-10 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" alt="Izharia">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -302,54 +347,37 @@
                 
                 <div class="grid md:grid-cols-3 gap-8">
                     <div onclick="openServiceModal('renewables')" class="reveal group bg-white p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border-t-4 border-transparent hover:border-brand-red h-full flex flex-col">
-                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full">
-                            <i data-lucide="zap" class="w-8 h-8"></i>
-                        </div>
+                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full"><i data-lucide="zap" class="w-8 h-8"></i></div>
                         <h4 class="text-2xl font-serif font-bold text-slate-900 mb-4 group-hover:text-brand-red transition-colors">Renewable Integration</h4>
-                        <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Interconnection studies, transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies.</p>
+                        <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Interconnection studies, transient stability, SSCI, and dynamic performance studies.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
                     </div>
-                    
                     <div onclick="openServiceModal('td')" class="reveal group bg-white p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border-t-4 border-transparent hover:border-brand-red h-full flex flex-col" style="transition-delay: 100ms;">
-                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full">
-                            <i data-lucide="activity" class="w-8 h-8"></i>
-                        </div>
+                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full"><i data-lucide="activity" class="w-8 h-8"></i></div>
                         <h4 class="text-2xl font-serif font-bold text-slate-900 mb-4 group-hover:text-brand-red transition-colors">T&D Planning & Control</h4>
                         <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Wide-range solutions for Transmission and Distribution planning, power system stability, and wide-area controller design.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
                     </div>
-                    
                     <div onclick="openServiceModal('facts')" class="reveal group bg-white p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border-t-4 border-transparent hover:border-brand-red h-full flex flex-col" style="transition-delay: 200ms;">
-                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full">
-                            <i data-lucide="settings" class="w-8 h-8"></i>
-                        </div>
+                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full"><i data-lucide="settings" class="w-8 h-8"></i></div>
                         <h4 class="text-2xl font-serif font-bold text-slate-900 mb-4 group-hover:text-brand-red transition-colors">FACTS & HVDC</h4>
                         <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Conceptual design and specification of SVCs, STATCOMs, SSSC, UPFC, and LCC/VSC-based HVDC systems.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
                     </div>
-
                     <div onclick="openServiceModal('hil')" class="reveal group bg-white p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border-t-4 border-transparent hover:border-brand-red h-full flex flex-col">
-                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full">
-                            <i data-lucide="cpu" class="w-8 h-8"></i>
-                        </div>
+                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full"><i data-lucide="cpu" class="w-8 h-8"></i></div>
                         <h4 class="text-2xl font-serif font-bold text-slate-900 mb-4 group-hover:text-brand-red transition-colors">Hardware-in-the-Loop</h4>
                         <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">HIL tests to verify performance of power electronics controllers, protection systems, and battery management.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
                     </div>
-
                     <div onclick="openServiceModal('ml')" class="reveal group bg-white p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border-t-4 border-transparent hover:border-brand-red h-full flex flex-col" style="transition-delay: 100ms;">
-                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full">
-                            <i data-lucide="brain" class="w-8 h-8"></i>
-                        </div>
+                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full"><i data-lucide="brain" class="w-8 h-8"></i></div>
                         <h4 class="text-2xl font-serif font-bold text-slate-900 mb-4 group-hover:text-brand-red transition-colors">AI & Machine Learning</h4>
                         <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Data-driven solutions to address uncertainty, modernize the grid, and future-proof assets.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
                     </div>
-
                     <div onclick="openServiceModal('ev')" class="reveal group bg-white p-10 cursor-pointer hover:shadow-2xl transition-all duration-500 border-t-4 border-transparent hover:border-brand-red h-full flex flex-col" style="transition-delay: 200ms;">
-                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full">
-                            <i data-lucide="car-front" class="w-8 h-8"></i>
-                        </div>
+                        <div class="h-16 w-16 bg-slate-50 text-brand-red flex items-center justify-center mb-8 group-hover:bg-brand-red group-hover:text-white transition-colors rounded-full"><i data-lucide="car-front" class="w-8 h-8"></i></div>
                         <h4 class="text-2xl font-serif font-bold text-slate-900 mb-4 group-hover:text-brand-red transition-colors">EV Charging & Grid</h4>
                         <p class="text-slate-600 leading-relaxed text-base mb-8 flex-grow">Advanced data analytics and machine learning techniques to predict extra load from vehicle electrification.</p>
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">Read Details <i data-lucide="plus" class="w-4 h-4"></i></span>
@@ -363,15 +391,10 @@
             <div class="container mx-auto px-6 md:px-12 relative z-10">
                 <div class="reveal mb-20">
                     <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-red pl-8">Our Experience</h3>
-                    <div class="flex gap-6 mt-8 overflow-x-auto pb-4" id="project-filters">
-                        <button class="filter-btn active text-brand-red font-bold text-sm uppercase tracking-widest" data-filter="all">All</button>
-                        <button class="filter-btn text-gray-400 hover:text-white font-bold text-sm uppercase tracking-widest" data-filter="power">Power Systems</button>
-                        <button class="filter-btn text-gray-400 hover:text-white font-bold text-sm uppercase tracking-widest" data-filter="transmission">Transmission</button>
-                    </div>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                    <div class="project-card reveal group cursor-pointer" data-category="power">
+                    <div onclick="openProjectModal('google')" class="project-card reveal group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image14.png" alt="Google DC" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -380,9 +403,10 @@
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Google</div>
                         <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">Data Center Optimal Location</h4>
                         <p class="text-gray-400 text-sm font-light">Comprehensive load hosting capacity analysis.</p>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
 
-                    <div class="project-card reveal group cursor-pointer" data-category="power" style="transition-delay: 100ms;">
+                    <div onclick="openProjectModal('nypa')" class="project-card reveal group cursor-pointer" style="transition-delay: 100ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image63.png" alt="NYPA" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -391,9 +415,10 @@
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">NYPA</div>
                         <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">Advanced Power Flow Control</h4>
                         <p class="text-gray-400 text-sm font-light">Deployment in the NYCA.</p>
+                         <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
 
-                    <div class="project-card reveal group cursor-pointer" data-category="transmission" style="transition-delay: 200ms;">
+                    <div onclick="openProjectModal('viento')" class="project-card reveal group cursor-pointer" style="transition-delay: 200ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image67.jpeg" alt="Ignis" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -402,9 +427,10 @@
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Ignis</div>
                         <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">Viento Fronterizo 500kV Line</h4>
                         <p class="text-gray-400 text-sm font-light">Basic Design and PLS-CADD modeling.</p>
+                         <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
                     
-                    <div class="project-card reveal group cursor-pointer" data-category="power" style="transition-delay: 300ms;">
+                    <div onclick="openProjectModal('dominion')" class="project-card reveal group cursor-pointer" style="transition-delay: 300ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image76.jpeg" alt="Dominion" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -413,20 +439,22 @@
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Dominion Energy</div>
                         <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">Hosting Capacity Analysis</h4>
                         <p class="text-gray-400 text-sm font-light">Grid support for renewable integration.</p>
+                         <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
                     
-                    <div class="project-card reveal group cursor-pointer" data-category="power" style="transition-delay: 400ms;">
+                    <div onclick="openProjectModal('sumbe')" class="project-card reveal group cursor-pointer" style="transition-delay: 400ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image59.png" alt="MISO" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                            <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Midwest</div>
+                            <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Angola</div>
                         </div>
-                        <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">MISO</div>
-                        <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">System Impact Study</h4>
-                        <p class="text-gray-400 text-sm font-light">Detailed system impact analysis.</p>
+                        <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Logicalis</div>
+                        <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">TIER III Data Center</h4>
+                        <p class="text-gray-400 text-sm font-light">1 MW IT Power. RIBA Stages 3-4 Design.</p>
+                         <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
 
-                    <div class="project-card reveal group cursor-pointer" data-category="transmission" style="transition-delay: 500ms;">
+                    <div onclick="openProjectModal('grimes')" class="project-card reveal group cursor-pointer" style="transition-delay: 500ms;">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image70.jpeg" alt="Naturgy" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -435,6 +463,7 @@
                         <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Naturgy</div>
                         <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors">Project Grimes Substation</h4>
                         <p class="text-gray-400 text-sm font-light">138/34.5/13.8 kV Substation support.</p>
+                         <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
@@ -592,12 +621,17 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-bold text-white uppercase tracking-widest mb-8 text-xs border-b border-slate-700 pb-4 inline-block">Client Trust</h5>
-                    <div class="flex flex-wrap gap-6 opacity-50 grayscale hover:grayscale-0 transition-all">
-                        <img src="assets/images/media/image23.png" class="h-6 object-contain" alt="Google">
-                        <img src="assets/images/media/image18.png" class="h-8 object-contain" alt="NYPA">
-                        <img src="assets/images/media/image22.jpeg" class="h-6 object-contain" alt="MISO">
-                        <img src="assets/images/media/image20.png" class="h-8 object-contain" alt="Dominion">
+                    <h5 class="font-bold text-white uppercase tracking-widest mb-8 text-xs border-b border-slate-700 pb-4 inline-block">Global HQs</h5>
+                    <div class="space-y-4 text-slate-400 text-sm font-medium">
+                         <div>
+                            <div class="text-white text-xs uppercase font-bold mb-1">Lisbon (Global)</div>
+                            <div>+351 210 067 200</div>
+                            <div>hello@quadrante.com</div>
+                        </div>
+                        <div>
+                            <div class="text-white text-xs uppercase font-bold mb-1">Los Angeles (USA)</div>
+                            <div>(919) 601-0737</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -683,7 +717,7 @@
         <div class="relative bg-white w-full max-w-2xl mx-4 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0" id="service-content">
             <div class="bg-brand-red p-8 flex justify-between items-start">
                 <div class="text-white pr-8">
-                    <div class="text-xs font-bold uppercase tracking-widest opacity-70 mb-2">Our Competencies</div>
+                    <div class="text-xs font-bold uppercase tracking-widest opacity-70 mb-2" id="modal-eyebrow">Our Competencies</div>
                     <h3 id="modal-title" class="text-3xl font-serif font-bold">Service Title</h3>
                 </div>
                 <button onclick="closeServiceModal()" class="text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-2 transition-all">
@@ -697,7 +731,7 @@
                 
                 <div class="mt-8 pt-8 border-t border-slate-100 flex justify-end">
                     <a href="#contact" onclick="closeServiceModal()" class="inline-flex items-center gap-2 text-brand-red font-bold uppercase tracking-widest text-sm hover:text-red-800 transition-colors">
-                        Discuss this service <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        Discuss this project <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
@@ -766,32 +800,6 @@
         setInterval(nextSlide, 8000); // Auto rotate
         document.getElementById('next-slide').addEventListener('click', nextSlide);
         document.getElementById('prev-slide').addEventListener('click', prevSlide);
-
-        // 5. Project Filter Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projects = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Active state
-                filterBtns.forEach(b => b.classList.remove('text-brand-red'));
-                filterBtns.forEach(b => b.classList.add('text-gray-400'));
-                btn.classList.remove('text-gray-400');
-                btn.classList.add('text-brand-red');
-
-                const filter = btn.dataset.filter;
-                
-                projects.forEach(project => {
-                    if (filter === 'all' || project.dataset.category === filter) {
-                        project.style.display = 'block';
-                        setTimeout(() => project.style.opacity = '1', 50);
-                    } else {
-                        project.style.opacity = '0';
-                        setTimeout(() => project.style.display = 'none', 300);
-                    }
-                });
-            });
-        });
 
         // 6. AI Chat Widget Logic
         function toggleChat() {
@@ -987,15 +995,7 @@
             closeAiDraftModal();
         }
 
-        // 7. Mobile Menu Logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // --- NEW: SERVICE MODAL LOGIC ---
+        // --- NEW: SERVICE & PROJECT MODAL LOGIC ---
 
         const serviceData = {
             'renewables': {
@@ -1041,6 +1041,33 @@
                 `
             }
         };
+        
+        const projectData = {
+            'google': {
+                title: "Google Data Center Optimal Location",
+                content: `<p class="mb-4"><strong>Client:</strong> Google<br><strong>Location:</strong> USA (Ongoing)</p><p class="mb-4">We are conducting a comprehensive load hosting capacity analysis to identify optimal locations for building new data centers. This study involves analyzing grid constraints, available capacity, and future load growth scenarios to ensure seamless integration of high-demand facilities.</p><p>The project leverages advanced power flow modeling to support Google's strategic infrastructure expansion.</p>`
+            },
+            'nypa': {
+                title: "NYPA Advanced Power Flow Control",
+                content: `<p class="mb-4"><strong>Client:</strong> New York Power Authority<br><strong>Location:</strong> New York</p><p class="mb-4">This project focused on the deployment of Advanced Power Flow Control (APFC) technology within the New York Control Area (NYCA). Our team performed an economic assessment of Dynamic Line Rating (DLR) operations to optimize grid efficiency.</p><p>The solution enables greater renewable energy integration by relieving transmission congestion without costly line upgrades.</p>`
+            },
+            'viento': {
+                title: "Viento Fronterizo 500kV Line",
+                content: `<p class="mb-4"><strong>Client:</strong> Ignis<br><strong>Location:</strong> USA / Mexico Border</p><p class="mb-4">We delivered the Basic Design and PLS-CADD modeling for the "Viento Fronterizo" High-Voltage Overhead Line. This 20km cross-border transmission line connects critical energy infrastructure between the two nations.</p><p>Scope included route selection, tower spotting, and structural analysis to ensure compliance with both US and Mexican grid codes.</p>`
+            },
+            'dominion': {
+                title: "Dominion Energy Hosting Capacity",
+                content: `<p class="mb-4"><strong>Client:</strong> Dominion Energy<br><strong>Location:</strong> Virginia</p><p class="mb-4">Our team is performing ongoing hosting capacity analysis to support the integration of distributed energy resources (DERs). This involves detailed solar integration cost analysis to facilitate the interconnection of renewable generation.</p><p>The study helps Dominion identify grid upgrades needed to support Virginia's clean energy goals.</p>`
+            },
+            'sumbe': {
+                title: "Sumbe TIER III Data Center",
+                content: `<p class="mb-4"><strong>Client:</strong> Logicalis<br><strong>Location:</strong> Angola</p><p class="mb-4">We provided full design services (RIBA Stages 3-4) for a new TIER III Data Center in Sumbe. The facility features 1 MW of IT power and is designed for high availability and resilience.</p><p>Our scope included electrical, mechanical, and civil engineering design to meet rigorous international data center standards.</p>`
+            },
+            'grimes': {
+                title: "Project Grimes Substation",
+                content: `<p class="mb-4"><strong>Client:</strong> Naturgy<br><strong>Location:</strong> Texas (ERCOT)</p><p class="mb-4">This project involved the technical specifications and support for transformer procurement for a 138/34.5/13.8 kV substation. We also provided design review and support for the ERCOT interconnection process.</p><p>The substation serves as a critical injection point for renewable energy into the Texas grid.</p>`
+            }
+        };
 
         function openServiceModal(id) {
             const modal = document.getElementById('service-modal');
@@ -1048,11 +1075,39 @@
             const content = document.getElementById('service-content');
             const title = document.getElementById('modal-title');
             const body = document.getElementById('modal-body');
+            const eyebrow = document.getElementById('modal-eyebrow');
 
             // Populate Data
             if(serviceData[id]) {
+                eyebrow.innerText = "Our Competencies";
                 title.innerText = serviceData[id].title;
                 body.innerHTML = serviceData[id].content;
+            }
+
+            // Show Modal
+            modal.classList.remove('hidden');
+            
+            // Animate In
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+        
+        function openProjectModal(id) {
+            const modal = document.getElementById('service-modal'); // Reusing same modal structure
+            const backdrop = document.getElementById('service-backdrop');
+            const content = document.getElementById('service-content');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+            const eyebrow = document.getElementById('modal-eyebrow');
+
+            // Populate Data
+            if(projectData[id]) {
+                eyebrow.innerText = "Case Study"; // Changing header
+                title.innerText = projectData[id].title;
+                body.innerHTML = projectData[id].content;
             }
 
             // Show Modal
