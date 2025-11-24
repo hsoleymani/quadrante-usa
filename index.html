@@ -101,11 +101,16 @@
         .modal-hidden .modal-backdrop { opacity: 0; pointer-events: none; }
         .modal-hidden .modal-content { transform: scale(0.95); opacity: 0; pointer-events: none; }
         
-        /* Custom Scrollbar for modal text */
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #999; }
+        
+        /* Dark Scrollbar for the sidebar */
+        .dark-scrollbar::-webkit-scrollbar { width: 4px; }
+        .dark-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .dark-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
     </style>
 </head>
 <body class="font-sans text-slate-900 bg-white selection:bg-red-100 selection:text-red-900">
@@ -323,7 +328,7 @@
                     </div>
 
                     <div onclick="openUniversalModal('expertise', 5)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
-                        <img src="assets/images/media/image48.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Mobility">
+                        <img src="assets/images/media/image48.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Mobility">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
                             <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">EV Charging & Grid</h4>
@@ -460,7 +465,6 @@
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Lead Power Systems Engineer</div>
                         <div class="text-xs text-slate-400 uppercase mt-1">Right Analytics</div>
                     </div>
-                    
                     <div class="group text-center">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
                             <img src="assets/images/media/image33.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
@@ -622,31 +626,39 @@
     <div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-hidden">
         <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-md modal-backdrop" onclick="closeUniversalModal()"></div>
         
-        <div class="relative bg-white w-full max-w-6xl h-[90vh] md:h-[80vh] rounded-2xl shadow-2xl overflow-hidden modal-content z-10 flex flex-col md:flex-row">
+        <div class="relative bg-white w-full max-w-7xl h-[90vh] md:h-[85vh] rounded-2xl shadow-2xl overflow-hidden modal-content z-10 flex flex-col md:flex-row">
             
-            <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-20 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition-colors backdrop-blur-sm">
+            <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-50 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition-colors backdrop-blur-sm">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
 
-            <button onclick="navigateModal(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full transition-all hover:scale-110 backdrop-blur-md border border-white/20">
-                <i data-lucide="chevron-left" class="w-6 h-6"></i>
-            </button>
-            <button onclick="navigateModal(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full transition-all hover:scale-110 backdrop-blur-md border border-white/20">
-                <i data-lucide="chevron-right" class="w-6 h-6"></i>
-            </button>
+            <div class="relative w-full md:w-2/5 h-48 md:h-full bg-slate-900 overflow-hidden">
+                <img id="modal-image" src="" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-500" alt="Detail Image">
+                
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+                
+                <div class="relative z-10 h-full flex flex-col p-6 overflow-y-auto dark-scrollbar hidden md:flex">
+                    <div class="mb-6">
+                         <span id="modal-section-label" class="bg-brand-red text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm">Featured</span>
+                         <h3 class="text-white font-serif text-2xl mt-2 font-bold" id="sidebar-header">Explore</h3>
+                    </div>
+                    
+                    <div id="modal-nav-list" class="space-y-2">
+                        </div>
+                </div>
 
-            <div class="w-full md:w-1/2 h-48 md:h-full relative bg-slate-900">
-                <img id="modal-image" src="" class="w-full h-full object-cover opacity-80" alt="Detail Image">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent md:bg-gradient-to-r"></div>
-                <div class="absolute top-8 left-8">
-                     <span id="modal-section-label" class="bg-brand-red text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm">Project</span>
+                <div class="absolute bottom-4 left-4 md:hidden z-20">
+                    <h3 class="text-white font-serif text-2xl font-bold" id="mobile-image-title">Title</h3>
                 </div>
             </div>
 
-            <div class="w-full md:w-1/2 h-full flex flex-col bg-white">
+            <div class="md:hidden w-full h-14 bg-slate-100 border-b border-slate-200 overflow-x-auto flex items-center whitespace-nowrap px-4" id="mobile-nav-list">
+                 </div>
+
+            <div class="w-full md:w-3/5 h-full flex flex-col bg-white">
                 <div class="flex-grow overflow-y-auto p-8 md:p-12 custom-scrollbar">
-                    <h2 id="modal-title" class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6 leading-tight">Title Here</h2>
-                    <div id="modal-body" class="prose prose-slate text-slate-600 leading-relaxed mb-8">
+                    <h2 id="modal-title" class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6 leading-tight hidden md:block">Title Here</h2>
+                    <div id="modal-body" class="prose prose-slate prose-lg text-slate-600 leading-relaxed mb-8">
                         </div>
                     
                     <hr class="border-slate-100 my-8">
@@ -983,6 +995,36 @@
         function openUniversalModal(section, index) {
             currentModalSection = section;
             currentModalIndex = index;
+            
+            // Generate Sidebar Items
+            const navList = document.getElementById('modal-nav-list');
+            const mobileNavList = document.getElementById('mobile-nav-list');
+            const dataArray = section === 'expertise' ? competenciesData : experienceData;
+            
+            document.getElementById('sidebar-header').innerText = section === 'expertise' ? 'Our Competencies' : 'Featured Projects';
+            
+            let html = '';
+            let mobileHtml = '';
+            
+            dataArray.forEach((item, i) => {
+                // DARK MODE Sidebar Item
+                html += `
+                <button onclick="switchModalItem(${i})" id="nav-item-${i}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group ${i === index ? 'bg-brand-red/10 border-l-4 border-brand-red' : 'border-l-4 border-transparent hover:bg-white/5'}">
+                    <span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${i === index ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${item.title}</span>
+                </button>
+                `;
+                
+                // Mobile Nav Items (Keep light mode style for ease on mobile bg)
+                mobileHtml += `
+                <button onclick="switchModalItem(${i})" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${i === index ? 'bg-brand-red text-white border-brand-red' : 'bg-white text-slate-600 border-slate-200'}">
+                   ${item.title}
+                </button>
+                `;
+            });
+            
+            navList.innerHTML = html;
+            mobileNavList.innerHTML = mobileHtml;
+
             updateModalUI();
 
             const modal = document.getElementById('universal-modal');
@@ -1006,11 +1048,41 @@
             }, 300);
         }
 
-        function navigateModal(direction) {
-            const dataArray = currentModalSection === 'expertise' ? competenciesData : experienceData;
-            // Handle wrap-around math
-            currentModalIndex = (currentModalIndex + direction + dataArray.length) % dataArray.length;
+        function switchModalItem(index) {
+            currentModalIndex = index;
             updateModalUI();
+            
+            // Update Active State in Sidebar
+            const dataArray = currentModalSection === 'expertise' ? competenciesData : experienceData;
+            dataArray.forEach((_, i) => {
+                const navItem = document.getElementById(`nav-item-${i}`);
+                if (navItem) {
+                    const span = navItem.querySelector('span');
+                    if (i === index) {
+                        navItem.classList.add('bg-brand-red/10', 'border-brand-red');
+                        navItem.classList.remove('border-transparent', 'hover:bg-white/5');
+                        span.classList.remove('text-slate-400', 'group-hover:text-white');
+                        span.classList.add('text-white');
+                    } else {
+                        navItem.classList.remove('bg-brand-red/10', 'border-brand-red');
+                        navItem.classList.add('border-transparent', 'hover:bg-white/5');
+                        span.classList.add('text-slate-400', 'group-hover:text-white');
+                        span.classList.remove('text-white');
+                    }
+                }
+            });
+            
+             // Re-render mobile nav
+             const mobileNavList = document.getElementById('mobile-nav-list');
+             let mobileHtml = '';
+             dataArray.forEach((item, i) => {
+                mobileHtml += `
+                <button onclick="switchModalItem(${i})" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${i === index ? 'bg-brand-red text-white border-brand-red' : 'bg-white text-slate-600 border-slate-200'}">
+                   ${item.title}
+                </button>
+                `;
+             });
+             mobileNavList.innerHTML = mobileHtml;
         }
 
         function updateModalUI() {
@@ -1018,12 +1090,19 @@
             const data = dataArray[currentModalIndex];
             
             // Update Text/Images
-            document.getElementById('modal-image').src = data.image;
+            const imgElement = document.getElementById('modal-image');
+            // Simple fade effect
+            imgElement.style.opacity = '0.4';
+            setTimeout(() => {
+                imgElement.src = data.image;
+                imgElement.style.opacity = '0.6';
+            }, 150);
+            
+            document.getElementById('mobile-image-title').innerText = data.title;
             document.getElementById('modal-title').innerText = data.title;
             document.getElementById('modal-body').innerHTML = data.content;
             document.getElementById('modal-section-label').innerText = currentModalSection === 'expertise' ? 'Competency' : 'Project';
             
-            // Clear the question box on navigation
             document.getElementById('modal-question-box').value = ''; 
         }
 
