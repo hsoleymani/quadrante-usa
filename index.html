@@ -31,6 +31,7 @@
                     animation: {
                         'marquee': 'marquee 40s linear infinite',
                         'marquee-reverse': 'marquee-reverse 40s linear infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
                     },
                     keyframes: {
                         marquee: {
@@ -40,6 +41,10 @@
                         'marquee-reverse': {
                             '0%': { transform: 'translateX(-50%)' },
                             '100%': { transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
                         }
                     }
                 }
@@ -90,33 +95,17 @@
             animation: pulse-glow 2s infinite;
         }
 
-        /* --- Local Overlay Styles (The Side Panel) --- */
-        .grid-overlay {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-        .grid-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        /* The Content Card inside the Overlay */
-        .grid-overlay-content {
-            transform: translateX(50px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .grid-overlay.active .grid-overlay-content {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
         /* Modal Styles */
         .modal-backdrop { transition: opacity 0.3s ease-out; }
         .modal-content { transition: transform 0.3s ease-out, opacity 0.3s ease-out; }
         .modal-hidden .modal-backdrop { opacity: 0; pointer-events: none; }
         .modal-hidden .modal-content { transform: scale(0.95); opacity: 0; pointer-events: none; }
+        
+        /* Custom Scrollbar for modal text */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #999; }
     </style>
 </head>
 <body class="font-sans text-slate-900 bg-white selection:bg-red-100 selection:text-red-900">
@@ -238,7 +227,6 @@
                             <img src="assets/images/media/image20.png" class="h-16 w-auto object-contain" alt="Dominion">
                             <img src="assets/images/media/image19.png" class="h-16 w-auto object-contain" alt="Edison">
                             <img src="assets/images/media/image29.jpeg" class="h-14 w-auto object-contain" alt="World Bank">
-                            
                             <img src="assets/images/media/image23.png" class="h-12 w-auto object-contain" alt="Google">
                             <img src="assets/images/media/image18.png" class="h-14 w-auto object-contain" alt="NYPA">
                             <img src="assets/images/media/image22.jpeg" class="h-10 w-auto object-contain" alt="MISO">
@@ -253,7 +241,6 @@
                              <img src="assets/images/media/image27.png" class="h-12 w-auto object-contain" alt="Efacec">
                              <img src="assets/images/media/image28.jpeg" class="h-14 w-auto object-contain" alt="IDB">
                              <img src="assets/images/media/image7.png" class="h-10 w-auto object-contain" alt="Izharia">
-                             
                              <img src="assets/images/media/image24.png" class="h-14 w-auto object-contain" alt="NYSERDA">
                              <img src="assets/images/media/image25.png" class="h-12 w-auto object-contain" alt="Lawrence Livermore">
                              <img src="assets/images/media/image27.png" class="h-12 w-auto object-contain" alt="Efacec">
@@ -275,7 +262,7 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div onclick="openLocalPanel('expertise', 'renewables')" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <div onclick="openUniversalModal('expertise', 0)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
                         <img src="assets/images/media/image50.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Renewables">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
@@ -287,11 +274,11 @@
                         </div>
                     </div>
 
-                    <div onclick="openLocalPanel('expertise', 'td')" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <div onclick="openUniversalModal('expertise', 1)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
                         <img src="assets/images/media/image67.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Transmission">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                             <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">T&D Planning</h4>
+                            <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">T&D Planning</h4>
                             <p class="text-gray-300 text-sm line-clamp-2 mb-4">Wide-range solutions for Transmission and Distribution planning and control.</p>
                             <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                                 View Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -299,11 +286,11 @@
                         </div>
                     </div>
 
-                    <div onclick="openLocalPanel('expertise', 'facts')" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <div onclick="openUniversalModal('expertise', 2)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
                         <img src="assets/images/media/image70.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Substation">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                             <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">FACTS & HVDC</h4>
+                            <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">FACTS & HVDC</h4>
                             <p class="text-gray-300 text-sm line-clamp-2 mb-4">Conceptual design of SVCs, STATCOMs, SSSC, UPFC, and LCC/VSC-based HVDC systems.</p>
                             <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                                 View Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -311,11 +298,11 @@
                         </div>
                     </div>
 
-                    <div onclick="openLocalPanel('expertise', 'hil')" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <div onclick="openUniversalModal('expertise', 3)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
                         <img src="assets/images/media/image63.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="HIL Testing">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                              <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">HIL Testing</h4>
+                            <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">HIL Testing</h4>
                             <p class="text-gray-300 text-sm line-clamp-2 mb-4">Real-time simulation and Hardware-in-the-Loop testing for protection systems.</p>
                             <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                                 View Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -323,11 +310,11 @@
                         </div>
                     </div>
 
-                    <div onclick="openLocalPanel('expertise', 'ml')" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <div onclick="openUniversalModal('expertise', 4)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
                         <img src="assets/images/media/image59.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Data Center AI">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                              <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">AI & Machine Learning</h4>
+                            <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">AI & Machine Learning</h4>
                             <p class="text-gray-300 text-sm line-clamp-2 mb-4">Data-driven solutions to address uncertainty, modernize the grid, and future-proof assets.</p>
                             <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                                 View Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -335,41 +322,14 @@
                         </div>
                     </div>
 
-                    <div onclick="openLocalPanel('expertise', 'ev')" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <div onclick="openUniversalModal('expertise', 5)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
                         <img src="assets/images/media/image48.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Mobility">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                         <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                              <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">EV Charging & Grid</h4>
+                            <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">EV Charging & Grid</h4>
                             <p class="text-gray-300 text-sm line-clamp-2 mb-4">Predicting and managing load from rapid vehicle electrification.</p>
                             <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                                 View Details <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="expertise-overlay" class="grid-overlay absolute inset-0 z-20 bg-slate-900/70 backdrop-blur-sm transition-all duration-500">
-                    <div class="container mx-auto h-full relative">
-                        <div class="grid-overlay-content absolute top-0 right-0 w-full md:w-2/3 lg:w-1/2 h-full">
-                            <div class="sticky top-32 h-auto max-h-[85vh] overflow-y-auto bg-white shadow-2xl rounded-l-2xl flex flex-col border-l border-slate-200">
-                                <div class="bg-slate-900 text-white p-8 flex-shrink-0">
-                                    <div class="flex justify-between items-start mb-4">
-                                        <div class="text-xs font-bold uppercase tracking-widest text-brand-red opacity-80">Our Competencies</div>
-                                        <button onclick="closeLocalPanel('expertise')" class="hover:bg-white/10 p-2 rounded-full transition-colors">
-                                            <i data-lucide="x" class="w-6 h-6"></i>
-                                        </button>
-                                    </div>
-                                    <h3 id="expertise-panel-title" class="text-3xl font-serif font-bold leading-tight">Service Title</h3>
-                                </div>
-                                <div class="p-8 flex-grow">
-                                    <div id="expertise-panel-body" class="prose prose-slate prose-lg text-slate-600 leading-relaxed"></div>
-                                </div>
-                                <div class="p-6 border-t border-slate-100 bg-slate-50 flex-shrink-0 flex justify-between items-center">
-                                     <span class="text-xs font-bold uppercase text-slate-400">Need expertise?</span>
-                                     <a href="#contact" onclick="closeLocalPanel('expertise')" class="bg-brand-red text-white px-6 py-3 rounded-lg font-bold uppercase tracking-widest text-xs hover:bg-red-800 transition-colors shadow-md">
-                                         Contact Us
-                                     </a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -386,7 +346,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                    <div onclick="openLocalPanel('projects', 'google')" class="project-card group cursor-pointer">
+                    <div onclick="openUniversalModal('projects', 0)" class="project-card group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image14.png" alt="Google DC" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -398,7 +358,7 @@
                         <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
 
-                    <div onclick="openLocalPanel('projects', 'nypa')" class="project-card group cursor-pointer">
+                    <div onclick="openUniversalModal('projects', 1)" class="project-card group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image63.png" alt="NYPA" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -410,7 +370,7 @@
                          <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
 
-                    <div onclick="openLocalPanel('projects', 'viento')" class="project-card group cursor-pointer">
+                    <div onclick="openUniversalModal('projects', 2)" class="project-card group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image67.jpeg" alt="Ignis" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -422,7 +382,7 @@
                          <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
                     
-                    <div onclick="openLocalPanel('projects', 'dominion')" class="project-card group cursor-pointer">
+                    <div onclick="openUniversalModal('projects', 3)" class="project-card group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image76.jpeg" alt="Dominion" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -434,7 +394,7 @@
                          <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
                     
-                    <div onclick="openLocalPanel('projects', 'sumbe')" class="project-card group cursor-pointer">
+                    <div onclick="openUniversalModal('projects', 4)" class="project-card group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image59.png" alt="MISO" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -446,7 +406,7 @@
                          <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
 
-                    <div onclick="openLocalPanel('projects', 'grimes')" class="project-card group cursor-pointer">
+                    <div onclick="openUniversalModal('projects', 5)" class="project-card group cursor-pointer">
                         <div class="mb-6 relative overflow-hidden shadow-2xl">
                             <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                             <img src="assets/images/media/image70.jpeg" alt="Naturgy" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
@@ -458,34 +418,6 @@
                          <span class="text-xs font-bold uppercase tracking-widest text-white/50 mt-4 flex items-center gap-2 group-hover:text-white transition-colors">View Case Study <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
                     </div>
                 </div>
-
-                <div id="projects-overlay" class="grid-overlay absolute inset-0 z-20 bg-slate-900/80 backdrop-blur-sm transition-all duration-500">
-                    <div class="container mx-auto h-full relative">
-                        <div class="grid-overlay-content absolute top-0 right-0 w-full md:w-2/3 lg:w-1/2 h-full">
-                            <div class="sticky top-32 h-auto max-h-[85vh] overflow-y-auto bg-white shadow-2xl rounded-l-2xl flex flex-col text-slate-900">
-                                <div class="bg-brand-red text-white p-8 flex-shrink-0">
-                                    <div class="flex justify-between items-start mb-4">
-                                        <div class="text-xs font-bold uppercase tracking-widest text-white/70">Case Study</div>
-                                        <button onclick="closeLocalPanel('projects')" class="hover:bg-white/10 p-2 rounded-full transition-colors">
-                                            <i data-lucide="x" class="w-6 h-6"></i>
-                                        </button>
-                                    </div>
-                                    <h3 id="projects-panel-title" class="text-3xl font-serif font-bold leading-tight">Project Title</h3>
-                                </div>
-                                <div class="p-8 flex-grow">
-                                    <div id="projects-panel-body" class="prose prose-slate prose-lg text-slate-600 leading-relaxed"></div>
-                                </div>
-                                <div class="p-6 border-t border-slate-100 bg-slate-50 flex-shrink-0 flex justify-between items-center">
-                                     <span class="text-xs font-bold uppercase text-slate-400">Similar Project?</span>
-                                     <a href="#contact" onclick="closeLocalPanel('projects')" class="bg-slate-900 text-white px-6 py-3 rounded-lg font-bold uppercase tracking-widest text-xs hover:bg-slate-700 transition-colors shadow-md">
-                                         Get a Quote
-                                     </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -528,6 +460,7 @@
                         <div class="text-xs font-bold uppercase text-brand-red mt-1">Lead Power Systems Engineer</div>
                         <div class="text-xs text-slate-400 uppercase mt-1">Right Analytics</div>
                     </div>
+                    
                     <div class="group text-center">
                         <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative">
                             <img src="assets/images/media/image33.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
@@ -577,7 +510,7 @@
                             <input type="email" name="email" placeholder="Email Address" class="w-full border-b-2 border-slate-200 py-4 focus:outline-none focus:border-brand-red transition-colors bg-transparent text-lg placeholder-slate-400" required>
                             <div class="relative">
                                 <textarea id="message-box" name="message" placeholder="How can we help?" class="w-full border-b-2 border-slate-200 py-4 focus:outline-none focus:border-brand-red transition-colors bg-transparent h-40 resize-none text-lg placeholder-slate-400" required></textarea>
-                                <button id="ai-draft-btn" type="button" onclick="openAiDraftModal()" class="absolute bottom-4 right-2 flex items-center gap-2 bg-white text-brand-red border border-brand-red/20 px-3 py-1.5 rounded-full shadow-sm hover:bg-red-50 hover:border-brand-red transition-all group text-xs font-bold uppercase tracking-wider ai-pulse">
+                                <button id="ai-draft-btn" type="button" onclick="openAiDraftModal('message-box')" class="absolute bottom-4 right-2 flex items-center gap-2 bg-white text-brand-red border border-brand-red/20 px-3 py-1.5 rounded-full shadow-sm hover:bg-red-50 hover:border-brand-red transition-all group text-xs font-bold uppercase tracking-wider ai-pulse">
                                     <i data-lucide="sparkles" class="w-4 h-4 group-hover:scale-110 transition-transform"></i> 
                                     <span>Auto-Draft with AI</span>
                                 </button>
@@ -623,7 +556,7 @@
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-3 mb-10 cursor-pointer" onclick="window.scrollTo(0,0)">
                         <img src="assets/images/media/image3.png" alt="Quadrante Logo" class="h-8 w-auto brightness-0 invert" />
-                         <div class="h-6 w-px bg-slate-700 mx-2"></div>
+                        <div class="h-6 w-px bg-slate-700 mx-2"></div>
                         <img src="assets/images/media/image1.png" alt="Right Analytics Logo" class="h-10 w-auto object-contain brightness-0 invert" />
                     </div>
                     <p class="text-slate-400 max-w-md mb-10 leading-relaxed text-lg font-light">
@@ -686,6 +619,59 @@
         </button>
     </div>
 
+    <div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-hidden">
+        <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-md modal-backdrop" onclick="closeUniversalModal()"></div>
+        
+        <div class="relative bg-white w-full max-w-6xl h-[90vh] md:h-[80vh] rounded-2xl shadow-2xl overflow-hidden modal-content z-10 flex flex-col md:flex-row">
+            
+            <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-20 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition-colors backdrop-blur-sm">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <button onclick="navigateModal(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full transition-all hover:scale-110 backdrop-blur-md border border-white/20">
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+            </button>
+            <button onclick="navigateModal(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full transition-all hover:scale-110 backdrop-blur-md border border-white/20">
+                <i data-lucide="chevron-right" class="w-6 h-6"></i>
+            </button>
+
+            <div class="w-full md:w-1/2 h-48 md:h-full relative bg-slate-900">
+                <img id="modal-image" src="" class="w-full h-full object-cover opacity-80" alt="Detail Image">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent md:bg-gradient-to-r"></div>
+                <div class="absolute top-8 left-8">
+                     <span id="modal-section-label" class="bg-brand-red text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm">Project</span>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 h-full flex flex-col bg-white">
+                <div class="flex-grow overflow-y-auto p-8 md:p-12 custom-scrollbar">
+                    <h2 id="modal-title" class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6 leading-tight">Title Here</h2>
+                    <div id="modal-body" class="prose prose-slate text-slate-600 leading-relaxed mb-8">
+                        </div>
+                    
+                    <hr class="border-slate-100 my-8">
+
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="message-circle-question" class="w-5 h-5 text-brand-red"></i>
+                            <h4 class="font-bold text-slate-800 text-sm uppercase tracking-wide">Ask about this topic</h4>
+                        </div>
+                        <div class="relative">
+                            <textarea id="modal-question-box" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none h-24 bg-white placeholder-slate-400" placeholder="Ask a specific question regarding this project or competency..."></textarea>
+                            <button onclick="openAiDraftModal('modal-question-box')" class="absolute bottom-2 right-2 flex items-center gap-2 bg-slate-100 text-slate-600 border border-slate-200 px-2 py-1 rounded-md shadow-sm hover:bg-white hover:text-brand-red transition-all text-[10px] font-bold uppercase tracking-wider">
+                                <i data-lucide="sparkles" class="w-3 h-3"></i> 
+                                <span>AI Draft</span>
+                            </button>
+                        </div>
+                        <button class="w-full mt-4 bg-slate-900 text-white py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-700 transition-colors">
+                            Send Inquiry
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="ai-draft-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center transition-opacity duration-300 modal-hidden">
         <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm modal-backdrop" onclick="closeAiDraftModal()"></div>
         
@@ -699,7 +685,7 @@
             <div class="p-6 space-y-4">
                 <div id="prompt-section">
                     <label class="block text-sm font-bold text-slate-700 mb-2">What would you like to say?</label>
-                    <textarea id="ai-prompt-input" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none h-24" placeholder="E.g., Ask for a quote on a 500kV transmission line project in California..."></textarea>
+                    <textarea id="ai-prompt-input" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none h-24" placeholder="E.g., Ask for details on the timeline for the 500kV line project..."></textarea>
                 </div>
                 
                 <div class="flex justify-end" id="generate-btn-container">
@@ -765,41 +751,26 @@
                 }
             });
         }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 8000); // Auto rotate
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+        setInterval(nextSlide, 8000); 
         document.getElementById('next-slide').addEventListener('click', nextSlide);
         document.getElementById('prev-slide').addEventListener('click', prevSlide);
 
         // AI Chat Widget
-        function toggleChat() {
-            const chat = document.getElementById('chat-window');
-            chat.classList.toggle('hidden');
-        }
-
+        function toggleChat() { document.getElementById('chat-window').classList.toggle('hidden'); }
         const apiKey = "AIzaSyDxUBgLd6LZfPPK5Lnl3xAz6_3nj7Lve-I"; 
 
         async function sendMessage() {
             const input = document.getElementById('chat-input');
             const messages = document.getElementById('chat-messages');
             const userText = input.value;
-            
             if (!userText) return;
 
             const userDiv = document.createElement('div');
             userDiv.className = "flex justify-end";
             userDiv.innerHTML = `<div class="bg-brand-red text-white p-3 rounded-2xl rounded-br-none shadow-sm max-w-[85%]">${userText}</div>`;
             messages.appendChild(userDiv);
-            
             input.value = "";
             messages.scrollTop = messages.scrollHeight;
 
@@ -815,32 +786,31 @@
                     const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                     const data = await response.json();
                     const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't process that.";
-                    
                     loadingDiv.remove();
                     const botDiv = document.createElement('div');
                     botDiv.className = "flex justify-start";
                     botDiv.innerHTML = `<div class="bg-white text-slate-800 border border-slate-100 p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[85%]">${aiText}</div>`;
                     messages.appendChild(botDiv);
-                 } catch(e) {
-                    loadingDiv.remove();
-                 }
+                 } catch(e) { loadingDiv.remove(); }
             } else {
                 setTimeout(() => {
                     loadingDiv.remove();
                     const botDiv = document.createElement('div');
                     botDiv.className = "flex justify-start";
-                    botDiv.innerHTML = `<div class="bg-white text-slate-800 border border-slate-100 p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[85%]">Thank you for your message about "${userText}". Our team specializes in this area. Would you like to schedule a consultation?</div>`;
+                    botDiv.innerHTML = `<div class="bg-white text-slate-800 border border-slate-100 p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[85%]">Thank you for your message. Would you like to schedule a consultation?</div>`;
                     messages.appendChild(botDiv);
                     messages.scrollTop = messages.scrollHeight;
                 }, 1500);
             }
         }
 
-        // Auto Draft Modal Logic
-        function openAiDraftModal() {
+        // --- AI Draft Logic (Updated for Multiple Targets) ---
+        let currentAiTargetId = ''; // Tracks which textarea called the AI
+
+        function openAiDraftModal(targetId) {
+            currentAiTargetId = targetId; // Set target
             const modal = document.getElementById('ai-draft-modal');
             const content = document.getElementById('ai-draft-content');
-            
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('modal-hidden');
@@ -852,11 +822,9 @@
         function closeAiDraftModal() {
             const modal = document.getElementById('ai-draft-modal');
             const content = document.getElementById('ai-draft-content');
-            
             modal.classList.add('modal-hidden');
             content.classList.remove('scale-100', 'opacity-100');
             content.classList.add('scale-95', 'opacity-0');
-            
             setTimeout(() => {
                 modal.classList.add('hidden');
                 document.getElementById('draft-result-container').classList.add('hidden');
@@ -878,165 +846,187 @@
             btn.disabled = true;
 
             let draftText = "";
+            // Simulating context based on where it was called
+            const context = currentAiTargetId === 'modal-question-box' ? "a specific question regarding a project/service" : "a general contact inquiry";
 
             if (apiKey) {
                 try {
                     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                    const prompt = `Write a professional, concise project inquiry email to an engineering firm based on this user request: "${promptInput}". Do not include subject line or salutations. Keep it under 4 sentences.`;
-                    
-                    const payload = { 
-                        contents: [{ parts: [{ text: prompt }] }] 
-                    };
-                    
-                    const response = await fetch(url, { 
-                        method: 'POST', 
-                        headers: { 'Content-Type': 'application/json' }, 
-                        body: JSON.stringify(payload) 
-                    });
-                    
+                    const prompt = `Write a professional, concise email/message (${context}) to an engineering firm based on: "${promptInput}". No subject line. Max 3 sentences.`;
+                    const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                     const data = await response.json();
                     draftText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I am interested in discussing a potential project.";
-                    
-                } catch(e) {
-                    console.error("AI Draft Error:", e);
-                    draftText = "I am writing to inquire about your engineering services for a potential project regarding " + promptInput + ".";
-                }
+                } catch(e) { draftText = "I am writing to inquire regarding " + promptInput + "."; }
             } else {
                 await new Promise(r => setTimeout(r, 1000));
-                draftText = "I am writing to inquire about your engineering services regarding " + promptInput + ". We are looking for expertise in this area and would appreciate a consultation.";
+                draftText = "I am writing to inquire about " + promptInput + ". We would appreciate a consultation.";
             }
 
             document.getElementById('draft-output').value = draftText.trim();
             document.getElementById('generate-btn-container').classList.add('hidden');
             document.getElementById('prompt-section').classList.add('hidden');
             document.getElementById('draft-result-container').classList.remove('hidden');
-            
             btn.innerHTML = originalText;
             btn.disabled = false;
             lucide.createIcons();
         }
 
         async function modifyDraft(action) {
-            const currentText = document.getElementById('draft-output').value;
             const textArea = document.getElementById('draft-output');
-            
+            const currentText = textArea.value;
             textArea.value = "Updating draft...";
             textArea.disabled = true;
-
             let newText = currentText;
 
             if (apiKey) {
                 try {
                     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                    const prompt = `Modify this email draft based on the instruction: "${action}". Keep it professional. Original text: "${currentText}"`;
-                    
+                    const prompt = `Modify this text: "${action}". Keep it professional. Original: "${currentText}"`;
                     const payload = { contents: [{ parts: [{ text: prompt }] }] };
-                    
-                    const response = await fetch(url, { 
-                        method: 'POST', 
-                        headers: { 'Content-Type': 'application/json' }, 
-                        body: JSON.stringify(payload) 
-                    });
-                    
+                    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                     const data = await response.json();
                     newText = data.candidates?.[0]?.content?.parts?.[0]?.text || currentText;
-                } catch(e) {
-                    console.error("Modification Error", e);
-                }
+                } catch(e) { }
             } else {
                 await new Promise(r => setTimeout(r, 800));
-                if (action === 'shorten') newText = "Inquiring about engineering services for the project mentioned. Please advise on availability.";
-                if (action === 'expand') newText = currentText + " We are particularly interested in your team's expertise and track record in this specific domain.";
-                if (action === 'formal') newText = "We respectfully submit this inquiry regarding your professional engineering services for the aforementioned project scope.";
-                if (action === 'casual') newText = "Hi team, looking to chat about your engineering help with this project. Let me know when you're free!";
+                if (action === 'shorten') newText = "Inquiring about engineering services. Please advise.";
+                else newText = currentText + " Please provide more details.";
             }
-
             textArea.value = newText.trim();
             textArea.disabled = false;
         }
 
         function insertDraft() {
             const draft = document.getElementById('draft-output').value;
-            const messageBox = document.getElementById('message-box');
-            messageBox.value = draft;
+            // Uses the tracked ID to insert into the correct box
+            if(currentAiTargetId) {
+                const targetBox = document.getElementById(currentAiTargetId);
+                if(targetBox) targetBox.value = draft;
+            }
             closeAiDraftModal();
         }
 
-        // --- Local Overlay Logic ---
+        // --- UNIVERSAL MODAL LOGIC ---
 
-        const serviceData = {
-            'renewables': {
+        // Data Arrays for seamless navigation
+        const competenciesData = [
+            {
+                image: "assets/images/media/image50.png",
                 title: "Renewable Energy Integration",
                 content: `<p class="mb-4">Right Analytics has a long successful history of performing integration studies for renewable generations. Right Analytics capabilities for interconnection studies range from modeling of the renewable generation resources all the way to transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies.</p><p>All our studies comply with the industry standards ensuring reliability and grid code compliance for projects of any scale.</p>`
             },
-            'td': {
+            {
+                image: "assets/images/media/image67.jpeg",
                 title: "T&D Planning & Control",
                 content: `<p class="mb-4">Our team at Right Analytics can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control.</p><p>We leverage best software tools and processes to find out solutions for the toughest challenges facing the industry today, ensuring grid resiliency and operational efficiency.</p>`
             },
-            'facts': {
+            {
+                image: "assets/images/media/image70.jpeg",
                 title: "FACTS & HVDC",
                 content: `<p class="mb-4">We have established ourselves as a world class consulting provider of HVDC and FACTS. As both systems share many technological similarities, our combined expertise has proven to be technically and economically beneficial for clients in assessing and selecting technologies, as well as designing efficient, reliable and economic solutions.</p><p>Our area of expertise includes the study, conceptual design and specification of a variety of FACTS devices, such as static VAR compensators (SVCs), STATCOMs and series compensation devices such as SSSC, and UPFC, as well as LCC, and VSC-based HVDC systems.</p>`
             },
-            'hil': {
+            {
+                image: "assets/images/media/image63.png",
                 title: "Hardware-in-the-Loop Studies",
                 content: `<p class="mb-4">HIL testing lets you verify your controller design, and other IEDs without the complete system hardware. Instead, rely on a real-time plant simulator that acts as a digital twin of the real system or parts of it, benefiting you in practicality and cost.</p><p>At Right Analytics, we offer a wide range of HIL tests to verify the performance of the power electronics controllers, power system protection systems, and battery management systems.</p>`
             },
-            'ml': {
+            {
+                image: "assets/images/media/image59.png",
                 title: "Machine Learning Applications",
                 content: `<p class="mb-4">We are passionate about using Artificial Intelligence techniques to address challenges and uncertainty in Energy Industry. We believe that data-driven solutions are the main building block of the future modernized grid.</p><p>We use Deep Learning techniques to address energy related problems as they deem fit, optimizing forecasting and asset management.</p>`
             },
-            'ev': {
+            {
+                image: "assets/images/media/image48.jpeg",
                 title: "Electric Vehicles Charging",
                 content: `<p class="mb-4">At Right Analytics, we believe that Electric Vehicles will revolutionize the transportation system.</p><p>We use advanced data analytics, and machine learning technics to predict the extra load that these vehicles will add to the power network, ensuring the grid is prepared for the rapid electrification of transportation.</p>`
             }
-        };
-        
-        const projectData = {
-            'google': {
+        ];
+
+        const experienceData = [
+            {
+                image: "assets/images/media/image14.png",
                 title: "Google Data Center Optimal Location",
                 content: `<p class="mb-4"><strong>Client:</strong> Google<br><strong>Location:</strong> USA (Ongoing)</p><p class="mb-4">We are conducting a comprehensive load hosting capacity analysis to identify optimal locations for building new data centers. This study involves analyzing grid constraints, available capacity, and future load growth scenarios to ensure seamless integration of high-demand facilities.</p><p>The project leverages advanced power flow modeling to support Google's strategic infrastructure expansion.</p>`
             },
-            'nypa': {
+            {
+                image: "assets/images/media/image63.png",
                 title: "NYPA Advanced Power Flow Control",
                 content: `<p class="mb-4"><strong>Client:</strong> New York Power Authority<br><strong>Location:</strong> New York</p><p class="mb-4">This project focused on the deployment of Advanced Power Flow Control (APFC) technology within the New York Control Area (NYCA). Our team performed an economic assessment of Dynamic Line Rating (DLR) operations to optimize grid efficiency.</p><p>The solution enables greater renewable energy integration by relieving transmission congestion without costly line upgrades.</p>`
             },
-            'viento': {
+            {
+                image: "assets/images/media/image67.jpeg",
                 title: "Viento Fronterizo 500kV Line",
                 content: `<p class="mb-4"><strong>Client:</strong> Ignis<br><strong>Location:</strong> USA / Mexico Border</p><p class="mb-4">We delivered the Basic Design and PLS-CADD modeling for the "Viento Fronterizo" High-Voltage Overhead Line. This 20km cross-border transmission line connects critical energy infrastructure between the two nations.</p><p>Scope included route selection, tower spotting, and structural analysis to ensure compliance with both US and Mexican grid codes.</p>`
             },
-            'dominion': {
+            {
+                image: "assets/images/media/image76.jpeg",
                 title: "Dominion Energy Hosting Capacity",
                 content: `<p class="mb-4"><strong>Client:</strong> Dominion Energy<br><strong>Location:</strong> Virginia</p><p class="mb-4">Our team is performing ongoing hosting capacity analysis to support the integration of distributed energy resources (DERs). This involves detailed solar integration cost analysis to facilitate the interconnection of renewable generation.</p><p>The study helps Dominion identify grid upgrades needed to support Virginia's clean energy goals.</p>`
             },
-            'sumbe': {
+            {
+                image: "assets/images/media/image59.png",
                 title: "Sumbe TIER III Data Center",
                 content: `<p class="mb-4"><strong>Client:</strong> Logicalis<br><strong>Location:</strong> Angola</p><p class="mb-4">We provided full design services (RIBA Stages 3-4) for a new TIER III Data Center in Sumbe. The facility features 1 MW of IT power and is designed for high availability and resilience.</p><p>Our scope included electrical, mechanical, and civil engineering design to meet rigorous international data center standards.</p>`
             },
-            'grimes': {
+            {
+                image: "assets/images/media/image70.jpeg",
                 title: "Project Grimes Substation",
                 content: `<p class="mb-4"><strong>Client:</strong> Naturgy<br><strong>Location:</strong> Texas (ERCOT)</p><p class="mb-4">This project involved the technical specifications and support for transformer procurement for a 138/34.5/13.8 kV substation. We also provided design review and support for the ERCOT interconnection process.</p><p>The substation serves as a critical injection point for renewable energy into the Texas grid.</p>`
             }
-        };
+        ];
 
-        function openLocalPanel(section, id) {
-            const overlay = document.getElementById(`${section}-overlay`);
-            const title = document.getElementById(`${section}-panel-title`);
-            const body = document.getElementById(`${section}-panel-body`);
+        // Modal State
+        let currentModalSection = '';
+        let currentModalIndex = 0;
 
-            // Get Data
-            const data = section === 'expertise' ? serviceData[id] : projectData[id];
+        function openUniversalModal(section, index) {
+            currentModalSection = section;
+            currentModalIndex = index;
+            updateModalUI();
+
+            const modal = document.getElementById('universal-modal');
+            const content = modal.querySelector('.modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('modal-hidden');
+                content.classList.add('scale-100', 'opacity-100');
+                content.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
+
+        function closeUniversalModal() {
+            const modal = document.getElementById('universal-modal');
+            const content = modal.querySelector('.modal-content');
+            modal.classList.add('modal-hidden');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function navigateModal(direction) {
+            const dataArray = currentModalSection === 'expertise' ? competenciesData : experienceData;
+            // Handle wrap-around math
+            currentModalIndex = (currentModalIndex + direction + dataArray.length) % dataArray.length;
+            updateModalUI();
+        }
+
+        function updateModalUI() {
+            const dataArray = currentModalSection === 'expertise' ? competenciesData : experienceData;
+            const data = dataArray[currentModalIndex];
             
-            if(data) {
-                title.innerText = data.title;
-                body.innerHTML = data.content;
-                overlay.classList.add('active');
-            }
+            // Update Text/Images
+            document.getElementById('modal-image').src = data.image;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-body').innerHTML = data.content;
+            document.getElementById('modal-section-label').innerText = currentModalSection === 'expertise' ? 'Competency' : 'Project';
+            
+            // Clear the question box on navigation
+            document.getElementById('modal-question-box').value = ''; 
         }
 
-        function closeLocalPanel(section) {
-            const overlay = document.getElementById(`${section}-overlay`);
-            overlay.classList.remove('active');
-        }
     </script>
 </body>
 </html>
