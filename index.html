@@ -294,9 +294,10 @@
                             <div class="relative bg-slate-50 p-6 md:p-12 rounded-2xl border border-slate-100">
                                 <!-- UPDATED LOGO BLOCK: Smaller base size for mobile -->
                                 <div class="flex items-center justify-center gap-4 md:gap-8 mb-6 md:mb-12">
-                                    <img src="assets/images/media/logo-quadrante.png" class="h-8 md:h-16 w-auto object-contain" alt="Quadrante Logo">
-                                    <div class="h-10 md:h-16 w-px bg-slate-300"></div>
-                                    <img src="assets/images/media/logo-right-analytics.png" class="h-14 md:h-32 w-auto object-contain" alt="Right Analytics Logo">
+                                    <!-- Reduced base size from h-8 to h-6 and h-14 to h-10 on mobile/default -->
+                                    <img src="assets/images/media/logo-quadrante.png" class="h-6 md:h-16 w-auto object-contain" alt="Quadrante Logo">
+                                    <div class="h-8 md:h-16 w-px bg-slate-300"></div>
+                                    <img src="assets/images/media/logo-right-analytics.png" class="h-10 md:h-32 w-auto object-contain" alt="Right Analytics Logo">
                                 </div>
                                 <div class="grid grid-cols-2 gap-6 md:gap-12">
                                     <div><div class="text-4xl md:text-5xl font-bold text-brand-primary mb-2">1,200+</div><div class="text-xs uppercase tracking-widest text-slate-500">People</div></div>
@@ -896,6 +897,7 @@
                 <img id="modal-image" src="" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105" alt="Detail Image">
                 
                 <!-- Sidebar Menu (Desktop Nav - hidden on mobile) -->
+                <!-- THIS IS NOW HIDDEN ON MOBILE (hidden md:flex) -->
                 <div class="relative z-10 h-full flex flex-col p-8 overflow-y-auto dark-scrollbar hidden md:flex" id="sidebar-menu-container">
                     <div class="mb-8">
                         <span id="modal-section-label" class="bg-brand-primary text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg">Featured</span>
