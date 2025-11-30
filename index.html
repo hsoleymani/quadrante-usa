@@ -23,9 +23,10 @@
                     },
                     colors: {
                         brand: {
-                            red: '#DC2626', 
+                            primary: '#1e40af', /* Navy Blue */
+                            secondary: '#3b82f6', /* Lighter Blue */
                             dark: '#0F172A',
-                            blue: '#1e40af',
+                            light: '#F8FAFC'
                         }
                     },
                     animation: {
@@ -88,8 +89,8 @@
         }
         
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(30, 64, 175, 0); }
         }
         .ai-pulse {
             animation: pulse-glow 2s infinite;
@@ -120,25 +121,27 @@
         .dark-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
     </style>
 </head>
-<body class="font-sans text-slate-900 bg-slate-900 selection:bg-red-100 selection:text-red-900">
+<body class="font-sans text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900">
 
-    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-brand-red z-[60] transition-all duration-100 w-0"></div>
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-brand-primary z-[60] transition-all duration-100 w-0"></div>
 
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white py-6 border-b border-gray-100">
         <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
             <div class="flex items-center gap-6 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-8 w-auto" />
-                <div class="h-8 w-px bg-slate-300"></div>
-                <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-10 w-auto object-contain" />
+                <a href="https://quadranteglobal.com/landing-page/" target="_blank" onclick="event.stopPropagation()">
+                    <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-8 w-auto" />
+                </a>
+                <div class="h-12 w-px bg-slate-300"></div>
+                <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-20 w-auto object-contain" />
             </div>
 
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#about" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-red transition-colors">About</a>
-                <a href="#expertise" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-red transition-colors">Services</a>
-                <a href="#projects" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-red transition-colors">Projects</a>
-                <a href="#team" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-red transition-colors">Team</a>
+                <a href="#about" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">About</a>
+                <a href="#team" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Team</a>
+                <a href="#expertise" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Services</a>
+                <a href="#projects" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Projects</a>
                 <div class="h-5 w-px bg-gray-300 mx-2"></div>
-                <a href="#contact" class="bg-brand-red hover:bg-red-800 text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-red-600/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Get in Touch</a>
+                <a href="#contact" class="bg-brand-primary hover:bg-blue-800 text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-600/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Get in Touch</a>
             </nav>
 
             <button id="mobile-menu-btn" class="md:hidden text-slate-900 p-2">
@@ -155,7 +158,16 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
                 <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
                     <div class="max-w-5xl pt-20 slide-content">
-                        <div class="w-20 h-1.5 bg-brand-red mb-8 shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                        <div class="w-20 h-1.5 bg-brand-primary mb-8 shadow-[0_0_15px_rgba(30,64,175,0.5)]"></div>
+                        
+                        <!-- Updated Logo Container -->
+                        <div class="flex items-center gap-8 mb-10 w-fit">
+                            <img src="assets/images/media/right_analytics_logo.svg" class="h-24 w-auto object-contain drop-shadow-lg" alt="Right Analytics">
+                            <a href="https://quadranteglobal.com/landing-page/" target="_blank">
+                                <img src="assets/images/media/quadrante_logo.svg" class="h-12 w-auto object-contain drop-shadow-lg" alt="Quadrante">
+                            </a>
+                        </div>
+
                         <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Strategic Acquisition</div>
                         <h1 class="text-6xl md:text-9xl font-serif font-black text-white mb-8 leading-[1] drop-shadow-2xl">
                             Right Analytics Joins Quadrante
@@ -163,7 +175,7 @@
                         <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
                             Uniting forces to launch <span class="font-bold text-white">Quadrante USA LLC</span> and drive grid decarbonization.
                         </p>
-                        <button onclick="openAcquisitionModal()" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg cursor-pointer">
+                        <button onclick="openAcquisitionModal()" class="inline-flex items-center gap-3 bg-brand-primary hover:bg-blue-800 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg cursor-pointer rounded-lg">
                             Read Our Story <i data-lucide="arrow-right" class="w-5 h-5"></i>
                         </button>
                     </div>
@@ -176,13 +188,13 @@
                     <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
                     <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
                         <div class="max-w-4xl pt-20 slide-content">
-                            <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
+                            <div class="w-20 h-1.5 bg-brand-primary mb-8"></div>
                             <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Global Capabilities</div>
                             <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Uniting U.S. Expertise with Global Scale</h1>
                             <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
                             1,200+ People. 11,100+ Projects. Leading sustainable engineering across the US, Europe, and LatAm.
                             </p>
-                            <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
+                            <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-primary hover:bg-blue-800 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
                             Explore Capabilities <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </a>
                         </div>
@@ -196,13 +208,13 @@
                     <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
                     <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
                         <div class="max-w-4xl pt-20 slide-content">
-                            <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
+                            <div class="w-20 h-1.5 bg-brand-primary mb-8"></div>
                             <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Grid Modernization</div>
                             <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Engineering a Resilient Grid</h1>
                             <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
                             Advanced T&D planning, interconnection studies, and structural analysis for a decarbonized future.
                             </p>
-                            <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
+                            <a href="#expertise" class="inline-flex items-center gap-3 bg-brand-primary hover:bg-blue-800 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
                             View Services <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </a>
                         </div>
@@ -210,46 +222,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <div class="relative h-full w-full">
-                    <img src="assets/images/media/data-center-google.png" alt="Data Center" class="absolute min-w-full min-h-full object-cover opacity-60" />
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-                    <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
-                        <div class="max-w-4xl pt-20 slide-content">
-                            <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
-                            <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Mission Critical</div>
-                            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">Powering the Digital Economy</h1>
-                            <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
-                            Specialized power systems design and load analysis for hyperscale data centers.
-                            </p>
-                            <a href="#projects" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
-                            See Projects <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide">
-                <div class="relative h-full w-full">
-                    <img src="assets/images/media/hil-testing-lab.png" alt="HIL Testing" class="absolute min-w-full min-h-full object-cover opacity-60" />
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-                    <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
-                        <div class="max-w-4xl pt-20 slide-content">
-                            <div class="w-20 h-1.5 bg-brand-red mb-8"></div>
-                            <div class="text-white font-sans font-bold uppercase tracking-widest text-xs mb-6 border border-white/30 inline-block px-4 py-2 backdrop-blur-sm">Innovation</div>
-                            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-8 leading-[1.1]">De-risking Technology</h1>
-                            <p class="text-xl md:text-3xl text-gray-200 font-sans font-light mb-12 max-w-2xl leading-relaxed">
-                            Real-time simulation and Hardware-in-the-Loop (HIL) testing to validate complex protection systems.
-                            </p>
-                            <a href="#contact" class="inline-flex items-center gap-3 bg-brand-red hover:bg-red-700 text-white font-sans font-bold text-sm uppercase tracking-widest px-10 py-5 transition-all shadow-lg">
-                            Get in Touch <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Slider Buttons -->
             <div class="absolute bottom-12 right-12 z-20 flex gap-4">
                 <button id="prev-slide" class="p-4 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110">
                     <i data-lucide="chevron-left" class="w-6 h-6"></i>
@@ -272,10 +245,10 @@
             <div class="bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
                 <section id="about" class="py-32 bg-white overflow-hidden">
                     <div class="container mx-auto px-6 md:px-12">
-                        <div class="grid lg:grid-cols-2 gap-20">
+                        <div class="grid lg:grid-cols-2 gap-20 mb-24">
                             <div>
                                 <h2 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 mb-10 leading-tight">
-                                    A unified force for <span class="text-brand-red decoration-red-200 underline decoration-4 underline-offset-8">U.S. power infrastructure.</span>
+                                    A unified force for <span class="text-brand-primary decoration-blue-200 underline decoration-4 underline-offset-8">U.S. power infrastructure.</span>
                                 </h2>
                                 <p class="text-xl text-slate-600 leading-relaxed mb-8">
                                     Quadrante USA is incorporating <strong>Right Analytics</strong>, a highly specialized US-based power systems consultancy. Together, these companies form a unified entity positioned to lead sustainable engineering across the United States, Europe, Latin America, and Africa.
@@ -283,66 +256,193 @@
                             </div>
                             <div class="relative bg-slate-50 p-12 rounded-2xl border border-slate-100">
                                 <div class="grid grid-cols-2 gap-12">
-                                    <div><div class="text-5xl font-bold text-brand-red mb-2">1,200+</div><div class="text-xs uppercase tracking-widest text-slate-500">People</div></div>
-                                    <div><div class="text-5xl font-bold text-brand-red mb-2">11,100+</div><div class="text-xs uppercase tracking-widest text-slate-500">Projects</div></div>
-                                    <div><div class="text-4xl font-bold text-brand-red mb-2">105 M€</div><div class="text-xs uppercase tracking-widest text-slate-500">Revenues</div></div>
-                                    <div><div class="text-4xl font-bold text-brand-red mb-2">38</div><div class="text-xs uppercase tracking-widest text-slate-500">Offices</div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-24 border-t border-slate-100 pt-12">
-                            <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-12 text-center">Trusted By Industry Leaders</div>
-                            <div class="relative w-full overflow-hidden hover-pause mask-gradient">
-                                <!-- Marquee Row 1 (Logos 01-13) -->
-                                <div class="flex gap-20 items-center animate-marquee whitespace-nowrap mb-12">
-                                    <img src="assets/images/media/client-logo-01.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-02.png" class="h-14 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-03.jpeg" class="h-10 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-04.png" class="h-16 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-05.png" class="h-16 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-06.jpeg" class="h-14 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-07.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-08.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-09.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-10.jpeg" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-11.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-12.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-13.png" class="h-12 w-auto object-contain">
-                                    
-                                    <!-- Duplicated for seamless loop (Visual filler) -->
-                                    <img src="assets/images/media/client-logo-01.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-02.png" class="h-14 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-03.jpeg" class="h-10 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-04.png" class="h-16 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-05.png" class="h-16 w-auto object-contain">
-                                </div>
-                                <!-- Marquee Row 2 (Logos 14-26) -->
-                                <div class="flex gap-20 items-center animate-marquee-reverse whitespace-nowrap">
-                                    <img src="assets/images/media/client-logo-14.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-15.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-16.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-17.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-18.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-19.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-20.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-21.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-22.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-23.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-24.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-25.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-26.png" class="h-12 w-auto object-contain">
-                                    
-                                    <!-- Duplicated for seamless loop -->
-                                    <img src="assets/images/media/client-logo-14.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-15.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-16.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-17.png" class="h-12 w-auto object-contain">
-                                    <img src="assets/images/media/client-logo-18.png" class="h-12 w-auto object-contain">
+                                    <div><div class="text-5xl font-bold text-brand-primary mb-2">1,200+</div><div class="text-xs uppercase tracking-widest text-slate-500">People</div></div>
+                                    <div><div class="text-5xl font-bold text-brand-primary mb-2">11,100+</div><div class="text-xs uppercase tracking-widest text-slate-500">Projects</div></div>
+                                    <div><div class="text-4xl font-bold text-brand-primary mb-2">105 M€</div><div class="text-xs uppercase tracking-widest text-slate-500">Revenues</div></div>
+                                    <div><div class="text-4xl font-bold text-brand-primary mb-2">38</div><div class="text-xs uppercase tracking-widest text-slate-500">Offices</div></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
+                <!-- NEW FULL-WIDTH TEAM SWIMLANE -->
+                <section id="team" class="py-32 bg-slate-900 relative overflow-hidden">
+                    <!-- Background Texture/Decoration -->
+                    <div class="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 transform translate-x-40 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+
+                    <div class="container mx-auto px-6 md:px-12 relative z-10">
+                        <div class="text-center mb-20">
+                            <h3 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Our Leadership</h3>
+                            <div class="w-24 h-1 bg-blue-400 mx-auto mb-6"></div>
+                            <p class="text-blue-100 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+                                A multidisciplinary team combining academic rigor with field-proven industry experience, dedicated to the future of power systems.
+                            </p>
+                        </div>
+
+                        <!-- Grid -->
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 gap-y-20">
+                            
+                            <!-- Member 1 -->
+                            <div onclick="openUniversalModal('team', 0)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-saman-babaei.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Dr. Saman Babaei</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Founder / Chief Power Systems</div>
+                            </div>
+
+                            <!-- Member 2 -->
+                            <div onclick="openUniversalModal('team', 1)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-eduardo-llorente.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Eduardo Llorente</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">CEO - USA</div>
+                            </div>
+
+                            <!-- Member 3 -->
+                            <div onclick="openUniversalModal('team', 2)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-hanif-livani.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Prof. Hanif Livani</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Lead Power Systems</div>
+                            </div>
+
+                            <!-- Member 4 -->
+                            <div onclick="openUniversalModal('team', 3)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-ali-mehrizi.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Prof. Ali Mehrizi-Sani</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Lead Power Systems</div>
+                            </div>
+
+                            <!-- Member 5 -->
+                            <div onclick="openUniversalModal('team', 4)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-nuno-costa.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Nuno Costa</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Global CEO</div>
+                            </div>
+
+                            <!-- Member 6 -->
+                            <div onclick="openUniversalModal('team', 5)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-isabel-lopez.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Isabel López Ferrer</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Head of Energy</div>
+                            </div>
+
+                            <!-- Member 7 -->
+                            <div onclick="openUniversalModal('team', 6)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-armando-santos.jpeg" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">Armando Santos</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Head of Energy BU</div>
+                            </div>
+
+                            <!-- Member 8 -->
+                            <div onclick="openUniversalModal('team', 7)" class="group text-center cursor-pointer relative">
+                                <div class="relative w-48 h-48 mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <div class="absolute inset-0 rounded-full bg-blue-400/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <img src="assets/images/media/team-joao-rocha.png" class="w-full h-full rounded-full object-cover border-4 border-white/10 group-hover:border-white transition-all duration-300 relative z-10 grayscale group-hover:grayscale-0 shadow-xl">
+                                    <div class="absolute bottom-2 right-2 bg-white text-brand-primary p-2 rounded-full z-20 shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <i data-lucide="plus" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-xl font-bold text-white mb-1">João Rocha</h4>
+                                <div class="text-xs font-bold uppercase tracking-widest text-blue-300">Client Manager</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <div class="mt-24 border-t border-slate-100 pt-12 pb-24 container mx-auto px-6 md:px-12">
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-12 text-center">Trusted By Industry Leaders</div>
+                    <div class="relative w-full overflow-hidden hover-pause mask-gradient">
+                        <!-- Marquee Row 1 (Logos 01-13) -->
+                        <div class="flex gap-20 items-center animate-marquee whitespace-nowrap mb-12">
+                            <img src="assets/images/media/client-logo-01.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-02.png" class="h-14 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-03.jpeg" class="h-10 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-04.png" class="h-16 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-05.png" class="h-16 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-06.jpeg" class="h-14 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-07.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-08.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-09.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-10.jpeg" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-11.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-12.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-13.png" class="h-12 w-auto object-contain">
+                            
+                            <!-- Duplicated for seamless loop (Visual filler) -->
+                            <img src="assets/images/media/client-logo-01.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-02.png" class="h-14 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-03.jpeg" class="h-10 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-04.png" class="h-16 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-05.png" class="h-16 w-auto object-contain">
+                        </div>
+                        <!-- Marquee Row 2 (Logos 14-26) -->
+                        <div class="flex gap-20 items-center animate-marquee-reverse whitespace-nowrap">
+                            <img src="assets/images/media/client-logo-14.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-15.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-16.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-17.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-18.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-19.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-20.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-21.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-22.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-23.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-24.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-25.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-26.png" class="h-12 w-auto object-contain">
+                            
+                            <!-- Duplicated for seamless loop -->
+                            <img src="assets/images/media/client-logo-14.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-15.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-16.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-17.png" class="h-12 w-auto object-contain">
+                            <img src="assets/images/media/client-logo-18.png" class="h-12 w-auto object-contain">
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Refined Expertise Section with Texture & Right Analytics Focus -->
                 <section id="expertise" class="py-32 bg-dot-pattern border-t border-slate-200 relative">
@@ -358,14 +458,13 @@
                                 <div class="flex-1 space-y-8">
                                     <!-- Updated Header Style -->
                                     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-6">
-                                        <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-red pl-8 text-slate-900">About Right Analytics</h3>
+                                        <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-primary pl-8 text-slate-900">About Right Analytics</h3>
                                         <img src="assets/images/media/logo-right-analytics.png" class="h-10 w-auto object-contain" alt="Right Analytics Logo">
                                     </div>
                                     
                                     <div class="prose prose-slate text-slate-600 leading-relaxed">
                                         <p>Founded in 2019, Right Analytics is a boutique power systems consultancy comprised of a small, highly knowledgeable team of engineers and analysts with a mix of academic and industrial experience.</p>
                                         <p>The firm specializes in transmission planning, interconnection studies, large load and data center siting, and a broad range of advanced power systems analyses.</p>
-                                        <p>Since inception, Right Analytics has built a reputation for delivering technically rigorous, actionable insights that enable utilities, system operators, and developers to make informed investment and operational decisions.</p>
                                     </div>
                         
                                     <div class="grid gap-4 pt-4">
@@ -385,16 +484,12 @@
                                         
                                         <ul class="space-y-6">
                                             <li class="flex items-start gap-4">
-                                                <div class="bg-brand-red/10 p-2 rounded-full mt-1"><i data-lucide="map" class="w-5 h-5 text-brand-red"></i></div>
+                                                <div class="bg-brand-primary/10 p-2 rounded-full mt-1"><i data-lucide="map" class="w-5 h-5 text-brand-primary"></i></div>
                                                 <div class="text-slate-700">Active in <strong class="text-slate-900">NYISO, PJM, MISO, and ERCOT</strong> since 2019.</div>
                                             </li>
                                             <li class="flex items-start gap-4">
-                                                <div class="bg-brand-red/10 p-2 rounded-full mt-1"><i data-lucide="users" class="w-5 h-5 text-brand-red"></i></div>
-                                                <div class="text-slate-700">Partnered with leading organizations: <strong class="text-slate-900">NYPA, NYSERDA, Dominion Energy, MISO, SCE, Google</strong>, and more.</div>
-                                            </li>
-                                            <li class="flex items-start gap-4">
-                                                <div class="bg-brand-red/10 p-2 rounded-full mt-1"><i data-lucide="shield-check" class="w-5 h-5 text-brand-red"></i></div>
-                                                <div class="text-slate-700">Trusted by utilities, developers, and system operators for <strong class="text-slate-900">critical studies and analytics</strong>.</div>
+                                                <div class="bg-brand-primary/10 p-2 rounded-full mt-1"><i data-lucide="users" class="w-5 h-5 text-brand-primary"></i></div>
+                                                <div class="text-slate-700">Partnered with leading organizations: <strong class="text-slate-900">NYPA, NYSERDA, Dominion Energy, MISO, SCE, Google</strong>.</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -417,48 +512,48 @@
                                     <img src="assets/images/media/wind-farm-global.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">Renewable Integration</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Renewable Integration</h4>
+                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
                                 <div onclick="openUniversalModal('expertise', 1)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
                                     <img src="assets/images/media/transmission-lines.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">T&D Planning</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">T&D Planning</h4>
+                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
                                 <div onclick="openUniversalModal('expertise', 2)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
                                     <img src="assets/images/media/substation-infrastructure.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">FACTS & HVDC</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">FACTS & HVDC</h4>
+                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
                                 <div onclick="openUniversalModal('expertise', 3)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
                                     <img src="assets/images/media/hil-testing-lab.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">HIL Testing</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">HIL Testing</h4>
+                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
                                 <div onclick="openUniversalModal('expertise', 4)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
                                     <img src="assets/images/media/server-rack-aisle.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">AI & Machine Learning</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">AI & Machine Learning</h4>
+                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
                                 <div onclick="openUniversalModal('expertise', 5)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
                                     <img src="assets/images/media/ev-charging-grid.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-red transition-colors">EV Charging & Grid</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-red opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">EV Charging & Grid</h4>
+                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -475,6 +570,7 @@
                         
                         <!-- Unified Quadrante Feature Block -->
                         <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/10 overflow-hidden relative">
+                            <div class="absolute top-0 left-0 w-64 h-64 bg-brand-primary rounded-br-full -ml-16 -mt-16 opacity-30 pointer-events-none"></div>
                             
                             <!-- Part 1: About Quadrante -->
                             <div class="flex flex-col lg:flex-row gap-16 relative z-10 mb-16">
@@ -482,27 +578,27 @@
                                 <div class="flex-1 space-y-8 order-2 lg:order-1">
                                     <!-- Updated Header Style -->
                                     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
-                                        <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-red pl-8 text-white">About Quadrante</h3>
-                                        <img src="assets/images/media/logo-quadrante.png" class="h-8 w-auto object-contain brightness-0 invert" alt="Quadrante Logo">
+                                        <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-primary pl-8 text-white">About Quadrante</h3>
+                                        <a href="https://quadranteglobal.com/landing-page/" target="_blank">
+                                            <img src="assets/images/media/logo-quadrante.png" class="h-8 w-auto object-contain brightness-0 invert" alt="Quadrante Logo">
+                                        </a>
                                     </div>
                                     
                                     <div class="prose prose-invert text-gray-300 leading-relaxed">
                                         <p>In a world where progress often clashes with nature, we embrace our purpose by always leading engineering and architecture projects with its <strong>Total Design</strong> approach, seeking economically optimised, sustainable solutions of technical excellence.</p>
-                                        <p>As a multidisciplinary consultancy and design group in Engineering, Architecture, Environment and Sustainability, we take a holistic view of the construction sector and pursue an integrated and evolving approach to sustainability.</p>
-                                        <p>With a strong commitment to the planet and future generations, we are involved in several decarbonisation projects, making a significant contribution to mitigating the effects of climate change.</p>
                                     </div>
                         
                                     <div class="grid gap-4 pt-4">
                                         <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
-                                            <span class="text-3xl text-brand-red mb-1">1,200+</span>
+                                            <span class="text-3xl text-brand-primary mb-1">1,200+</span>
                                             <span class="text-xs uppercase tracking-widest text-gray-400">Employees Global Team</span>
                                         </div>
                                         <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
-                                            <span class="text-3xl text-brand-red mb-1">11,100+</span>
+                                            <span class="text-3xl text-brand-primary mb-1">11,100+</span>
                                             <span class="text-xs uppercase tracking-widest text-gray-400">Projects Delivered Globally</span>
                                         </div>
                                         <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
-                                            <span class="text-3xl text-brand-red mb-1">€105M+</span>
+                                            <span class="text-3xl text-brand-primary mb-1">€105M+</span>
                                             <span class="text-xs uppercase tracking-widest text-gray-400">Annual Turnover</span>
                                         </div>
                                     </div>
@@ -519,16 +615,12 @@
                                         
                                         <ul class="space-y-6 text-gray-300">
                                             <li class="flex items-start gap-4">
-                                                <div class="bg-brand-red/20 p-2 rounded-full mt-1"><i data-lucide="globe" class="w-5 h-5 text-brand-red"></i></div>
+                                                <div class="bg-brand-primary/20 p-2 rounded-full mt-1"><i data-lucide="globe" class="w-5 h-5 text-brand-primary"></i></div>
                                                 <div>Direct presence in <strong class="text-white">Europe, Africa, and Latin America</strong> with 38 offices.</div>
                                             </li>
                                             <li class="flex items-start gap-4">
-                                                <div class="bg-brand-red/20 p-2 rounded-full mt-1"><i data-lucide="briefcase" class="w-5 h-5 text-brand-red"></i></div>
+                                                <div class="bg-brand-primary/20 p-2 rounded-full mt-1"><i data-lucide="briefcase" class="w-5 h-5 text-brand-primary"></i></div>
                                                 <div>Multidisciplinary expertise in <strong class="text-white">Engineering, Architecture, and Consulting</strong>.</div>
-                                            </li>
-                                            <li class="flex items-start gap-4">
-                                                <div class="bg-brand-red/20 p-2 rounded-full mt-1"><i data-lucide="trending-up" class="w-5 h-5 text-brand-red"></i></div>
-                                                <div>Commitment to <strong class="text-white">sustainable development</strong> and innovative solutions.</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -548,327 +640,183 @@
                             <!-- Part 2: Projects Grid -->
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                                 <div onclick="openUniversalModal('projects', 0)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl">
-                                        <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
+                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                                         <img src="assets/images/media/data-center-google.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                                        <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA</div>
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Google</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors text-white">Data Center Optimal Location</h4>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Google</div>
+                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Data Center Optimal Location</h4>
                                     <p class="text-gray-400 text-sm font-light">Comprehensive load hosting capacity analysis.</p>
                                 </div>
                                 <div onclick="openUniversalModal('projects', 1)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl">
-                                        <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
+                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                                         <img src="assets/images/media/hil-testing-lab.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                                        <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">New York</div>
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">New York</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">NYPA</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors text-white">Advanced Power Flow Control</h4>
-                                    <p class="text-gray-400 text-sm font-light">Deployment in the NYCA.</p>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">NYPA</div>
+                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Advanced Power Flow Control</h4>
+                                    <p class="text-slate-400 text-sm font-light">Deployment in the NYCA.</p>
                                 </div>
                                 <div onclick="openUniversalModal('projects', 2)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl">
-                                        <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
+                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                                         <img src="assets/images/media/transmission-lines.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                                        <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA / Mexico</div>
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA / Mexico</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Ignis</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors text-white">Viento Fronterizo 500kV Line</h4>
-                                    <p class="text-gray-400 text-sm font-light">Basic Design and PLS-CADD modeling.</p>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Ignis</div>
+                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Viento Fronterizo 500kV Line</h4>
+                                    <p class="text-slate-400 text-sm font-light">Basic Design and PLS-CADD modeling.</p>
                                 </div>
                                 <div onclick="openUniversalModal('projects', 3)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl">
-                                        <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
+                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                                         <img src="assets/images/media/solar-integration.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                                        <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Virginia</div>
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Virginia</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Dominion Energy</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors text-white">Hosting Capacity Analysis</h4>
-                                    <p class="text-gray-400 text-sm font-light">Grid support for renewable integration.</p>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Dominion Energy</div>
+                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Hosting Capacity Analysis</h4>
+                                    <p class="text-slate-400 text-sm font-light">Grid support for renewable integration.</p>
                                 </div>
                                 <div onclick="openUniversalModal('projects', 4)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl">
-                                        <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
+                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                                         <img src="assets/images/media/server-rack-aisle.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                                        <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Angola</div>
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Angola</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Logicalis</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors text-white">TIER III Data Center</h4>
-                                    <p class="text-gray-400 text-sm font-light">1 MW IT Power. RIBA Stages 3-4 Design.</p>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Logicalis</div>
+                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">TIER III Data Center</h4>
+                                    <p class="text-slate-400 text-sm font-light">1 MW IT Power. RIBA Stages 3-4 Design.</p>
                                 </div>
                                 <div onclick="openUniversalModal('projects', 5)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl">
-                                        <div class="absolute inset-0 bg-brand-red z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
+                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                                         <img src="assets/images/media/substation-infrastructure.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
-                                        <div class="absolute bottom-0 left-0 bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Texas (ERCOT)</div>
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Texas (ERCOT)</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-red-400 mb-2">Naturgy</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-red-500 transition-colors text-white">Project Grimes Substation</h4>
-                                    <p class="text-gray-400 text-sm font-light">138/34.5/13.8 kV Substation support.</p>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Naturgy</div>
+                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Project Grimes Substation</h4>
+                                    <p class="text-slate-400 text-sm font-light">138/34.5/13.8 kV Substation support.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-            <section id="team" class="py-32 bg-white border-t border-slate-200">
-                 <div class="container mx-auto px-6 md:px-12">
-                    <div class="text-center mb-20">
-                        <h3 class="text-4xl font-serif font-bold text-slate-900">Our Leadership</h3>
-                        <p class="text-slate-500 mt-4 max-w-2xl mx-auto">A multidisciplinary team combining academic rigor with field-proven industry experience.</p>
-                    </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-16">
-                        <div onclick="openUniversalModal('team', 0)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-saman-babaei.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Dr. Saman Babaei</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Founder / Chief Power Systems</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Right Analytics</div>
-                        </div>
-                        <div onclick="openUniversalModal('team', 1)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-eduardo-llorente.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Eduardo Llorente</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">CEO - USA</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Quadrante</div>
-                        </div>
-                        <div onclick="openUniversalModal('team', 2)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-hanif-livani.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Prof. Hanif Livani</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Lead Power Systems Engineer</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Right Analytics</div>
-                        </div>
-                        <div onclick="openUniversalModal('team', 3)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-ali-mehrizi.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Prof. Ali Mehrizi-Sani</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Lead Power Systems Engineer</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Right Analytics</div>
-                        </div>
-                        <div onclick="openUniversalModal('team', 4)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-nuno-costa.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Nuno Costa</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Global CEO</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Quadrante</div>
-                        </div>
-                          <div onclick="openUniversalModal('team', 5)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-isabel-lopez.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Isabel López Ferrer</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Head of Energy Sector</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Quadrante</div>
-                        </div>
-                        <div onclick="openUniversalModal('team', 6)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-armando-santos.jpeg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">Armando Santos</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Head of Energy Business Unit</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Quadrante</div>
-                        </div>
-                          <div onclick="openUniversalModal('team', 7)" class="group text-center cursor-pointer hover:-translate-y-2 transition-transform duration-300">
-                            <div class="w-40 h-40 rounded-full mx-auto mb-6 overflow-hidden border-4 border-slate-100 relative"><img src="assets/images/media/team-joao-rocha.png" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                            <h4 class="text-lg font-bold text-slate-900">João Rocha</h4>
-                            <div class="text-xs font-bold uppercase text-brand-red mt-1">Client Manager - Data Centers</div>
-                            <div class="text-xs text-slate-400 uppercase mt-1">Quadrante</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <section id="contact" class="py-32 bg-white relative">
+                    <div class="container mx-auto px-6 md:px-12">
+                        <div class="grid lg:grid-cols-2 gap-24">
+                            <div>
+                                <h3 class="text-4xl font-serif font-bold text-slate-900 mb-12">Get in Touch</h3>
+                                <div class="space-y-8">
+                                    <div class="relative">
+                                        <label class="block text-sm font-bold text-slate-700 mb-2">How can we help you?</label>
+                                        
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            <button onclick="prefillMessage('contact-section-message', 'I would like to request a proposal for a new project.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Proposal</button>
+                                            <button onclick="prefillMessage('contact-section-message', 'I am interested in partnership opportunities.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Partnership</button>
+                                            <button onclick="prefillMessage('contact-section-message', 'I have a general inquiry about your services.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">General Inquiry</button>
+                                        </div>
 
-            <section id="contact" class="py-32 bg-slate-50">
-                <div class="container mx-auto px-6 md:px-12">
-                    <div class="grid lg:grid-cols-2 gap-24">
-                        <div>
-                            <h3 class="text-4xl font-serif font-bold text-slate-900 mb-12">Get in Touch</h3>
-                            <div class="space-y-8">
-                                <div class="relative">
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">How can we help you?</label>
-                                    
-                                    <div class="flex flex-wrap gap-2 mb-3">
-                                        <button onclick="prefillMessage('contact-section-message', 'I would like to request a proposal for a new project.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Request Proposal</button>
-                                        <button onclick="prefillMessage('contact-section-message', 'I am interested in partnership opportunities.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Partnership</button>
-                                        <button onclick="prefillMessage('contact-section-message', 'I have a general inquiry about your services.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">General Inquiry</button>
+                                        <textarea id="contact-section-message" placeholder="Describe your project or inquiry..." class="w-full border border-slate-200 rounded-xl p-4 focus:ring-2 focus:ring-brand-primary focus:outline-none h-48 resize-none text-lg placeholder-slate-400 bg-white text-slate-900"></textarea>
+                                        
+                                        <button onclick="openAiDraftModal('contact-section-message')" class="absolute bottom-4 right-4 flex items-center gap-2 bg-slate-100 text-slate-600 border border-slate-200 px-3 py-1.5 rounded-full shadow-sm hover:bg-slate-200 hover:text-brand-primary transition-all group text-xs font-bold uppercase tracking-wider">
+                                            <i data-lucide="sparkles" class="w-4 h-4 group-hover:scale-110 transition-transform"></i> 
+                                            <span>AI Draft</span>
+                                        </button>
                                     </div>
-
-                                    <textarea id="contact-section-message" placeholder="Describe your project or inquiry..." class="w-full border border-slate-200 rounded-xl p-4 focus:ring-2 focus:ring-brand-red focus:outline-none h-48 resize-none text-lg placeholder-slate-400 bg-white"></textarea>
                                     
-                                    <button onclick="openAiDraftModal('contact-section-message')" class="absolute bottom-4 right-4 flex items-center gap-2 bg-slate-50 text-slate-600 border border-slate-200 px-3 py-1.5 rounded-full shadow-sm hover:bg-white hover:text-brand-red transition-all group text-xs font-bold uppercase tracking-wider">
-                                        <i data-lucide="sparkles" class="w-4 h-4 group-hover:scale-110 transition-transform"></i> 
-                                        <span>AI Draft</span>
+                                    <button onclick="triggerLeadCapture('contact-section-message', 'General Inquiry')" class="bg-brand-primary text-white px-12 py-5 font-bold uppercase tracking-widest text-xs hover:bg-blue-700 transition-all shadow-lg hover:translate-y-[-2px] rounded-lg w-full md:w-auto shadow-blue-900/30">
+                                        Submit <i data-lucide="arrow-right" class="w-4 h-4 inline ml-2"></i>
                                     </button>
                                 </div>
-                                
-                                <button onclick="triggerLeadCapture('contact-section-message', 'General Inquiry')" class="bg-brand-red text-white px-12 py-5 font-bold uppercase tracking-widest text-xs hover:bg-slate-900 transition-all shadow-lg hover:translate-y-[-2px] rounded-lg w-full md:w-auto">
-                                    Submit <i data-lucide="arrow-right" class="w-4 h-4 inline ml-2"></i>
-                                </button>
                             </div>
-                        </div>
 
-                        <div class="bg-white p-16 border border-slate-200 h-fit sticky top-32 rounded-2xl shadow-sm">
-                            <h4 class="text-2xl font-serif font-bold text-slate-900 mb-12">Office Locations</h4>
-                            <div class="space-y-16">
-                                <div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-red mb-2">Los Angeles (Right Analytics)</div>
-                                    <p class="text-slate-600 text-lg leading-relaxed mb-2 font-light">1055 W 7th Street, 33rd Floor, Office 36<br>Los Angeles, CA 90017</p>
-                                    <p class="text-slate-500 text-sm mb-4">Mon - Fri: 9AM - 5PM</p>
-                                    <div class="space-y-2 text-sm font-bold text-slate-500">
-                                        <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4"></i> (919) 601-0737</div>
-                                        <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4"></i> saman.b@therightanalytics.com</div>
+                            <div class="bg-white p-16 border border-slate-200 h-fit sticky top-32 rounded-2xl shadow-lg">
+                                <h4 class="text-2xl font-serif font-bold text-slate-900 mb-12">Office Locations</h4>
+                                <div class="space-y-16">
+                                    <div>
+                                        <div class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Los Angeles (Right Analytics)</div>
+                                        <p class="text-slate-600 text-lg leading-relaxed mb-2 font-light">1055 W 7th Street, 33rd Floor, Office 36<br>Los Angeles, CA 90017</p>
+                                        <p class="text-slate-500 text-sm mb-4">Mon - Fri: 9AM - 5PM</p>
+                                        <div class="space-y-2 text-sm font-bold text-slate-500">
+                                            <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-brand-primary"></i> (919) 601-0737</div>
+                                            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-brand-primary"></i> saman.b@therightanalytics.com</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-red mb-2">Texas (Quadrante USA)</div>
-                                    <p class="text-slate-600 text-lg leading-relaxed mb-4 font-light">2257 N.loop w.#140 PMB 428<br>Conroe, TX 77304</p>
-                                    <div class="space-y-2 text-sm font-bold text-slate-500">
-                                        <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4"></i> +351 210 067 200</div>
-                                        <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4"></i> quadrante@quadranteglobal.com</div>
+                                    <div>
+                                        <div class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Texas (Quadrante USA)</div>
+                                        <p class="text-slate-300 text-lg leading-relaxed mb-4 font-light">2257 N.loop w.#140 PMB 428<br>Conroe, TX 77304</p>
+                                        <div class="space-y-2 text-sm font-bold text-slate-500">
+                                            <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-brand-primary"></i> +351 210 067 200</div>
+                                            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-brand-primary"></i> quadrante@quadranteglobal.com</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <footer class="bg-slate-900 text-white pt-24 pb-12 border-t border-slate-800">
-                <div class="container mx-auto px-6 md:px-12">
-                    <div class="grid md:grid-cols-4 gap-16 mb-24">
-                        <div class="col-span-1 md:col-span-2">
-                            <div class="flex items-center gap-3 mb-10 cursor-pointer" onclick="window.scrollTo(0,0)">
-                                <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-8 w-auto brightness-0 invert" />
-                                <div class="h-6 w-px bg-slate-700 mx-2"></div>
-                                <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-10 w-auto object-contain brightness-0 invert" />
-                            </div>
-                            <p class="text-slate-400 max-w-md mb-10 leading-relaxed text-lg font-light">
-                                Uniting U.S. market expertise with global capabilities to drive grid decarbonization and sustainable infrastructure.
-                            </p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-white uppercase tracking-widest mb-8 text-xs border-b border-slate-700 pb-4 inline-block">Company</h5>
-                            <ul class="space-y-5 text-slate-400 text-sm font-medium">
-                                <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
-                                <li><a href="#expertise" class="hover:text-white transition-colors">Services</a></li>
-                                <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
-                                <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-white uppercase tracking-widest mb-8 text-xs border-b border-slate-700 pb-4 inline-block">Global HQs</h5>
-                            <div class="space-y-4 text-slate-400 text-sm font-medium">
-                                 <div>
-                                    <div class="text-white text-xs uppercase font-bold mb-1">Lisbon (Global)</div>
-                                    <div>+351 210 067 200</div>
-                                    <div>hello@quadrante.com</div>
-                                </div>
-                                <div>
-                                    <div class="text-white text-xs uppercase font-bold mb-1">Los Angeles (USA)</div>
-                                    <div>(919) 601-0737</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-t border-slate-800 pt-10 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 font-bold uppercase tracking-widest">
-                        <div>© 2025 Quadrante USA</div>
-                        <div class="flex gap-10 mt-6 md:mt-0">
-                            <a href="#" class="hover:text-white">Privacy</a>
-                            <a href="#" class="hover:text-white">Terms</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+            </div>
     </main>
-    
-    <!-- AI Widget -->
-    <div id="ai-widget" class="fixed bottom-20 right-6 z-50 flex flex-col items-end" style="bottom: 130px;">
-        <div id="chat-window" class="hidden bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 w-80 md:w-96 mb-4 overflow-hidden transform transition-all duration-300 origin-bottom-right">
-            <div class="bg-gradient-to-r from-slate-900 to-blue-900 p-4 flex justify-between items-center text-white">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="sparkles" class="w-4 h-4 text-blue-200"></i>
-                    <div class="font-bold text-sm">Q-AI Assistant</div>
-                </div>
-                <button onclick="toggleChat()" class="hover:text-blue-300"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            
-            <div id="chat-messages" class="h-80 overflow-y-auto p-4 bg-slate-50/50 space-y-4 text-sm">
-                <div class="flex justify-start"><div class="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm border border-slate-100 max-w-[85%]">Hello! I'm Q-AI. How can I help you with our engineering services today?</div></div>
-            </div>
-            
-            <div class="px-4 py-2 flex flex-wrap gap-2 bg-slate-50 border-t border-slate-100">
-                <button onclick="sendQuickMessage('Grid Modernization Services')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Grid Mod</button>
-                <button onclick="sendQuickMessage('Data Center Design')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Data Centers</button>
-                <button onclick="sendQuickMessage('Request a Quote')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Get Quote</button>
-            </div>
 
-            <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
-                <input type="text" id="chat-input" placeholder="Ask about our services..." class="flex-grow p-3 text-sm bg-slate-50 border-0 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
-                <button onclick="sendMessage()" class="bg-brand-red text-white p-3 rounded-xl"><i data-lucide="send" class="w-4 h-4"></i></button>
-            </div>
-        </div>
-        <button onclick="toggleChat()" class="bg-gradient-to-br from-brand-red to-red-700 text-white p-4 rounded-full shadow-xl hover:-translate-y-1 transition-all border-4 border-white/20">
-            <i data-lucide="message-square" class="w-6 h-6"></i>
-        </button>
-    </div>
-
-    <!-- New Acquisition Story Modal -->
-    <div id="acquisition-modal" class="fixed inset-0 z-[120] hidden flex items-center justify-center modal-hidden">
-        <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-md modal-backdrop" onclick="closeAcquisitionModal()"></div>
-        <div class="relative bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden modal-content z-10 mx-4">
-            <!-- Header with Gradient -->
-            <div class="bg-gradient-to-r from-slate-900 to-blue-900 p-8 md:p-12 text-center relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                
-                <!-- Handshake Image -->
-                <div class="relative z-10 flex justify-center mb-6">
-                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover" alt="Partnership Handshake">
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 relative z-20">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex gap-4 items-center mb-6">
+                        <a href="https://quadranteglobal.com/landing-page/" target="_blank">
+                            <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-8 w-auto brightness-0 invert" />
+                        </a>
+                        <div class="h-6 w-px bg-slate-600"></div>
+                        <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-10 w-auto object-contain brightness-0 invert" />
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">Quadrante USA is a leading engineering and consulting firm, driving grid decarbonization and sustainable infrastructure development through innovative solutions and global expertise.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
                     </div>
                 </div>
-                
-                <h2 class="relative z-10 text-3xl md:text-5xl font-serif font-bold text-white mb-4 leading-tight">
-                    A Powerful Union
-                </h2>
-                <p class="relative z-10 text-blue-100 text-lg md:text-xl font-light max-w-2xl mx-auto">
-                    The integration of Right Analytics brings a decisive technical advantage to our clients.
-                </p>
-                
-                <button onclick="closeAcquisitionModal()" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"><i data-lucide="x" class="w-8 h-8"></i></button>
-            </div>
-
-            <!-- Content Body -->
-            <div class="p-8 md:p-12 bg-white">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6 text-slate-600 leading-relaxed">
-                        <p><strong class="text-slate-900">Quadrante</strong> is a global group delivering Design, Planning, and Project Management across the full construction life cycle in 20+ countries.</p>
-                        <p><strong class="text-slate-900">Right Analytics</strong> is a boutique firm recognized for its deep expertise in transmission planning, interconnection studies, large load and datacenter siting, and advanced power systems analysis.</p>
-                        <p class="border-l-4 border-brand-red pl-4 italic">
-                            <strong class="text-brand-red">Quadrante USA</strong> is incorporating Right Analytics. Together, these companies form a unified entity positioned to lead sustainable engineering across the United States, Europe, Latin America, and Africa.
-                        </p>
-                    </div>
-                    
-                    <!-- Blue Box Content -->
-                    <div class="bg-blue-600 text-white p-8 rounded-2xl shadow-xl transform rotate-1 hover:rotate-0 transition-transform duration-300 relative overflow-hidden group">
-                        <div class="absolute -right-10 -top-10 bg-white/10 w-40 h-40 rounded-full blur-3xl group-hover:bg-white/20 transition-all"></div>
-                        <i data-lucide="zap" class="w-10 h-10 mb-6 text-yellow-300 fill-yellow-300"></i>
-                        <h4 class="text-xl font-bold mb-4">Why This Matters</h4>
-                        <p class="font-light leading-relaxed text-blue-50">
-                            The new team combines academic rigor with field-proven industry experience, using cutting-edge simulation tools, regulatory insight, and data-driven modelling to support informed decision-making by utilities, ISOs, and developers.
-                        </p>
-                    </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#expertise" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
                 </div>
-                
-                <div class="mt-12 text-center">
-                    <button onclick="triggerLeadCapture('contact-section-message', 'Inquiry: Team Capabilities'); closeAcquisitionModal();" class="bg-brand-red text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-slate-900 transition-all shadow-lg hover:-translate-y-1">
-                        Inquire about Capabilities
-                    </button>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 mt-1 shrink-0"></i><span>Texas (Quadrante USA)<br>Los Angeles (Right Analytics)</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 shrink-0"></i><span>+351 210 067 200</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 shrink-0"></i><span>quadrante@quadranteglobal.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>© 2024 Quadrante USA LLC. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
                 </div>
             </div>
         </div>
-    </div>
+    </footer>
 
     <!-- Universal Modal -->
     <div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-hidden">
-        <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-md modal-backdrop" onclick="closeUniversalModal()"></div>
-        <div class="relative bg-white w-full max-w-7xl h-[90vh] md:h-[85vh] rounded-2xl shadow-2xl overflow-hidden modal-content z-10 flex flex-col md:flex-row">
+        <div class="absolute inset-0 bg-slate-900/95 modal-backdrop" onclick="closeUniversalModal()"></div>
+        <!-- Standard Width Class only -->
+        <div class="relative bg-white w-full max-w-7xl h-[90vh] md:h-[85vh] rounded-2xl shadow-2xl overflow-hidden modal-content z-10 flex flex-col md:flex-row border border-slate-200">
             <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-50 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition-colors backdrop-blur-sm"><i data-lucide="x" class="w-6 h-6"></i></button>
             
-            <!-- Sidebar / Image Section -->
+            <!-- Sidebar / Image Section (Default 50%) -->
             <div class="relative w-full md:w-1/2 h-48 md:h-full bg-slate-900 overflow-hidden group">
                 <!-- Image -->
                 <img id="modal-image" src="" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105" alt="Detail Image">
@@ -876,13 +824,13 @@
                 <!-- Sidebar Menu -->
                 <div class="relative z-10 h-full flex flex-col p-8 overflow-y-auto dark-scrollbar hidden md:flex" id="sidebar-menu-container">
                     <div class="mb-8">
-                        <span id="modal-section-label" class="bg-brand-red text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg">Featured</span>
+                        <span id="modal-section-label" class="bg-brand-primary text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg">Featured</span>
                         <h3 class="text-white font-serif text-3xl mt-4 font-bold drop-shadow-md" id="sidebar-header">Explore</h3>
                     </div>
                     <div id="modal-nav-list" class="space-y-3"></div>
                 </div>
                 
-                <!-- Gradient Overlay -->
+                <!-- Gradient Overlay (Default) -->
                 <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/60 to-transparent" id="sidebar-gradient"></div>
 
                 <div class="absolute bottom-4 left-6 md:hidden z-20">
@@ -892,23 +840,24 @@
 
             <div class="md:hidden w-full h-14 bg-slate-100 border-b border-slate-200 overflow-x-auto flex items-center whitespace-nowrap px-4" id="mobile-nav-list"></div>
             
-            <!-- Content Section -->
+            <!-- Content Section (Default 50%) -->
             <div class="w-full md:w-1/2 h-full flex flex-col bg-white relative">
                 <div class="flex-grow overflow-y-auto p-8 md:p-12 custom-scrollbar relative z-10">
-                    <h2 id="modal-title" class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6 leading-tight hidden md:block">Title Here</h2>
+                    <h2 id="modal-title" class="text-3xl md:text-5xl font-serif font-bold text-slate-900 mb-8 leading-tight hidden md:block">Title Here</h2>
                     <div id="modal-body" class="prose prose-slate prose-lg text-slate-600 leading-relaxed mb-8"></div>
                     <hr class="border-slate-100 my-8">
-                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                        <div class="flex items-center gap-2 mb-4"><i data-lucide="message-circle-question" class="w-5 h-5 text-brand-red"></i><h4 class="font-bold text-slate-800 text-sm uppercase tracking-wide">Ask about this topic</h4></div>
+                    <!-- Added ID here to toggle visibility -->
+                    <div id="modal-inquiry-container" class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <div class="flex items-center gap-2 mb-4"><i data-lucide="message-circle-question" class="w-5 h-5 text-brand-primary"></i><h4 class="font-bold text-slate-800 text-sm uppercase tracking-wide">Ask about this topic</h4></div>
                         
                         <div id="modal-quick-chips" class="flex flex-wrap gap-2 mb-3">
                             </div>
 
                         <div class="relative">
-                            <textarea id="modal-question-box" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none h-24 bg-white placeholder-slate-400" placeholder="Ask a specific question regarding this project or competency..."></textarea>
-                            <button onclick="openAiDraftModal('modal-question-box')" class="absolute bottom-2 right-2 flex items-center gap-2 bg-slate-100 text-slate-600 border border-slate-200 px-2 py-1 rounded-md shadow-sm hover:bg-white hover:text-brand-red transition-all text-[10px] font-bold uppercase tracking-wider"><i data-lucide="sparkles" class="w-3 h-3"></i><span>AI Draft</span></button>
+                            <textarea id="modal-question-box" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none h-24 bg-white placeholder-slate-400 text-slate-900" placeholder="Ask a specific question regarding this project or competency..."></textarea>
+                            <button onclick="openAiDraftModal('modal-question-box')" class="absolute bottom-2 right-2 flex items-center gap-2 bg-slate-100 text-slate-600 border border-slate-200 px-2 py-1 rounded-md shadow-sm hover:bg-slate-200 hover:text-brand-primary transition-all text-[10px] font-bold uppercase tracking-wider"><i data-lucide="sparkles" class="w-3 h-3"></i><span>AI Draft</span></button>
                         </div>
-                        <button onclick="triggerLeadCapture('modal-question-box', 'Project/Competency Context')" class="w-full mt-4 bg-slate-900 text-white py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-slate-700 transition-colors">
+                        <button onclick="triggerLeadCapture('modal-question-box', 'Project/Competency Context')" class="w-full mt-4 bg-brand-primary text-white py-3 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors">
                             Submit Inquiry <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
                         </button>
                     </div>
@@ -919,32 +868,32 @@
 
     <!-- AI Draft Modal -->
     <div id="ai-draft-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center transition-opacity duration-300 modal-hidden">
-        <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm modal-backdrop" onclick="closeAiDraftModal()"></div>
-        <div class="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 modal-content z-10" id="ai-draft-content">
-            <div class="bg-brand-red p-4 flex justify-between items-center text-white">
+        <div class="absolute inset-0 bg-slate-900/80 modal-backdrop" onclick="closeAiDraftModal()"></div>
+        <div class="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 modal-content z-10 border border-slate-200" id="ai-draft-content">
+            <div class="bg-brand-primary p-4 flex justify-between items-center text-white">
                 <div class="flex items-center gap-2 font-bold"><i data-lucide="sparkles" class="w-5 h-5"></i> AI Email Assistant</div>
-                <button onclick="closeAiDraftModal()" class="hover:text-red-100"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <button onclick="closeAiDraftModal()" class="hover:text-blue-100"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="p-6 space-y-4">
                 <div id="prompt-section">
                     <label class="block text-sm font-bold text-slate-700 mb-2">What would you like to say?</label>
-                    <textarea id="ai-prompt-input" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-red focus:outline-none h-24" placeholder="E.g., Ask for details on the timeline for the 500kV line project..."></textarea>
+                    <textarea id="ai-prompt-input" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none h-24 text-slate-900" placeholder="E.g., Ask for details on the timeline for the 500kV line project..."></textarea>
                 </div>
                 <div class="flex justify-end" id="generate-btn-container">
-                     <button onclick="generateDraft()" id="generate-btn" class="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors flex items-center gap-2">Generate Draft <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                     <button onclick="generateDraft()" id="generate-btn" class="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors flex items-center gap-2">Generate Draft <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
                 </div>
                 <div id="draft-result-container" class="hidden border-t border-slate-100 pt-4 mt-4 animate-fade-in">
                     <label class="block text-sm font-bold text-slate-700 mb-2">AI Generated Draft:</label>
-                    <textarea id="draft-output" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm h-32 mb-4 focus:outline-none"></textarea>
+                    <textarea id="draft-output" class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm h-32 mb-4 focus:outline-none text-slate-900"></textarea>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <button onclick="modifyDraft('shorten')" class="text-xs bg-gray-100 hover:bg-gray-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">Shorten</button>
-                        <button onclick="modifyDraft('expand')" class="text-xs bg-gray-100 hover:bg-gray-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">Expand</button>
-                        <button onclick="modifyDraft('formal')" class="text-xs bg-gray-100 hover:bg-gray-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">More Formal</button>
-                        <button onclick="modifyDraft('casual')" class="text-xs bg-gray-100 hover:bg-gray-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">More Casual</button>
+                        <button onclick="modifyDraft('shorten')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">Shorten</button>
+                        <button onclick="modifyDraft('expand')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">Expand</button>
+                        <button onclick="modifyDraft('formal')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">More Formal</button>
+                        <button onclick="modifyDraft('casual')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">More Casual</button>
                     </div>
                     <div class="flex justify-end gap-3 border-t border-slate-100 pt-4">
                         <button onclick="closeAiDraftModal()" class="text-slate-500 text-sm font-bold hover:text-slate-700">Cancel</button>
-                        <button onclick="insertDraft()" class="bg-brand-red text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-700 transition-colors flex items-center gap-2">Insert into Form <i data-lucide="check" class="w-4 h-4"></i></button>
+                        <button onclick="insertDraft()" class="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors flex items-center gap-2">Insert into Form <i data-lucide="check" class="w-4 h-4"></i></button>
                     </div>
                 </div>
             </div>
@@ -953,7 +902,7 @@
 
     <!-- Lead Capture Modal -->
     <div id="lead-capture-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center transition-opacity duration-300 modal-hidden">
-        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-md modal-backdrop" onclick="closeLeadModal()"></div>
+        <div class="absolute inset-0 bg-slate-900/90 modal-backdrop" onclick="closeLeadModal()"></div>
         <div class="relative bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 modal-content z-10" id="lead-content">
             <div class="bg-slate-900 p-6 text-white">
                 <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -967,18 +916,18 @@
                     
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Full Name</label>
-                        <input type="text" name="name" required class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-brand-red transition-colors bg-transparent placeholder-slate-300" placeholder="John Doe">
+                        <input type="text" name="name" required class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-brand-primary transition-colors bg-transparent placeholder-slate-300 text-slate-900" placeholder="John Doe">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Work Email</label>
-                        <input type="email" name="email" required class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-brand-red transition-colors bg-transparent placeholder-slate-300" placeholder="john@company.com">
+                        <input type="email" name="email" required class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-brand-primary transition-colors bg-transparent placeholder-slate-300 text-slate-900" placeholder="john@company.com">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Company</label>
-                        <input type="text" name="company" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-brand-red transition-colors bg-transparent placeholder-slate-300" placeholder="Company Name">
+                        <input type="text" name="company" class="w-full border-b border-slate-200 py-2 focus:outline-none focus:border-brand-primary transition-colors bg-transparent placeholder-slate-300 text-slate-900" placeholder="Company Name">
                     </div>
                     
-                    <button type="submit" class="w-full bg-brand-red text-white py-4 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-red-700 transition-all shadow-lg mt-4">
+                    <button type="submit" class="w-full bg-brand-primary text-white py-4 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-blue-700 transition-all shadow-lg mt-4">
                         Submit Inquiry
                     </button>
                 </form>
@@ -994,7 +943,11 @@
             }
         });
 
-        // --- Data Definitions (Moved up to ensure availability) ---
+        // --- Data Definitions ---
+        const aboutData = [
+             // Not used for clicking anymore
+        ];
+
         const competenciesData = [
             { image: "assets/images/media/wind-farm-global.png", title: "Renewable Energy Integration", content: `<p class="mb-4">Right Analytics has a long successful history of performing integration studies for renewable generations. Right Analytics capabilities for interconnection studies range from modeling of the renewable generation resources all the way to transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies.</p><p>All our studies comply with the industry standards ensuring reliability and grid code compliance for projects of any scale.</p>` },
             { image: "assets/images/media/transmission-lines.jpeg", title: "T&D Planning & Control", content: `<p class="mb-4">Our team at Right Analytics can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control.</p><p>We leverage best software tools and processes to find out solutions for the toughest challenges facing the industry today, ensuring grid resiliency and operational efficiency.</p>` },
@@ -1005,28 +958,95 @@
         ];
 
         const experienceData = [
-            { image: "assets/images/media/data-center-google.png", title: "Google Data Center Optimal Location", content: `<p class="mb-4"><strong>Client:</strong> Google<br><strong>Location:</strong> USA (Ongoing)</p><p class="mb-4">We are conducting a comprehensive load hosting capacity analysis to identify optimal locations for building new data centers. This study involves analyzing grid constraints, available capacity, and future load growth scenarios to ensure seamless integration of high-demand facilities.</p><p>The project leverages advanced power flow modeling to support Google's strategic infrastructure expansion.</p>` },
-            { image: "assets/images/media/hil-testing-lab.png", title: "NYPA Advanced Power Flow Control", content: `<p class="mb-4"><strong>Client:</strong> New York Power Authority<br><strong>Location:</strong> New York</p><p class="mb-4">This project focused on the deployment of Advanced Power Flow Control (APFC) technology within the New York Control Area (NYCA). Our team performed an economic assessment of Dynamic Line Rating (DLR) operations to optimize grid efficiency.</p><p>The solution enables greater renewable energy integration by relieving transmission congestion without costly line upgrades.</p>` },
-            { image: "assets/images/media/transmission-lines.jpeg", title: "Viento Fronterizo 500kV Line", content: `<p class="mb-4"><strong>Client:</strong> Ignis<br><strong>Location:</strong> USA / Mexico Border</p><p class="mb-4">We delivered the Basic Design and PLS-CADD modeling for the "Viento Fronterizo" High-Voltage Overhead Line. This 20km cross-border transmission line connects critical energy infrastructure between the two nations.</p><p>Scope included route selection, tower spotting, and structural analysis to ensure compliance with both US and Mexican grid codes.</p>` },
-            { image: "assets/images/media/solar-integration.jpeg", title: "Dominion Energy Hosting Capacity", content: `<p class="mb-4"><strong>Client:</strong> Dominion Energy<br><strong>Location:</strong> Virginia</p><p class="mb-4">Our team is performing ongoing hosting capacity analysis to support the integration of distributed energy resources (DERs). This involves detailed solar integration cost analysis to facilitate the interconnection of renewable generation.</p><p>The study helps Dominion identify grid upgrades needed to support Virginia's clean energy goals.</p>` },
-            { image: "assets/images/media/server-rack-aisle.png", title: "Sumbe TIER III Data Center", content: `<p class="mb-4"><strong>Client:</strong> Logicalis<br><strong>Location:</strong> Angola</p><p class="mb-4">We provided full design services (RIBA Stages 3-4) for a new TIER III Data Center in Sumbe. The facility features 1 MW of IT power and is designed for high availability and resilience.</p><p>Our scope included electrical, mechanical, and civil engineering design to meet rigorous international data center standards.</p>` },
-            { image: "assets/images/media/substation-infrastructure.jpeg", title: "Project Grimes Substation", content: `<p class="mb-4"><strong>Client:</strong> Naturgy<br><strong>Location:</strong> Texas (ERCOT)</p><p class="mb-4">This project involved the technical specifications and support for transformer procurement for a 138/34.5/13.8 kV substation. We also provided design review and support for the ERCOT interconnection process.</p><p>The substation serves as a critical injection point for renewable energy into the Texas grid.</p>` }
+            { image: "assets/images/media/data-center-google.png", title: "Google Data Center Optimal Location", content: `<p class="mb-4"><strong>Client:</strong> Google<br><strong>Location:</strong> USA (Ongoing)</p><p>We are conducting a comprehensive load hosting capacity analysis to identify optimal locations for building new data centers. This study involves analyzing grid constraints, available capacity, and future load growth scenarios to ensure seamless integration of high-demand facilities.</p><p>The project leverages advanced power flow modeling to support Google's strategic infrastructure expansion.</p>` },
+            { image: "assets/images/media/hil-testing-lab.png", title: "NYPA Advanced Power Flow Control", content: `<p class="mb-4"><strong>Client:</strong> New York Power Authority<br><strong>Location:</strong> New York</p><p>This project focused on the deployment of Advanced Power Flow Control (APFC) technology within the New York Control Area (NYCA). Our team performed an economic assessment of Dynamic Line Rating (DLR) operations to optimize grid efficiency.</p><p>The solution enables greater renewable energy integration by relieving transmission congestion without costly line upgrades.</p>` },
+            { image: "assets/images/media/transmission-lines.jpeg", title: "Viento Fronterizo 500kV Line", content: `<p class="mb-4"><strong>Client:</strong> Ignis<br><strong>Location:</strong> USA / Mexico Border</p><p>We delivered the Basic Design and PLS-CADD modeling for the "Viento Fronterizo" High-Voltage Overhead Line. This 20km cross-border transmission line connects critical energy infrastructure between the two nations.</p><p>Scope included route selection, tower spotting, and structural analysis to ensure compliance with both US and Mexican grid codes.</p>` },
+            { image: "assets/images/media/solar-integration.jpeg", title: "Dominion Energy Hosting Capacity", content: `<p class="mb-4"><strong>Client:</strong> Dominion Energy<br><strong>Location:</strong> Virginia</p><p>Our team is performing ongoing hosting capacity analysis to support the integration of distributed energy resources (DERs). This involves detailed solar integration cost analysis to facilitate the interconnection of renewable generation.</p><p>The study helps Dominion identify grid upgrades needed to support Virginia's clean energy goals.</p>` },
+            { image: "assets/images/media/server-rack-aisle.png", title: "Sumbe TIER III Data Center", content: `<p class="mb-4"><strong>Client:</strong> Logicalis<br><strong>Location:</strong> Angola</p><p>We provided full design services (RIBA Stages 3-4) for a new TIER III Data Center in Sumbe. The facility features 1 MW of IT power and is designed for high availability and resilience.</p><p>Our scope included electrical, mechanical, and civil engineering design to meet rigorous international data center standards.</p>` },
+            { image: "assets/images/media/substation-infrastructure.jpeg", title: "Project Grimes Substation", content: `<p class="mb-4"><strong>Client:</strong> Naturgy<br><strong>Location:</strong> Texas (ERCOT)</p><p>This project involved the technical specifications and support for transformer procurement for a 138/34.5/13.8 kV substation. We also provided design review and support for the ERCOT interconnection process.</p><p>The substation serves as a critical injection point for renewable energy into the Texas grid.</p>` }
         ];
 
         const teamData = [
-            { image: "assets/images/media/team-saman-babaei.jpeg", title: "Dr. Saman Babaei", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Founder / Chief Power Systems Engineer - Right Analytics</p><p class="mb-4">Head of Power Systems Studies at Right Analytics, with over 15 years of experience in the electric utility industry.</p><p>Brings extensive expertise in performing comprehensive power system studies across major U.S. markets, including NYISO, PJM, MISO, and ERCOT.</p>` },
-            { image: "assets/images/media/team-eduardo-llorente.jpeg", title: "Eduardo Llorente", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">CEO - USA - Quadrante</p><p class="mb-4">U.S. CEO at Quadrante, leading the group’s expansion into the American market with a focus on utility-scale renewables and power infrastructure.</p><p>Brings over 25 years of international experience across Europe and the U.S. in business development, operations, and large-scale energy projects, with previous leadership roles at Brookfield Renewable, Siemens Gamesa, Acciona, and ABB.</p>` },
-            { image: "assets/images/media/team-hanif-livani.jpeg", title: "Prof. Hanif Livani", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Lead Power Systems Engineer - Right Analytics</p><p class="mb-4">Over 12 years of experience in the electric utility industry, complemented by a strong academic research background in power systems.</p><p>Extensive expertise in conducting power system studies across the NYISO, PJM, and MISO regions.</p>` },
-            { image: "assets/images/media/team-ali-mehrizi.jpeg", title: "Prof. Ali Mehrizi-Sani", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Lead Power Systems Engineer - Right Analytics</p><p class="mb-4">Over 15 years of experience in the electric utility industry, complemented by a strong academic research background in power systems.</p><p>Extensive expertise in conducting power system planning and power system dynamic studies.</p>` },
-            { image: "assets/images/media/team-nuno-costa.jpeg", title: "Nuno Costa", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Global CEO - Quadrante</p><p class="mb-4">CEO and Founding Partner of Quadrante, with 30 years of experience in structural engineering and management of large, complex projects across Europe, Africa, and Latin America.</p><p>Holds an MBA and specialized training from Harvard, combining technical expertise with strategic leadership of the group.</p>` },
-            { image: "assets/images/media/team-isabel-lopez.jpeg", title: "Isabel López Ferrer", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Head of Energy Sector - Quadrante</p><p class="mb-4">Founder and CEO of Izharia Ingeniería, with over 35 years of experience in the power sector. Formerly with Duro Felguera and Red Eléctrica de España.</p><p>She leads Izharia with a strong focus on innovation and strategic growth, positioning the company as a benchmark in electrical engineering in Spain and abroad.</p>` },
-            { image: "assets/images/media/team-armando-santos.jpeg", title: "Armando Santos", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Head of Energy Business Unit - Quadrante</p><p class="mb-4">Global Partner and Deputy Head of Energy at Quadrante, with over 15 years of International experience in power generation, transmission, and distribution.</p><p>Expert in renewable and infrastructure projects across Portugal, Africa, and Latin America, overseeing the Energy Business Unit for Portugal, the Middle East, and Africa.</p>` },
-            { image: "assets/images/media/team-joao-rocha.png", title: "João Rocha", content: `<p class="text-brand-red font-bold text-sm uppercase mb-4">Client Manager - Data Centers - Quadrante</p><p class="mb-4">Head of Buildings and Urban Development at Quadrante, with 12 years of experience in structural design and engineering consultancy.</p><p>Holds a Master’s in Civil Engineering and has led projects for buildings and infrastructure across Portugal, Brazil, Angola, and Switzerland.</p>` }
+            { 
+                image: "assets/images/media/team-saman-babaei.jpeg", 
+                title: "Dr. Saman Babaei", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Founder / Chief Power Systems Engineer - Right Analytics</h4>
+                <p class="mb-4">Dr. Saman Babaei brings over 15 years of academic and industrial experience in power systems. He specializes in advanced grid studies, including transient stability, electromagnetic transients, and renewable energy integration.</p>
+                <p class="mb-4">Before founding Right Analytics, Saman worked on critical infrastructure projects across North America, developing methodologies for high-penetration renewable grids.</p>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 mt-6">
+                    <h5 class="font-bold text-slate-900 mb-2">Key Expertise</h5>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li>Grid Interconnection Studies</li>
+                        <li>Transient Stability Analysis</li>
+                        <li>HVDC & FACTS Applications</li>
+                    </ul>
+                </div>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-eduardo-llorente.jpeg", 
+                title: "Eduardo Llorente", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">CEO - USA - Quadrante</h4>
+                <p class="mb-4">Eduardo Llorente leads Quadrante's operations in the United States, driving the company's growth strategy and overseeing major infrastructure projects. With a background in Civil Engineering and Executive Management, he ensures project delivery excellence.</p>
+                <p>He focuses on fostering client relationships and integrating Quadrante's global capabilities with local US market needs.</p>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-hanif-livani.jpeg", 
+                title: "Prof. Hanif Livani", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
+                <p class="mb-4">Prof. Livani serves as a Professor of Electrical Engineering while leading technical studies at Right Analytics. His academic research in wide-area monitoring and protection systems directly informs his industrial consulting work.</p>
+                <p>He is an expert in state estimation, grid resilience, and the application of synchrophasor technology.</p>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-ali-mehrizi.jpeg", 
+                title: "Prof. Ali Mehrizi-Sani", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
+                <p class="mb-4">Prof. Mehrizi-Sani is a renowned expert in power electronics and microgrid control. His work bridges the gap between theoretical control strategies and practical hardware implementation.</p>
+                <p>At Right Analytics, he oversees Hardware-in-the-Loop (HIL) testing and advanced power electronics simulations.</p>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-nuno-costa.jpeg", 
+                title: "Nuno Costa", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Global CEO - Quadrante</h4>
+                <p class="mb-4">Nuno Costa is the Global CEO of Quadrante Group. Under his leadership, the group has expanded to 38 offices across three continents.</p>
+                <p>He champions the "Total Design" philosophy, ensuring that engineering solutions are sustainable, economically viable, and technically superior.</p>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-isabel-lopez.jpeg", 
+                title: "Isabel López Ferrer", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Head of Energy Sector</h4>
+                <p class="mb-4">Isabel oversees the Energy Sector for Quadrante globally. She has extensive experience in managing large-scale renewable energy projects, including wind farms, solar plants, and transmission infrastructure.</p>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-armando-santos.jpeg", 
+                title: "Armando Santos", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Head of Energy Business Unit</h4>
+                <p class="mb-4">Armando leads the Energy Business Unit, focusing on technical excellence and operational efficiency. He plays a key role in the structural and electrical design coordination for complex substation and transmission line projects.</p>
+                ` 
+            },
+            { 
+                image: "assets/images/media/team-joao-rocha.png", 
+                title: "João Rocha", 
+                content: `
+                <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Client Manager - Data Centers</h4>
+                <p class="mb-4">João Rocha specializes in the critical infrastructure sector, managing high-stakes Data Center projects. He acts as the primary liaison between technical teams and clients like Logicalis and Google, ensuring Tier-standard compliance.</p>
+                ` 
+            }
         ];
 
-        // --- GLOBAL FUNCTIONS ---
-
-        // Scroll Header
+        // --- SCROLL HEADER ---
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             const progress = document.getElementById('scroll-progress');
@@ -1037,235 +1057,205 @@
             progress.style.width = `${progressWidth}%`;
         });
 
-        // Hero Slider
+        // --- HERO SLIDER ---
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
         function showSlide(index) { slides.forEach((slide, i) => { slide.classList.toggle('active', i === index); }); }
         function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
         function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
-        setInterval(nextSlide, 8000); 
+        setInterval(nextSlide, 32000); // SLOWED ROTATION (32s)
         
-        // Safety check for slider buttons
         const nextBtn = document.getElementById('next-slide');
         if(nextBtn) nextBtn.addEventListener('click', nextSlide);
-        
         const prevBtn = document.getElementById('prev-slide');
         if(prevBtn) prevBtn.addEventListener('click', prevSlide);
 
-        // AI Chat Widget
-        function toggleChat() { document.getElementById('chat-window').classList.toggle('hidden'); }
-        const apiKey = "AIzaSyDxUBgLd6LZfPPK5Lnl3xAz6_3nj7Lve-I"; 
-
-        // Quick Message Function
-        function sendQuickMessage(text) {
-            document.getElementById('chat-input').value = text;
-            sendMessage();
-        }
-        
-        // Prefill Message Function (For Contact & Modal)
+        // --- MODALS ---
         function prefillMessage(targetId, text) {
             const el = document.getElementById(targetId);
-            if(el) {
-                el.value = text;
-                el.focus();
-            }
+            if(el) { el.value = text; el.focus(); }
         }
 
-        async function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const messages = document.getElementById('chat-messages');
-            const userText = input.value;
-            if (!userText) return;
-            const userDiv = document.createElement('div'); userDiv.className = "flex justify-end"; userDiv.innerHTML = `<div class="bg-brand-red text-white p-3 rounded-2xl rounded-br-none shadow-sm max-w-[85%]">${userText}</div>`; messages.appendChild(userDiv);
-            input.value = ""; messages.scrollTop = messages.scrollHeight;
-            const loadingDiv = document.createElement('div'); loadingDiv.className = "flex justify-start loading-msg"; loadingDiv.innerHTML = `<div class="bg-white border border-slate-100 p-3 rounded-2xl rounded-bl-none shadow-sm"><div class="loader">Loading...</div></div>`; messages.appendChild(loadingDiv);
-            
-            // Logic to suggest inquiry for complex questions
-            const complexKeywords = ['quote', 'price', 'project', 'timeline', 'cost', 'design', 'proposal'];
-            const isComplex = complexKeywords.some(keyword => userText.toLowerCase().includes(keyword));
-
-            if (apiKey) {
-                 try {
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                    // Prompt engineering to guide the bot
-                    const prompt = `You are Q-AI, an assistant for Quadrante USA. The user asks: "${userText}". 
-                    If this is a greeting or simple definition, answer briefly (max 2 sentences). 
-                    If this is a request for a project, pricing, quote, or specific engineering task, briefly acknowledge it and end with exactly this phrase: "[INQUIRY_NEEDED]"`;
-                    
-                    const payload = { contents: [{ parts: [{ text: prompt }] }] };
-                    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    const data = await response.json();
-                    let aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't process that.";
-                    
-                    // Check for our special tag
-                    if (aiText.includes("[INQUIRY_NEEDED]")) {
-                        aiText = aiText.replace("[INQUIRY_NEEDED]", "");
-                        aiText += `<br><br><button onclick="openLeadCaptureFromChat('${userText}')" class="bg-brand-red text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-red-700 transition-colors mt-2">Submit Formal Inquiry</button>`;
-                    }
-
-                    loadingDiv.remove(); const botDiv = document.createElement('div'); botDiv.className = "flex justify-start"; botDiv.innerHTML = `<div class="bg-white text-slate-800 border border-slate-100 p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[85%]">${aiText}</div>`; messages.appendChild(botDiv);
-                 } catch(e) { loadingDiv.remove(); }
-            } else {
-                setTimeout(() => { 
-                    loadingDiv.remove(); 
-                    let botResponse = "";
-                    if (isComplex) {
-                        botResponse = `That sounds like a detailed project. I recommend submitting a formal inquiry so our engineering team can review it.<br><br><button onclick="openLeadCaptureFromChat('${userText}')" class="bg-brand-red text-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-red-700 transition-colors mt-2">Submit Formal Inquiry</button>`;
-                    } else {
-                        botResponse = "Thank you for your message. How else can I help?";
-                    }
-                    const botDiv = document.createElement('div'); botDiv.className = "flex justify-start"; botDiv.innerHTML = `<div class="bg-white text-slate-800 border border-slate-100 p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[85%]">${botResponse}</div>`; messages.appendChild(botDiv); messages.scrollTop = messages.scrollHeight; 
-                }, 1500);
+        function triggerLeadCapture(sourceId, context = '') {
+            const messageBox = document.getElementById(sourceId);
+            const messageVal = messageBox ? messageBox.value : '';
+            if (sourceId === 'contact-section-message' && context === 'Inquiry: Team Capabilities') { } 
+            else if (!messageVal.trim() && sourceId) { 
+                // Replaced alert with visual cue
+                if(messageBox) {
+                    messageBox.classList.add('border-red-500', 'ring-2', 'ring-red-200');
+                    messageBox.focus();
+                    setTimeout(() => messageBox.classList.remove('border-red-500', 'ring-2', 'ring-red-200'), 2000);
+                }
+                return; 
             }
-        }
-
-        // Bridge function from Chat to Lead Modal
-        function openLeadCaptureFromChat(msg) {
-            document.getElementById('final-message-input').value = msg;
-            document.getElementById('final-context-input').value = "Via Chat Widget";
+            document.getElementById('final-message-input').value = messageVal;
+            document.getElementById('final-context-input').value = context;
             const modal = document.getElementById('lead-capture-modal');
             const content = document.getElementById('lead-content');
             modal.classList.remove('hidden');
             setTimeout(() => { modal.classList.remove('modal-hidden'); content.classList.add('scale-100', 'opacity-100'); content.classList.remove('scale-95', 'opacity-0'); }, 10);
-        }
-
-        // --- Lead Capture Logic (Step 2 Popup) ---
-        function triggerLeadCapture(sourceId, context = '') {
-            const messageBox = document.getElementById(sourceId);
-            const messageVal = messageBox ? messageBox.value : '';
-            
-            // If called directly with context (like from Acquisition modal), bypass empty check or handle differently
-            if (sourceId === 'contact-section-message' && context === 'Inquiry: Team Capabilities') {
-                 // Auto-fill context if coming from buttons
-            } else if (!messageVal.trim() && sourceId) {
-                alert("Please write a brief message or question first.");
-                if(messageBox) messageBox.focus();
-                return;
-            }
-
-            // Populate hidden fields
-            document.getElementById('final-message-input').value = messageVal;
-            
-            // If context is generic, try to grab specific context from modal if open
-            let finalContext = context;
-            const universalModal = document.getElementById('universal-modal');
-            if(universalModal && !universalModal.classList.contains('hidden') && !universalModal.classList.contains('modal-hidden')) {
-                 const modalTitle = document.getElementById('modal-title').innerText;
-                 finalContext = "Regarding: " + modalTitle;
-            }
-            
-            document.getElementById('final-context-input').value = finalContext;
-
-            // Open the lead modal
-            const modal = document.getElementById('lead-capture-modal');
-            const content = document.getElementById('lead-content');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('modal-hidden');
-                content.classList.add('scale-100', 'opacity-100');
-                content.classList.remove('scale-95', 'opacity-0');
-            }, 10);
         }
 
         function closeLeadModal() {
             const modal = document.getElementById('lead-capture-modal');
-            const content = document.getElementById('lead-content');
             modal.classList.add('modal-hidden');
-            content.classList.remove('scale-100', 'opacity-100');
-            content.classList.add('scale-95', 'opacity-0');
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
         }
 
-        // --- AI Draft Logic ---
-        let currentAiTargetId = ''; 
-        function openAiDraftModal(targetId) {
-            currentAiTargetId = targetId; 
-            const modal = document.getElementById('ai-draft-modal');
-            const content = document.getElementById('ai-draft-content');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('modal-hidden'); content.classList.add('scale-100', 'opacity-100'); content.classList.remove('scale-95', 'opacity-0'); }, 10);
-        }
-        function closeAiDraftModal() {
-            const modal = document.getElementById('ai-draft-modal');
-            const content = document.getElementById('ai-draft-content');
-            modal.classList.add('modal-hidden'); content.classList.remove('scale-100', 'opacity-100'); content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => { modal.classList.add('hidden'); document.getElementById('draft-result-container').classList.add('hidden'); document.getElementById('ai-prompt-input').value = ''; document.getElementById('draft-output').value = ''; document.getElementById('generate-btn-container').classList.remove('hidden'); document.getElementById('prompt-section').classList.remove('hidden'); }, 300);
-        }
-        async function generateDraft() {
-            const promptInput = document.getElementById('ai-prompt-input').value;
-            const btn = document.getElementById('generate-btn');
-            const originalText = btn.innerHTML;
-            if (!promptInput.trim()) return;
-            btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Drafting...`; btn.disabled = true;
-            let draftText = "";
-            const context = currentAiTargetId === 'modal-question-box' ? "a specific question regarding a project/service" : "a general contact inquiry";
-            if (apiKey) {
-                try {
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                    const prompt = `Write a professional, concise email/message (${context}) to an engineering firm based on: "${promptInput}". No subject line. Max 3 sentences.`;
-                    const payload = { contents: [{ parts: [{ text: prompt }] }] };
-                    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    const data = await response.json();
-                    draftText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I am interested in discussing a potential project.";
-                } catch(e) { draftText = "I am writing to inquire regarding " + promptInput + "."; }
-            } else { await new Promise(r => setTimeout(r, 1000)); draftText = "I am writing to inquire about " + promptInput + ". We would appreciate a consultation."; }
-            document.getElementById('draft-output').value = draftText.trim();
-            document.getElementById('generate-btn-container').classList.add('hidden'); document.getElementById('prompt-section').classList.add('hidden'); document.getElementById('draft-result-container').classList.remove('hidden');
-            btn.innerHTML = originalText; btn.disabled = false; lucide.createIcons();
-        }
-        async function modifyDraft(action) {
-            const textArea = document.getElementById('draft-output'); const currentText = textArea.value; textArea.value = "Updating draft..."; textArea.disabled = true; let newText = currentText;
-            if (apiKey) {
-                try { const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`; const prompt = `Modify this text: "${action}". Keep it professional. Original: "${currentText}"`; const payload = { contents: [{ parts: [{ text: prompt }] }] }; const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }); const data = await response.json(); newText = data.candidates?.[0]?.content?.parts?.[0]?.text || currentText; } catch(e) { }
-            } else { await new Promise(r => setTimeout(r, 800)); if (action === 'shorten') newText = "Inquiring about engineering services. Please advise."; else newText = currentText + " Please provide more details."; }
-            textArea.value = newText.trim(); textArea.disabled = false;
-        }
-        function insertDraft() {
-            const draft = document.getElementById('draft-output').value;
-            if(currentAiTargetId) { const targetBox = document.getElementById(currentAiTargetId); if(targetBox) targetBox.value = draft; }
-            closeAiDraftModal();
+        // Acquisition Modal
+        function openAcquisitionModal() {
+            // Replaced alert with a console log or temporary UI change
+            const btn = document.querySelector('button[onclick="openAcquisitionModal()"]');
+            if(btn) {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = "Coming Soon";
+                setTimeout(() => btn.innerHTML = originalText, 2000);
+            }
         }
 
-        // --- New Acquisition Story Modal Functions ---
-        function openAcquisitionModal() {
-            const modal = document.getElementById('acquisition-modal');
-            const content = modal.querySelector('.modal-content');
+        // AI DRAFT LOGIC
+        let currentDraftTargetId = null;
+
+        function openAiDraftModal(targetId) {
+            currentDraftTargetId = targetId;
+            document.getElementById('ai-prompt-input').value = '';
+            document.getElementById('draft-output').value = '';
+            document.getElementById('draft-result-container').classList.add('hidden');
+            
+            const modal = document.getElementById('ai-draft-modal');
+            const content = document.getElementById('ai-draft-content');
             modal.classList.remove('hidden');
+            // small timeout for transition
             setTimeout(() => {
-                modal.classList.remove('modal-hidden');
-                content.classList.add('scale-100', 'opacity-100');
+                modal.classList.remove('modal-hidden'); // Added this line
                 content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
             }, 10);
         }
 
-        function closeAcquisitionModal() {
-            const modal = document.getElementById('acquisition-modal');
-            const content = modal.querySelector('.modal-content');
-            modal.classList.add('modal-hidden');
+        function closeAiDraftModal() {
+            const modal = document.getElementById('ai-draft-modal');
+            const content = document.getElementById('ai-draft-content');
+            modal.classList.add('modal-hidden'); // Added this line
             content.classList.remove('scale-100', 'opacity-100');
             content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
         }
 
-        // --- UNIVERSAL MODAL LOGIC ---
-        let currentModalSection = ''; 
-        let currentModalIndex = 0;
+        function generateDraft() {
+            const promptInput = document.getElementById('ai-prompt-input');
+            const prompt = promptInput.value.toLowerCase();
+            const btn = document.getElementById('generate-btn');
+            // Store original text content safely (including the icon SVG if it was already rendered)
+            const originalContent = btn.innerHTML;
+            
+            if(!prompt.trim()) {
+                promptInput.classList.add('border-red-500');
+                setTimeout(() => promptInput.classList.remove('border-red-500'), 2000);
+                return;
+            }
 
+            // Use simple text or inline SVG to avoid needing lucide.createIcons() which scans the whole DOM and can freeze
+            btn.innerHTML = 'Generating...';
+            btn.disabled = true;
+            
+            // Simulate AI delay
+            setTimeout(() => {
+                let draft = "";
+                
+                // Context-aware Heuristics
+                if (prompt.includes('resume') || prompt.includes('job') || prompt.includes('career')) {
+                    draft = "Dear Hiring Manager,\n\nI am writing to express my interest in potential career opportunities at Quadrante USA. Could you please direct me to your current job openings or accept my resume for future consideration?\n\nBest regards,";
+                } else if (prompt.includes('meeting') || prompt.includes('schedule') || prompt.includes('call')) {
+                    draft = "Hello,\n\nI would like to request a brief meeting to discuss potential collaboration opportunities between our organizations. Please let me know your availability for the coming week.\n\nThank you,";
+                } else if (prompt.includes('proposal') || prompt.includes('quote') || prompt.includes('cost')) {
+                    draft = "Dear Team,\n\nWe are currently exploring partners for an upcoming energy infrastructure project. Could you please provide a proposal or rough cost estimate based on the services outlined on your website?\n\nSincerely,";
+                } else if (prompt.includes('solar') || prompt.includes('wind') || prompt.includes('renewable')) {
+                    draft = "Hi,\n\nI am interested in your Renewable Energy Integration services. We have a project in the development phase and require support with interconnection studies. Could you share more details on your experience in this area?\n\nRegards,";
+                } else if (prompt.includes('data center') || prompt.includes('google') || prompt.includes('hosting')) {
+                    draft = "To Whom It May Concern,\n\nI read about your work with Google and data center siting. We have a similar requirement for load hosting capacity analysis. Is your team available for a consultation regarding this?\n\nBest,";
+                } else {
+                    // Fallback
+                    const responses = [
+                        "Dear Team,\n\nI am writing to inquire about the specific details of your engineering services. Could you please provide more information or a brochure outlining your capabilities?\n\nThank you,",
+                        "Hello,\n\nI visited your website and would like to get in touch regarding a potential project. Could you please direct this inquiry to the appropriate department?\n\nBest regards,"
+                    ];
+                    draft = responses[Math.floor(Math.random() * responses.length)];
+                }
+
+                document.getElementById('draft-output').value = draft;
+                document.getElementById('draft-result-container').classList.remove('hidden');
+                
+                try {
+                    // Scroll to result safely
+                    document.getElementById('draft-result-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } catch(e) {
+                    console.log("Scroll failed", e);
+                }
+
+                btn.innerHTML = originalContent; // Restore original button content
+                btn.disabled = false;
+                
+            }, 1500);
+        }
+
+        function insertDraft() {
+            if(currentDraftTargetId) {
+                const draftText = document.getElementById('draft-output').value;
+                const target = document.getElementById(currentDraftTargetId);
+                if(target) {
+                    target.value = draftText;
+                    // visual feedback focus
+                    target.focus();
+                }
+            }
+            closeAiDraftModal();
+        }
+
+        function modifyDraft(action) {
+            const textarea = document.getElementById('draft-output');
+            let text = textarea.value;
+            
+            if (action === 'shorten') {
+                // Remove greetings/closings or just take the middle paragraph
+                const lines = text.split('\n').filter(line => line.trim() !== '');
+                if (lines.length > 1) {
+                    // Try to find the body
+                    const body = lines.find(line => line.length > 30) || lines[0];
+                    text = body;
+                }
+            } else if (action === 'expand') {
+                if (!text.includes("further")) {
+                    text += "\n\nI look forward to hearing from you soon and discussing this further.";
+                }
+            } else if (action === 'formal') {
+                text = text.replace(/Hi,|Hello,/g, "Dear Sir/Madam,").replace(/Best,|Regards,/g, "Sincerely,");
+            } else if (action === 'casual') {
+                text = text.replace(/Dear .*?,|To Whom It May Concern,/g, "Hi,").replace(/Sincerely,|Best regards,/g, "Best,");
+            }
+            textarea.value = text;
+        }
+
+        // Universal Modal
+        let currentModalSection = ''; let currentModalIndex = 0;
         function openUniversalModal(section, index) {
-            currentModalSection = section; 
-            currentModalIndex = index;
-            const navList = document.getElementById('modal-nav-list'); 
+            currentModalSection = section; currentModalIndex = index;
+            const navList = document.getElementById('modal-nav-list');
             const mobileNavList = document.getElementById('mobile-nav-list');
             
             let dataArray;
             if (section === 'expertise') dataArray = competenciesData;
             else if (section === 'projects') dataArray = experienceData;
+            else if (section === 'about') dataArray = aboutData;
             else dataArray = teamData;
 
-            // Handle Header Text
             let headerText = 'Our Competencies';
             if (section === 'projects') headerText = 'Featured Projects';
             else if (section === 'team') headerText = 'Our Leadership';
+            else if (section === 'about') headerText = 'Company Profile';
             
             if(document.getElementById('sidebar-header')) {
                 document.getElementById('sidebar-header').innerText = headerText;
@@ -1275,8 +1265,8 @@
             let html = ''; let mobileHtml = '';
             
             dataArray.forEach((item, i) => {
-                html += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group ${i === index ? 'bg-brand-red/10 border-l-4 border-brand-red' : 'border-l-4 border-transparent hover:bg-white/5'}"><span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${i === index ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${item.title}</span></button>`;
-                mobileHtml += `<button onclick="switchModalItem(${i})" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${i === index ? 'bg-brand-red text-white border-brand-red' : 'bg-white text-slate-600 border-slate-200'}">${item.title}</button>`;
+                html += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group ${i === index ? 'bg-brand-primary/10 border-l-4 border-brand-primary' : 'border-l-4 border-transparent hover:bg-white/5'}"><span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${i === index ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${item.title}</span></button>`;
+                mobileHtml += `<button onclick="switchModalItem(${i})" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${i === index ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${item.title}</button>`;
             });
             
             if(navList) navList.innerHTML = html; 
@@ -1306,14 +1296,15 @@
             let dataArray;
             if (currentModalSection === 'expertise') dataArray = competenciesData;
             else if (currentModalSection === 'projects') dataArray = experienceData;
+            else if (currentModalSection === 'about') dataArray = aboutData;
             else dataArray = teamData;
 
             dataArray.forEach((_, i) => {
                 const navItem = document.getElementById(`nav-item-${i}`);
                 if (navItem) {
                     const span = navItem.querySelector('span');
-                    if (i === index) { navItem.classList.add('bg-brand-red/10', 'border-brand-red'); navItem.classList.remove('border-transparent', 'hover:bg-white/5'); span.classList.remove('text-slate-400', 'group-hover:text-white'); span.classList.add('text-white'); } 
-                    else { navItem.classList.remove('bg-brand-red/10', 'border-brand-red'); navItem.classList.add('border-transparent', 'hover:bg-white/5'); span.classList.add('text-slate-400', 'group-hover:text-white'); span.classList.remove('text-white'); }
+                    if (i === index) { navItem.classList.add('bg-brand-primary/10', 'border-brand-primary'); navItem.classList.remove('border-transparent', 'hover:bg-white/5'); span.classList.remove('text-slate-400', 'group-hover:text-white'); span.classList.add('text-white'); } 
+                    else { navItem.classList.remove('bg-brand-primary/10', 'border-brand-primary'); navItem.classList.add('border-transparent', 'hover:bg-white/5'); span.classList.add('text-slate-400', 'group-hover:text-white'); span.classList.remove('text-white'); }
                 }
             });
         }
@@ -1322,11 +1313,17 @@
             let dataArray;
             if (currentModalSection === 'expertise') dataArray = competenciesData;
             else if (currentModalSection === 'projects') dataArray = experienceData;
+            else if (currentModalSection === 'about') dataArray = aboutData;
             else dataArray = teamData;
 
             const data = dataArray[currentModalIndex];
+            const modalContainer = document.querySelector('#universal-modal .modal-content');
             const imgElement = document.getElementById('modal-image'); 
-            
+            const sidebar = document.querySelector('#universal-modal .bg-slate-900');
+            const sidebarInnerContent = document.getElementById('sidebar-menu-container'); 
+            const contentSection = document.querySelector('#universal-modal .bg-white'); // The right side
+            const gradientOverlay = document.getElementById('sidebar-gradient');
+
             imgElement.src = data.image;
             
             document.getElementById('mobile-image-title').innerText = data.title; 
@@ -1336,10 +1333,62 @@
             let label = 'Featured';
             if (currentModalSection === 'expertise') label = 'Competency';
             else if (currentModalSection === 'projects') label = 'Project';
+            else if (currentModalSection === 'about') label = 'About Us';
             else label = 'Leadership';
             
             document.getElementById('modal-section-label').innerText = label; 
             document.getElementById('modal-question-box').value = ''; 
+
+            // --- Layout Adjustments based on User Request (Map vs Others) ---
+            
+            // Reset classes to default state
+            modalContainer.classList.remove('max-w-[95vw]');
+            modalContainer.classList.add('max-w-7xl');
+            
+            sidebar.classList.remove('md:w-3/4', 'md:w-1/2', 'md:w-[65%]'); 
+            contentSection.classList.remove('md:w-1/4', 'md:w-1/2', 'md:w-[35%]');
+            imgElement.classList.remove('object-contain', 'object-cover');
+            
+            if (currentModalSection === 'about') {
+                // Map/About specific: 
+                // 1. Expand Modal Width significantly
+                modalContainer.classList.remove('max-w-7xl');
+                modalContainer.classList.add('max-w-[95vw]');
+
+                // 2. Image takes larger width (65%) to fit map
+                // 3. Use object-contain to show full map without cropping
+                // 4. Hide Sidebar Menu & Gradient
+                
+                sidebar.classList.add('md:w-[65%]');
+                contentSection.classList.add('md:w-[35%]');
+                imgElement.classList.add('object-contain'); // Fit whole map
+                imgElement.classList.add('bg-white'); // Add white bg for map if transparent
+                
+                if(sidebarInnerContent) sidebarInnerContent.classList.add('hidden'); 
+                if(gradientOverlay) gradientOverlay.classList.add('hidden');
+                
+            } else {
+                // Default behavior
+                
+                sidebar.classList.add('md:w-1/2');
+                contentSection.classList.add('md:w-1/2');
+                imgElement.classList.add('object-cover');
+                imgElement.classList.remove('bg-white');
+
+                if(sidebarInnerContent) sidebarInnerContent.classList.remove('hidden');
+                if(gradientOverlay) gradientOverlay.classList.remove('hidden');
+            }
+
+            // --- Hide/Show Inquiry Form ---
+            // If it is 'team' section, we hide the inquiry box at the bottom of the modal
+            const inquiryContainer = document.getElementById('modal-inquiry-container');
+            if (inquiryContainer) {
+                if (currentModalSection === 'team') {
+                    inquiryContainer.classList.add('hidden');
+                } else {
+                    inquiryContainer.classList.remove('hidden');
+                }
+            }
             
             // --- DYNAMIC CHIP GENERATION FOR MODAL ---
             const chipsContainer = document.getElementById('modal-quick-chips');
@@ -1347,37 +1396,38 @@
             
             if (currentModalSection === 'expertise') {
                 chipsHtml = `
-                    <button onclick="prefillMessage('modal-question-box', 'We need a feasibility study regarding this capability.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Feasibility Study</button>
-                    <button onclick="prefillMessage('modal-question-box', 'Can you provide a proposal for this service?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Request Proposal</button>
-                    <button onclick="prefillMessage('modal-question-box', 'I have a technical question about compliance standards.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Technical Question</button>
+                    <button onclick="prefillMessage('modal-question-box', 'We need a feasibility study regarding this capability.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Feasibility Study</button>
+                    <button onclick="prefillMessage('modal-question-box', 'Can you provide a proposal for this service?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Proposal</button>
+                    <button onclick="prefillMessage('modal-question-box', 'I have a technical question about compliance standards.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Technical Question</button>
+                `;
+            } else if (currentModalSection === 'about') {
+                chipsHtml = `
+                    <button onclick="prefillMessage('modal-question-box', 'Which specific regions do you operate in?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Regions</button>
+                    <button onclick="prefillMessage('modal-question-box', 'Tell me more about your work with ISOs.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">ISO Experience</button>
+                    <button onclick="prefillMessage('modal-question-box', 'I am interested in partnership opportunities.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Partnership</button>
                 `;
             } else if (currentModalSection === 'projects') {
                 chipsHtml = `
-                    <button onclick="prefillMessage('modal-question-box', 'We have a similar project and need support.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Similar Project</button>
-                    <button onclick="prefillMessage('modal-question-box', 'What was the timeline for this project?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Timeline Inquiry</button>
-                    <button onclick="prefillMessage('modal-question-box', 'Can you share more details on the methodology used?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Methodology</button>
+                    <button onclick="prefillMessage('modal-question-box', 'We have a similar project and need support.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Similar Project</button>
+                    <button onclick="prefillMessage('modal-question-box', 'What was the timeline for this project?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Timeline Inquiry</button>
+                    <button onclick="prefillMessage('modal-question-box', 'Can you share more details on the methodology used?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Methodology</button>
                 `;
             } else {
                 chipsHtml = `
-                    <button onclick="prefillMessage('modal-question-box', 'I would like to schedule a meeting with this person.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Schedule Meeting</button>
-                    <button onclick="prefillMessage('modal-question-box', 'Can I request a full bio or resume?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Request Resume</button>
-                    <button onclick="prefillMessage('modal-question-box', 'Is this expert available for a consultation?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors">Consultation</button>
+                    <button onclick="prefillMessage('modal-question-box', 'I would like to schedule a meeting with this person.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Schedule Meeting</button>
+                    <button onclick="prefillMessage('modal-question-box', 'Can I request a full bio or resume?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Resume</button>
+                    <button onclick="prefillMessage('modal-question-box', 'Is this expert available for a consultation?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Consultation</button>
                 `;
             }
             chipsContainer.innerHTML = chipsHtml;
             
             // Re-initialize icons inside modal content
             if (window.lucide) {
-                lucide.createIcons();
+                lucide.createIcons({
+                    root: document.getElementById('universal-modal')
+                });
             }
         }
-
-        // Initialize icons at the end
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        });
     </script>
 </body>
 </html>
