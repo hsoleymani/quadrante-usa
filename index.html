@@ -480,14 +480,14 @@
                                         <p>Founded in 2019, Right Analytics is a boutique power systems consultancy comprised of a small, highly knowledgeable team of engineers and analysts with a mix of academic and industrial experience.</p>
                                         <p>The firm specializes in transmission planning, interconnection studies, large load and data center siting, and a broad range of advanced power systems analyses.</p>
                                     </div>
-                        
+                                    
                                     <div class="grid gap-4 pt-4">
                                         <div class="border border-blue-100 bg-blue-50/30 p-4 rounded-xl text-blue-900 font-bold text-center hover:bg-blue-50 transition-colors shadow-sm">Unique team dynamics and company culture</div>
                                         <div class="border border-blue-100 bg-blue-50/30 p-4 rounded-xl text-blue-900 font-bold text-center hover:bg-blue-50 transition-colors shadow-sm">Small business’ agility and flexibility</div>
                                         <div class="border border-blue-100 bg-blue-50/30 p-4 rounded-xl text-blue-900 font-bold text-center hover:bg-blue-50 transition-colors shadow-sm">Mixed academic and industrial experience</div>
                                     </div>
                                 </div>
-                        
+                                
                                 <!-- Right Column: Map & Stats -->
                                 <div class="flex-1">
                                     <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full flex flex-col justify-center">
@@ -520,56 +520,59 @@
                                 </div>
                             </div>
 
-                            <!-- Part 2: Competencies Grid -->
-                            <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                                <div onclick="openUniversalModal('expertise', 0)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                                    <img src="assets/images/media/wind-farm-global.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <!-- Part 2: Competencies Grid (UPDATED FOR 5 PANELS) -->
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 relative z-10">
+                                
+                                <!-- Panel 1: Renewable Energy Resources Integration -->
+                                <div onclick="openUniversalModal('expertise', 0)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 lg:col-span-1 xl:col-span-1">
+                                    <img src="assets/images/media/wind-farm-global.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e40af/ffffff?text=Renewable+Integration'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Renewable Integration</h4>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Renewable Energy Resources Integration</h4>
                                         <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
-                                <div onclick="openUniversalModal('expertise', 1)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                                    <img src="assets/images/media/transmission-lines.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                                <!-- Panel 2: Power Systems Planning -->
+                                <div onclick="openUniversalModal('expertise', 1)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 lg:col-span-1 xl:col-span-1">
+                                    <img src="assets/images/media/tower_grid_1.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/3b82f6/ffffff?text=Power+System+Planning'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">T&D Planning</h4>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Power Systems Planning</h4>
                                         <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
-                                <div onclick="openUniversalModal('expertise', 2)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                                    <img src="assets/images/media/substation-infrastructure.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                
+                                <!-- Panel 3: Data Center Planning and Siting -->
+                                <div onclick="openUniversalModal('expertise', 2)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 lg:col-span-1 xl:col-span-1">
+                                    <img src="assets/images/media/data_center_1.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/15803d/ffffff?text=Data+Center+Siting'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">FACTS & HVDC</h4>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Data Center Planning and Siting</h4>
                                         <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
-                                <div onclick="openUniversalModal('expertise', 3)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                                    <img src="assets/images/media/hil-testing-lab.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                                <!-- Panel 4: Microgrid Design -->
+                                <div onclick="openUniversalModal('expertise', 3)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 lg:col-span-1 xl:col-span-1">
+                                    <img src="assets/images/media/Microgrid Design.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/ca8a04/ffffff?text=Microgrid+Design'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">HIL Testing</h4>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Microgrid Design</h4>
                                         <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
-                                <div onclick="openUniversalModal('expertise', 4)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                                    <img src="assets/images/media/server-rack-aisle.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                
+                                <!-- Panel 5: Hardware-in-the-Loop Testing, and Simulation -->
+                                <div onclick="openUniversalModal('expertise', 4)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 lg:col-span-1 xl:col-span-1">
+                                    <img src="assets/images/media/Hardware_in_the_Loop.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/be123c/ffffff?text=HIL+Testing'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">AI & Machine Learning</h4>
+                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Hardware-in-the-Loop Testing, and Simulation</h4>
                                         <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
                                     </div>
                                 </div>
-                                <div onclick="openUniversalModal('expertise', 5)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100">
-                                    <img src="assets/images/media/ev-charging-grid.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                                    <div class="relative h-full p-8 flex flex-col justify-end text-white">
-                                        <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">EV Charging & Grid</h4>
-                                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">View Details <i data-lucide="arrow-right" class="w-4 h-4"></i></div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -601,7 +604,7 @@
                                     <div class="prose prose-invert text-gray-300 leading-relaxed">
                                         <p>In a world where progress often clashes with nature, we embrace our purpose by always leading engineering and architecture projects with its <strong>Total Design</strong> approach, seeking economically optimised, sustainable solutions of technical excellence.</p>
                                     </div>
-                        
+                                    
                                     <div class="grid gap-4 pt-4">
                                         <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
                                             <span class="text-3xl text-brand-primary mb-1">1,200+</span>
@@ -617,7 +620,7 @@
                                         </div>
                                     </div>
                                 </div>
-                        
+                                
                                 <!-- Right Column: Map & Stats -->
                                 <div class="flex-1 order-1 lg:order-2">
                                     <div class="bg-white/5 rounded-2xl p-8 border border-white/10 h-full flex flex-col justify-center">
@@ -656,7 +659,7 @@
                                 <div onclick="openUniversalModal('projects', 0)" class="project-card group cursor-pointer">
                                     <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
                                         <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/data-center-google.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                                        <img src="assets/images/media/data-center-google.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
                                         <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA</div>
                                     </div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Google</div>
@@ -666,7 +669,7 @@
                                 <div onclick="openUniversalModal('projects', 1)" class="project-card group cursor-pointer">
                                     <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
                                         <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/hil-testing-lab.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                                        <img src="assets/images/media/hil-testing-lab.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
                                         <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">New York</div>
                                     </div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">NYPA</div>
@@ -676,7 +679,7 @@
                                 <div onclick="openUniversalModal('projects', 2)" class="project-card group cursor-pointer">
                                     <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
                                         <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/transmission-lines.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                                        <img src="assets/images/media/transmission-lines.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
                                         <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA / Mexico</div>
                                     </div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Ignis</div>
@@ -686,7 +689,7 @@
                                 <div onclick="openUniversalModal('projects', 3)" class="project-card group cursor-pointer">
                                     <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
                                         <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/solar-integration.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                                        <img src="assets/images/media/solar-integration.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
                                         <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Virginia</div>
                                     </div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Dominion Energy</div>
@@ -696,7 +699,7 @@
                                 <div onclick="openUniversalModal('projects', 4)" class="project-card group cursor-pointer">
                                     <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
                                         <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/server-rack-aisle.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                                        <img src="assets/images/media/server-rack-aisle.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
                                         <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Angola</div>
                                     </div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Logicalis</div>
@@ -706,7 +709,7 @@
                                 <div onclick="openUniversalModal('projects', 5)" class="project-card group cursor-pointer">
                                     <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
                                         <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/substation-infrastructure.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                                        <img src="assets/images/media/substation-infrastructure.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
                                         <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Texas (ERCOT)</div>
                                     </div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Naturgy</div>
@@ -774,6 +777,7 @@
                 </section>
 
             </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -833,7 +837,7 @@
             <!-- Sidebar / Image Section (Default 50%) -->
             <div class="relative w-full md:w-1/2 h-48 md:h-full bg-slate-900 overflow-hidden group">
                 <!-- Image -->
-                <img id="modal-image" src="" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105" alt="Detail Image">
+                <img id="modal-image" src="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Detail Image">
                 
                 <!-- Sidebar Menu -->
                 <div class="relative z-10 h-full flex flex-col p-8 overflow-y-auto dark-scrollbar hidden md:flex" id="sidebar-menu-container">
@@ -894,7 +898,7 @@
                     <textarea id="ai-prompt-input" class="w-full border border-slate-200 rounded-lg p-3 text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none h-24 text-slate-900" placeholder="E.g., Ask for details on the timeline for the 500kV line project..."></textarea>
                 </div>
                 <div class="flex justify-end" id="generate-btn-container">
-                     <button onclick="generateDraft()" id="generate-btn" class="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors flex items-center gap-2">Generate Draft <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                    <button onclick="generateDraft()" id="generate-btn" class="bg-brand-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors flex items-center gap-2">Generate Draft <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
                 </div>
                 <div id="draft-result-container" class="hidden border-t border-slate-100 pt-4 mt-4 animate-fade-in">
                     <label class="block text-sm font-bold text-slate-700 mb-2">AI Generated Draft:</label>
@@ -962,13 +966,33 @@
              // Not used for clicking anymore
         ];
 
+        // UPDATED COMPETENCIES DATA (5 PANELS)
         const competenciesData = [
-            { image: "assets/images/media/wind-farm-global.png", title: "Renewable Energy Integration", content: `<p class="mb-4">Right Analytics has a long successful history of performing integration studies for renewable generations. Right Analytics capabilities for interconnection studies range from modeling of the renewable generation resources all the way to transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies.</p><p>All our studies comply with the industry standards ensuring reliability and grid code compliance for projects of any scale.</p>` },
-            { image: "assets/images/media/transmission-lines.jpeg", title: "T&D Planning & Control", content: `<p class="mb-4">Our team at Right Analytics can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control.</p><p>We leverage best software tools and processes to find out solutions for the toughest challenges facing the industry today, ensuring grid resiliency and operational efficiency.</p>` },
-            { image: "assets/images/media/substation-infrastructure.jpeg", title: "FACTS & HVDC", content: `<p class="mb-4">We have established ourselves as a world class consulting provider of HVDC and FACTS. As both systems share many technological similarities, our combined expertise has proven to be technically and economically beneficial for clients in assessing and selecting technologies, as well as designing efficient, reliable and economic solutions.</p><p>Our area of expertise includes the study, conceptual design and specification of a variety of FACTS devices, such as static VAR compensators (SVCs), STATCOMs and series compensation devices such as SSSC, and UPFC, as well as LCC, and VSC-based HVDC systems.</p>` },
-            { image: "assets/images/media/hil-testing-lab.png", title: "Hardware-in-the-Loop Studies", content: `<p class="mb-4">HIL testing lets you verify your controller design, and other IEDs without the complete system hardware. Instead, rely on a real-time plant simulator that acts as a digital twin of the real system or parts of it, benefiting you in practicality and cost.</p><p>At Right Analytics, we offer a wide range of HIL tests to verify the performance of the power electronics controllers, power system protection systems, and battery management systems.</p>` },
-            { image: "assets/images/media/server-rack-aisle.png", title: "Machine Learning Applications", content: `<p class="mb-4">We are passionate about using Artificial Intelligence techniques to address challenges and uncertainty in Energy Industry. We believe that data-driven solutions are the main building block of the future modernized grid.</p><p>We use Deep Learning techniques to address energy related problems as they deem fit, optimizing forecasting and asset management.</p>` },
-            { image: "assets/images/media/ev-charging-grid.jpeg", title: "Electric Vehicles Charging", content: `<p class="mb-4">At Right Analytics, we believe that Electric Vehicles will revolutionize the transportation system.</p><p>We use advanced data analytics, and machine learning technics to predict the extra load that these vehicles will add to the power network, ensuring the grid is prepared for the rapid electrification of transportation.</p>` }
+            { // Panel 1: Renewable Energy Resources Integration
+                image: "assets/images/media/wind-farm-global.png", 
+                title: "Renewable Energy Resources Integration", 
+                content: `<p class="mb-4">Right Analytics has a long successful history of performing integration studies for renewable generations. Right Analytics capabilities for interconnection studies range from modeling of the renewable generation resources all the way to transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies.</p><p>All our studies comply with the industry standards, ensuring reliability and grid code compliance for projects of any scale.</p>` 
+            },
+            { // Panel 2: Power Systems Planning
+                image: "assets/images/media/tower_grid_1.png", 
+                title: "Power Systems Planning", 
+                content: `<p class="mb-4">Our team at Right Analytics can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control. We leverage best software tools and processes to find solutions for the toughest challenges facing the industry today.</p><p>Our expertise includes short-circuit analysis, load-flow studies, capacity expansion, and grid control optimization.</p>` 
+            },
+            { // Panel 3: Data Center Planning and Siting
+                image: "assets/images/media/data_center_1.jpeg", 
+                title: "Data Center Planning and Siting", 
+                content: `<p class="mb-4">We offer comprehensive load hosting capacity analysis to find the optimal location for building new, large-scale data centers.</p><p>Our analysis minimizes risks related to interconnection costs, grid congestion, and future energy availability, ensuring your data center infrastructure is secure and scalable.</p>` 
+            },
+            { // Panel 4: Microgrid Design
+                image: "assets/images/media/Microgrid Design.jpeg", 
+                title: "Microgrid Design", 
+                content: `<p class="mb-4">We provide end-to-end design services for microgrid system architecture. This includes detailed component sizing for inverters, energy storage systems (ESS), and Uninterruptible Power Supply (UPS) systems.</p><p>Our designs focus on resiliency, islanding capability, and optimizing the integration of distributed energy resources (DERs) for critical loads.</p>` 
+            },
+            { // Panel 5: Hardware-in-the-Loop Testing, and Simulation
+                image: "assets/images/media/Hardware_in_the_Loop.png", 
+                title: "Hardware-in-the-Loop Testing, and Simulation", 
+                content: `<p class="mb-4">HIL testing lets you verify your controller design and other Intelligent Electronic Devices (IEDs) without the complete system hardware. Instead, rely on a real-time plant simulator that acts as a digital twin of the real system or parts of it, benefiting you in practicality and cost.</p><p>At Right Analytics, we offer a wide range of HIL tests to verify the performance of power electronics controllers, power system protection systems, and battery management systems.</p>` 
+            }
         ];
 
         const experienceData = [
@@ -1246,7 +1270,7 @@
                     text += "\n\nI look forward to hearing from you soon and discussing this further.";
                 }
             } else if (action === 'formal') {
-                text = text.replace(/Hi,|Hello,/g, "Dear Sir/Madam,").replace(/Best,|Regards,/g, "Sincerely,");
+                text = text.replace(/Hi,|Hello,/g, "Dear Sir\/Madam,").replace(/Best,|Regards,/g, "Sincerely,");
             } else if (action === 'casual') {
                 text = text.replace(/Dear .*?,|To Whom It May Concern,/g, "Hi,").replace(/Sincerely,|Best regards,/g, "Best,");
             }
