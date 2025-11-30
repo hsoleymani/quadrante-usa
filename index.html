@@ -119,6 +119,11 @@
         .dark-scrollbar::-webkit-scrollbar { width: 4px; }
         .dark-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .dark-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        
+        /* Specific Fix for Prose Spacing in Quadrante Info Block */
+        #quadrante-info .prose > p:last-child {
+            margin-bottom: 0 !important;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900">
@@ -154,9 +159,9 @@
         <div id="hero-slider" class="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-slate-900">
             <!-- Hero Slides -->
             <div class="slide active">
-                <img src="assets/images/media/start_image.jpeg" class="absolute min-w-full min-h-full object-cover opacity-60" />
+                <img src="assets/images/media/handshake.jpg" class="absolute min-w-full min-h-full object-cover opacity-60" />
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
-                <div class="relative z-10 container mx-auto px-6 md:px-12 h-full flex items-center">
+                <div class="relative z-1000 container mx-auto px-6 md:px-12 h-full flex items-center">
                     <div class="max-w-5xl pt-20 slide-content">
                         <div class="w-20 h-1.5 bg-brand-primary mb-8 shadow-[0_0_15px_rgba(30,64,175,0.5)]"></div>
                         
@@ -565,7 +570,7 @@
                                 
                                 <!-- Panel 5: Hardware-in-the-Loop Testing, and Simulation -->
                                 <div onclick="openUniversalModal('expertise', 4)" class="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 lg:col-span-1 xl:col-span-1">
-                                    <img src="assets/images/media/Hardware_in_the_Loop.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/be123c/ffffff?text=HIL+Testing'">
+                                    <img src="assets/images/media/Hardware-in-the-Loop Testing, and Simulation.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/800x600/be123c/ffffff?text=HIL+Testing'">
                                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                                     <div class="relative h-full p-8 flex flex-col justify-end text-white">
                                         <h4 class="text-2xl font-serif font-bold mb-2 group-hover:text-brand-primary transition-colors">Hardware-in-the-Loop Testing, and Simulation</h4>
@@ -578,143 +583,170 @@
                     </div>
                 </section>
                 
-                <!-- Refined Projects Section to Match Expertise Section Style -->
-                <section id="projects" class="py-32 bg-slate-900 relative overflow-hidden">
+                <!-- Refined Projects Section to Match Team Section Style (#projects now acts as the Quadrante/Dark Section) -->
+                <section id="projects" class="py-24 bg-slate-900 relative overflow-hidden">
                     <!-- Background elements -->
                     <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-800/50 skew-x-12 transform translate-x-40 pointer-events-none"></div>
                     
                     <div class="container mx-auto px-6 md:px-12 relative z-10">
                         
-                        <!-- Unified Quadrante Feature Block -->
-                        <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/10 overflow-hidden relative">
+                        <!-- Unified Quadrante Feature Block (STYLED AS DARK BLOCK) -->
+                        <!-- Removed border and shadow from inner container -->
+                        <div class="bg-slate-800 rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                            <!-- Adjusted internal background opacity/color for better contrast -->
                             <div class="absolute top-0 left-0 w-64 h-64 bg-brand-primary rounded-br-full -ml-16 -mt-16 opacity-30 pointer-events-none"></div>
                             
                             <!-- Part 1: About Quadrante -->
-                            <div class="flex flex-col lg:flex-row gap-16 relative z-10 mb-16">
-                                <!-- Left Column: Text & Values -->
-                                <div class="flex-1 space-y-8 order-2 lg:order-1">
+                            <!-- Adjusted gap to 8 for tighter spacing, removed inner container border/shadow/paddings for maximum density -->
+                            <div class="flex flex-col lg:flex-row gap-8 relative z-10 mb-8">
+                                <!-- Left Column: Text & Values (Now light text for dark background) -->
+                                <div class="flex-1 space-y-4 order-2 lg:order-1">
                                     <!-- Updated Header Style -->
                                     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
-                                        <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-primary pl-8 text-white">About Quadrante</h3>
+                                        <h3 class="text-4xl font-serif font-bold border-l-8 border-brand-secondary pl-8 text-white">About Quadrante</h3>
                                         <a href="https://quadranteglobal.com/landing-page/" target="_blank">
+                                            <!-- Invert logo colors for dark background -->
                                             <img src="assets/images/media/logo-quadrante.png" class="h-8 w-auto object-contain brightness-0 invert" alt="Quadrante Logo">
                                         </a>
                                     </div>
                                     
-                                    <div class="prose prose-invert text-gray-300 leading-relaxed">
-                                        <p>In a world where progress often clashes with nature, we embrace our purpose by always leading engineering and architecture projects with its <strong>Total Design</strong> approach, seeking economically optimised, sustainable solutions of technical excellence.</p>
+                                    <div id="quadrante-info" class="prose prose-invert text-gray-300 leading-relaxed text-base">
+                                        <p>In a world where progress often clashes with nature, we embrace our purpose by always leading engineering and architecture projects with its <strong>Total Design</strong> approach, seeking economically optimised, sustainable solutions of technical excellence. As a multidisciplinary consultancy and design group in Engineering, Architecture, Environment and Sustainability, we take a holistic view of the construction sector and pursue an integrated and evolving approach to sustainability.</p>
+                                        <p>With a strong commitment to the planet and future generations, we are involved in several decarbonisation projects, making a significant contribution to mitigating the effects of climate change. By implementing innovative and sustainable solutions, we promote the reduction of carbon emissions in various sectors, including energy, transport and construction.</p>
+                                        <p>Our guiding values are based on the future, professionalism, ethics and flexibility. Through these values, we endeavour to attract and nurture talent, giving them unique opportunities for development.</p>
+                                    </div>
+
+                                    <!-- NEW: 3 Cards Grid (Below Text in Left Column) -->
+                                    <div class="grid grid-cols-3 gap-4 mt-8">
+                                        <!-- Card 1: Industry & Energy -->
+                                        <div class="bg-slate-700/50 rounded-xl overflow-hidden group hover:bg-slate-700 transition-colors border border-white/5">
+                                            <div class="h-32 overflow-hidden relative">
+                                                <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                                                <img src="assets/images/media/wind-farm-global.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Industry and Energy">
+                                            </div>
+                                            <div class="p-4">
+                                                <h5 class="text-white font-bold text-sm uppercase leading-tight">Industry & Energy Transition</h5>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 2: Cities & Territories -->
+                                        <div class="bg-slate-700/50 rounded-xl overflow-hidden group hover:bg-slate-700 transition-colors border border-white/5">
+                                            <div class="h-32 overflow-hidden relative">
+                                                <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                                                <img src="assets/images/media/city_tree.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Cities and Territories">
+                                            </div>
+                                            <div class="p-4">
+                                                <h5 class="text-white font-bold text-sm uppercase leading-tight">Cities & Territories</h5>
+                                            </div>
+                                        </div>
+
+                                        <!-- Card 3: Mobility -->
+                                        <div class="bg-slate-700/50 rounded-xl overflow-hidden group hover:bg-slate-700 transition-colors border border-white/5">
+                                            <div class="h-32 overflow-hidden relative">
+                                                <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                                                <img src="assets/images/media/mobility.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Mobility">
+                                            </div>
+                                            <div class="p-4">
+                                                <h5 class="text-white font-bold text-sm uppercase leading-tight">Mobility & Transport</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                     
-                                    <div class="grid gap-4 pt-4">
-                                        <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
-                                            <span class="text-3xl text-brand-primary mb-1">1,200+</span>
-                                            <span class="text-xs uppercase tracking-widest text-gray-400">Employees Global Team</span>
-                                        </div>
-                                        <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
-                                            <span class="text-3xl text-brand-primary mb-1">11,100+</span>
-                                            <span class="text-xs uppercase tracking-widest text-gray-400">Projects Delivered Globally</span>
-                                        </div>
-                                        <div class="border border-white/20 bg-white/5 p-4 rounded-xl text-white font-bold text-center hover:bg-white/10 transition-colors flex flex-col">
-                                            <span class="text-3xl text-brand-primary mb-1">€105M+</span>
-                                            <span class="text-xs uppercase tracking-widest text-gray-400">Annual Turnover</span>
-                                        </div>
-                                    </div>
                                 </div>
                                 
-                                <!-- Right Column: Map & Stats -->
+                                <!-- Right Column: Map & Principles (Fixed Spacing Issues, dark style) -->
                                 <div class="flex-1 order-1 lg:order-2">
-                                    <div class="bg-white/5 rounded-2xl p-8 border border-white/10 h-full flex flex-col justify-center">
-                                        <div class="mb-4 text-xl font-bold text-center text-white">Global Reach, Local Expertise</div>
-                                        <!-- Map Image (Not Clickable) -->
-                                        <div class="mb-8 relative rounded-xl overflow-hidden bg-white p-4 border border-white/10 shadow-inner h-96 flex items-center justify-center">
+                                    <!-- Changed background to dark slate for contrast against slate-800 main block -->
+                                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-700 h-full flex flex-col justify-start">
+                                        <!-- Changed text color to light -->
+                                        <div class="mb-4 text-xl font-bold text-center text-white">Our Guiding Principles</div>
+                                        
+                                        <!-- Map Image - use white background inside dark container -->
+                                        <div class="mb-6 relative rounded-xl overflow-hidden bg-white p-4 border border-slate-700 shadow-inner h-64 flex items-center justify-center">
                                             <img src="assets/images/media/quadrante_clinets_map_us.svg" class="w-full h-full object-contain" alt="Quadrante Global Map">
                                         </div>
                                         
-                                        <ul class="space-y-6 text-gray-300">
-                                            <li class="flex items-start gap-4">
-                                                <div class="bg-brand-primary/20 p-2 rounded-full mt-1"><i data-lucide="globe" class="w-5 h-5 text-brand-primary"></i></div>
-                                                <div>Direct presence in <strong class="text-white">Europe, Africa, and Latin America</strong> with 38 offices.</div>
-                                            </li>
-                                            <li class="flex items-start gap-4">
-                                                <div class="bg-brand-primary/20 p-2 rounded-full mt-1"><i data-lucide="briefcase" class="w-5 h-5 text-brand-primary"></i></div>
-                                                <div>Multidisciplinary expertise in <strong class="text-white">Engineering, Architecture, and Consulting</strong>.</div>
-                                            </li>
-                                        </ul>
+                                        <!-- New Descriptive Content (as block text) -->
+                                        <!-- Reduced vertical space between principle blocks -->
+                                        <div class="space-y-4 text-gray-300 leading-snug text-sm">
+                                            <p class="font-bold text-white mb-1 leading-normal">Customer Focus & Climate Action</p>
+                                            <p class="mt-0">We guarantee customer satisfaction and make a significant contribution to the fight against climate change.</p>
+                                            <p class="font-bold text-white mb-1 leading-normal">Technical Excellence & Complexity</p>
+                                            <p class="mt-0">As a Global Engineering Consultancy Group, we have partnered with our clients to design the most technically complex and advanced infrastructures.</p>
+                                            <p class="font-bold text-white mb-1 leading-normal">Multidisciplinary Workforce</p>
+                                            <p class="mt-0">Quadrante Group has a highly qualified and multidisciplinary workforce, which enables us to collaborate in constant articulation in real-time while presenting the most suitable options to clients.</p>
+                                            <p class="font-bold text-white mb-1 leading-normal">Viability & Responsibility</p>
+                                            <p class="mt-0">Our proposals are always tailored to environmental and societal restrictions while maintaining an emphasis on technical and financial viability.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Divider -->
+                            <!-- NEW STATS STRIP (To fill space) -->
+                            <div class="relative z-10 border-t border-white/10 pt-8 pb-8">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                    <div class="text-center group hover:bg-white/5 p-4 rounded-xl transition-all">
+                                        <div class="text-4xl font-bold text-brand-secondary mb-2">$122M+</div>
+                                        <div class="text-xs uppercase tracking-widest text-gray-400">Annual Revenue</div>
+                                    </div>
+                                    <div class="text-center group hover:bg-white/5 p-4 rounded-xl transition-all">
+                                        <div class="text-4xl font-bold text-brand-secondary mb-2">1,200+</div>
+                                        <div class="text-xs uppercase tracking-widest text-gray-400">Global Employees</div>
+                                    </div>
+                                    <div class="text-center group hover:bg-white/5 p-4 rounded-xl transition-all">
+                                        <div class="text-4xl font-bold text-brand-secondary mb-2">11,100+</div>
+                                        <div class="text-xs uppercase tracking-widest text-gray-400">Projects Delivered</div>
+                                    </div>
+                                    <div class="text-center group hover:bg-white/5 p-4 rounded-xl transition-all">
+                                        <div class="text-4xl font-bold text-brand-secondary mb-2">38</div>
+                                        <div class="text-xs uppercase tracking-widest text-gray-400">Offices Worldwide</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Divider (Now dark text on light background) -->
                             <div class="relative py-8">
                                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                                     <div class="w-full border-t border-white/10"></div>
                                 </div>
                                 <div class="relative flex justify-center">
-                                    <span class="bg-slate-900 px-4 text-sm font-bold text-gray-400 uppercase tracking-widest">Our Experience</span>
+                                    <span class="bg-slate-800 px-4 text-sm font-bold text-gray-400 uppercase tracking-widest">Data Centre Expertise</span>
                                 </div>
                             </div>
 
-                            <!-- Part 2: Projects Grid -->
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                            <!-- Part 2: Data Centre Expertise Grid (Content remains the same, adjusted styling for dark background) -->
+                            <div class="grid md:grid-cols-3 gap-6" id="projects-grid">
+                                <!-- Card 1: Engineering Excellence -->
                                 <div onclick="openUniversalModal('projects', 0)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
-                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/data-center-google.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
-                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA</div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-700 h-64">
+                                        <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                        <img src="assets/images/media/data_servers.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Engineering+Excellence'">
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Global</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Google</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Data Center Optimal Location</h4>
-                                    <p class="text-gray-400 text-sm font-light">Comprehensive load hosting capacity analysis.</p>
+                                    <h4 class="text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-secondary transition-colors">Engineering Excellence</h4>
+                                    <p class="text-gray-400 text-sm font-light">Precision-engineered systems tailored for uptime and performance powering AI-ready infrastructure.</p>
                                 </div>
+
+                                <!-- Card 2: Local Regulations and Permissions -->
                                 <div onclick="openUniversalModal('projects', 1)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
-                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/hil-testing-lab.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
-                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">New York</div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-700 h-64">
+                                        <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                        <img src="assets/images/media/data_server_2.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Local+Regulations'">
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Compliance</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">NYPA</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Advanced Power Flow Control</h4>
-                                    <p class="text-slate-400 text-sm font-light">Deployment in the NYCA.</p>
+                                    <h4 class="text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-secondary transition-colors">Local Regulations and Permissions</h4>
+                                    <p class="text-gray-400 text-sm font-light">Full compliance with planning, zoning, and environmental permits, and extensive knowledge of local power grid.</p>
                                 </div>
+
+                                <!-- Card 3: Sustainability -->
                                 <div onclick="openUniversalModal('projects', 2)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
-                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/transmission-lines.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
-                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">USA / Mexico</div>
+                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-700 h-64">
+                                        <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                        <img src="assets/images/media/data_servers_3.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Sustainability'">
+                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Green Tech</div>
                                     </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Ignis</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Viento Fronterizo 500kV Line</h4>
-                                    <p class="text-slate-400 text-sm font-light">Basic Design and PLS-CADD modeling.</p>
-                                </div>
-                                <div onclick="openUniversalModal('projects', 3)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
-                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/solar-integration.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
-                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Virginia</div>
-                                    </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Dominion Energy</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Hosting Capacity Analysis</h4>
-                                    <p class="text-slate-400 text-sm font-light">Grid support for renewable integration.</p>
-                                </div>
-                                <div onclick="openUniversalModal('projects', 4)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
-                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/server-rack-aisle.png" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
-                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Angola</div>
-                                    </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Logicalis</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">TIER III Data Center</h4>
-                                    <p class="text-slate-400 text-sm font-light">1 MW IT Power. RIBA Stages 3-4 Design.</p>
-                                </div>
-                                <div onclick="openUniversalModal('projects', 5)" class="project-card group cursor-pointer">
-                                    <div class="mb-6 relative overflow-hidden shadow-2xl rounded-xl border border-slate-800">
-                                        <div class="absolute inset-0 bg-brand-primary z-10 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                                        <img src="assets/images/media/substation-infrastructure.jpeg" class="w-full h-64 object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0" onerror="this.onerror=null; this.src='https://placehold.co/800x600/334155/ffffff?text=Project+Image'">
-                                        <div class="absolute bottom-0 left-0 bg-brand-primary px-4 py-2 text-xs font-bold uppercase tracking-widest text-white z-20">Texas (ERCOT)</div>
-                                    </div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2">Naturgy</div>
-                                    <h4 class="text-xl font-serif font-bold mb-2 group-hover:text-brand-secondary transition-colors text-white">Project Grimes Substation</h4>
-                                    <p class="text-slate-400 text-sm font-light">138/34.5/13.8 kV Substation support.</p>
+                                    <h4 class="text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-secondary transition-colors">Sustainability</h4>
+                                    <p class="text-gray-400 text-sm font-light">Sustainable design aligned with international standards and certifications, with the highest PUE and WUE standards.</p>
                                 </div>
                             </div>
                         </div>
@@ -802,9 +834,9 @@
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
                         <li><a href="#expertise" class="hover:text-white transition-colors">Services</a></li>
                         <li><a href="#projects" class="hover:text-white transition-colors">Projects</a></li>
-                        <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
                         <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
@@ -989,19 +1021,29 @@
                 content: `<p class="mb-4">We provide end-to-end design services for microgrid system architecture. This includes detailed component sizing for inverters, energy storage systems (ESS), and Uninterruptible Power Supply (UPS) systems.</p><p>Our designs focus on resiliency, islanding capability, and optimizing the integration of distributed energy resources (DERs) for critical loads.</p>` 
             },
             { // Panel 5: Hardware-in-the-Loop Testing, and Simulation
-                image: "assets/images/media/Hardware_in_the_Loop.png", 
+                image: "assets/images/media/Hardware-in-the-Loop Testing, and Simulation.png", 
                 title: "Hardware-in-the-Loop Testing, and Simulation", 
                 content: `<p class="mb-4">HIL testing lets you verify your controller design and other Intelligent Electronic Devices (IEDs) without the complete system hardware. Instead, rely on a real-time plant simulator that acts as a digital twin of the real system or parts of it, benefiting you in practicality and cost.</p><p>At Right Analytics, we offer a wide range of HIL tests to verify the performance of power electronics controllers, power system protection systems, and battery management systems.</p>` 
             }
         ];
 
+        // UPDATED EXPERIENCE DATA (For the Project Modal, now Data Center Expertise)
         const experienceData = [
-            { image: "assets/images/media/data-center-google.png", title: "Google Data Center Optimal Location", content: `<p class="mb-4"><strong>Client:</strong> Google<br><strong>Location:</strong> USA (Ongoing)</p><p>We are conducting a comprehensive load hosting capacity analysis to identify optimal locations for building new data centers. This study involves analyzing grid constraints, available capacity, and future load growth scenarios to ensure seamless integration of high-demand facilities.</p><p>The project leverages advanced power flow modeling to support Google's strategic infrastructure expansion.</p>` },
-            { image: "assets/images/media/hil-testing-lab.png", title: "NYPA Advanced Power Flow Control", content: `<p class="mb-4"><strong>Client:</strong> New York Power Authority<br><strong>Location:</strong> New York</p><p>This project focused on the deployment of Advanced Power Flow Control (APFC) technology within the New York Control Area (NYCA). Our team performed an economic assessment of Dynamic Line Rating (DLR) operations to optimize grid efficiency.</p><p>The solution enables greater renewable energy integration by relieving transmission congestion without costly line upgrades.</p>` },
-            { image: "assets/images/media/transmission-lines.jpeg", title: "Viento Fronterizo 500kV Line", content: `<p class="mb-4"><strong>Client:</strong> Ignis<br><strong>Location:</strong> USA / Mexico Border</p><p>We delivered the Basic Design and PLS-CADD modeling for the "Viento Fronterizo" High-Voltage Overhead Line. This 20km cross-border transmission line connects critical energy infrastructure between the two nations.</p><p>Scope included route selection, tower spotting, and structural analysis to ensure compliance with both US and Mexican grid codes.</p>` },
-            { image: "assets/images/media/solar-integration.jpeg", title: "Dominion Energy Hosting Capacity", content: `<p class="mb-4"><strong>Client:</strong> Dominion Energy<br><strong>Location:</strong> Virginia</p><p>Our team is performing ongoing hosting capacity analysis to support the integration of distributed energy resources (DERs). This involves detailed solar integration cost analysis to facilitate the interconnection of renewable generation.</p><p>The study helps Dominion identify grid upgrades needed to support Virginia's clean energy goals.</p>` },
-            { image: "assets/images/media/server-rack-aisle.png", title: "Sumbe TIER III Data Center", content: `<p class="mb-4"><strong>Client:</strong> Logicalis<br><strong>Location:</strong> Angola</p><p>We provided full design services (RIBA Stages 3-4) for a new TIER III Data Center in Sumbe. The facility features 1 MW of IT power and is designed for high availability and resilience.</p><p>Our scope included electrical, mechanical, and civil engineering design to meet rigorous international data center standards.</p>` },
-            { image: "assets/images/media/substation-infrastructure.jpeg", title: "Project Grimes Substation", content: `<p class="mb-4"><strong>Client:</strong> Naturgy<br><strong>Location:</strong> Texas (ERCOT)</p><p>This project involved the technical specifications and support for transformer procurement for a 138/34.5/13.8 kV substation. We also provided design review and support for the ERCOT interconnection process.</p><p>The substation serves as a critical injection point for renewable energy into the Texas grid.</p>` }
+            { 
+                image: "assets/images/media/data_servers.jpeg", 
+                title: "Engineering Excellence", 
+                content: `<p class="mb-4"><strong>Precision-engineered systems tailored for uptime and performance powering AI-ready infrastructure.</strong></p><p>Our solutions include High-Performance Computing (HPC) cooling optimization, redundancy planning (N+1, 2N), and advanced electrical distribution design to support the intense power density requirements of modern AI workloads.</p>` 
+            },
+            { 
+                image: "assets/images/media/data_server_2.jpeg", 
+                title: "Local Regulations and Permissions", 
+                content: `<p class="mb-4"><strong>Full compliance with planning, zoning, and environmental permits, and extensive knowledge of local power grid.</strong></p><p>We navigate complex regulatory landscapes, managing everything from Environmental Impact Assessments (EIA) to grid interconnection agreements. Our deep understanding of local ISO/RTO policies ensures faster time-to-power for your data center projects.</p>` 
+            },
+            { 
+                image: "assets/images/media/data_servers_3.png", 
+                title: "Sustainability", 
+                content: `<p class="mb-4"><strong>Sustainable design aligned with international standards and certifications, with the highest PUE and WUE standards.</strong></p><p>We prioritize green building certifications (LEED, BREEAM) and innovative thermal management to minimize Power Usage Effectiveness (PUE) and Water Usage Effectiveness (WUE), driving operational efficiency while meeting corporate ESG goals.</p>` 
+            }
         ];
 
         const teamData = [
@@ -1183,62 +1225,138 @@
             }, 300);
         }
 
-        function generateDraft() {
+        // Gemini API call logic - START
+        const apiKey = ""; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+        async function fetchWithExponentialBackoff(payload, maxRetries = 5, delay = 1000) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 429 || response.status >= 500) {
+                        if (i < maxRetries - 1) {
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            delay *= 2; 
+                            continue;
+                        } else {
+                            throw new Error(`API call failed after ${maxRetries} attempts.`);
+                        }
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    return response.json();
+
+                } catch (error) {
+                    console.error("Fetch attempt failed:", error);
+                    if (i === maxRetries - 1) throw error;
+                }
+            }
+        }
+        
+        async function callGemini(systemInstruction, userQuery) {
+             const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                },
+            };
+
+            const result = await fetchWithExponentialBackoff(payload);
+            
+            const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (!text) {
+                console.error("Gemini response lacked text content:", result);
+                return "Failed to generate draft. Please try a different prompt or contact us directly.";
+            }
+            return text;
+        }
+        // Gemini API call logic - END
+
+
+        async function generateDraft() {
             const promptInput = document.getElementById('ai-prompt-input');
-            const prompt = promptInput.value.toLowerCase();
+            const userPrompt = promptInput.value.trim();
             const btn = document.getElementById('generate-btn');
-            // Store original text content safely (including the icon SVG if it was already rendered)
             const originalContent = btn.innerHTML;
             
-            if(!prompt.trim()) {
-                promptInput.classList.add('border-red-500');
-                setTimeout(() => promptInput.classList.remove('border-red-500'), 2000);
+            if(!userPrompt) {
+                promptInput.classList.add('border-red-500', 'ring-2', 'ring-red-200');
+                setTimeout(() => promptInput.classList.remove('border-red-500', 'ring-2', 'ring-red-200'), 2000);
                 return;
             }
 
-            // Use simple text or inline SVG to avoid needing lucide.createIcons() which scans the whole DOM and can freeze
-            btn.innerHTML = 'Generating...';
+            btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin mr-2"></i> Generating...`;
             btn.disabled = true;
+            lucide.createIcons({ root: btn });
             
-            // Simulate AI delay
-            setTimeout(() => {
-                let draft = "";
-                
-                // Context-aware Heuristics
-                if (prompt.includes('resume') || prompt.includes('job') || prompt.includes('career')) {
-                    draft = "Dear Hiring Manager,\n\nI am writing to express my interest in potential career opportunities at Quadrante USA. Could you please direct me to your current job openings or accept my resume for future consideration?\n\nBest regards,";
-                } else if (prompt.includes('meeting') || prompt.includes('schedule') || prompt.includes('call')) {
-                    draft = "Hello,\n\nI would like to request a brief meeting to discuss potential collaboration opportunities between our organizations. Please let me know your availability for the coming week.\n\nThank you,";
-                } else if (prompt.includes('proposal') || prompt.includes('quote') || prompt.includes('cost')) {
-                    draft = "Dear Team,\n\nWe are currently exploring partners for an upcoming energy infrastructure project. Could you please provide a proposal or rough cost estimate based on the services outlined on your website?\n\nSincerely,";
-                } else if (prompt.includes('solar') || prompt.includes('wind') || prompt.includes('renewable')) {
-                    draft = "Hi,\n\nI am interested in your Renewable Energy Integration services. We have a project in the development phase and require support with interconnection studies. Could you share more details on your experience in this area?\n\nRegards,";
-                } else if (prompt.includes('data center') || prompt.includes('google') || prompt.includes('hosting')) {
-                    draft = "To Whom It May Concern,\n\nI read about your work with Google and data center siting. We have a similar requirement for load hosting capacity analysis. Is your team available for a consultation regarding this?\n\nBest,";
-                } else {
-                    // Fallback
-                    const responses = [
-                        "Dear Team,\n\nI am writing to inquire about the specific details of your engineering services. Could you please provide more information or a brochure outlining your capabilities?\n\nThank you,",
-                        "Hello,\n\nI visited your website and would like to get in touch regarding a potential project. Could you please direct this inquiry to the appropriate department?\n\nBest regards,"
-                    ];
-                    draft = responses[Math.floor(Math.random() * responses.length)];
-                }
+            const systemPrompt = `You are a professional email drafting assistant for a premium engineering consultancy, Quadrante USA. Your task is to write a polite, formal, and concise email draft based on the user's request. Keep the tone professional and focused on business engagement. The company specializes in power systems engineering, grid decarbonization, and data center infrastructure. Only respond with the email body, starting with the greeting (e.g., "Dear Team,") and ending with a formal closing (e.g., "Sincerely,").`;
+            
+            let draft = "Error: Failed to connect to the drafting service.";
+            
+            try {
+                 draft = await callGemini(systemPrompt, userPrompt);
+            } catch(error) {
+                console.error("Gemini API error:", error);
+                draft = "Error: There was an issue connecting to the AI service. Please try again later.";
+            }
 
-                document.getElementById('draft-output').value = draft;
-                document.getElementById('draft-result-container').classList.remove('hidden');
-                
-                try {
-                    // Scroll to result safely
-                    document.getElementById('draft-result-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                } catch(e) {
-                    console.log("Scroll failed", e);
-                }
+            document.getElementById('draft-output').value = draft;
+            document.getElementById('draft-result-container').classList.remove('hidden');
+            
+            try {
+                // Scroll to result safely
+                document.getElementById('draft-result-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch(e) {
+                console.log("Scroll failed", e);
+            }
 
-                btn.innerHTML = originalContent; // Restore original button content
-                btn.disabled = false;
-                
-            }, 1500);
+            btn.innerHTML = originalContent; 
+            btn.disabled = false;
+            lucide.createIcons({ root: btn });
         }
+
+        async function modifyDraft(action) {
+            const textarea = document.getElementById('draft-output');
+            const currentDraft = textarea.value.trim();
+            
+            if (!currentDraft) return;
+
+            const btn = document.querySelector(`button[onclick="modifyDraft('${action}')"]`);
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `...`;
+            
+            let systemPrompt = `You are an email editing assistant. Modify the provided email draft: "${currentDraft}".`;
+
+            if (action === 'shorten') {
+                systemPrompt += ' Make it significantly shorter and more direct, while retaining its polite, professional tone and main inquiry point.';
+            } else if (action === 'expand') {
+                systemPrompt += ' Expand the draft to include more detail and formality. Suggest next steps or a request for a meeting, if appropriate.';
+            } else if (action === 'formal') {
+                systemPrompt += ' Rephrase the draft to be highly formal and professional. Ensure formal greetings and closings are used.';
+            } else if (action === 'casual') {
+                systemPrompt += ' Rephrase the draft to be more casual and friendly, while still remaining professional. Use appropriate greetings and closings.';
+            }
+
+            let newDraft = "Error: Failed to refine draft.";
+
+            try {
+                 newDraft = await callGemini(systemPrompt, `Refine the draft based on the following instruction: ${systemPrompt}`);
+            } catch(error) {
+                console.error("Gemini API error:", error);
+            }
+
+            textarea.value = newDraft;
+            btn.innerHTML = originalText;
+        }
+
 
         function insertDraft() {
             if(currentDraftTargetId) {
@@ -1251,30 +1369,6 @@
                 }
             }
             closeAiDraftModal();
-        }
-
-        function modifyDraft(action) {
-            const textarea = document.getElementById('draft-output');
-            let text = textarea.value;
-            
-            if (action === 'shorten') {
-                // Remove greetings/closings or just take the middle paragraph
-                const lines = text.split('\n').filter(line => line.trim() !== '');
-                if (lines.length > 1) {
-                    // Try to find the body
-                    const body = lines.find(line => line.length > 30) || lines[0];
-                    text = body;
-                }
-            } else if (action === 'expand') {
-                if (!text.includes("further")) {
-                    text += "\n\nI look forward to hearing from you soon and discussing this further.";
-                }
-            } else if (action === 'formal') {
-                text = text.replace(/Hi,|Hello,/g, "Dear Sir\/Madam,").replace(/Best,|Regards,/g, "Sincerely,");
-            } else if (action === 'casual') {
-                text = text.replace(/Dear .*?,|To Whom It May Concern,/g, "Hi,").replace(/Sincerely,|Best regards,/g, "Best,");
-            }
-            textarea.value = text;
         }
 
         // Universal Modal
@@ -1291,7 +1385,7 @@
             else dataArray = teamData;
 
             let headerText = 'Our Competencies';
-            if (section === 'projects') headerText = 'Featured Projects';
+            if (section === 'projects') headerText = 'Data Center Expertise';
             else if (section === 'team') headerText = 'Our Leadership';
             else if (section === 'about') headerText = 'Company Profile';
             
