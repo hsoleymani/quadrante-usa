@@ -1,0 +1,127 @@
+/* Quadrante USA Website Styles */
+
+/* --- Mobile Menu Styles --- */
+#mobile-menu {
+    transition: transform 0.3s ease-out;
+    transform: translateX(100%);
+}
+#mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* --- Slider Styles --- */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+}
+.slide.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.slide-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-out 0.5s;
+}
+.slide.active .slide-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Utility Styles --- */
+.hover-pause:hover .animate-marquee,
+.hover-pause:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+}
+
+.mask-gradient {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(30, 64, 175, 0); }
+}
+.ai-pulse {
+    animation: pulse-glow 2s infinite;
+}
+
+/* Background Pattern */
+.bg-dot-pattern {
+    background-color: #f8fafc;
+    background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    transition: opacity 0.3s ease-out;
+}
+.modal-content {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+.modal-hidden .modal-backdrop {
+    opacity: 0;
+    pointer-events: none;
+}
+.modal-hidden .modal-content {
+    transform: scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Dark Scrollbar for the sidebar */
+.dark-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.dark-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.dark-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+/* Specific Fix for Quadrante Principles Spacing */
+#quadrante-principles-list p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Map Icon Styling */
+.custom-div-icon {
+    background: transparent;
+    border: none;
+}
+
+/* Leaflet Popup Override */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+.leaflet-popup-content {
+    margin: 0;
+    width: 260px !important;
+}

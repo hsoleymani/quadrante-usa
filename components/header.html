@@ -1,0 +1,41 @@
+<!-- Header and Navigation -->
+<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-brand-primary z-[60] transition-all duration-100 w-0"></div>
+
+<header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white py-6 border-b border-gray-100">
+    <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div class="flex items-center gap-4 md:gap-6 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <a href="https://quadranteglobal.com/landing-page/" target="_blank" onclick="event.stopPropagation()">
+                <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-5 md:h-8 w-auto" />
+            </a>
+            <div class="h-7 md:h-12 w-px bg-slate-300"></div>
+            <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-10 md:h-20 w-auto object-contain" />
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="#about" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">About</a>
+            <a href="#team" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Team</a>
+            <a href="#expertise" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Services</a>
+            <a href="#projects" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Projects</a>
+            <div class="h-5 w-px bg-gray-300 mx-2"></div>
+            <a href="#contact" class="bg-brand-primary hover:bg-blue-800 text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-600/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Get in Touch</a>
+        </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden text-slate-900 p-2" aria-label="Toggle Mobile Menu">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-md z-40 flex flex-col pt-24 px-6 md:hidden transition-transform duration-300 transform translate-x-full">
+    <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-slate-900 p-2">
+        <i data-lucide="x" class="w-8 h-8"></i>
+    </button>
+    <nav class="flex flex-col gap-6 text-xl font-bold uppercase tracking-wider">
+        <a href="#about" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">About</a>
+        <a href="#team" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Team</a>
+        <a href="#expertise" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Services</a>
+        <a href="#projects" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Projects</a>
+    </nav>
+    <a href="#contact" onclick="toggleMobileMenu()" class="mt-10 text-center bg-brand-primary hover:bg-blue-800 text-white px-7 py-4 rounded-lg font-bold transition-all shadow-lg text-lg uppercase tracking-wider">Get in Touch</a>
+</div>
