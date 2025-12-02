@@ -150,7 +150,13 @@
 
             // Initialize the project map after components are loaded
             if (document.getElementById('project-map') && typeof initializeProjectMap === 'function') {
-                initializeProjectMap();
+                // Wait a bit for DOM to settle
+                setTimeout(() => {
+                    initializeProjectMap();
+                    console.log('Map initialized successfully');
+                }, 100);
+            } else {
+                console.log('Map element or init function not found');
             }
         });
     </script>

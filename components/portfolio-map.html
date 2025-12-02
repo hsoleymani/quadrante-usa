@@ -10,12 +10,27 @@
             </p>
         </div>
 
-        <div class="relative w-full h-[500px] md:h-[650px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10">
+        <!-- Region Navigation Tabs -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-full p-2 shadow-lg border border-slate-200">
+                <button id="btn-usa" onclick="focusRegion('usa')" class="px-6 py-3 rounded-full font-bold text-sm transition-all bg-brand-primary text-white shadow-md">
+                    🇺🇸 United States
+                </button>
+                <button id="btn-europe" onclick="focusRegion('europe')" class="px-6 py-3 rounded-full font-bold text-sm transition-all text-slate-600 hover:text-brand-primary hover:bg-slate-50">
+                    🇪🇺 Europe
+                </button>
+                <button id="btn-global" onclick="focusRegion('global')" class="px-6 py-3 rounded-full font-bold text-sm transition-all text-slate-600 hover:text-brand-primary hover:bg-slate-50">
+                    🌍 Global View
+                </button>
+            </div>
+        </div>
+
+        <div class="relative w-full h-[500px] md:h-[700px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10">
             <div id="project-map" class="w-full h-full bg-slate-100"></div>
 
-            <!-- Interactive Map Legend/Filter -->
-            <div class="absolute bottom-6 left-6 z-[1000] bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200 hidden md:block">
-                <h5 class="font-bold text-slate-900 text-sm mb-3">Filter Project Types</h5>
+            <!-- Enhanced Controls Panel -->
+            <div class="absolute top-6 left-6 z-[1000] bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200">
+                <h5 class="font-bold text-slate-900 text-sm mb-3">Project Types</h5>
                 <div class="space-y-2">
                     <button id="btn-grid" onclick="toggleFilter('grid')" class="w-full flex items-center gap-2 text-xs text-slate-700 hover:bg-slate-100 p-2 rounded-lg transition-all ring-2 ring-offset-1 ring-blue-100 bg-blue-50">
                         <span class="w-3 h-3 rounded-full bg-blue-600 shadow-sm"></span> <span class="font-bold">Grid & Transmission</span>
@@ -27,6 +42,74 @@
                         <span class="w-3 h-3 rounded-full bg-indigo-600 shadow-sm"></span> <span class="font-bold">Studies & Consulting</span>
                     </button>
                 </div>
+            </div>
+
+            <!-- Project Counter -->
+            <div class="absolute top-6 right-6 z-[1000] bg-brand-primary/90 backdrop-blur-sm text-white px-4 py-2 rounded-xl shadow-lg">
+                <div class="text-xs font-bold uppercase tracking-wider">Projects Shown</div>
+                <div id="project-counter" class="text-2xl font-bold">15</div>
+            </div>
+
+            <!-- Enhanced Project Showcase Panel - Side Panel -->
+            <div id="project-showcase" class="absolute top-0 right-0 bottom-0 w-96 z-[1000] bg-white/98 backdrop-blur-sm shadow-2xl border-l border-slate-200 transform translate-x-full transition-transform duration-500 opacity-0">
+                <div class="h-full flex flex-col">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-slate-100">
+                        <h3 class="font-serif font-bold text-xl text-slate-900">Project Details</h3>
+                        <button onclick="closeProjectShowcase()" class="text-slate-400 hover:text-slate-600 transition-colors p-2 hover:bg-slate-100 rounded-full">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex-1 p-6 overflow-y-auto">
+                        <!-- Large Project Image -->
+                        <div class="w-full h-48 rounded-xl overflow-hidden bg-slate-100 mb-6 shadow-lg">
+                            <img id="showcase-image" src="" class="w-full h-full object-cover" alt="Project Image">
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span id="showcase-type-badge" class="px-3 py-1 text-sm font-bold rounded-full bg-blue-100 text-blue-800">Grid</span>
+                            </div>
+
+                            <div>
+                                <div class="text-sm text-slate-500 font-medium mb-1">Client</div>
+                                <div id="showcase-client" class="font-semibold text-slate-900 text-lg">Client Name</div>
+                            </div>
+
+                            <div>
+                                <div class="text-sm text-slate-500 font-medium mb-2">Project</div>
+                                <h4 id="showcase-title" class="font-bold text-slate-900 text-xl mb-4 leading-tight">Project Title</h4>
+                            </div>
+
+                            <div>
+                                <div class="text-sm text-slate-500 font-medium mb-2">Description</div>
+                                <p id="showcase-description" class="text-slate-700 leading-relaxed">Project description goes here...</p>
+                            </div>
+
+                            <!-- Additional Info Section -->
+                            <div class="mt-8 pt-6 border-t border-slate-100">
+                                <div class="bg-slate-50 rounded-lg p-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-primary"></i>
+                                        <span class="text-sm font-semibold text-slate-900">Project Location</span>
+                                    </div>
+                                    <p id="showcase-location" class="text-sm text-slate-600">Click on map to see location details</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Project List -->
+        <div class="md:hidden mt-8">
+            <h4 class="text-xl font-serif font-bold text-slate-900 mb-6">Featured Projects</h4>
+            <div id="mobile-project-list" class="grid gap-4">
+                <!-- Mobile projects will be populated by JavaScript -->
             </div>
         </div>
     </div>

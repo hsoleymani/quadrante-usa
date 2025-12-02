@@ -668,107 +668,176 @@ function updateModalUI() {
     }
 }
 
-// Project Map functionality
+// Enhanced Project Map functionality
+let projectMap;
+let allMarkers = [];
+let layerGroups = {};
+let currentRegion = 'usa';
+
 function initializeProjectMap() {
-    // Initialize Map
-    var map = L.map('project-map', {
-        scrollWheelZoom: false
-    }).setView([30.0, -40.0], 3);
+    // Initialize Map - Start focused on USA
+    projectMap = L.map('project-map', {
+        scrollWheelZoom: false,
+        zoomControl: false
+    }).setView([39.8283, -98.5795], 4); // USA center
+
+    // Add custom zoom controls
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(projectMap);
 
     // Add Tile Layer
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 19
-    }).addTo(map);
+    }).addTo(projectMap);
 
-    // Create Icon Factory
-    var createIcon = function (color) {
+    // Enhanced Icon Factory with hover effects
+    const createIcon = function (color, size = 'normal') {
+        const sizeMap = {
+            normal: { width: 14, height: 14, iconSize: [18, 18] },
+            highlighted: { width: 18, height: 18, iconSize: [22, 22] }
+        };
+        const s = sizeMap[size];
         return L.divIcon({
             className: 'custom-div-icon',
-            html: `<div style="background-color: ${color}; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 4px rgba(0,0,0,0.1); transition: transform 0.2s;"></div>`,
-            iconSize: [16, 16],
-            iconAnchor: [8, 8],
+            html: `<div style="background-color: ${color}; width: ${s.width}px; height: ${s.height}px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 4px rgba(0,0,0,0.15); transition: all 0.3s ease; cursor: pointer;"></div>`,
+            iconSize: s.iconSize,
+            iconAnchor: [s.iconSize[0]/2, s.iconSize[1]/2],
             popupAnchor: [0, -10]
         });
     };
 
     const icons = {
-        grid: createIcon('#2563eb'),  // Blue
-        renew: createIcon('#16a34a'), // Green
-        study: createIcon('#4f46e5')  // Indigo
+        grid: { normal: createIcon('#2563eb'), highlighted: createIcon('#2563eb', 'highlighted') },
+        renew: { normal: createIcon('#16a34a'), highlighted: createIcon('#16a34a', 'highlighted') },
+        study: { normal: createIcon('#4f46e5'), highlighted: createIcon('#4f46e5', 'highlighted') }
     };
 
     // Initialize Layer Groups for Filtering
-    const layerGroups = {
-        grid: L.layerGroup().addTo(map),
-        renew: L.layerGroup().addTo(map),
-        study: L.layerGroup().addTo(map)
+    layerGroups = {
+        grid: L.layerGroup().addTo(projectMap),
+        renew: L.layerGroup().addTo(projectMap),
+        study: L.layerGroup().addTo(projectMap)
     };
 
-    // Project Data
+    // Enhanced Project Data with regions
     const projects = [
-        { lat: 40.7128, lng: -74.0060, title: "NYPA & NYSERDA Initiatives", client: "New York Power Authority", desc: "Advanced Power Flow Controller deployment & Wind power enabling technologies.", type: "grid", image: "assets/images/media/wind-farm-global.png" },
-        { lat: 37.5407, lng: -77.4360, title: "Dominion Energy Analysis", client: "Dominion Energy", desc: "Hosting capacity analysis & Solar integration cost analysis.", type: "study", image: "assets/images/media/solar_wind.jpeg" },
-        { lat: 30.6333, lng: -96.3478, title: "Project Grimes & Mark Center", client: "Naturgy", desc: "138/34.5/13.8 kV Substation technical specs & ERCOT interconnection.", type: "grid", image: "assets/images/media/Grimes.jpg" },
-        { lat: 34.0522, lng: -118.2437, title: "SCE Arc Events Modeling", client: "Southern California Edison", desc: "Power systems arc events modeling using RTDS.", type: "study", image: "assets/images/media/solar_wind.jpeg" },
-        { lat: 32.7157, lng: -117.1611, title: "Microgrid Integration", client: "SDG&E", desc: "Microgrid integration study using Hardware-in-the-Loop (RTDS).", type: "study", image: "assets/images/media/Hardware_in_the_Loop.png" },
-        { lat: 32.5600, lng: -116.6000, title: "Viento Fronterizo Line", client: "Ignis", desc: "500 kV High-Voltage Overhead Lines (20km cross-border).", type: "grid", image: "assets/images/media/transmission-lines.jpeg" },
-        { lat: 40.4173, lng: -82.9071, title: "Ohio Substation Projects", client: "Naturgy", desc: "Project Mark Center – 69/13.8 kV Substation equipment specs.", type: "grid", image: "assets/images/media/mark.png" },
-        { lat: 38.0000, lng: -97.0000, title: "MISO System Impact", client: "MISO", desc: "System Impact Study for Midcontinent ISO.", type: "study", image: "assets/images/media/tower_grid_1.png" },
-        { lat: 35.0000, lng: -100.0000, title: "Google Data Center", client: "Google", desc: "Data center optimal location & load analysis.", type: "study", image: "assets/images/media/servers.png" },
-        { lat: 18.2208, lng: -66.5901, title: "Puerto Rico T&D", client: "TSK", desc: "115 kV Jobos & Salinas Overhead/Buried Lines.", type: "grid", image: "assets/images/media/Salinas.jpeg" },
-        { lat: 8.5380, lng: -80.7821, title: "El Higo–Llano Sánchez", client: "Gas Natural Fenosa", desc: "230 kV double-circuit overhead lines (82.5 km).", type: "grid", image: "assets/images/media/higo.png" },
-        { lat: 37.4697, lng: -5.6415, title: "Carmona Substation", client: "Naturgy (Spain)", desc: "Repowering of 400kV high voltage lines.", type: "grid", image: "assets/images/media/Carmona.jpeg" },
-        { lat: 41.6523, lng: -4.7245, title: "Valle 1 & 2 Lines", client: "Reganosa (Spain)", desc: "220kV evacuation lines for PV plants.", type: "renew", image: "assets/images/media/Renedo.jpeg" },
-        { lat: 39.3999, lng: -8.2245, title: "Rio Maior & Torre de Bela", client: "ACISA (Portugal)", desc: "272MWp PV Plants - Basic and Detailed Design.", type: "renew", image: "assets/images/media/Rio_solar.jpeg" },
-        { lat: 38.7223, lng: -9.1393, title: "Cerca PV Plant", client: "EDP Renováveis", desc: "202MWp PV Plant Permitting and Tender Design.", type: "renew", image: "assets/images/media/cerca_solar_field.jpeg" }
+        // USA Projects
+        { lat: 40.7128, lng: -74.0060, title: "NYPA & NYSERDA Initiatives", client: "New York Power Authority", desc: "Advanced Power Flow Controller deployment & Wind power enabling technologies.", type: "grid", image: "assets/images/media/wind-farm-global.png", region: "usa" },
+        { lat: 37.5407, lng: -77.4360, title: "Dominion Energy Analysis", client: "Dominion Energy", desc: "Hosting capacity analysis & Solar integration cost analysis.", type: "study", image: "assets/images/media/solar_wind.jpeg", region: "usa" },
+        { lat: 30.6333, lng: -96.3478, title: "Project Grimes & Mark Center", client: "Naturgy", desc: "138/34.5/13.8 kV Substation technical specs & ERCOT interconnection.", type: "grid", image: "assets/images/media/Grimes.jpg", region: "usa" },
+        { lat: 34.0522, lng: -118.2437, title: "SCE Arc Events Modeling", client: "Southern California Edison", desc: "Power systems arc events modeling using RTDS.", type: "study", image: "assets/images/media/solar_wind.jpeg", region: "usa" },
+        { lat: 32.7157, lng: -117.1611, title: "Microgrid Integration", client: "SDG&E", desc: "Microgrid integration study using Hardware-in-the-Loop (RTDS).", type: "study", image: "assets/images/media/Hardware_in_the_Loop.png", region: "usa" },
+        { lat: 32.5600, lng: -116.6000, title: "Viento Fronterizo Line", client: "Ignis", desc: "500 kV High-Voltage Overhead Lines (20km cross-border).", type: "grid", image: "assets/images/media/transmission-lines.jpeg", region: "usa" },
+        { lat: 40.4173, lng: -82.9071, title: "Ohio Substation Projects", client: "Naturgy", desc: "Project Mark Center – 69/13.8 kV Substation equipment specs.", type: "grid", image: "assets/images/media/mark.png", region: "usa" },
+        { lat: 38.0000, lng: -97.0000, title: "MISO System Impact", client: "MISO", desc: "System Impact Study for Midcontinent ISO.", type: "study", image: "assets/images/media/tower_grid_1.png", region: "usa" },
+        { lat: 35.0000, lng: -100.0000, title: "Google Data Center", client: "Google", desc: "Data center optimal location & load analysis.", type: "study", image: "assets/images/media/servers.png", region: "usa" },
+        { lat: 18.2208, lng: -66.5901, title: "Puerto Rico T&D", client: "TSK", desc: "115 kV Jobos & Salinas Overhead/Buried Lines.", type: "grid", image: "assets/images/media/Salinas.jpeg", region: "usa" },
+
+        // Latin America
+        { lat: 8.5380, lng: -80.7821, title: "El Higo–Llano Sánchez", client: "Gas Natural Fenosa", desc: "230 kV double-circuit overhead lines (82.5 km).", type: "grid", image: "assets/images/media/higo.png", region: "global" },
+
+        // Europe Projects
+        { lat: 37.4697, lng: -5.6415, title: "Carmona Substation", client: "Naturgy (Spain)", desc: "Repowering of 400kV high voltage lines.", type: "grid", image: "assets/images/media/Carmona.jpeg", region: "europe" },
+        { lat: 41.6523, lng: -4.7245, title: "Valle 1 & 2 Lines", client: "Reganosa (Spain)", desc: "220kV evacuation lines for PV plants.", type: "renew", image: "assets/images/media/Renedo.jpeg", region: "europe" },
+        { lat: 39.3999, lng: -8.2245, title: "Rio Maior & Torre de Bela", client: "ACISA (Portugal)", desc: "272MWp PV Plants - Basic and Detailed Design.", type: "renew", image: "assets/images/media/Rio_solar.jpeg", region: "europe" },
+        { lat: 38.7223, lng: -9.1393, title: "Cerca PV Plant", client: "EDP Renováveis", desc: "202MWp PV Plant Permitting and Tender Design.", type: "renew", image: "assets/images/media/cerca_solar_field.jpeg", region: "europe" }
     ];
 
-    // Add Markers to respective Layer Groups
-    projects.forEach(p => {
-        const marker = L.marker([p.lat, p.lng], { icon: icons[p.type] });
+    window.projectsData = projects; // Store globally for access
 
-        const popupContent = `
-            <div class="font-sans min-w-[200px]">
-                <div class="w-full h-24 mb-2 overflow-hidden rounded-md bg-slate-100 border border-slate-200">
-                    <img src="${p.image}" class="w-full h-full object-cover" alt="${p.title}">
-                </div>
-                <div class="px-1 pb-1">
-                    <div class="text-brand-primary text-[10px] font-bold uppercase tracking-widest mb-1">${p.client}</div>
-                    <h4 class="font-bold text-slate-900 text-sm leading-tight mb-2">${p.title}</h4>
-                    <p class="text-slate-600 text-xs leading-snug">${p.desc}</p>
-                </div>
-            </div>
-        `;
-        marker.bindPopup(popupContent);
+    // Add Enhanced Markers
+    projects.forEach((p, index) => {
+        const marker = L.marker([p.lat, p.lng], {
+            icon: icons[p.type].normal,
+            riseOnHover: true
+        });
+
+        // Enhanced click functionality with debugging
+        marker.on('click', function(e) {
+            console.log('Marker clicked:', p.title); // Debug log
+            e.originalEvent.stopPropagation();
+            window.showProjectShowcase(p);
+        });
+
+        // Hover effects
+        marker.on('mouseover', function() {
+            marker.setIcon(icons[p.type].highlighted);
+        });
+
+        marker.on('mouseout', function() {
+            marker.setIcon(icons[p.type].normal);
+        });
+
+        // Store project data with marker
+        marker.projectData = p;
+        allMarkers.push(marker);
         layerGroups[p.type].addLayer(marker);
     });
+
+    // Update project counter
+    updateProjectCounter();
+
+    // Generate mobile project list
+    generateMobileProjectList();
 
     // Filter Logic
     window.toggleFilter = function (type) {
         const layer = layerGroups[type];
         const btn = document.getElementById('btn-' + type);
 
-        if (map.hasLayer(layer)) {
-            map.removeLayer(layer);
-            // Deactive Style
+        if (projectMap.hasLayer(layer)) {
+            projectMap.removeLayer(layer);
             btn.classList.add('opacity-50', 'grayscale');
             btn.classList.remove('ring-2', 'ring-offset-1', 'bg-blue-50', 'bg-green-50', 'bg-indigo-50');
         } else {
-            map.addLayer(layer);
-            // Active Style
+            projectMap.addLayer(layer);
             btn.classList.remove('opacity-50', 'grayscale');
             btn.classList.add('ring-2', 'ring-offset-1');
 
-            // Restore specific BG color
             if (type === 'grid') btn.classList.add('bg-blue-50');
             if (type === 'renew') btn.classList.add('bg-green-50');
             if (type === 'study') btn.classList.add('bg-indigo-50');
         }
-    }
+        updateProjectCounter();
+    };
 
-    // Initial state: ensure all filters are visibly active on load
+    // Region Focus Logic
+    window.focusRegion = function(region) {
+        console.log('Focusing on region:', region); // Debug log
+        currentRegion = region;
+
+        // Update button states
+        document.querySelectorAll('[id^="btn-"]:not([id*="grid"]):not([id*="renew"]):not([id*="study"])').forEach(btn => {
+            btn.classList.remove('bg-brand-primary', 'text-white', 'shadow-md');
+            btn.classList.add('text-slate-600');
+        });
+
+        const activeBtn = document.getElementById(`btn-${region}`);
+        if (activeBtn) {
+            activeBtn.classList.add('bg-brand-primary', 'text-white', 'shadow-md');
+            activeBtn.classList.remove('text-slate-600');
+        }
+
+        // Focus map on region
+        const regionBounds = {
+            usa: { center: [39.8283, -98.5795], zoom: 4 },
+            europe: { center: [39.5, -4.0], zoom: 6 }, // Spain/Portugal focus - centered on Iberian Peninsula
+            global: { center: [30.0, -40.0], zoom: 3 }
+        };
+
+        const bounds = regionBounds[region];
+        if (projectMap) {
+            projectMap.setView(bounds.center, bounds.zoom);
+        }
+
+        updateProjectCounter();
+        generateMobileProjectList();
+    };
+
+    // Initialize with USA focus
     ['grid', 'renew', 'study'].forEach(type => {
         const btn = document.getElementById('btn-' + type);
         if (type === 'grid') btn.classList.add('ring-blue-100', 'bg-blue-50');
@@ -777,6 +846,114 @@ function initializeProjectMap() {
     });
 
     window.addEventListener('resize', function () {
-        map.invalidateSize();
+        projectMap.invalidateSize();
     });
+}
+
+// Enhanced Project Showcase
+window.showProjectShowcase = function(project) {
+    console.log('Showing project:', project.title); // Debug log
+    const showcase = document.getElementById('project-showcase');
+
+    if (!showcase) {
+        console.error('Project showcase element not found');
+        return;
+    }
+
+    const typeColors = {
+        grid: { bg: 'bg-blue-100', text: 'text-blue-800' },
+        renew: { bg: 'bg-green-100', text: 'text-green-800' },
+        study: { bg: 'bg-indigo-100', text: 'text-indigo-800' }
+    };
+
+    // Update showcase content
+    const showcaseImage = document.getElementById('showcase-image');
+    const showcaseTitle = document.getElementById('showcase-title');
+    const showcaseClient = document.getElementById('showcase-client');
+    const showcaseDescription = document.getElementById('showcase-description');
+    const showcaseBadge = document.getElementById('showcase-type-badge');
+    const showcaseLocation = document.getElementById('showcase-location');
+
+    if (showcaseImage) showcaseImage.src = project.image;
+    if (showcaseTitle) showcaseTitle.textContent = project.title;
+    if (showcaseClient) showcaseClient.textContent = project.client;
+    if (showcaseDescription) showcaseDescription.textContent = project.desc;
+
+    // Set location info
+    if (showcaseLocation) {
+        const locationText = project.region === 'usa' ? 'United States' :
+                           project.region === 'europe' ? 'Europe (Spain/Portugal)' :
+                           'International';
+        showcaseLocation.textContent = `${locationText} • Lat: ${project.lat.toFixed(2)}, Lng: ${project.lng.toFixed(2)}`;
+    }
+
+    if (showcaseBadge) {
+        showcaseBadge.textContent = project.type === 'grid' ? 'Grid & Transmission' :
+                          project.type === 'renew' ? 'Renewables' : 'Studies & Consulting';
+        showcaseBadge.className = `px-3 py-1 text-sm font-bold rounded-full ${typeColors[project.type].bg} ${typeColors[project.type].text}`;
+    }
+
+    // Show showcase with enhanced side panel animation
+    showcase.classList.remove('translate-x-full', 'opacity-0', 'hide');
+    showcase.classList.add('translate-x-0', 'opacity-100', 'show');
+
+    // Force reflow to ensure proper animation
+    showcase.offsetHeight;
+
+    // Re-initialize icons for the showcase
+    if (window.lucide) {
+        lucide.createIcons({ root: showcase });
+    }
+};
+
+window.closeProjectShowcase = function() {
+    const showcase = document.getElementById('project-showcase');
+    if (showcase) {
+        showcase.classList.add('translate-x-full', 'opacity-0', 'hide');
+        showcase.classList.remove('translate-x-0', 'opacity-100', 'show');
+    }
+};
+
+// Update project counter
+function updateProjectCounter() {
+    const visibleLayers = Object.keys(layerGroups).filter(type =>
+        projectMap.hasLayer(layerGroups[type])
+    );
+
+    let count = 0;
+    visibleLayers.forEach(type => {
+        layerGroups[type].eachLayer(() => count++);
+    });
+
+    document.getElementById('project-counter').textContent = count;
+}
+
+// Generate mobile project list
+function generateMobileProjectList() {
+    const container = document.getElementById('mobile-project-list');
+    const filteredProjects = window.projectsData.filter(p => {
+        if (currentRegion !== 'global' && p.region !== currentRegion) return false;
+        return Object.keys(layerGroups).some(type =>
+            projectMap.hasLayer(layerGroups[type]) && p.type === type
+        );
+    });
+
+    const typeColors = {
+        grid: 'border-l-blue-500',
+        renew: 'border-l-green-500',
+        study: 'border-l-indigo-500'
+    };
+
+    container.innerHTML = filteredProjects.map(p => `
+        <div class="bg-white border-l-4 ${typeColors[p.type]} p-4 rounded-r-lg shadow-sm">
+            <div class="flex gap-3">
+                <img src="${p.image}" class="w-16 h-16 rounded-lg object-cover flex-shrink-0" alt="${p.title}">
+                <div class="flex-1 min-w-0">
+                    <div class="text-xs text-slate-500 font-medium mb-1">${p.client}</div>
+                    <h5 class="font-bold text-slate-900 text-sm mb-2 line-clamp-2">${p.title}</h5>
+                    <p class="text-slate-600 text-xs leading-relaxed line-clamp-2">${p.desc}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
 }
