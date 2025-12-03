@@ -130,6 +130,46 @@
     border-radius: 4px;
 }
 
+/* Hide scrollbars on mobile devices */
+@media (max-width: 768px) {
+    .custom-scrollbar::-webkit-scrollbar,
+    .dark-scrollbar::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    .custom-scrollbar,
+    .dark-scrollbar {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+        overflow: hidden !important;
+    }
+
+    /* Hide specific modal scrollbars on mobile */
+    #universal-modal .overflow-y-auto {
+        overflow-y: hidden !important;
+    }
+
+    #universal-modal .overflow-x-auto:not(#mobile-nav-list) {
+        overflow-x: hidden !important;
+    }
+
+    /* Force hide sidebar menu on mobile */
+    #sidebar-menu-container {
+        display: none !important;
+    }
+
+    #sidebar-gradient {
+        display: none !important;
+    }
+
+    /* Keep only image visible on mobile */
+    #universal-modal .bg-slate-900 {
+        position: relative;
+    }
+}
+
 /* Specific Fix for Quadrante Principles Spacing */
 #quadrante-principles-list p {
     margin-top: 0.5rem;

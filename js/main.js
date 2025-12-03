@@ -593,17 +593,23 @@ function openUniversalModal(section, index) {
         const isActive = i === index;
         const activeClasses = isActive ? 'bg-brand-primary/10 border-brand-primary' : 'border-transparent hover:bg-white/5';
 
-        // Desktop Nav List
+        // Desktop Nav List (sidebar over image)
         html += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group border-l-4 ${activeClasses}">
             <span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${item.title}</span>
         </button>`;
 
-        // Mobile Nav List
+        // Mobile Nav List (horizontal scroll tabs)
         mobileHtml += `<button onclick="switchModalItem(${i})" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${item.title}</button>`;
     });
 
-    if (navList) navList.innerHTML = html;
-    if (mobileNavList) mobileNavList.innerHTML = mobileHtml;
+    // Only populate desktop nav on larger screens
+    if (navList && window.innerWidth >= 1024) {
+        navList.innerHTML = html;
+    }
+    // Always populate mobile nav (horizontal tabs)
+    if (mobileNavList) {
+        mobileNavList.innerHTML = mobileHtml;
+    }
 
     updateModalUI();
 
@@ -640,24 +646,26 @@ function switchModalItem(index) {
     else if (currentModalSection === 'about') dataArray = aboutData;
     else dataArray = teamData;
 
-    // Update desktop navigation highlight
-    dataArray.forEach((_, i) => {
-        const navItem = document.getElementById(`nav-item-${i}`);
-        if (navItem) {
-            const span = navItem.querySelector('span');
-            if (i === index) {
-                navItem.classList.add('bg-brand-primary/10', 'border-brand-primary');
-                navItem.classList.remove('border-transparent', 'hover:bg-white/5');
-                span.classList.remove('text-slate-400', 'group-hover:text-white');
-                span.classList.add('text-white');
-            } else {
-                navItem.classList.remove('bg-brand-primary/10', 'border-brand-primary');
-                navItem.classList.add('border-transparent', 'hover:bg-white/5');
-                span.classList.add('text-slate-400', 'group-hover:text-white');
-                span.classList.remove('text-white');
+    // Update desktop navigation highlight (only on larger screens)
+    if (window.innerWidth >= 1024) {
+        dataArray.forEach((_, i) => {
+            const navItem = document.getElementById(`nav-item-${i}`);
+            if (navItem) {
+                const span = navItem.querySelector('span');
+                if (i === index) {
+                    navItem.classList.add('bg-brand-primary/10', 'border-brand-primary');
+                    navItem.classList.remove('border-transparent', 'hover:bg-white/5');
+                    span.classList.remove('text-slate-400', 'group-hover:text-white');
+                    span.classList.add('text-white');
+                } else {
+                    navItem.classList.remove('bg-brand-primary/10', 'border-brand-primary');
+                    navItem.classList.add('border-transparent', 'hover:bg-white/5');
+                    span.classList.add('text-slate-400', 'group-hover:text-white');
+                    span.classList.remove('text-white');
+                }
             }
-        }
-    });
+        });
+    }
 
     // Update mobile navigation highlight
     const mobileNavList = document.getElementById('mobile-nav-list');
@@ -746,7 +754,13 @@ function updateModalUI() {
         imgElement.classList.add('object-cover');
         imgElement.classList.remove('bg-white');
 
-        if (sidebarInnerContent) sidebarInnerContent.classList.remove('hidden');
+        if (sidebarInnerContent) {
+            // Reset to original state: hidden on mobile, visible on large screens
+            sidebarInnerContent.className = sidebarInnerContent.className.replace(/\bhidden\b/g, '');
+            if (!sidebarInnerContent.classList.contains('lg:flex')) {
+                sidebarInnerContent.classList.add('hidden', 'lg:flex');
+            }
+        }
         if (gradientOverlay) gradientOverlay.classList.remove('hidden');
     }
 
