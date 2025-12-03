@@ -3,10 +3,26 @@
 /* --- Mobile Menu Styles --- */
 #mobile-menu {
     transition: transform 0.3s ease-out;
-    transform: translateX(100%);
+    transform: translateX(100%) !important;
+    -webkit-transform: translateX(100%) !important;
+    will-change: transform;
+    visibility: hidden;
 }
 #mobile-menu.active {
-    transform: translateX(0);
+    transform: translateX(0) !important;
+    -webkit-transform: translateX(0) !important;
+    visibility: visible;
+}
+
+/* Safari Mobile Menu Button Fix */
+#mobile-menu-btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+#mobile-menu-btn:active {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* --- Slider Styles --- */

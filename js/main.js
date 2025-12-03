@@ -6,17 +6,68 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // Add mobile menu event listener if button exists
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    }
+    // Add mobile menu event listener with Safari compatibility
+    setTimeout(() => {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            // Remove any existing listeners
+            mobileMenuBtn.removeEventListener('click', handleMobileMenuClick);
+            mobileMenuBtn.removeEventListener('touchstart', handleMobileMenuClick);
+
+            // Add only touchstart for mobile, click as fallback
+            if ('ontouchstart' in window) {
+                mobileMenuBtn.addEventListener('touchstart', handleMobileMenuClick, {passive: false});
+                console.log('Mobile menu touchstart listener added');
+            } else {
+                mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
+                console.log('Mobile menu click listener added');
+            }
+        } else {
+            console.log('Mobile menu button not found');
+        }
+    }, 100);
 });
+
+let lastMenuToggle = 0;
+
+function handleMobileMenuClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Debounce: prevent double-firing within 300ms
+    const now = Date.now();
+    if (now - lastMenuToggle < 300) {
+        console.log('Menu toggle debounced');
+        return;
+    }
+    lastMenuToggle = now;
+
+    toggleMobileMenu();
+    console.log('Mobile menu clicked');
+}
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('active');
-    document.body.classList.toggle('overflow-hidden'); // Prevent scrolling body when menu is open
+    if (!menu) {
+        console.error('Mobile menu element not found');
+        return;
+    }
+
+    const isActive = menu.classList.contains('active');
+
+    if (isActive) {
+        // Closing menu
+        menu.classList.remove('active');
+        document.body.classList.remove('overflow-hidden');
+        menu.style.transform = 'translateX(100%)';
+        console.log('Mobile menu closed');
+    } else {
+        // Opening menu
+        menu.classList.add('active');
+        document.body.classList.add('overflow-hidden');
+        menu.style.transform = 'translateX(0)';
+        console.log('Mobile menu opened');
+    }
 }
 
 // --- Data Definitions ---
