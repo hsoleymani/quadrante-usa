@@ -47,6 +47,17 @@
     0%, 100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
     50% { box-shadow: 0 0 0 10px rgba(30, 64, 175, 0); }
 }
+
+@keyframes blinkPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
 .ai-pulse {
     animation: pulse-glow 2s infinite;
 }
@@ -160,4 +171,22 @@
 .mobile-project-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Services Dropdown Styles */
+.group:hover .group-hover\:opacity-100 {
+    opacity: 1;
+}
+
+.group:hover .group-hover\:visible {
+    visibility: visible;
+}
+
+.group:hover .group-hover\:rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* Ensure dropdown stays visible when hovering over it */
+.group .absolute {
+    pointer-events: auto;
 }

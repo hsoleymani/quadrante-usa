@@ -70,16 +70,9 @@
         <!-- Hero Slider Component -->
         <div id="hero-slider-component"></div>
 
-        <!-- Main Content with Angled Top Edge -->
-        <div id="main-content" class="relative z-10 mt-[100vh]">
-            <!-- SVG Separator for Angled Edge -->
-            <div class="absolute -top-16 left-0 w-full h-16 z-10 pointer-events-none">
-                <svg class="w-full h-full" viewBox="0 0 1440 100" preserveAspectRatio="none">
-                    <path fill="#ffffff" d="M0,100 L1440,100 L1440,0 Z"></path>
-                </svg>
-            </div>
-
-            <div class="bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
+        <!-- Main Content with Straight Edge -->
+        <div id="main-content" class="relative z-10 mt-[calc(100vh-2rem)] md:mt-[calc(100vh-3rem)]">
+            <div class="bg-white">
                 <!-- About Component -->
                 <div id="about-component"></div>
 
@@ -146,6 +139,14 @@
             // Initialize icons after all components are loaded
             if (window.lucide) {
                 lucide.createIcons();
+            }
+
+            // Initialize the hero slider after components are loaded
+            if (typeof initializeSlider === 'function') {
+                setTimeout(() => {
+                    initializeSlider();
+                    console.log('Slider initialized successfully');
+                }, 100);
             }
 
             // Initialize the project map after components are loaded

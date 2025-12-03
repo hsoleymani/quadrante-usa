@@ -14,10 +14,47 @@
         <nav class="hidden md:flex items-center gap-8">
             <a href="#about" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">About</a>
             <a href="#team" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Team</a>
-            <a href="#expertise" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Services</a>
-            <a href="#projects" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Projects</a>
+            <div class="relative group">
+                <button onclick="document.getElementById('core-capabilities').scrollIntoView({behavior: 'smooth'})" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors flex items-center gap-1">
+                    Services
+                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                </button>
+
+                <!-- Services Dropdown Menu -->
+                <div class="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div class="p-6">
+                        <!-- Core Capabilities Section -->
+                        <div class="mb-6">
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3">Core Capabilities</h4>
+                            <div class="space-y-2">
+                                <a href="#" onclick="openUniversalModal('expertise', 0)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Renewable Energy Resources Integration</a>
+                                <a href="#" onclick="openUniversalModal('expertise', 1)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Power Systems Planning</a>
+                                <a href="#" onclick="openUniversalModal('expertise', 2)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Data Center Planning and Siting</a>
+                                <a href="#" onclick="openUniversalModal('expertise', 3)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Microgrid Design</a>
+                                <a href="#" onclick="openUniversalModal('expertise', 4)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Hardware-in-the-Loop Testing</a>
+                            </div>
+                        </div>
+
+                        <!-- Data Centre Expertise Section -->
+                        <div class="border-t border-slate-100 pt-4">
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3">Data Centre Expertise</h4>
+                            <div class="space-y-2">
+                                <a href="#" onclick="openUniversalModal('projects', 0)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Engineering Excellence</a>
+                                <a href="#" onclick="openUniversalModal('projects', 1)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Local Regulations and Permissions</a>
+                                <a href="#" onclick="openUniversalModal('projects', 2)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Sustainability</a>
+                            </div>
+                        </div>
+
+                        <!-- View All Services Link -->
+                        <div class="border-t border-slate-100 pt-4 mt-4">
+                            <a href="#expertise" class="block text-center text-xs font-bold uppercase tracking-widest text-brand-primary hover:bg-brand-primary hover:text-white px-4 py-2 rounded-lg transition-colors">View All Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#portfolio-map" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Projects</a>
             <div class="h-5 w-px bg-gray-300 mx-2"></div>
-            <a href="#contact" class="bg-brand-primary hover:bg-blue-800 text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-600/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Get in Touch</a>
+            <a href="#contact" class="bg-brand-primary hover:bg-brand-accent text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-brand-primary/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Get in Touch</a>
         </nav>
 
         <button id="mobile-menu-btn" class="md:hidden text-slate-900 p-2" aria-label="Toggle Mobile Menu">
@@ -34,8 +71,8 @@
     <nav class="flex flex-col gap-6 text-xl font-bold uppercase tracking-wider">
         <a href="#about" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">About</a>
         <a href="#team" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Team</a>
-        <a href="#expertise" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Services</a>
-        <a href="#projects" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Projects</a>
+        <a href="#core-capabilities" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Services</a>
+        <a href="#portfolio-map" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Projects</a>
     </nav>
     <a href="#contact" onclick="toggleMobileMenu()" class="mt-10 text-center bg-brand-primary hover:bg-blue-800 text-white px-7 py-4 rounded-lg font-bold transition-all shadow-lg text-lg uppercase tracking-wider">Get in Touch</a>
 </div>

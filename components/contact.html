@@ -1,57 +1,54 @@
 <!-- Contact Section -->
-<section id="contact" class="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
-    <!-- Distinct Bottom Gradient Edge - Replicating Team's visual distinction with a blue glow/line at the bottom -->
-    <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-800 via-slate-900 to-transparent opacity-70 pointer-events-none"></div>
-    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400/50 z-10 pointer-events-none"></div>
+<section id="contact" class="py-20 md:py-32 bg-section-separator relative overflow-hidden">
 
     <div class="container mx-auto px-6 md:px-12 relative z-20">
         <div class="grid lg:grid-cols-2 gap-16 md:gap-24">
             <div>
-                <h3 class="text-3xl md:text-4xl font-serif font-bold text-white mb-8 md:mb-12">Get in Touch</h3>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-brand-gray-900 mb-8 md:mb-12">Get in Touch</h3>
                 <div class="space-y-6 md:space-y-8">
                     <div class="relative">
-                        <label class="block text-sm font-bold text-blue-200 mb-2">How can we help you?</label>
+                        <label class="block text-sm font-bold text-brand-gray-700 mb-2">How can we help you?</label>
 
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <button onclick="prefillMessage('contact-section-message', 'I would like to request a proposal for a new project.')" class="text-xs bg-white border border-white/20 px-3 py-1 rounded-full text-blue-900 font-bold hover:bg-blue-100 transition-colors">Request Proposal</button>
-                            <button onclick="prefillMessage('contact-section-message', 'I am interested in partnership opportunities.')" class="text-xs bg-blue-800 border border-blue-700 px-3 py-1 rounded-full text-white hover:bg-blue-700 transition-colors">Partnership</button>
-                            <button onclick="prefillMessage('contact-section-message', 'I have a general inquiry about your services.')" class="text-xs bg-blue-800 border border-blue-700 px-3 py-1 rounded-full text-white hover:bg-blue-700 transition-colors">General Inquiry</button>
+                            <button onclick="prefillMessage('contact-section-message', 'I would like to request a proposal for a new project.')" class="text-xs bg-brand-primary border border-brand-primary px-3 py-1 rounded-full text-white font-bold hover:bg-brand-accent transition-colors">Request Proposal</button>
+                            <button onclick="prefillMessage('contact-section-message', 'I am interested in partnership opportunities.')" class="text-xs bg-brand-gray-100 border border-brand-gray-300 px-3 py-1 rounded-full text-brand-gray-800 hover:bg-brand-gray-200 transition-colors">Partnership</button>
+                            <button onclick="prefillMessage('contact-section-message', 'I have a general inquiry about your services.')" class="text-xs bg-brand-gray-100 border border-brand-gray-300 px-3 py-1 rounded-full text-brand-gray-800 hover:bg-brand-gray-200 transition-colors">General Inquiry</button>
                         </div>
 
                         <!-- Input Textarea tailored for blue background -->
-                        <textarea id="contact-section-message" placeholder="Describe your project or inquiry..." class="w-full border border-blue-700 rounded-xl p-4 focus:ring-2 focus:ring-white focus:outline-none h-48 resize-none text-base placeholder-blue-300 bg-blue-950/50 text-white"></textarea>
+                        <textarea id="contact-section-message" placeholder="Describe your project or inquiry..." class="w-full border border-brand-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-brand-primary focus:outline-none h-48 resize-none text-base placeholder-brand-gray-400 bg-white text-brand-gray-900"></textarea>
 
-                        <button onclick="openAiDraftModal('contact-section-message')" class="absolute bottom-3 right-3 flex items-center gap-2 bg-blue-800/80 text-white border border-blue-700 px-3 py-1.5 rounded-full shadow-sm hover:bg-blue-700 transition-all group text-xs font-bold uppercase tracking-wider">
+                        <button onclick="openAiDraftModal('contact-section-message')" class="absolute bottom-3 right-3 flex items-center gap-2 bg-brand-gray-100 text-brand-gray-700 border border-brand-gray-300 px-3 py-1.5 rounded-full shadow-sm hover:bg-brand-gray-200 transition-all group text-xs font-bold uppercase tracking-wider">
                             <i data-lucide="sparkles" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
                             <span>AI Draft</span>
                         </button>
                     </div>
 
-                    <button onclick="triggerLeadCapture('contact-section-message', 'General Inquiry')" class="bg-white text-blue-900 px-10 py-4 md:px-12 md:py-5 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 transition-all shadow-lg hover:-translate-y-px rounded-lg w-full md:w-auto">
+                    <button onclick="triggerLeadCapture('contact-section-message', 'General Inquiry')" class="bg-brand-primary text-white px-10 py-4 md:px-12 md:py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-accent transition-all shadow-lg hover:-translate-y-px rounded-lg w-full md:w-auto">
                         Submit <i data-lucide="arrow-right" class="w-4 h-4 inline ml-2"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Office Location Card - Darker Slate Blue -->
-            <div class="bg-slate-800 p-8 md:p-16 border border-slate-700 h-fit sticky top-24 md:top-32 rounded-2xl shadow-2xl">
-                <h4 class="text-2xl md:text-2xl font-serif font-bold text-white mb-8 md:mb-12">Office Locations</h4>
+            <!-- Office Location Card -->
+            <div class="bg-white p-8 md:p-16 border border-brand-gray-200 h-fit sticky top-24 md:top-32 rounded-2xl shadow-2xl">
+                <h4 class="text-2xl md:text-2xl font-serif font-bold text-brand-gray-900 mb-8 md:mb-12">Office Locations</h4>
                 <div class="space-y-12 md:space-y-16">
                     <div>
-                        <div class="text-xs font-bold uppercase tracking-widest text-blue-300 mb-2">Los Angeles (Right Analytics)</div>
-                        <p class="text-blue-100 text-base md:text-lg leading-relaxed mb-2 font-light">1055 W 7th Street, 33rd Floor, Office 36<br>Los Angeles, CA 90017</p>
-                        <p class="text-blue-400 text-sm mb-4">Mon - Fri: 9AM - 5PM</p>
-                        <div class="space-y-2 text-sm font-bold text-white">
-                            <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-blue-300"></i> (919) 601-0737</div>
-                            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-blue-300"></i> saman.b@therightanalytics.com</div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Los Angeles (Right Analytics)</div>
+                        <p class="text-brand-gray-600 text-base md:text-lg leading-relaxed mb-2 font-light">1055 W 7th Street, 33rd Floor, Office 36<br>Los Angeles, CA 90017</p>
+                        <p class="text-brand-gray-500 text-sm mb-4">Mon - Fri: 9AM - 5PM</p>
+                        <div class="space-y-2 text-sm font-bold text-brand-gray-900">
+                            <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-brand-primary"></i> (919) 601-0737</div>
+                            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-brand-primary"></i> saman.b@therightanalytics.com</div>
                         </div>
                     </div>
                     <div>
-                        <div class="text-xs font-bold uppercase tracking-widest text-blue-300 mb-2">Texas (Quadrante USA)</div>
-                        <p class="text-blue-100 text-base md:text-lg leading-relaxed mb-4 font-light">2257 N.loop w.#140 PMB 428<br>Conroe, TX 77304</p>
-                        <div class="space-y-2 text-sm font-bold text-white">
-                            <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-blue-300"></i> +351 210 067 200</div>
-                            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-blue-300"></i> quadrante@quadranteglobal.com</div>
+                        <div class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Texas (Quadrante USA)</div>
+                        <p class="text-brand-gray-600 text-base md:text-lg leading-relaxed mb-4 font-light">2257 N.loop w.#140 PMB 428<br>Conroe, TX 77304</p>
+                        <div class="space-y-2 text-sm font-bold text-brand-gray-900">
+                            <div class="flex items-center gap-3"><i data-lucide="phone" class="w-4 h-4 text-brand-primary"></i> +351 210 067 200</div>
+                            <div class="flex items-center gap-3"><i data-lucide="mail" class="w-4 h-4 text-brand-primary"></i> quadrante@quadranteglobal.com</div>
                         </div>
                     </div>
                 </div>

@@ -169,33 +169,67 @@ window.addEventListener('scroll', () => {
 });
 
 // --- HERO SLIDER ---
-const slides = document.querySelectorAll('.slide');
+let slides = [];
 let currentSlide = 0;
+let slideInterval;
+
+function initializeSlider() {
+    slides = document.querySelectorAll('.slide');
+    console.log('Found slides:', slides.length);
+
+    if (slides.length === 0) {
+        console.warn('No slides found');
+        return;
+    }
+
+    // Clear any existing interval
+    if (slideInterval) {
+        clearInterval(slideInterval);
+    }
+
+    // Initialize first slide
+    showSlide(0);
+
+    // Auto advance slides
+    slideInterval = setInterval(nextSlide, 32000); // SLOWED ROTATION (32s)
+
+    // Manual controls
+    const nextBtn = document.getElementById('next-slide');
+    const prevBtn = document.getElementById('prev-slide');
+
+    if (nextBtn) {
+        nextBtn.removeEventListener('click', nextSlide); // Remove any existing listener
+        nextBtn.addEventListener('click', nextSlide);
+    }
+    if (prevBtn) {
+        prevBtn.removeEventListener('click', prevSlide); // Remove any existing listener
+        prevBtn.addEventListener('click', prevSlide);
+    }
+
+    console.log('Slider initialized with', slides.length, 'slides');
+}
 
 function showSlide(index) {
+    if (slides.length === 0) return;
+
     slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
     });
 }
 
 function nextSlide() {
+    if (slides.length === 0) return;
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
+    console.log('Next slide:', currentSlide);
 }
 
 function prevSlide() {
+    if (slides.length === 0) return;
     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(currentSlide);
+    console.log('Previous slide:', currentSlide);
 }
-
-// Auto advance slides
-setInterval(nextSlide, 32000); // SLOWED ROTATION (32s)
-
-// Manual controls
-const nextBtn = document.getElementById('next-slide');
-if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-const prevBtn = document.getElementById('prev-slide');
-if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
 // --- MODALS ---
 function prefillMessage(targetId, text) {
@@ -702,7 +736,7 @@ function initializeProjectMap() {
         const s = sizeMap[size];
         return L.divIcon({
             className: 'custom-div-icon',
-            html: `<div style="background-color: ${color}; width: ${s.width}px; height: ${s.height}px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 4px rgba(0,0,0,0.15); transition: all 0.3s ease; cursor: pointer;"></div>`,
+            html: `<div class="map-marker-dot" style="background-color: ${color}; width: ${s.width}px; height: ${s.height}px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 4px rgba(0,0,0,0.15); transition: all 0.3s ease; cursor: pointer; animation: blinkPulse 2s infinite;"></div>`,
             iconSize: s.iconSize,
             iconAnchor: [s.iconSize[0]/2, s.iconSize[1]/2],
             popupAnchor: [0, -10]
@@ -710,7 +744,7 @@ function initializeProjectMap() {
     };
 
     const icons = {
-        grid: { normal: createIcon('#2563eb'), highlighted: createIcon('#2563eb', 'highlighted') },
+        grid: { normal: createIcon('#6b7280'), highlighted: createIcon('#6b7280', 'highlighted') },
         renew: { normal: createIcon('#16a34a'), highlighted: createIcon('#16a34a', 'highlighted') },
         study: { normal: createIcon('#4f46e5'), highlighted: createIcon('#4f46e5', 'highlighted') }
     };
