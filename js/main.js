@@ -319,7 +319,7 @@ function closeAiDraftModal() {
 }
 
 // Gemini API call logic - START
-const apiKey = "";
+const apiKey = "AIzaSyDxUBgLd6LZfPPK5Lnl3xAz6_3nj7Lve-I";
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
 async function fetchWithExponentialBackoff(payload, maxRetries = 5, delay = 1000) {
@@ -389,12 +389,24 @@ async function generateDraft() {
     btn.disabled = true;
     lucide.createIcons({ root: btn });
 
-    const systemPrompt = `You are a professional email drafting assistant for a premium engineering consultancy, Quadrante USA. Your task is to write a polite, formal, and concise email draft based on the user's request. Keep the tone professional and focused on business engagement. The company specializes in power systems engineering, grid decarbonization, and data center infrastructure. Only respond with the email body, starting with the greeting (e.g., "Dear Team,") and ending with a formal closing (e.g., "Sincerely,").`;
+    const systemPrompt = `Write a short, direct professional email from a client TO Quadrante USA. Keep it under 4 sentences. No filler words. Be clear and to the point.
+
+Format:
+- Start: "Dear Quadrante Team,"
+- State the need directly
+- Ask for what they want (proposal/meeting/information)
+- End: "Best regards,"
+
+Make it concise and professional. No options, no extra details, no lengthy explanations.`;
 
     let draft = "Error: Failed to connect to the drafting service.";
 
     try {
-        draft = await callGemini(systemPrompt, userPrompt);
+        if (apiKey && apiKey.trim() !== "") {
+            draft = await callGemini(systemPrompt, userPrompt);
+        } else {
+            draft = "Error: AI service is not configured. Please contact the administrator to set up the API key.";
+        }
     } catch (error) {
         console.error("Gemini API error:", error);
         draft = "Error: There was an issue connecting to the AI service. Please try again later.";
@@ -425,24 +437,29 @@ async function modifyDraft(action) {
     const originalText = btn.innerHTML;
     btn.innerHTML = `...`;
 
-    let systemPrompt = `You are an email editing assistant. Modify the provided email draft: "${currentDraft}".`;
+    let systemPrompt = `Modify this client email to Quadrante USA: "${currentDraft}". Keep it under 4 sentences and professional.`;
 
     if (action === 'shorten') {
-        systemPrompt += ' Make it significantly shorter and more direct, while retaining its polite, professional tone and main inquiry point.';
+        systemPrompt += ' Make it even shorter - 2-3 sentences maximum. Remove all filler words.';
     } else if (action === 'expand') {
-        systemPrompt += ' Expand the draft to include more detail and formality. Suggest next steps or a request for a meeting, if appropriate.';
+        systemPrompt += ' Add one more sentence with project details. Stay concise.';
     } else if (action === 'formal') {
-        systemPrompt += ' Rephrase the draft to be highly formal and professional. Ensure formal greetings and closings are used.';
+        systemPrompt += ' Use formal business language. Keep it short.';
     } else if (action === 'casual') {
-        systemPrompt += ' Rephrase the draft to be more casual and friendly, while still remaining professional. Use appropriate greetings and closings.';
+        systemPrompt += ' Make it friendly but professional. Keep it brief.';
     }
 
     let newDraft = "Error: Failed to refine draft.";
 
     try {
-        newDraft = await callGemini(systemPrompt, `Refine the draft based on the following instruction: ${systemPrompt}`);
+        if (apiKey && apiKey.trim() !== "") {
+            newDraft = await callGemini(systemPrompt, `Refine the draft based on the following instruction: ${systemPrompt}`);
+        } else {
+            newDraft = "Error: AI service is not configured. Please set up the API key.";
+        }
     } catch (error) {
         console.error("Gemini API error:", error);
+        newDraft = "Error: Failed to refine draft. Please try again.";
     }
 
     textarea.value = newDraft;
