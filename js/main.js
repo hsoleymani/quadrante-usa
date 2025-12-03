@@ -190,8 +190,8 @@ function initializeSlider() {
     // Initialize first slide
     showSlide(0);
 
-    // Auto advance slides
-    slideInterval = setInterval(nextSlide, 32000); // SLOWED ROTATION (32s)
+    // Start auto advance with custom timing
+    startAutoAdvance();
 
     // Manual controls
     const nextBtn = document.getElementById('next-slide');
@@ -222,6 +222,30 @@ function nextSlide() {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
     console.log('Next slide:', currentSlide);
+
+    // Restart auto advance with new timing for the new slide
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        startAutoAdvance();
+    }
+}
+
+function startAutoAdvance() {
+    if (slides.length === 0) return;
+
+    // Clear any existing interval
+    if (slideInterval) {
+        clearInterval(slideInterval);
+    }
+
+    // First slide (index 0) gets 64 seconds, others get 32 seconds
+    const duration = currentSlide === 0 ? 64000 : 32000;
+
+    slideInterval = setTimeout(() => {
+        nextSlide();
+    }, duration);
+
+    console.log(`Slide ${currentSlide} will display for ${duration/1000} seconds`);
 }
 
 function prevSlide() {
@@ -229,6 +253,12 @@ function prevSlide() {
     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(currentSlide);
     console.log('Previous slide:', currentSlide);
+
+    // Restart auto advance with new timing for the new slide
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        startAutoAdvance();
+    }
 }
 
 // --- MODALS ---
