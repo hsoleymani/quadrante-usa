@@ -1,5 +1,21 @@
 /* Quadrante USA Website Styles */
 
+/* --- Modal Styles --- */
+.modal-hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.modal-show {
+    opacity: 1;
+}
+
+.modal-content {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
 /* --- Mobile Menu Styles --- */
 #mobile-menu {
     transition: transform 0.3s ease-out;

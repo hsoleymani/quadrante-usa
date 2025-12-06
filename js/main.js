@@ -128,7 +128,7 @@ const teamData = [
         image: "assets/images/media/team-saman-babaei.jpeg",
         title: "Dr. Saman Babaei",
         content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Founder / Chief Power Systems Engineer - Right Analytics</h4>
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Founder of Right Analytics / Chief Power Systems Engineer</h4>
         <p class="mb-4">Dr. Saman Babaei brings over 15 years of academic and industrial experience in power systems. He specializes in advanced grid studies, including transient stability, electromagnetic transients, and renewable energy integration.</p>
         <p class="mb-4">Before founding Right Analytics, Saman worked on critical infrastructure projects across North America, developing methodologies for high-penetration renewable grids.</p>
         <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 mt-6">
@@ -358,14 +358,31 @@ function closeLeadModal() {
     }, 300);
 }
 
-// Acquisition Modal (Kept for completeness, though unused in live UI)
-function openAcquisitionModal() {
-    const btn = document.querySelector('a[onclick="openAcquisitionModal()"]');
-    if (btn) {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = "Coming Soon";
-        setTimeout(() => btn.innerHTML = originalText, 2000);
-    }
+// Company Information Modal
+function openCompanyInfoModal() {
+    const modal = document.getElementById('company-info-modal');
+    const content = modal.querySelector('.modal-content');
+    modal.style.display = 'flex';
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden'); // Disable background scrolling
+    setTimeout(() => {
+        modal.classList.remove('modal-hidden');
+        content.classList.add('scale-100', 'opacity-100');
+        content.classList.remove('scale-95', 'opacity-0');
+    }, 10);
+}
+
+function closeCompanyInfoModal() {
+    const modal = document.getElementById('company-info-modal');
+    const content = modal.querySelector('.modal-content');
+    modal.classList.add('modal-hidden');
+    content.classList.remove('scale-100', 'opacity-100');
+    content.classList.add('scale-95', 'opacity-0');
+    document.body.classList.remove('overflow-hidden'); // Re-enable background scrolling
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+    }, 300);
 }
 
 // AI DRAFT LOGIC
@@ -1103,3 +1120,4 @@ function generateMobileProjectList() {
         </div>
     `).join('');
 }
+
