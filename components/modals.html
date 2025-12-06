@@ -141,50 +141,77 @@
         <!-- Content -->
         <div class="flex flex-col flex-1 overflow-hidden">
 
-            <!-- Core Capabilities - Now Full Width -->
+            <!-- Single Column: About Right Analytics & Quadrante -->
             <div class="w-full overflow-y-auto p-6 md:p-12">
-                <!-- Header -->
-                <div class="mb-6 md:mb-8">
-                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4">Our Core Capabilities</h3>
-                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">Quadrante USA combines global engineering excellence with specialized US power systems expertise.</p>
+                <div class="mb-7"></div>
+
+                <!-- Header-style Logos with Plus Sign -->
+                <div class="mb-6 md:mb-8 flex items-center justify-center gap-4 md:gap-6 border-b border-brand-gray-200 pb-6 md:pb-8">
+                    <img src="assets/images/media/logo-right-analytics.png" class="h-10 md:h-16 w-auto object-contain" alt="Right Analytics">
+                    <div class="text-brand-primary text-2xl md:text-3xl font-black">+</div>
+                    <a href="https://quadranteglobal.com/landing-page/" target="_blank">
+                        <img src="assets/images/media/logo-quadrante.png" class="h-8 md:h-12 w-auto object-contain hover:scale-105 transition-transform" alt="Quadrante">
+                    </a>
+                </div>
+
+                <!-- Strategic Merger Section -->
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-brand-primary/10 text-brand-primary px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">Strategic Merger</div>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-6">Right Analytics Joins Quadrante</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">Uniting forces to launch <strong class="text-slate-900">Quadrante USA LLC</strong> and drive grid decarbonization across North America.</p>
+                </div>
+
+                <!-- About Right Analytics -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-3">
+                        <img src="assets/images/media/right_analytics_logo.svg" class="h-8 w-auto" alt="Right Analytics">
+                        About Right Analytics
+                    </h3>
+                    <div class="prose prose-slate text-brand-gray-600 leading-relaxed text-base">
+                        <p>Right Analytics brings deep expertise in <strong>US power systems</strong>, specializing in renewable energy integration, grid interconnection studies, and advanced power flow analysis. Founded to address the growing complexity of modern power grids, Right Analytics has established itself as a trusted partner for utilities, developers, and system operators across North America.</p>
+                        <p>Our technical capabilities include transient stability analysis, electromagnetic transient studies, and Hardware-in-the-Loop (HIL) testing using industry-leading simulation platforms. We've successfully completed critical infrastructure projects for major clients including NYPA, Dominion Energy, and Southern California Edison.</p>
+                    </div>
+                </div>
+
+                <!-- About Quadrante -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center justify-center gap-3">
+                        <img src="assets/images/media/quadrante_logo.svg" class="h-8 w-auto" alt="Quadrante">
+                        About Quadrante Global
+                    </h3>
+                    <div id="quadrante-info" class="prose prose-slate text-brand-gray-600 leading-relaxed text-base">
+                    <p>In a world where progress often clashes with nature, we embrace our purpose by always leading engineering and architecture projects with its <strong>Total Design</strong> approach, seeking economically optimised, sustainable solutions of technical excellence. As a multidisciplinary consultancy and design group in Engineering, Architecture, Environment and Sustainability, we take a holistic view of the construction sector and pursue an integrated and evolving approach to sustainability.</p>
+                    <p>With a strong commitment to the planet and future generations, we are involved in several decarbonisation projects, making a significant contribution to mitigating the effects of climate change. By implementing innovative and sustainable solutions, we promote the reduction of carbon emissions in various sectors, including energy, transport and construction.</p>
+                    <p>Our guiding values are based on the future, professionalism, ethics and flexibility. Through these values, we endeavour to attract and nurture talent, giving them unique opportunities for development.</p>
+                </div>
+                </div>
+
+                <!-- Combined Strengths -->
+                <div class="mb-8 bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 text-center">Combined Strengths = Quadrante USA</h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <h4 class="font-bold text-brand-primary mb-2">Right Analytics Brings:</h4>
+                            <ul class="space-y-1 text-slate-600">
+                                <li>• Deep US power systems expertise</li>
+                                <li>• Advanced HIL testing capabilities</li>
+                                <li>• Proven utility relationships</li>
+                                <li>• Grid interconnection specialists</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-primary mb-2">Quadrante Brings:</h4>
+                            <ul class="space-y-1 text-slate-600">
+                                <li>• Global engineering scale (1,200+ people)</li>
+                                <li>• Total Design methodology</li>
+                                <li>• Sustainability leadership</li>
+                                <li>• Multi-sector expertise</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
 
-                <!-- Core Capabilities (3 panels in grid format like left side) -->
-                <div class="grid grid-cols-3 gap-3 md:gap-4">
-                    <!-- Panel 1: Renewable Energy Resources Integration -->
-                    <div onclick="closeCompanyInfoModal(); openUniversalModal('expertise', 0)" class="bg-brand-gray-50 rounded-xl overflow-hidden group hover:bg-brand-gray-100 transition-colors border border-brand-gray-200 shadow-md cursor-pointer">
-                        <div class="h-24 md:h-32 overflow-hidden relative">
-                            <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
-                            <img src="assets/images/media/wind-farm-global.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-70" alt="Renewable Energy">
-                        </div>
-                        <div class="p-3 md:p-4">
-                            <h5 class="text-brand-gray-800 font-bold text-[10px] md:text-sm uppercase leading-tight group-hover:text-brand-primary">Renewable Energy Integration</h5>
-                        </div>
-                    </div>
-
-                    <!-- Panel 2: Power Systems Planning -->
-                    <div onclick="closeCompanyInfoModal(); openUniversalModal('expertise', 1)" class="bg-brand-gray-50 rounded-xl overflow-hidden group hover:bg-brand-gray-100 transition-colors border border-brand-gray-200 shadow-md cursor-pointer">
-                        <div class="h-24 md:h-32 overflow-hidden relative">
-                            <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
-                            <img src="assets/images/media/tower_grid_1.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-70" alt="Power Systems">
-                        </div>
-                        <div class="p-3 md:p-4">
-                            <h5 class="text-brand-gray-800 font-bold text-[10px] md:text-sm uppercase leading-tight group-hover:text-brand-primary">Power Systems Planning</h5>
-                        </div>
-                    </div>
-
-                    <!-- Panel 3: Data Center Planning and Siting -->
-                    <div onclick="closeCompanyInfoModal(); openUniversalModal('expertise', 2)" class="bg-brand-gray-50 rounded-xl overflow-hidden group hover:bg-brand-gray-100 transition-colors border border-brand-gray-200 shadow-md cursor-pointer">
-                        <div class="h-24 md:h-32 overflow-hidden relative">
-                            <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
-                            <img src="assets/images/media/data_center_1.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-70" alt="Data Centers">
-                        </div>
-                        <div class="p-3 md:p-4">
-                            <h5 class="text-brand-gray-800 font-bold text-[10px] md:text-sm uppercase leading-tight group-hover:text-brand-primary">Data Center Planning</h5>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
