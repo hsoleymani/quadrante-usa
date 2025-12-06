@@ -71,9 +71,6 @@ function toggleMobileMenu() {
 }
 
 // --- Data Definitions ---
-const aboutData = [
-    // Not used for clicking anymore
-];
 
 // UPDATED COMPETENCIES DATA (5 PANELS)
 const competenciesData = [
@@ -101,27 +98,40 @@ const competenciesData = [
         image: "assets/images/media/Hardware_in_the_Loop.png",
         title: "Hardware-in-the-Loop Testing, and Simulation",
         content: `<p class="mb-4">HIL testing lets you verify your controller design and other Intelligent Electronic Devices (IEDs) without the complete system hardware. Instead, rely on a real-time plant simulator that acts as a digital twin of the real system or parts of it, benefiting you in practicality and cost.</p><p>At Right Analytics, we offer a wide range of HIL tests to verify the performance of power electronics controllers, power system protection systems, and battery management systems.</p>`
-    }
-];
-
-// UPDATED EXPERIENCE DATA (For the Project Modal, now Data Center Expertise)
-const experienceData = [
-    {
+    },
+    { // Panel 6: Industry & Energy Transition
+        image: "assets/images/media/wind-farm-global.png",
+        title: "Industry & Energy Transition",
+        content: `<p class="mb-4">Quadrante USA leads the way in sustainable energy transition projects, combining decades of experience in renewable energy integration with cutting-edge grid modernization solutions.</p><p>Our expertise spans wind and solar power integration, energy storage systems, and grid decarbonization strategies that support the transition to clean energy while maintaining system reliability and economic viability.</p>`
+    },
+    { // Panel 7: Cities & Territories
+        image: "assets/images/media/city_tree.jpeg",
+        title: "Cities & Territories",
+        content: `<p class="mb-4">We specialize in sustainable urban infrastructure development and territorial planning that balances environmental protection with economic growth.</p><p>Our integrated approach to smart cities includes resilient power systems, sustainable transportation networks, and green building initiatives that create livable communities for future generations.</p>`
+    },
+    { // Panel 8: Mobility & Transport
+        image: "assets/images/media/mobility.jpeg",
+        title: "Mobility & Transport",
+        content: `<p class="mb-4">Quadrante USA delivers comprehensive mobility and transportation infrastructure solutions, from electric vehicle charging networks to sustainable public transit systems.</p><p>Our expertise includes transportation electrification, multimodal transport planning, and infrastructure design that supports the transition to sustainable mobility while improving connectivity and accessibility.</p>`
+    },
+    { // Panel 9: Data Center Engineering Excellence
         image: "assets/images/media/data_servers.jpeg",
-        title: "Engineering Excellence",
+        title: "Data Center Engineering Excellence",
         content: `<p class="mb-4"><strong>Precision-engineered systems tailored for uptime and performance powering AI-ready infrastructure.</strong></p><p>Our solutions include High-Performance Computing (HPC) cooling optimization, redundancy planning (N+1, 2N), and advanced electrical distribution design to support the intense power density requirements of modern AI workloads.</p>`
     },
-    {
+    { // Panel 10: Data Center Regulations & Compliance
         image: "assets/images/media/data_server_2.jpeg",
-        title: "Local Regulations and Permissions",
+        title: "Data Center Regulations & Compliance",
         content: `<p class="mb-4"><strong>Full compliance with planning, zoning, and environmental permits, and extensive knowledge of local power grid.</strong></p><p>We navigate complex regulatory landscapes, managing everything from Environmental Impact Assessments (EIA) to grid interconnection agreements. Our deep understanding of local ISO/RTO policies ensures faster time-to-power for your data center projects.</p>`
     },
-    {
+    { // Panel 11: Data Center Sustainability
         image: "assets/images/media/data_servers_3.png",
-        title: "Sustainability",
+        title: "Data Center Sustainability",
         content: `<p class="mb-4"><strong>Sustainable design aligned with international standards and certifications, with the highest PUE and WUE standards.</strong></p><p>We prioritize green building certifications (LEED, BREEAM) and innovative thermal management to minimize Power Usage Effectiveness (PUE) and Water Usage Effectiveness (WUE), driving operational efficiency while meeting corporate ESG goals.</p>`
     }
 ];
+
+// Experience data removed - Data Center Expertise section has been removed
 
 const teamData = [
     {
@@ -589,14 +599,10 @@ function openUniversalModal(section, index) {
 
     let dataArray;
     if (section === 'expertise') dataArray = competenciesData;
-    else if (section === 'projects') dataArray = experienceData;
-    else if (section === 'about') dataArray = aboutData;
     else dataArray = teamData;
 
     let headerText = 'Our Competencies';
-    if (section === 'projects') headerText = 'Data Center Expertise';
-    else if (section === 'team') headerText = 'Our Leadership';
-    else if (section === 'about') headerText = 'Company Profile';
+    if (section === 'team') headerText = 'Our Leadership';
 
     if (document.getElementById('sidebar-header')) {
         document.getElementById('sidebar-header').innerText = headerText;
@@ -659,8 +665,6 @@ function switchModalItem(index) {
 
     let dataArray;
     if (currentModalSection === 'expertise') dataArray = competenciesData;
-    else if (currentModalSection === 'projects') dataArray = experienceData;
-    else if (currentModalSection === 'about') dataArray = aboutData;
     else dataArray = teamData;
 
     // Update desktop navigation highlight (only on larger screens)
@@ -708,8 +712,6 @@ function switchModalItem(index) {
 function updateModalUI() {
     let dataArray;
     if (currentModalSection === 'expertise') dataArray = competenciesData;
-    else if (currentModalSection === 'projects') dataArray = experienceData;
-    else if (currentModalSection === 'about') dataArray = aboutData;
     else dataArray = teamData;
 
     const data = dataArray[currentModalIndex];
@@ -728,8 +730,6 @@ function updateModalUI() {
 
     let label = 'Featured';
     if (currentModalSection === 'expertise') label = 'Competency';
-    else if (currentModalSection === 'projects') label = 'Project';
-    else if (currentModalSection === 'about') label = 'About Us';
     else label = 'Leadership';
 
     document.getElementById('modal-section-label').innerText = label;
@@ -745,41 +745,20 @@ function updateModalUI() {
     contentSection.classList.remove('md:w-1/4', 'md:w-1/2', 'md:w-[35%]');
     imgElement.classList.remove('object-contain', 'object-cover');
 
-    if (currentModalSection === 'about') {
-        // Map/About specific:
-        // 1. Expand Modal Width significantly
-        modalContainer.classList.remove('max-w-7xl');
-        modalContainer.classList.add('max-w-[95vw]');
+    // Default behavior
+    sidebar.classList.add('md:w-1/2');
+    contentSection.classList.add('md:w-1/2');
+    imgElement.classList.add('object-cover');
+    imgElement.classList.remove('bg-white');
 
-        // 2. Image takes larger width (65%) to fit map
-        // 3. Use object-contain to show full map without cropping
-        // 4. Hide Sidebar Menu & Gradient
-
-        sidebar.classList.add('md:w-[65%]');
-        contentSection.classList.add('md:w-[35%]');
-        imgElement.classList.add('object-contain'); // Fit whole map
-        imgElement.classList.add('bg-white'); // Add white bg for map if transparent
-
-        if (sidebarInnerContent) sidebarInnerContent.classList.add('hidden');
-        if (gradientOverlay) gradientOverlay.classList.add('hidden');
-
-    } else {
-        // Default behavior
-
-        sidebar.classList.add('md:w-1/2');
-        contentSection.classList.add('md:w-1/2');
-        imgElement.classList.add('object-cover');
-        imgElement.classList.remove('bg-white');
-
-        if (sidebarInnerContent) {
-            // Reset to original state: hidden on mobile, visible on large screens
-            sidebarInnerContent.className = sidebarInnerContent.className.replace(/\bhidden\b/g, '');
-            if (!sidebarInnerContent.classList.contains('lg:flex')) {
-                sidebarInnerContent.classList.add('hidden', 'lg:flex');
-            }
+    if (sidebarInnerContent) {
+        // Reset to original state: hidden on mobile, visible on large screens
+        sidebarInnerContent.className = sidebarInnerContent.className.replace(/\bhidden\b/g, '');
+        if (!sidebarInnerContent.classList.contains('lg:flex')) {
+            sidebarInnerContent.classList.add('hidden', 'lg:flex');
         }
-        if (gradientOverlay) gradientOverlay.classList.remove('hidden');
     }
+    if (gradientOverlay) gradientOverlay.classList.remove('hidden');
 
     // --- Hide/Show Inquiry Form ---
     // If it is 'team' section, we hide the inquiry box at the bottom of the modal
@@ -802,18 +781,6 @@ function updateModalUI() {
             <button onclick="prefillMessage('modal-question-box', 'Can you provide a proposal for this service?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Proposal</button>
             <button onclick="prefillMessage('modal-question-box', 'I have a technical question about compliance standards.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Technical Question</button>
         `;
-    } else if (currentModalSection === 'about') {
-        chipsHtml = `
-            <button onclick="prefillMessage('modal-question-box', 'Which specific regions do you operate in?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Regions</button>
-            <button onclick="prefillMessage('modal-question-box', 'Tell me more about your work with ISOs.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">ISO Experience</button>
-            <button onclick="prefillMessage('modal-question-box', 'I am interested in partnership opportunities.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Partnership</button>
-        `;
-    } else if (currentModalSection === 'projects') {
-        chipsHtml = `
-            <button onclick="prefillMessage('modal-question-box', 'We have a similar project and need support.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Similar Project</button>
-            <button onclick="prefillMessage('modal-question-box', 'What was the timeline for this project?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Timeline Inquiry</button>
-            <button onclick="prefillMessage('modal-question-box', 'Can you share more details on the methodology used?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Methodology</button>
-        `;
     } else {
         chipsHtml = `
             <button onclick="prefillMessage('modal-question-box', 'I would like to schedule a meeting with this person.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Schedule Meeting</button>
@@ -830,6 +797,151 @@ function updateModalUI() {
         });
     }
 }
+
+// Scroll Row Function for Capabilities
+function scrollRow(rowId, direction) {
+    console.log('scrollRow called with:', rowId, direction); // Debug log
+    const row = document.getElementById(rowId);
+    if (!row) {
+        console.error('Row element not found:', rowId);
+        return;
+    }
+
+    const scrollAmount = 340; // Card width (320px) + gap (20px)
+    const currentScroll = row.scrollLeft;
+    console.log('Current scroll position:', currentScroll);
+
+    if (direction === 'left') {
+        row.scrollTo({
+            left: Math.max(0, currentScroll - scrollAmount),
+            behavior: 'smooth'
+        });
+    } else {
+        row.scrollTo({
+            left: currentScroll + scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    // Update arrow visibility after scroll
+    setTimeout(() => updateArrowVisibility(rowId), 100);
+}
+
+// Update arrow visibility based on scroll position
+function updateArrowVisibility(rowId) {
+    const row = document.getElementById(rowId);
+    if (!row) return;
+
+    const leftArrow = document.getElementById(`${rowId}-left-arrow`);
+    const rightArrow = document.getElementById(`${rowId}-right-arrow`);
+
+    if (!leftArrow || !rightArrow) return;
+
+    const scrollLeft = row.scrollLeft;
+    const maxScroll = row.scrollWidth - row.clientWidth;
+
+    // Handle left arrow and left gradient
+    if (scrollLeft <= 0) {
+        leftArrow.style.display = 'none';
+        row.classList.remove('show-left-gradient');
+    } else {
+        leftArrow.style.display = 'flex';
+        row.classList.add('show-left-gradient');
+    }
+
+    // Handle right arrow and right gradient
+    if (scrollLeft >= maxScroll - 1) {
+        rightArrow.style.display = 'none';
+        row.classList.remove('show-right-gradient');
+    } else {
+        rightArrow.style.display = 'flex';
+        row.classList.add('show-right-gradient');
+    }
+}
+
+// Initialize arrow visibility on page load
+function initializeArrowVisibility() {
+    updateArrowVisibility('row1');
+    updateArrowVisibility('row2');
+
+    // Add scroll event listeners to update arrows during manual scrolling
+    const row1 = document.getElementById('row1');
+    const row2 = document.getElementById('row2');
+
+    if (row1) {
+        row1.addEventListener('scroll', () => updateArrowVisibility('row1'));
+    }
+    if (row2) {
+        row2.addEventListener('scroll', () => updateArrowVisibility('row2'));
+    }
+}
+
+// Add drag scrolling functionality
+function initializeDragScrolling() {
+    const scrollContainers = document.querySelectorAll('#row1, #row2');
+
+    scrollContainers.forEach(container => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener('mousedown', (e) => {
+            // Only enable drag if not clicking on a card
+            if (!e.target.closest('.group')) {
+                isDown = true;
+                container.classList.add('grabbing');
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+                e.preventDefault();
+            }
+        });
+
+        container.addEventListener('mouseleave', () => {
+            isDown = false;
+            container.classList.remove('grabbing');
+        });
+
+        container.addEventListener('mouseup', () => {
+            isDown = false;
+            container.classList.remove('grabbing');
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll speed multiplier
+            container.scrollLeft = scrollLeft - walk;
+        });
+
+        // Touch events for mobile
+        container.addEventListener('touchstart', (e) => {
+            if (!e.target.closest('.group')) {
+                startX = e.touches[0].pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            }
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (!e.target.closest('.group')) {
+                const x = e.touches[0].pageX - container.offsetLeft;
+                const walk = (x - startX) * 2;
+                container.scrollLeft = scrollLeft - walk;
+                e.preventDefault();
+            }
+        });
+    });
+}
+
+// Initialize drag scrolling when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for other initializations
+    setTimeout(() => {
+        initializeDragScrolling();
+        initializeArrowVisibility();
+        console.log('Drag scrolling and arrow visibility initialized');
+    }, 500);
+});
 
 // Enhanced Project Map functionality
 let projectMap;
@@ -1120,4 +1232,5 @@ function generateMobileProjectList() {
         </div>
     `).join('');
 }
+
 

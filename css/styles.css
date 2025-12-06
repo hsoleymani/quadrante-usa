@@ -101,6 +101,45 @@
     background-size: 24px 24px;
 }
 
+/* Section Separator Background */
+.bg-section-separator {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+/* Brand Gray Color Classes */
+.text-brand-gray-900 { color: #0f172a; }
+.text-brand-gray-800 { color: #1e293b; }
+.text-brand-gray-700 { color: #334155; }
+.text-brand-gray-600 { color: #475569; }
+.text-brand-gray-500 { color: #64748b; }
+.text-brand-gray-400 { color: #94a3b8; }
+.text-brand-gray-300 { color: #cbd5e1; }
+.text-brand-gray-200 { color: #e2e8f0; }
+.text-brand-gray-100 { color: #f1f5f9; }
+.text-brand-gray-50 { color: #f8fafc; }
+
+.bg-brand-gray-900 { background-color: #0f172a; }
+.bg-brand-gray-800 { background-color: #1e293b; }
+.bg-brand-gray-700 { background-color: #334155; }
+.bg-brand-gray-600 { background-color: #475569; }
+.bg-brand-gray-500 { background-color: #64748b; }
+.bg-brand-gray-400 { background-color: #94a3b8; }
+.bg-brand-gray-300 { background-color: #cbd5e1; }
+.bg-brand-gray-200 { background-color: #e2e8f0; }
+.bg-brand-gray-100 { background-color: #f1f5f9; }
+.bg-brand-gray-50 { background-color: #f8fafc; }
+
+.border-brand-gray-900 { border-color: #0f172a; }
+.border-brand-gray-800 { border-color: #1e293b; }
+.border-brand-gray-700 { border-color: #334155; }
+.border-brand-gray-600 { border-color: #475569; }
+.border-brand-gray-500 { border-color: #64748b; }
+.border-brand-gray-400 { border-color: #94a3b8; }
+.border-brand-gray-300 { border-color: #cbd5e1; }
+.border-brand-gray-200 { border-color: #e2e8f0; }
+.border-brand-gray-100 { border-color: #f1f5f9; }
+.border-brand-gray-50 { border-color: #f8fafc; }
+
 /* Modal Styles */
 .modal-backdrop {
     transition: opacity 0.3s ease-out;
@@ -261,4 +300,141 @@
 /* Ensure dropdown stays visible when hovering over it */
 .group .absolute {
     pointer-events: auto;
+}
+
+/* Scrollable Cards Container - NOW WITH VISIBLE SCROLLBARS */
+.scrollbar-show {
+    -ms-overflow-style: auto;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+.scrollbar-show::-webkit-scrollbar {
+    height: 8px;
+    display: block;
+}
+
+.scrollbar-show::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.scrollbar-show::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.scrollbar-show::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Drag cursor states */
+.scrollbar-show {
+    cursor: grab;
+}
+
+.scrollbar-show.grabbing {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.scrollbar-show.grabbing * {
+    pointer-events: none;
+}
+
+/* Smooth scrolling for capability cards */
+.scrollbar-show {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced Arrow Shadows */
+.arrow-shadow {
+    box-shadow:
+        0 10px 25px -5px rgba(0, 0, 0, 0.3),
+        0 20px 40px -10px rgba(59, 130, 246, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.arrow-shadow:hover {
+    box-shadow:
+        0 15px 35px -5px rgba(0, 0, 0, 0.4),
+        0 25px 50px -12px rgba(59, 130, 246, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Arrow Styles */
+@media (max-width: 768px) {
+    .arrow-shadow {
+        /* Smaller arrows on mobile but still visible */
+        width: 40px !important;
+        height: 48px !important;
+        box-shadow:
+            0 6px 15px -3px rgba(0, 0, 0, 0.3),
+            0 10px 25px -5px rgba(59, 130, 246, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .arrow-shadow:active {
+        transform: scale(0.95);
+        box-shadow:
+            0 4px 10px -2px rgba(0, 0, 0, 0.4),
+            0 8px 20px -4px rgba(59, 130, 246, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Adjust right arrow position on mobile */
+    .arrow-right-mobile {
+        right: -40px !important;
+    }
+
+    /* Ensure arrows stay above touch interactions */
+    .arrow-shadow {
+        z-index: 60 !important;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+}
+
+/* Scroll Indication Gradients */
+.scroll-gradient-container {
+    position: relative;
+}
+
+/* Right side gradient - shows when right arrow is present */
+.scroll-gradient-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-gradient-container.show-right-gradient::after {
+    opacity: 1;
+}
+
+/* Left side gradient - shows when left arrow is present */
+.scroll-gradient-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-gradient-container.show-left-gradient::before {
+    opacity: 1;
 }
