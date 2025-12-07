@@ -62,42 +62,72 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="font-sans text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900">
-    <!-- Header Component -->
-    <div id="header-component"></div>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-primary z-[9999] flex items-center justify-center">
+        <div class="flex items-center justify-center space-x-16">
+            <!-- Quadrante Logo -->
+            <div id="logo-left" class="w-64 h-64 flex items-center justify-center opacity-0 transform -translate-x-32">
+                <img src="assets/images/media/quadrante_logo.svg" alt="Quadrante" class="w-full h-auto max-w-48">
+            </div>
 
-    <main>
-        <!-- Hero Slider Component -->
-        <div id="hero-slider-component"></div>
+            <!-- Plus Sign -->
+            <div id="plus-sign" class="text-8xl font-bold text-white opacity-0 transform scale-0">+</div>
 
-        <!-- Main Content with Straight Edge -->
-        <div id="main-content" class="relative z-10 mt-[calc(100vh-2rem)] md:mt-[calc(100vh-3rem)]">
-            <div class="bg-white">
-                <!-- About Component -->
-                <div id="about-component"></div>
-
-                <!-- Team Component -->
-                <div id="team-component"></div>
-
-                <!-- Clients Marquee Component -->
-                <div id="clients-marquee-component"></div>
-
-                <!-- Expertise Component -->
-                <div id="expertise-component"></div>
-
-                <!-- Portfolio Map Component -->
-                <div id="portfolio-map-component"></div>
-
-                <!-- Contact Component -->
-                <div id="contact-component"></div>
+            <!-- Right Analytics Logo -->
+            <div id="logo-right" class="w-64 h-64 flex items-center justify-center opacity-0 transform translate-x-32">
+                <img src="assets/images/media/right_analytics_logo.svg" alt="Right Analytics" class="w-full h-auto max-w-48">
             </div>
         </div>
-    </main>
 
-    <!-- Footer Component -->
-    <div id="footer-component"></div>
+        <!-- Loading Text -->
+        <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2">
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Modals Component -->
-    <div id="modals-component"></div>
+    <!-- Main Website Content (hidden during loading) -->
+    <div id="main-website" class="opacity-0 transition-opacity duration-500">
+        <!-- Header Component -->
+        <div id="header-component"></div>
+
+        <main>
+            <!-- Hero Slider Component -->
+            <div id="hero-slider-component"></div>
+
+            <!-- Main Content with Straight Edge -->
+            <div id="main-content" class="relative z-10 mt-[calc(100vh-2rem)] md:mt-[calc(100vh-3rem)]">
+                <div class="bg-white">
+                    <!-- About Component -->
+                    <div id="about-component"></div>
+
+                    <!-- Team Component -->
+                    <div id="team-component"></div>
+
+                    <!-- Clients Marquee Component -->
+                    <div id="clients-marquee-component"></div>
+
+                    <!-- Expertise Component -->
+                    <div id="expertise-component"></div>
+
+                    <!-- Portfolio Map Component -->
+                    <div id="portfolio-map-component"></div>
+
+                    <!-- Contact Component -->
+                    <div id="contact-component"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Component -->
+        <div id="footer-component"></div>
+
+        <!-- Modals Component -->
+        <div id="modals-component"></div>
+    </div>
 
     <!-- Load JavaScript -->
     <script src="js/main.js"></script>
@@ -114,6 +144,54 @@
                 console.error(`Error loading ${fileName}:`, error);
             }
         }
+
+        // Initialize loading animation
+        function initializeLoadingAnimation() {
+            const logoLeft = document.getElementById('logo-left');
+            const logoRight = document.getElementById('logo-right');
+            const plusSign = document.getElementById('plus-sign');
+            const loadingScreen = document.getElementById('loading-screen');
+
+            // Prevent scrolling during loading animation
+            document.body.style.overflow = 'hidden';
+
+            // Set CSS custom properties for animation directions (larger distance for bigger logos)
+            logoLeft.style.setProperty('--start-position', '-256px');
+            logoRight.style.setProperty('--start-position', '256px');
+
+            // Start the animation sequence
+            setTimeout(() => {
+                logoLeft.classList.add('loading-logo-enter');
+                logoRight.classList.add('loading-logo-enter');
+            }, 300);
+
+            setTimeout(() => {
+                plusSign.classList.add('loading-plus-enter');
+            }, 700);
+
+            // Hide loading screen after 3 seconds
+            setTimeout(() => {
+                loadingScreen.classList.add('loading-screen-exit');
+
+                // Show main website content as loading screen fades out
+                setTimeout(() => {
+                    const mainWebsite = document.getElementById('main-website');
+                    mainWebsite.classList.remove('opacity-0');
+                    mainWebsite.classList.add('opacity-100');
+
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
+                }, 400);
+
+                // Remove loading screen from DOM after animation completes
+                setTimeout(() => {
+                    loadingScreen.remove();
+                }, 800);
+            }, 3000);
+        }
+
+        // Start loading animation immediately
+        initializeLoadingAnimation();
 
         // Load all components when DOM is ready
         document.addEventListener('DOMContentLoaded', async () => {
