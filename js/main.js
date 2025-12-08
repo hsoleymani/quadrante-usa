@@ -689,17 +689,41 @@ function switchModalItem(index) {
     }
 
     // Update mobile navigation highlight
-    const mobileNavList = document.getElementById('mobile-nav-list');
+    const mobileNavList = document.getElementById('project-mobile-nav-list');
     if (mobileNavList) {
-        mobileNavList.querySelectorAll('button').forEach((button, i) => {
-            if (i === index) {
-                button.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
-                button.classList.add('bg-brand-primary', 'text-white', 'border-brand-primary');
-            } else {
-                button.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
-                button.classList.remove('bg-brand-primary', 'text-white', 'border-brand-primary');
+        const buttons = mobileNavList.querySelectorAll('button');
+        let activeButton = null;
+
+        buttons.forEach((button) => {
+            const onclick = button.getAttribute('onclick');
+            if (onclick) {
+                const match = onclick.match(/switchProjectItem\((\d+)\)/);
+                if (match) {
+                    const buttonProjectIndex = parseInt(match[1]);
+                    if (buttonProjectIndex === index) {
+                        // Set active styles
+                        button.style.backgroundColor = '#1e40af';
+                        button.style.color = '#ffffff';
+                        button.style.borderColor = '#1e40af';
+                        activeButton = button;
+                    } else {
+                        // Set inactive styles
+                        button.style.backgroundColor = '#ffffff';
+                        button.style.color = '#475569';
+                        button.style.borderColor = '#e2e8f0';
+                    }
+                }
             }
         });
+
+        // Scroll active button into view
+        if (activeButton) {
+            activeButton.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
     }
 
     // Scroll content to top when switching item
@@ -1070,7 +1094,7 @@ function openProjectModal(projectIndex) {
     // Create modal content with navigation structure similar to universal modal
     const modalContent = `
         <div id="project-modal-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[9999] flex items-center justify-center transition-all duration-500" style="opacity: 1;" onclick="closeProjectModal()">
-            <div class="bg-white rounded-2xl w-full max-w-7xl h-[90vh] overflow-hidden shadow-2xl flex transform scale-100 transition-all duration-300" onclick="event.stopPropagation()">
+            <div class="bg-white overflow-hidden shadow-2xl flex transform scale-100 transition-all duration-300 project-modal-container" onclick="event.stopPropagation()">
 
                 <!-- Left Sidebar with Navigation (Desktop) -->
                 <div class="hidden lg:block w-80 bg-gradient-to-b from-slate-900 to-slate-800 flex-shrink-0">
@@ -1105,12 +1129,42 @@ function openProjectModal(projectIndex) {
 
                     <!-- Mobile Navigation Tabs -->
                     <div class="lg:hidden border-b border-slate-200 bg-white">
-                        <div class="overflow-x-auto">
-                            <div id="project-mobile-nav-list" class="flex p-4 space-x-2 min-w-max">
+                        <div class="project-mobile-scroll-container" style="overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; white-space: nowrap;">
+                            <div id="project-mobile-nav-list" class="project-mobile-nav-inner" style="display: inline-flex; padding: 16px; gap: 8px; min-width: 100vw;">
                                 <!-- Mobile navigation items will be populated by JavaScript -->
                             </div>
                         </div>
                     </div>
+                    <style>
+                        .project-mobile-scroll-container::-webkit-scrollbar {
+                            display: none;
+                        }
+                        .project-mobile-scroll-container {
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
+                        }
+                        .project-mobile-nav-inner > * {
+                            flex-shrink: 0;
+                            white-space: nowrap;
+                        }
+                    </style>
+                    <style>
+                        .project-modal-container {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 0;
+                            max-width: 100vw;
+                            max-height: 100vh;
+                        }
+                        @media (min-width: 1024px) {
+                            .project-modal-container {
+                                width: 90vw;
+                                height: 90vh;
+                                border-radius: 16px;
+                                max-width: 1200px;
+                            }
+                        }
+                    </style>
 
                     <!-- Project Content -->
                     <div class="flex-1 overflow-y-auto">
@@ -1211,20 +1265,28 @@ function buildProjectNavigation() {
 
     // Mobile Navigation - Add separators for mobile too
     // US Projects Mobile
-    mobileHtml += `<div class="flex items-center gap-1 px-2 py-1 text-xs font-bold text-slate-500 whitespace-nowrap">🇺🇸 US</div>`;
+    mobileHtml += `<span style="display: inline-flex; align-items: center; gap: 4px; padding: 8px 12px; font-size: 12px; font-weight: bold; color: #64748b; white-space: nowrap;">🇺🇸 US</span>`;
 
     projectModalData.slice(0, 8).forEach((project, i) => {
         const isActive = i === currentProjectIndex;
-        mobileHtml += `<button onclick="switchProjectItem(${i})" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${project.title}</button>`;
+        const bgColor = isActive ? '#1e40af' : '#ffffff';
+        const textColor = isActive ? '#ffffff' : '#475569';
+        const borderColor = isActive ? '#1e40af' : '#e2e8f0';
+
+        mobileHtml += `<button onclick="switchProjectItem(${i})" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 9999px; font-size: 12px; font-weight: bold; border: 1px solid ${borderColor}; background-color: ${bgColor}; color: ${textColor}; white-space: nowrap; transition: all 0.3s;">${project.title}</button>`;
     });
 
     // EU/International Projects Mobile
-    mobileHtml += `<div class="flex items-center gap-1 px-2 py-1 text-xs font-bold text-slate-500 whitespace-nowrap ml-4">🌍 EU/Intl</div>`;
+    mobileHtml += `<span style="display: inline-flex; align-items: center; gap: 4px; padding: 8px 12px; font-size: 12px; font-weight: bold; color: #64748b; white-space: nowrap; margin-left: 16px;">🌍 EU/Intl</span>`;
 
     projectModalData.slice(8).forEach((project, i) => {
         const projectIndex = i + 8;
         const isActive = projectIndex === currentProjectIndex;
-        mobileHtml += `<button onclick="switchProjectItem(${projectIndex})" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${project.title}</button>`;
+        const bgColor = isActive ? '#1e40af' : '#ffffff';
+        const textColor = isActive ? '#ffffff' : '#475569';
+        const borderColor = isActive ? '#1e40af' : '#e2e8f0';
+
+        mobileHtml += `<button onclick="switchProjectItem(${projectIndex})" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 9999px; font-size: 12px; font-weight: bold; border: 1px solid ${borderColor}; background-color: ${bgColor}; color: ${textColor}; white-space: nowrap; transition: all 0.3s;">${project.title}</button>`;
     });
 
     if (navList) navList.innerHTML = html;
@@ -1266,16 +1328,16 @@ function updateProjectModalUI() {
     if (contentDiv && project) {
         contentDiv.innerHTML = `
             <!-- Project Hero Image -->
-            <div class="relative h-64 md:h-80 overflow-hidden">
-                <img src="${project.image}" class="w-full h-full object-cover" alt="${project.title}">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="px-3 py-1 text-sm font-bold rounded-full bg-white/20 backdrop-blur-sm text-white">${project.type}</span>
-                        <span class="text-white/80 text-sm"><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i>${project.region}</span>
+            <div class="relative overflow-hidden" style="height: 200px;">
+                <img src="${project.image}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" alt="${project.title}">
+                <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), transparent);"></div>
+                <div style="position: absolute; bottom: 16px; left: 16px; right: 16px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+                        <span style="padding: 6px 12px; font-size: 12px; font-weight: bold; border-radius: 9999px; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); color: white;">${project.type}</span>
+                        <span style="color: rgba(255,255,255,0.8); font-size: 14px;"><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i>${project.region}</span>
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-white mb-2">${project.title}</h1>
-                    <p class="text-white/90 text-lg">${project.client}</p>
+                    <h1 style="font-size: 24px; font-family: serif; font-weight: bold; color: white; margin-bottom: 8px; line-height: 1.2;">${project.title}</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 16px;">${project.client}</p>
                 </div>
             </div>
 
