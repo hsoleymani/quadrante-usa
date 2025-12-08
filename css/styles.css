@@ -201,9 +201,18 @@
         overflow: hidden !important;
     }
 
-    /* Hide specific modal scrollbars on mobile */
+    /* Allow vertical scrolling in modal content on mobile */
     #universal-modal .overflow-y-auto {
-        overflow-y: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure modal content can scroll on mobile */
+    #universal-modal .flex-grow {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        height: auto;
+        min-height: 0;
     }
 
     #universal-modal .overflow-x-auto:not(#mobile-nav-list) {

@@ -254,7 +254,7 @@ function initializeSlider() {
     // Start auto advance with custom timing
     startAutoAdvance();
 
-    // Manual controls
+    // Manual controls - Desktop
     const nextBtn = document.getElementById('next-slide');
     const prevBtn = document.getElementById('prev-slide');
 
@@ -265,6 +265,27 @@ function initializeSlider() {
     if (prevBtn) {
         prevBtn.removeEventListener('click', prevSlide); // Remove any existing listener
         prevBtn.addEventListener('click', prevSlide);
+    }
+
+    // Manual controls - Mobile
+    const nextBtnMobile = document.getElementById('next-slide-mobile');
+    const prevBtnMobile = document.getElementById('prev-slide-mobile');
+
+    if (nextBtnMobile) {
+        nextBtnMobile.removeEventListener('click', nextSlide); // Remove any existing listener
+        nextBtnMobile.removeEventListener('touchstart', nextSlide);
+
+        // Add both click and touch events for better mobile support
+        nextBtnMobile.addEventListener('click', nextSlide);
+        nextBtnMobile.addEventListener('touchstart', nextSlide, {passive: true});
+    }
+    if (prevBtnMobile) {
+        prevBtnMobile.removeEventListener('click', prevSlide); // Remove any existing listener
+        prevBtnMobile.removeEventListener('touchstart', prevSlide);
+
+        // Add both click and touch events for better mobile support
+        prevBtnMobile.addEventListener('click', prevSlide);
+        prevBtnMobile.addEventListener('touchstart', prevSlide, {passive: true});
     }
 
     console.log('Slider initialized with', slides.length, 'slides');
@@ -692,28 +713,26 @@ function switchModalItem(index) {
     }
 
     // Update mobile navigation highlight
-    const mobileNavList = document.getElementById('project-mobile-nav-list');
+    const mobileNavList = document.getElementById('mobile-nav-list');
     if (mobileNavList) {
         const buttons = mobileNavList.querySelectorAll('button');
         let activeButton = null;
 
-        buttons.forEach((button) => {
+        buttons.forEach((button, i) => {
             const onclick = button.getAttribute('onclick');
             if (onclick) {
-                const match = onclick.match(/switchProjectItem\((\d+)\)/);
+                const match = onclick.match(/switchModalItem\((\d+)\)/);
                 if (match) {
-                    const buttonProjectIndex = parseInt(match[1]);
-                    if (buttonProjectIndex === index) {
-                        // Set active styles
-                        button.style.backgroundColor = '#1e40af';
-                        button.style.color = '#ffffff';
-                        button.style.borderColor = '#1e40af';
+                    const buttonIndex = parseInt(match[1]);
+                    if (buttonIndex === index) {
+                        // Set active styles for universal modal
+                        button.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                        button.classList.add('bg-brand-primary', 'text-white', 'border-brand-primary');
                         activeButton = button;
                     } else {
-                        // Set inactive styles
-                        button.style.backgroundColor = '#ffffff';
-                        button.style.color = '#475569';
-                        button.style.borderColor = '#e2e8f0';
+                        // Set inactive styles for universal modal
+                        button.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                        button.classList.remove('bg-brand-primary', 'text-white', 'border-brand-primary');
                     }
                 }
             }

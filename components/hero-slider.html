@@ -103,12 +103,23 @@
         </div>
     </div>
 
+    <!-- Desktop Navigation Controls -->
     <div class="hidden sm:flex absolute bottom-12 right-12 z-20 gap-4">
         <button id="prev-slide" class="p-4 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110">
             <i data-lucide="chevron-left" class="w-6 h-6"></i>
         </button>
         <button id="next-slide" class="p-4 rounded-full bg-white/10 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white transition-all hover:scale-110">
             <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Navigation Controls -->
+    <div class="flex sm:hidden absolute bottom-6 right-4 z-20 gap-3">
+        <button id="prev-slide-mobile" class="p-3 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/30 text-white transition-all active:scale-95" style="touch-action: manipulation;">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <button id="next-slide-mobile" class="p-3 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/30 text-white transition-all active:scale-95" style="touch-action: manipulation;">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </button>
     </div>
 </div>
