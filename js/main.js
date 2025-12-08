@@ -1123,7 +1123,69 @@ function initializeProjectMap() {
     window.addEventListener('resize', function () {
         projectMap.invalidateSize();
     });
+
+    // Show interactive map hint after map loads (simplified version)
+    setTimeout(() => {
+        showMapHint();
+    }, 3000); // Show after 3 seconds
 }
+
+// Simplified Map Hint Functions
+function showMapHint() {
+    console.log('🗺️ Showing map interaction hint...');
+    const hint = document.getElementById('map-interaction-hint');
+
+    if (hint) {
+        hint.style.display = 'block';
+        console.log('✅ Map hint should now be visible!');
+
+        // Hide only on map interaction (no auto-hide timer)
+        if (projectMap) {
+            // Listen for map clicks, drags, or marker clicks
+            projectMap.on('click', hideMapHint);
+            projectMap.on('drag', hideMapHint);
+            projectMap.on('zoom', hideMapHint);
+
+            console.log('🎯 Hint will stay visible until map interaction');
+        }
+
+        // Also hide when a project showcase is opened (marker clicked)
+        const originalShowcase = window.showProjectShowcase;
+        if (originalShowcase && !window.showProjectShowcase._hintModified) {
+            window.showProjectShowcase = function(project) {
+                console.log('📍 Project marker clicked, hiding hint');
+                hideMapHint();
+                return originalShowcase(project);
+            };
+            window.showProjectShowcase._hintModified = true;
+        }
+    } else {
+        console.log('❌ Map hint element not found');
+    }
+}
+
+function hideMapHint() {
+    console.log('🗺️ Hiding map interaction hint...');
+    const hint = document.getElementById('map-interaction-hint');
+    if (hint) {
+        hint.style.display = 'none';
+
+        // Remove map event listeners to prevent multiple calls
+        if (projectMap) {
+            projectMap.off('click', hideMapHint);
+            projectMap.off('drag', hideMapHint);
+            projectMap.off('zoom', hideMapHint);
+        }
+
+        console.log('✅ Map hint hidden and event listeners removed');
+    }
+}
+
+// Manual test function - you can call this in console
+window.testMapHint = function() {
+    console.log('🧪 Manual test - showing map hint');
+    showMapHint();
+};
 
 // Enhanced Project Showcase
 window.showProjectShowcase = function(project) {

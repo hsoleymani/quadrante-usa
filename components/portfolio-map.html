@@ -28,6 +28,17 @@
         <div class="relative w-full h-[500px] md:h-[700px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10">
             <div id="project-map" class="w-full h-full bg-slate-100"></div>
 
+            <!-- Interactive Map Hint - Positioned on Map -->
+            <div id="map-interaction-hint" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1002; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 2px solid #1e40af; display: none; pointer-events: none;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="font-size: 40px; animation: bounce 1s infinite;">👆</div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 18px; color: #0f172a;">Click markers to explore projects</div>
+                        <div style="font-size: 14px; color: #64748b;">Interactive project details available</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Enhanced Controls Panel -->
             <div class="absolute top-6 left-6 z-[1000] bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200">
                 <h5 class="font-bold text-slate-900 text-sm mb-3">Project Types</h5>
