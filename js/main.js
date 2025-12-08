@@ -599,10 +599,12 @@ function openUniversalModal(section, index) {
 
     let dataArray;
     if (section === 'expertise') dataArray = competenciesData;
+    else if (section === 'projects') dataArray = projectModalData;
     else dataArray = teamData;
 
     let headerText = 'Our Competencies';
     if (section === 'team') headerText = 'Our Leadership';
+    else if (section === 'projects') headerText = 'Our Global Projects';
 
     if (document.getElementById('sidebar-header')) {
         document.getElementById('sidebar-header').innerText = headerText;
@@ -665,6 +667,7 @@ function switchModalItem(index) {
 
     let dataArray;
     if (currentModalSection === 'expertise') dataArray = competenciesData;
+    else if (currentModalSection === 'projects') dataArray = projectModalData;
     else dataArray = teamData;
 
     // Update desktop navigation highlight (only on larger screens)
@@ -736,6 +739,7 @@ function switchModalItem(index) {
 function updateModalUI() {
     let dataArray;
     if (currentModalSection === 'expertise') dataArray = competenciesData;
+    else if (currentModalSection === 'projects') dataArray = projectModalData;
     else dataArray = teamData;
 
     const data = dataArray[currentModalIndex];
@@ -750,10 +754,43 @@ function updateModalUI() {
 
     document.getElementById('mobile-image-title').innerText = data.title;
     document.getElementById('modal-title').innerText = data.title;
-    document.getElementById('modal-body').innerHTML = data.content;
+
+    // Handle different data formats for projects vs expertise/team
+    if (currentModalSection === 'projects' && data.content === undefined) {
+        // Convert project data format to content format
+        const projectContent = `<div class="space-y-4">
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">Client</h4>
+                <p class="text-slate-700">${data.client}</p>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">Project Type</h4>
+                <p class="text-slate-700">${data.type}</p>
+            </div>
+            <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                <h4 class="font-bold text-slate-900 mb-2">Location</h4>
+                <p class="text-slate-700">${data.region}</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 mb-2">Project Overview</h4>
+                <p class="text-slate-700 mb-4">${data.description}</p>
+                <p class="text-slate-600">${data.details}</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-slate-900 mb-3">Key Features</h4>
+                <ul class="space-y-2">
+                    ${data.keyFeatures.map(feature => `<li class="flex items-center gap-2"><div class="w-2 h-2 bg-brand-primary rounded-full"></div><span class="text-slate-700">${feature}</span></li>`).join('')}
+                </ul>
+            </div>
+        </div>`;
+        document.getElementById('modal-body').innerHTML = projectContent;
+    } else {
+        document.getElementById('modal-body').innerHTML = data.content;
+    }
 
     let label = 'Featured';
     if (currentModalSection === 'expertise') label = 'Competency';
+    else if (currentModalSection === 'projects') label = 'Project';
     else label = 'Leadership';
 
     document.getElementById('modal-section-label').innerText = label;
@@ -804,6 +841,12 @@ function updateModalUI() {
             <button onclick="prefillMessage('modal-question-box', 'We need a feasibility study regarding this capability.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Feasibility Study</button>
             <button onclick="prefillMessage('modal-question-box', 'Can you provide a proposal for this service?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Proposal</button>
             <button onclick="prefillMessage('modal-question-box', 'I have a technical question about compliance standards.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Technical Question</button>
+        `;
+    } else if (currentModalSection === 'projects') {
+        chipsHtml = `
+            <button onclick="prefillMessage('modal-question-box', 'We are interested in a similar project. Can we discuss?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Similar Project</button>
+            <button onclick="prefillMessage('modal-question-box', 'Can you provide more technical details about this project?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Technical Details</button>
+            <button onclick="prefillMessage('modal-question-box', 'What was the project timeline and budget range?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Project Scope</button>
         `;
     } else {
         chipsHtml = `
