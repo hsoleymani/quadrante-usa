@@ -827,6 +827,528 @@ function scrollRow(rowId, direction) {
     setTimeout(() => updateArrowVisibility(rowId), 100);
 }
 
+// Project slider scroll function
+function scrollProjectRow(rowId, direction) {
+    console.log('scrollProjectRow called with:', rowId, direction); // Debug log
+    const row = document.getElementById(rowId);
+    if (!row) {
+        console.error('Project row element not found:', rowId);
+        return;
+    }
+
+    const scrollAmount = 340; // Card width (320px) + gap (20px)
+    const currentScroll = row.scrollLeft;
+    console.log('Current project scroll position:', currentScroll);
+
+    if (direction === 'left') {
+        row.scrollTo({
+            left: Math.max(0, currentScroll - scrollAmount),
+            behavior: 'smooth'
+        });
+    } else {
+        row.scrollTo({
+            left: currentScroll + scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    // Update arrow visibility after scroll
+    setTimeout(() => updateProjectArrowVisibility(rowId), 100);
+}
+
+// Update project arrow visibility based on scroll position
+function updateProjectArrowVisibility(rowId) {
+    const row = document.getElementById(rowId);
+    if (!row) return;
+
+    const leftArrow = document.getElementById(`${rowId}-left-arrow`);
+    const rightArrow = document.getElementById(`${rowId}-right-arrow`);
+
+    if (!leftArrow || !rightArrow) return;
+
+    const scrollLeft = row.scrollLeft;
+    const scrollWidth = row.scrollWidth;
+    const clientWidth = row.clientWidth;
+
+    // Show/hide left arrow
+    if (scrollLeft > 10) {
+        leftArrow.style.display = 'flex';
+    } else {
+        leftArrow.style.display = 'none';
+    }
+
+    // Show/hide right arrow
+    if (scrollLeft < scrollWidth - clientWidth - 10) {
+        rightArrow.style.display = 'flex';
+    } else {
+        rightArrow.style.display = 'none';
+    }
+}
+
+// Project modal data with detailed information
+const projectModalData = [
+    // Project 0: NYPA & NYSERDA Initiatives
+    {
+        title: "NYPA & NYSERDA Initiatives",
+        client: "New York Power Authority",
+        image: "assets/images/media/wind-farm-global.png",
+        type: "Grid & Transmission",
+        region: "New York, USA",
+        description: "Advanced Power Flow Controller deployment and Wind power enabling technologies for grid modernization and renewable integration.",
+        details: "This project focuses on implementing cutting-edge power flow control technologies to enhance grid stability and enable higher penetration of renewable energy sources. Our work includes system studies, equipment specification, and integration planning for NYPA's transmission infrastructure.",
+        keyFeatures: ["Advanced Power Flow Controllers", "Wind Power Integration", "Grid Modernization", "System Studies"]
+    },
+    // Project 1: Dominion Energy Analysis
+    {
+        title: "Dominion Energy Analysis",
+        client: "Dominion Energy",
+        image: "assets/images/media/solar_wind.jpeg",
+        type: "Studies & Consulting",
+        region: "Virginia, USA",
+        description: "Hosting capacity analysis and Solar integration cost analysis for utility-scale renewable development.",
+        details: "Comprehensive analysis of grid hosting capacity for solar integration, including cost-benefit analysis and interconnection studies. Our work enables Dominion Energy to optimize renewable energy deployment while maintaining grid reliability.",
+        keyFeatures: ["Hosting Capacity Analysis", "Solar Integration Studies", "Cost-Benefit Analysis", "Grid Impact Assessment"]
+    },
+    // Project 2: Project Grimes & Mark Center
+    {
+        title: "Project Grimes & Mark Center",
+        client: "Naturgy",
+        image: "assets/images/media/Grimes.jpg",
+        type: "Grid & Transmission",
+        region: "Texas, USA",
+        description: "138/34.5/13.8 kV Substation technical specifications and ERCOT interconnection studies.",
+        details: "Complete substation design and interconnection analysis for ERCOT market participation. This project includes detailed engineering specifications, protection system design, and regulatory compliance for multi-voltage level substations.",
+        keyFeatures: ["Substation Design", "ERCOT Interconnection", "Multi-Voltage Systems", "Protection Systems"]
+    },
+    // Project 3: SCE Arc Events Modeling
+    {
+        title: "SCE Arc Events Modeling",
+        client: "Southern California Edison",
+        image: "assets/images/media/solar_wind.jpeg",
+        type: "Studies & Consulting",
+        region: "California, USA",
+        description: "Power systems arc events modeling using Real-Time Digital Simulator (RTDS) technology.",
+        details: "Advanced modeling and simulation of arc events in power systems using RTDS for Southern California Edison. This work enhances system protection and safety by accurately modeling fault conditions and arc behavior.",
+        keyFeatures: ["RTDS Simulation", "Arc Event Modeling", "System Protection", "Fault Analysis"]
+    },
+    // Project 4: Microgrid Integration
+    {
+        title: "Microgrid Integration Study",
+        client: "San Diego Gas & Electric",
+        image: "assets/images/media/Hardware_in_the_Loop.png",
+        type: "Studies & Consulting",
+        region: "California, USA",
+        description: "Microgrid integration study using Hardware-in-the-Loop (RTDS) testing methodologies.",
+        details: "Comprehensive microgrid integration analysis using Hardware-in-the-Loop testing to validate control systems and ensure seamless grid integration. The study covers islanding scenarios, protection coordination, and system stability.",
+        keyFeatures: ["Hardware-in-the-Loop Testing", "Microgrid Integration", "Islanding Studies", "Control Validation"]
+    },
+    // Project 5: Viento Fronterizo Line
+    {
+        title: "Viento Fronterizo Transmission Line",
+        client: "Ignis",
+        image: "assets/images/media/transmission-lines.jpeg",
+        type: "Grid & Transmission",
+        region: "US-Mexico Border",
+        description: "500 kV High-Voltage Overhead Lines spanning 20km across the US-Mexico border.",
+        details: "Design and engineering of a critical cross-border transmission line connecting renewable energy resources in Mexico with US markets. This project involves complex regulatory coordination and international standards compliance.",
+        keyFeatures: ["500 kV Transmission", "Cross-Border Project", "International Standards", "Renewable Integration"]
+    },
+    // Project 6: Ohio Substation Projects
+    {
+        title: "Ohio Substation Development",
+        client: "Naturgy",
+        image: "assets/images/media/mark.png",
+        type: "Grid & Transmission",
+        region: "Ohio, USA",
+        description: "Mark Center Project – 69/13.8 kV Substation equipment specifications and design.",
+        details: "Complete substation engineering including equipment specification, protection system design, and construction documentation for a new 69/13.8 kV distribution substation serving growing load centers in Ohio.",
+        keyFeatures: ["Substation Engineering", "Equipment Specification", "Protection Design", "Distribution Systems"]
+    },
+    // Project 7: MISO System Impact
+    {
+        title: "MISO System Impact Study",
+        client: "Midcontinent Independent System Operator",
+        image: "assets/images/media/tower_grid_1.png",
+        type: "Studies & Consulting",
+        region: "MISO Territory, USA",
+        description: "Comprehensive System Impact Study for transmission planning in the Midcontinent ISO market.",
+        details: "Detailed analysis of system impacts for new generation and transmission projects within the MISO footprint. The study evaluates system reliability, congestion patterns, and infrastructure requirements.",
+        keyFeatures: ["System Impact Analysis", "MISO Market Studies", "Transmission Planning", "Reliability Assessment"]
+    },
+    // Project 8: Google Data Center
+    {
+        title: "Google Data Center Optimization",
+        client: "Google",
+        image: "assets/images/media/servers.png",
+        type: "Studies & Consulting",
+        region: "Multiple US Locations",
+        description: "Data center optimal location analysis and electrical load assessment for hyperscale facilities.",
+        details: "Strategic siting analysis for Google's data center expansion including electrical infrastructure assessment, utility coordination, and load hosting capacity analysis. The project optimizes location selection for cost and reliability.",
+        keyFeatures: ["Site Selection Analysis", "Load Assessment", "Utility Coordination", "Infrastructure Planning"]
+    },
+    // Project 9: Puerto Rico T&D
+    {
+        title: "Puerto Rico Transmission & Distribution",
+        client: "TSK Engineering",
+        image: "assets/images/media/Salinas.jpeg",
+        type: "Grid & Transmission",
+        region: "Puerto Rico",
+        description: "115 kV Jobos & Salinas Overhead and Underground transmission lines for grid resilience.",
+        details: "Critical transmission infrastructure development in Puerto Rico focusing on grid resilience and reliability improvement. The project includes both overhead and underground construction in challenging environmental conditions.",
+        keyFeatures: ["115 kV Transmission", "Overhead & Underground", "Grid Resilience", "Hurricane Hardening"]
+    },
+    // Project 10: El Higo–Llano Sánchez
+    {
+        title: "El Higo–Llano Sánchez Transmission",
+        client: "Gas Natural Fenosa",
+        image: "assets/images/media/higo.png",
+        type: "Grid & Transmission",
+        region: "Panama",
+        description: "230 kV double-circuit overhead transmission lines spanning 82.5 kilometers.",
+        details: "Major transmission infrastructure project in Central America connecting key load centers and generation resources. The project enhances regional grid stability and enables increased power transfer capability.",
+        keyFeatures: ["230 kV Double Circuit", "82.5 km Length", "Regional Grid", "Power Transfer Enhancement"]
+    },
+    // Project 11: Carmona Substation
+    {
+        title: "Carmona Substation Repowering",
+        client: "Naturgy (Spain)",
+        image: "assets/images/media/Carmona.jpeg",
+        type: "Grid & Transmission",
+        region: "Andalusia, Spain",
+        description: "Repowering of existing 400kV high voltage transmission lines and substation infrastructure.",
+        details: "Comprehensive upgrade and repowering of critical 400kV transmission infrastructure in Southern Spain. The project enhances transmission capacity and improves system reliability for renewable energy integration.",
+        keyFeatures: ["400kV Repowering", "Infrastructure Upgrade", "Capacity Enhancement", "Renewable Integration"]
+    },
+    // Project 12: Valle 1 & 2 Lines
+    {
+        title: "Valle 1 & 2 Evacuation Lines",
+        client: "Reganosa (Spain)",
+        image: "assets/images/media/Renedo.jpeg",
+        type: "Renewables",
+        region: "Castile and León, Spain",
+        description: "220kV evacuation lines designed specifically for photovoltaic plant grid connection.",
+        details: "Specialized transmission lines designed for evacuating power from large-scale photovoltaic installations. The project ensures efficient and reliable connection of renewable generation to the Spanish transmission grid.",
+        keyFeatures: ["220kV Evacuation", "PV Plant Connection", "Renewable Evacuation", "Grid Integration"]
+    },
+    // Project 13: Rio Maior & Torre de Bela
+    {
+        title: "Rio Maior & Torre de Bela Solar Plants",
+        client: "ACISA (Portugal)",
+        image: "assets/images/media/Rio_solar.jpeg",
+        type: "Renewables",
+        region: "Central Portugal",
+        description: "272MWp photovoltaic plants with complete basic and detailed engineering design.",
+        details: "Large-scale solar development project including comprehensive engineering design from concept through construction. The project represents significant renewable energy capacity addition to the Portuguese grid.",
+        keyFeatures: ["272MWp Capacity", "Complete Engineering", "Large-Scale Solar", "Portuguese Grid"]
+    },
+    // Project 14: Cerca PV Plant
+    {
+        title: "Cerca Photovoltaic Plant",
+        client: "EDP Renováveis",
+        image: "assets/images/media/cerca_solar_field.jpeg",
+        type: "Renewables",
+        region: "Portugal",
+        description: "202MWp photovoltaic plant permitting and tender design for utility-scale deployment.",
+        details: "Complete permitting and tender documentation for a major utility-scale solar project in Portugal. Our work includes environmental assessments, grid connection studies, and detailed technical specifications.",
+        keyFeatures: ["202MWp Solar Plant", "Permitting Support", "Tender Design", "Utility Scale"]
+    }
+];
+
+// Global variables for project modal navigation
+let currentProjectIndex = 0;
+
+// Function to open project modal with navigation
+function openProjectModal(projectIndex) {
+    currentProjectIndex = projectIndex;
+    const project = projectModalData[projectIndex];
+
+    if (!project) {
+        console.error('Project not found:', projectIndex);
+        return;
+    }
+
+    // Create modal content with navigation structure similar to universal modal
+    const modalContent = `
+        <div id="project-modal-overlay" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-[9999] flex items-center justify-center transition-all duration-500" style="opacity: 1;" onclick="closeProjectModal()">
+            <div class="bg-white rounded-2xl w-full max-w-7xl h-[90vh] overflow-hidden shadow-2xl flex transform scale-100 transition-all duration-300" onclick="event.stopPropagation()">
+
+                <!-- Left Sidebar with Navigation (Desktop) -->
+                <div class="hidden lg:block w-80 bg-gradient-to-b from-slate-900 to-slate-800 flex-shrink-0">
+                    <!-- Header -->
+                    <div class="p-6 border-b border-white/10">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl font-bold text-white" id="project-sidebar-header">Our Global Projects</h2>
+                            <button onclick="closeProjectModal()" class="text-white/60 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-all">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <p class="text-slate-400 text-sm">Browse through our portfolio of infrastructure projects worldwide</p>
+                    </div>
+
+                    <!-- Navigation List -->
+                    <div class="p-4 overflow-y-auto flex-1" style="max-height: calc(90vh - 200px);">
+                        <div id="project-nav-list" class="space-y-2">
+                            <!-- Navigation items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="flex-1 flex flex-col">
+                    <!-- Mobile Header -->
+                    <div class="lg:hidden flex items-center justify-between p-4 border-b border-slate-200">
+                        <h2 class="text-lg font-bold text-slate-900">Our Global Projects</h2>
+                        <button onclick="closeProjectModal()" class="text-slate-600 hover:text-slate-900 p-2">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Navigation Tabs -->
+                    <div class="lg:hidden border-b border-slate-200 bg-white">
+                        <div class="overflow-x-auto">
+                            <div id="project-mobile-nav-list" class="flex p-4 space-x-2 min-w-max">
+                                <!-- Mobile navigation items will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="flex-1 overflow-y-auto">
+                        <div id="project-content">
+                            <!-- Project content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button id="project-prev-btn" onclick="switchProjectItem(currentProjectIndex - 1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all backdrop-blur-sm lg:left-80">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="project-next-btn" onclick="switchProjectItem(currentProjectIndex + 1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all backdrop-blur-sm">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', modalContent);
+    document.body.style.overflow = 'hidden';
+
+    // Build navigation and populate content
+    buildProjectNavigation();
+    updateProjectModalUI();
+
+    // Initialize lucide icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
+    // Handle keyboard navigation
+    document.addEventListener('keydown', handleProjectModalKeyboard);
+}
+
+// Function to build project navigation
+function buildProjectNavigation() {
+    const navList = document.getElementById('project-nav-list');
+    const mobileNavList = document.getElementById('project-mobile-nav-list');
+
+    let html = '';
+    let mobileHtml = '';
+
+    // US Projects (indices 0-7)
+    html += `<div class="mb-4">
+        <div class="px-4 py-2 mb-2">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-white/60 flex items-center gap-2">
+                <span class="text-lg">🇺🇸</span> United States Projects
+            </h3>
+        </div>`;
+
+    projectModalData.slice(0, 8).forEach((project, i) => {
+        const isActive = i === currentProjectIndex;
+        const activeClasses = isActive ? 'bg-brand-primary/10 border-brand-primary' : 'border-transparent hover:bg-white/5';
+
+        // Desktop Nav List (sidebar) - US Projects
+        html += `<button onclick="switchProjectItem(${i})" id="project-nav-item-${i}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group border-l-4 ${activeClasses} mb-2">
+            <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-slate-700">
+                <img src="${project.image}" class="w-full h-full object-cover" alt="${project.title}">
+            </div>
+            <div class="flex-1 min-w-0">
+                <span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${project.title}</span>
+                <span class="text-xs ${isActive ? 'text-slate-300' : 'text-slate-500 group-hover:text-slate-400'} block mt-1">${project.client}</span>
+            </div>
+        </button>`;
+    });
+
+    html += `</div>`;
+
+    // EU & International Projects (indices 8-14)
+    html += `<div class="mb-4">
+        <div class="px-4 py-2 mb-2 border-t border-white/10 pt-4">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-white/60 flex items-center gap-2">
+                <span class="text-lg">🌍</span> EU & International Projects
+            </h3>
+        </div>`;
+
+    projectModalData.slice(8).forEach((project, i) => {
+        const projectIndex = i + 8; // Adjust index for the full array
+        const isActive = projectIndex === currentProjectIndex;
+        const activeClasses = isActive ? 'bg-brand-primary/10 border-brand-primary' : 'border-transparent hover:bg-white/5';
+
+        // Desktop Nav List (sidebar) - EU/International Projects
+        html += `<button onclick="switchProjectItem(${projectIndex})" id="project-nav-item-${projectIndex}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group border-l-4 ${activeClasses} mb-2">
+            <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-slate-700">
+                <img src="${project.image}" class="w-full h-full object-cover" alt="${project.title}">
+            </div>
+            <div class="flex-1 min-w-0">
+                <span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${project.title}</span>
+                <span class="text-xs ${isActive ? 'text-slate-300' : 'text-slate-500 group-hover:text-slate-400'} block mt-1">${project.client}</span>
+            </div>
+        </button>`;
+    });
+
+    html += `</div>`;
+
+    // Mobile Navigation - Add separators for mobile too
+    // US Projects Mobile
+    mobileHtml += `<div class="flex items-center gap-1 px-2 py-1 text-xs font-bold text-slate-500 whitespace-nowrap">🇺🇸 US</div>`;
+
+    projectModalData.slice(0, 8).forEach((project, i) => {
+        const isActive = i === currentProjectIndex;
+        mobileHtml += `<button onclick="switchProjectItem(${i})" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${project.title}</button>`;
+    });
+
+    // EU/International Projects Mobile
+    mobileHtml += `<div class="flex items-center gap-1 px-2 py-1 text-xs font-bold text-slate-500 whitespace-nowrap ml-4">🌍 EU/Intl</div>`;
+
+    projectModalData.slice(8).forEach((project, i) => {
+        const projectIndex = i + 8;
+        const isActive = projectIndex === currentProjectIndex;
+        mobileHtml += `<button onclick="switchProjectItem(${projectIndex})" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold border transition-colors whitespace-nowrap ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${project.title}</button>`;
+    });
+
+    if (navList) navList.innerHTML = html;
+    if (mobileNavList) mobileNavList.innerHTML = mobileHtml;
+}
+
+// Function to switch project item
+function switchProjectItem(newIndex) {
+    if (newIndex < 0 || newIndex >= projectModalData.length) return;
+
+    currentProjectIndex = newIndex;
+    buildProjectNavigation();
+    updateProjectModalUI();
+
+    // Re-initialize lucide icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+}
+
+// Function to update project modal UI
+function updateProjectModalUI() {
+    const project = projectModalData[currentProjectIndex];
+    const contentDiv = document.getElementById('project-content');
+    const prevBtn = document.getElementById('project-prev-btn');
+    const nextBtn = document.getElementById('project-next-btn');
+
+    // Update navigation button states
+    if (prevBtn) {
+        prevBtn.style.opacity = currentProjectIndex === 0 ? '0.5' : '1';
+        prevBtn.disabled = currentProjectIndex === 0;
+    }
+    if (nextBtn) {
+        nextBtn.style.opacity = currentProjectIndex === projectModalData.length - 1 ? '0.5' : '1';
+        nextBtn.disabled = currentProjectIndex === projectModalData.length - 1;
+    }
+
+    // Update content
+    if (contentDiv && project) {
+        contentDiv.innerHTML = `
+            <!-- Project Hero Image -->
+            <div class="relative h-64 md:h-80 overflow-hidden">
+                <img src="${project.image}" class="w-full h-full object-cover" alt="${project.title}">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-3 py-1 text-sm font-bold rounded-full bg-white/20 backdrop-blur-sm text-white">${project.type}</span>
+                        <span class="text-white/80 text-sm"><i data-lucide="map-pin" class="w-4 h-4 inline mr-1"></i>${project.region}</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-white mb-2">${project.title}</h1>
+                    <p class="text-white/90 text-lg">${project.client}</p>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="p-6 md:p-8">
+                <div class="space-y-6">
+                    <!-- Description -->
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Project Overview</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">${project.description}</p>
+                        <p class="text-slate-700 leading-relaxed">${project.details}</p>
+                    </div>
+
+                    <!-- Key Features -->
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Key Features</h3>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            ${project.keyFeatures.map(feature => `
+                                <div class="flex items-center gap-2 text-slate-700">
+                                    <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Contact CTA -->
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Interested in Similar Projects?</h3>
+                        <p class="text-slate-600 mb-4">Contact our team to discuss how we can help with your infrastructure challenges.</p>
+                        <a href="#contact" onclick="closeProjectModal()" class="inline-flex items-center gap-2 bg-brand-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-bold transition-all">
+                            Get in Touch <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Function to handle keyboard navigation
+function handleProjectModalKeyboard(e) {
+    if (!document.getElementById('project-modal-overlay')) return;
+
+    switch(e.key) {
+        case 'ArrowLeft':
+            e.preventDefault();
+            switchProjectItem(currentProjectIndex - 1);
+            break;
+        case 'ArrowRight':
+            e.preventDefault();
+            switchProjectItem(currentProjectIndex + 1);
+            break;
+        case 'Escape':
+            e.preventDefault();
+            closeProjectModal();
+            break;
+    }
+}
+
+// Function to close project modal
+function closeProjectModal() {
+    const modal = document.getElementById('project-modal-overlay');
+    if (modal) {
+        // Remove keyboard event listener
+        document.removeEventListener('keydown', handleProjectModalKeyboard);
+
+        // Remove modal
+        modal.remove();
+        document.body.style.overflow = '';
+    }
+}
+
 // Update arrow visibility based on scroll position
 function updateArrowVisibility(rowId) {
     const row = document.getElementById(rowId);
@@ -874,11 +1396,26 @@ function initializeArrowVisibility() {
     if (row2) {
         row2.addEventListener('scroll', () => updateArrowVisibility('row2'));
     }
+
+    // Initialize project slider arrows
+    updateProjectArrowVisibility('projects-row1');
+    updateProjectArrowVisibility('projects-row2');
+
+    // Add scroll event listeners for project sliders
+    const projectsRow1 = document.getElementById('projects-row1');
+    const projectsRow2 = document.getElementById('projects-row2');
+
+    if (projectsRow1) {
+        projectsRow1.addEventListener('scroll', () => updateProjectArrowVisibility('projects-row1'));
+    }
+    if (projectsRow2) {
+        projectsRow2.addEventListener('scroll', () => updateProjectArrowVisibility('projects-row2'));
+    }
 }
 
 // Add drag scrolling functionality
 function initializeDragScrolling() {
-    const scrollContainers = document.querySelectorAll('#row1, #row2');
+    const scrollContainers = document.querySelectorAll('#row1, #row2, #projects-row1, #projects-row2');
 
     scrollContainers.forEach(container => {
         let isDown = false;

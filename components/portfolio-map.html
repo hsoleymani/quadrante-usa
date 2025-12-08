@@ -10,6 +10,265 @@
             </p>
         </div>
 
+        <!-- Featured Projects Slider Section -->
+        <div class="bg-white rounded-3xl p-6 md:p-12 shadow-xl border border-slate-100 overflow-hidden relative mb-16">
+            <!-- Section Header -->
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Featured Projects</h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Discover our most impactful projects across power systems, renewable energy, and critical infrastructure development.</p>
+            </div>
+
+            <!-- Projects Slider - Two Rows -->
+
+            <!-- Row 1: US Projects -->
+            <div class="mb-6 relative">
+                <!-- Left Arrow -->
+                <button id="projects-row1-left-arrow" onclick="scrollProjectRow('projects-row1', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-brand-primary hover:bg-blue-800 arrow-shadow w-12 h-16 flex items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
+                    <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                </button>
+
+                <!-- Right Arrow -->
+                <button id="projects-row1-right-arrow" onclick="scrollProjectRow('projects-row1', 'right')" class="absolute -right-12 arrow-right-mobile top-1/2 -translate-y-1/2 z-50 bg-brand-primary hover:bg-blue-800 arrow-shadow w-12 h-16 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                    <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                </button>
+
+                <div id="projects-row1" class="overflow-x-auto scrollbar-show scroll-smooth px-3 scroll-gradient-container">
+                    <div class="flex gap-4 md:gap-6 pb-2" style="width: max-content;">
+
+                        <!-- Project 1: NYPA & NYSERDA Initiatives -->
+                        <div onclick="openProjectModal(0)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/wind-farm-global.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="NYPA & NYSERDA Initiatives">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">New York Power Authority</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">NYPA & NYSERDA Initiatives</h4>
+                                <p class="text-gray-400 text-sm font-light">Advanced Power Flow Controller deployment & Wind power enabling technologies.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: Dominion Energy Analysis -->
+                        <div onclick="openProjectModal(1)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/solar_wind.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Dominion Energy Analysis">
+                                <div class="absolute bottom-0 left-0 bg-indigo-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Studies & Consulting</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Dominion Energy</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Dominion Energy Analysis</h4>
+                                <p class="text-gray-400 text-sm font-light">Hosting capacity analysis & Solar integration cost analysis.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: Project Grimes & Mark Center -->
+                        <div onclick="openProjectModal(2)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/Grimes.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Project Grimes & Mark Center">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Naturgy</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Project Grimes & Mark Center</h4>
+                                <p class="text-gray-400 text-sm font-light">138/34.5/13.8 kV Substation technical specs & ERCOT interconnection.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 4: SCE Arc Events Modeling -->
+                        <div onclick="openProjectModal(3)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/solar_wind.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="SCE Arc Events Modeling">
+                                <div class="absolute bottom-0 left-0 bg-indigo-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Studies & Consulting</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Southern California Edison</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">SCE Arc Events Modeling</h4>
+                                <p class="text-gray-400 text-sm font-light">Power systems arc events modeling using RTDS.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 5: Microgrid Integration -->
+                        <div onclick="openProjectModal(4)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/Hardware_in_the_Loop.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Microgrid Integration">
+                                <div class="absolute bottom-0 left-0 bg-indigo-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Studies & Consulting</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">SDG&E</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Microgrid Integration</h4>
+                                <p class="text-gray-400 text-sm font-light">Microgrid integration study using Hardware-in-the-Loop (RTDS).</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 6: Ohio Substation Projects -->
+                        <div onclick="openProjectModal(6)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/mark.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Ohio Substation Projects">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Naturgy</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Ohio Substation Projects</h4>
+                                <p class="text-gray-400 text-sm font-light">Project Mark Center – 69/13.8 kV Substation equipment specs.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 7: MISO System Impact -->
+                        <div onclick="openProjectModal(7)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/tower_grid_1.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="MISO System Impact">
+                                <div class="absolute bottom-0 left-0 bg-indigo-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Studies & Consulting</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">MISO</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">MISO System Impact</h4>
+                                <p class="text-gray-400 text-sm font-light">System Impact Study for Midcontinent ISO.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 8: Google Data Center -->
+                        <div onclick="openProjectModal(8)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/servers.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Google Data Center">
+                                <div class="absolute bottom-0 left-0 bg-indigo-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Studies & Consulting</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Google</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Google Data Center</h4>
+                                <p class="text-gray-400 text-sm font-light">Data center optimal location & load analysis.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: EU & International Projects -->
+            <div class="mb-6 relative">
+                <!-- Left Arrow -->
+                <button id="projects-row2-left-arrow" onclick="scrollProjectRow('projects-row2', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-brand-primary hover:bg-blue-800 arrow-shadow w-12 h-16 flex items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
+                    <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                </button>
+
+                <!-- Right Arrow -->
+                <button id="projects-row2-right-arrow" onclick="scrollProjectRow('projects-row2', 'right')" class="absolute -right-12 arrow-right-mobile top-1/2 -translate-y-1/2 z-50 bg-brand-primary hover:bg-blue-800 arrow-shadow w-12 h-16 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                    <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                </button>
+
+                <div id="projects-row2" class="overflow-x-auto scrollbar-show scroll-smooth px-3 scroll-gradient-container">
+                    <div class="flex gap-4 md:gap-6 pb-2" style="width: max-content;">
+
+                        <!-- Project 9: Viento Fronterizo Line -->
+                        <div onclick="openProjectModal(5)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/transmission-lines.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Viento Fronterizo Line">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Ignis</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Viento Fronterizo Line</h4>
+                                <p class="text-gray-400 text-sm font-light">500 kV High-Voltage Overhead Lines (20km cross-border).</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 10: Puerto Rico T&D -->
+                        <div onclick="openProjectModal(9)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/Salinas.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Puerto Rico T&D">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">TSK</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Puerto Rico T&D</h4>
+                                <p class="text-gray-400 text-sm font-light">115 kV Jobos & Salinas Overhead/Buried Lines.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 11: El Higo–Llano Sánchez -->
+                        <div onclick="openProjectModal(10)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/higo.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="El Higo–Llano Sánchez">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Gas Natural Fenosa</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">El Higo–Llano Sánchez</h4>
+                                <p class="text-gray-400 text-sm font-light">230 kV double-circuit overhead lines (82.5 km).</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 12: Carmona Substation -->
+                        <div onclick="openProjectModal(11)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/Carmona.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Carmona Substation">
+                                <div class="absolute bottom-0 left-0 bg-brand-primary/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Grid & Transmission</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Naturgy (Spain)</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Carmona Substation</h4>
+                                <p class="text-gray-400 text-sm font-light">Repowering of 400kV high voltage lines.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 13: Valle 1 & 2 Lines -->
+                        <div onclick="openProjectModal(12)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/Renedo.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Valle 1 & 2 Lines">
+                                <div class="absolute bottom-0 left-0 bg-green-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Renewables</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">Reganosa (Spain)</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Valle 1 & 2 Lines</h4>
+                                <p class="text-gray-400 text-sm font-light">220kV evacuation lines for PV plants.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 14: Rio Maior & Torre de Bela -->
+                        <div onclick="openProjectModal(13)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/Rio_solar.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Rio Maior & Torre de Bela">
+                                <div class="absolute bottom-0 left-0 bg-green-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Renewables</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">ACISA (Portugal)</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Rio Maior & Torre de Bela</h4>
+                                <p class="text-gray-400 text-sm font-light">272MWp PV Plants - Basic and Detailed Design.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 15: Cerca PV Plant -->
+                        <div onclick="openProjectModal(14)" class="group cursor-pointer bg-slate-800 rounded-xl border border-white/10 shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80">
+                            <div class="mb-4 relative overflow-hidden rounded-t-xl h-48 md:h-64">
+                                <div class="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-all duration-500"></div>
+                                <img src="assets/images/media/cerca_solar_field.jpeg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80" alt="Cerca PV Plant">
+                                <div class="absolute bottom-0 left-0 bg-green-600/90 px-3 py-1.5 text-[10px] md:text-xs font-bold uppercase tracking-widest text-white z-20">Renewables</div>
+                            </div>
+                            <div class="p-4 pt-0">
+                                <div class="text-xs text-gray-400 font-medium mb-2">EDP Renováveis</div>
+                                <h4 class="text-lg md:text-xl font-serif font-bold mb-2 text-white group-hover:text-brand-primary transition-colors">Cerca PV Plant</h4>
+                                <p class="text-gray-400 text-sm font-light">202MWp PV Plant Permitting and Tender Design.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Region Navigation Tabs -->
         <div class="flex justify-center mb-8">
             <div class="bg-white rounded-full p-2 shadow-lg border border-slate-200">
