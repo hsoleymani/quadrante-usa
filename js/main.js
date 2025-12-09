@@ -1610,12 +1610,92 @@ let allMarkers = [];
 let layerGroups = {};
 let currentRegion = 'usa';
 
+// Global filter and region functions (must be defined before map initialization)
+window.toggleFilter = function (type) {
+    console.log('Toggle filter called for type:', type); // Debug log
+    const layer = layerGroups[type];
+    const btn = document.getElementById('btn-' + type);
+
+    if (!layer || !btn) {
+        console.error('Layer or button not found for type:', type);
+        return;
+    }
+
+    if (projectMap && projectMap.hasLayer(layer)) {
+        // Hide layer
+        projectMap.removeLayer(layer);
+        btn.classList.add('opacity-50', 'grayscale');
+        btn.classList.remove('ring-2', 'ring-offset-1');
+
+        // Remove type-specific backgrounds
+        btn.classList.remove('ring-blue-100', 'bg-blue-50', 'ring-green-100', 'bg-green-50', 'ring-indigo-100', 'bg-indigo-50');
+        console.log('Layer hidden for type:', type);
+    } else if (projectMap) {
+        // Show layer
+        projectMap.addLayer(layer);
+        btn.classList.remove('opacity-50', 'grayscale');
+        btn.classList.add('ring-2', 'ring-offset-1');
+
+        // Add type-specific backgrounds
+        if (type === 'grid') {
+            btn.classList.add('ring-blue-100', 'bg-blue-50');
+        }
+        if (type === 'renew') {
+            btn.classList.add('ring-green-100', 'bg-green-50');
+        }
+        if (type === 'study') {
+            btn.classList.add('ring-indigo-100', 'bg-indigo-50');
+        }
+        console.log('Layer shown for type:', type);
+    }
+    if (typeof updateProjectCounter === 'function') updateProjectCounter();
+    if (typeof generateMobileProjectList === 'function') generateMobileProjectList();
+};
+
+window.focusRegion = function(region) {
+    console.log('Focusing on region:', region); // Debug log
+    currentRegion = region;
+
+    // Update button states - find all region buttons (usa, europe, global)
+    const regionButtons = ['btn-usa', 'btn-europe', 'btn-global'];
+    regionButtons.forEach(btnId => {
+        const btn = document.getElementById(btnId);
+        if (btn) {
+            btn.classList.remove('bg-brand-primary', 'text-white', 'shadow-md');
+            btn.classList.add('text-slate-600');
+        }
+    });
+
+    // Set active button
+    const activeBtn = document.getElementById(`btn-${region}`);
+    if (activeBtn) {
+        activeBtn.classList.add('bg-brand-primary', 'text-white', 'shadow-md');
+        activeBtn.classList.remove('text-slate-600');
+    }
+
+    // Focus map on region
+    const regionBounds = {
+        usa: { center: [39.8283, -98.5795], zoom: 3 },
+        europe: { center: [39.5, -4.0], zoom: 6 }, // Spain/Portugal focus - centered on Iberian Peninsula
+        global: { center: [30.0, -40.0], zoom: 2 }
+    };
+
+    const bounds = regionBounds[region];
+    if (projectMap) {
+        projectMap.setView(bounds.center, bounds.zoom);
+        console.log('Map view set to:', bounds);
+    }
+
+    if (typeof updateProjectCounter === 'function') updateProjectCounter();
+    if (typeof generateMobileProjectList === 'function') generateMobileProjectList();
+};
+
 function initializeProjectMap() {
-    // Initialize Map - Start focused on USA
+    // Initialize Map - Start focused on USA with wider zoom
     projectMap = L.map('project-map', {
         scrollWheelZoom: false,
         zoomControl: false
-    }).setView([39.8283, -98.5795], 4); // USA center
+    }).setView([39.8283, -98.5795], 3); // USA center with wider zoom to show whole USA
 
     // Add custom zoom controls
     L.control.zoom({
@@ -1719,66 +1799,18 @@ function initializeProjectMap() {
     // Generate mobile project list
     generateMobileProjectList();
 
-    // Filter Logic
-    window.toggleFilter = function (type) {
-        const layer = layerGroups[type];
-        const btn = document.getElementById('btn-' + type);
-
-        if (projectMap.hasLayer(layer)) {
-            projectMap.removeLayer(layer);
-            btn.classList.add('opacity-50', 'grayscale');
-            btn.classList.remove('ring-2', 'ring-offset-1', 'bg-blue-50', 'bg-green-50', 'bg-indigo-50');
-        } else {
-            projectMap.addLayer(layer);
-            btn.classList.remove('opacity-50', 'grayscale');
-            btn.classList.add('ring-2', 'ring-offset-1');
-
-            if (type === 'grid') btn.classList.add('bg-blue-50');
-            if (type === 'renew') btn.classList.add('bg-green-50');
-            if (type === 'study') btn.classList.add('bg-indigo-50');
-        }
-        updateProjectCounter();
-    };
-
-    // Region Focus Logic
-    window.focusRegion = function(region) {
-        console.log('Focusing on region:', region); // Debug log
-        currentRegion = region;
-
-        // Update button states
-        document.querySelectorAll('[id^="btn-"]:not([id*="grid"]):not([id*="renew"]):not([id*="study"])').forEach(btn => {
-            btn.classList.remove('bg-brand-primary', 'text-white', 'shadow-md');
-            btn.classList.add('text-slate-600');
-        });
-
-        const activeBtn = document.getElementById(`btn-${region}`);
-        if (activeBtn) {
-            activeBtn.classList.add('bg-brand-primary', 'text-white', 'shadow-md');
-            activeBtn.classList.remove('text-slate-600');
-        }
-
-        // Focus map on region
-        const regionBounds = {
-            usa: { center: [39.8283, -98.5795], zoom: 4 },
-            europe: { center: [39.5, -4.0], zoom: 6 }, // Spain/Portugal focus - centered on Iberian Peninsula
-            global: { center: [30.0, -40.0], zoom: 3 }
-        };
-
-        const bounds = regionBounds[region];
-        if (projectMap) {
-            projectMap.setView(bounds.center, bounds.zoom);
-        }
-
-        updateProjectCounter();
-        generateMobileProjectList();
-    };
-
-    // Initialize with USA focus
+    // Initialize with USA focus and ensure all filters are active by default
     ['grid', 'renew', 'study'].forEach(type => {
         const btn = document.getElementById('btn-' + type);
-        if (type === 'grid') btn.classList.add('ring-blue-100', 'bg-blue-50');
-        if (type === 'renew') btn.classList.add('ring-green-100', 'bg-green-50');
-        if (type === 'study') btn.classList.add('ring-indigo-100', 'bg-indigo-50');
+        if (btn) {
+            btn.classList.add('ring-2', 'ring-offset-1');
+            if (type === 'grid') btn.classList.add('ring-blue-100', 'bg-blue-50');
+            if (type === 'renew') btn.classList.add('ring-green-100', 'bg-green-50');
+            if (type === 'study') btn.classList.add('ring-indigo-100', 'bg-indigo-50');
+            console.log('Initialized filter button:', type);
+        } else {
+            console.error('Button not found for type:', type);
+        }
     });
 
     window.addEventListener('resize', function () {
