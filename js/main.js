@@ -70,6 +70,30 @@ function toggleMobileMenu() {
     }
 }
 
+// Function to ensure mobile menu button remains responsive
+function ensureMobileMenuResponsive() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    if (mobileMenuBtn && window.innerWidth <= 768) {
+        // Ensure button is clickable and has proper z-index
+        mobileMenuBtn.style.pointerEvents = 'auto';
+        mobileMenuBtn.style.zIndex = '60';
+
+        // Check if event listeners are still attached, re-attach if needed
+        if (!mobileMenuBtn.hasAttribute('data-listeners-attached')) {
+            mobileMenuBtn.removeEventListener('click', handleMobileMenuClick);
+            mobileMenuBtn.removeEventListener('touchstart', handleMobileMenuClick);
+
+            if ('ontouchstart' in window) {
+                mobileMenuBtn.addEventListener('touchstart', handleMobileMenuClick, {passive: false});
+            } else {
+                mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
+            }
+
+            mobileMenuBtn.setAttribute('data-listeners-attached', 'true');
+        }
+    }
+}
+
 // --- Data Definitions ---
 
 // UPDATED COMPETENCIES DATA (5 PANELS)
@@ -227,6 +251,9 @@ window.addEventListener('scroll', () => {
     const totalHeight = document.body.scrollHeight - window.innerHeight;
     const progressWidth = (window.scrollY / totalHeight) * 100;
     progress.style.width = `${progressWidth}%`;
+
+    // Ensure mobile menu button remains responsive after scroll
+    ensureMobileMenuResponsive();
 });
 
 // --- HERO SLIDER ---
@@ -289,6 +316,9 @@ function initializeSlider() {
     }
 
     console.log('Slider initialized with', slides.length, 'slides');
+
+    // Add touch/swipe functionality for mobile
+    initializeSliderSwipe();
 }
 
 function showSlide(index) {
@@ -328,6 +358,68 @@ function startAutoAdvance() {
     }, duration);
 
     console.log(`Slide ${currentSlide} will display for ${duration/1000} seconds`);
+}
+
+// Touch/Swipe functionality for hero slider
+function initializeSliderSwipe() {
+    const sliderContainer = document.getElementById('hero-slider');
+    if (!sliderContainer) return;
+
+    let startX = null;
+    let startY = null;
+    let isDragging = false;
+
+    // Minimum swipe distance to trigger slide change (in pixels)
+    const minSwipeDistance = 50;
+
+    sliderContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+    }, {passive: true});
+
+    sliderContainer.addEventListener('touchmove', (e) => {
+        if (!isDragging || !startX || !startY) return;
+
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+
+        const diffX = startX - currentX;
+        const diffY = startY - currentY;
+
+        // Only prevent default if horizontal swipe is more dominant
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            e.preventDefault();
+        }
+    }, {passive: false});
+
+    sliderContainer.addEventListener('touchend', (e) => {
+        if (!isDragging || !startX || !startY) return;
+
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+
+        const diffX = startX - endX;
+        const diffY = startY - endY;
+
+        // Check if it's more of a horizontal swipe than vertical
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+            if (diffX > 0) {
+                // Swiped left - go to next slide
+                nextSlide();
+            } else {
+                // Swiped right - go to previous slide
+                prevSlide();
+            }
+        }
+
+        // Reset
+        startX = null;
+        startY = null;
+        isDragging = false;
+    }, {passive: true});
+
+    console.log('Swipe functionality initialized for hero slider');
 }
 
 function prevSlide() {

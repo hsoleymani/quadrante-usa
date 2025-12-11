@@ -35,6 +35,9 @@
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     cursor: pointer;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 60 !important;
 }
 
 #mobile-menu-btn:active {
