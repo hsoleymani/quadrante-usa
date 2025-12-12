@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -23,8 +23,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Lato', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+                        serif: ['Roboto', 'Inter', 'system-ui', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -63,7 +63,7 @@
 </head>
 <body class="font-sans text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900">
     <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 z-[9999] flex items-center justify-center px-4">
+    <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 z-[9999] flex items-center justify-center px-4 cursor-pointer" onclick="skipLoadingAnimation()">
         <div class="flex items-center justify-center space-x-4 sm:space-x-8 md:space-x-16 w-full max-w-5xl">
             <!-- Quadrante Logo -->
             <div id="logo-left" class="flex items-center justify-center opacity-0 transform -translate-x-32">
@@ -78,6 +78,7 @@
                 <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics" class="h-[130px] md:h-[200px] w-auto object-contain">
             </div>
         </div>
+
 
         <!-- Loading Text -->
         <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2">
@@ -190,6 +191,29 @@
                     loadingScreen.remove();
                 }, 800);
             }, 3000);
+        }
+
+        // Skip loading animation function
+        function skipLoadingAnimation() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainWebsite = document.getElementById('main-website');
+
+            // Immediately hide loading screen and show main website
+            loadingScreen.classList.add('loading-screen-exit');
+
+            // Show main website content immediately
+            setTimeout(() => {
+                mainWebsite.classList.remove('opacity-0');
+                mainWebsite.classList.add('opacity-100');
+
+                // Re-enable scrolling
+                document.body.style.overflow = '';
+
+                // Remove loading screen from DOM
+                setTimeout(() => {
+                    loadingScreen.remove();
+                }, 400);
+            }, 100);
         }
 
         // Start loading animation immediately

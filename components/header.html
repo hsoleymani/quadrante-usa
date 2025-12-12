@@ -1,55 +1,118 @@
 <!-- Header and Navigation -->
 <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-brand-primary z-[60] transition-all duration-100 w-0"></div>
 
-<header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white py-6 border-b border-gray-100">
+<header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white py-3 border-b border-gray-100">
     <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <div class="flex items-center gap-2 sm:gap-4 md:gap-6 cursor-pointer" onclick="window.scrollTo(0,0)">
-            <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-4 sm:h-5 md:h-6 w-auto" />
-            <div class="h-5 sm:h-8 md:h-12 w-px bg-slate-300"></div>
-            <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-8 sm:h-14 md:h-20 w-auto object-contain" />
+        <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+            <img src="assets/images/media/logo-quadrante.png" alt="Quadrante Logo" class="h-4 sm:h-5 md:h-6 w-auto mr-2 sm:mr-4 md:mr-6" style="transform: scale(1.44);" />
+            <div class="h-5 sm:h-8 md:h-12 w-px bg-slate-300 mx-2 sm:mx-4 md:mx-6"></div>
+            <img src="assets/images/media/logo-right-analytics.png" alt="Right Analytics Logo" class="h-8 sm:h-14 md:h-20 w-auto object-contain ml-2 sm:ml-4 md:ml-6" />
         </div>
 
         <nav class="hidden md:flex items-center gap-8">
-            <a href="#about" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">About</a>
-            <a href="#team" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Team</a>
             <div class="relative group">
-                <button onclick="document.getElementById('core-capabilities').scrollIntoView({behavior: 'smooth'})" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors flex items-center gap-1">
-                    Services
-                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-hover:rotate-180"></i>
+                <button class="text-sm font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors px-3 py-2">
+                    Menu
                 </button>
 
-                <!-- Services Dropdown Menu -->
-                <div class="absolute top-full left-0 mt-2 w-96 bg-white rounded-xl shadow-xl border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <!-- Main Menu Dropdown -->
+                <div class="absolute top-full right-0 mt-2 w-96 bg-white shadow-xl border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                     <div class="p-6">
-                        <!-- Our Core Capabilities (matching the slide exactly) -->
+                        <!-- Main Navigation -->
                         <div class="mb-6">
-                            <h4 class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3">Our Core Capabilities</h4>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-brand-primary mb-3">Navigation</h4>
                             <div class="space-y-2">
-                                <a href="#" onclick="openUniversalModal('expertise', 0)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Renewable Energy Integration</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 1)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Power Systems Planning</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 2)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Data Center Planning & Siting</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 3)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Microgrid Design</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 4)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Hardware-in-the-Loop Testing</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 7)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Mobility & Transport</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 5)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Industry & Energy Transition</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 8)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Data Center Engineering Excellence</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 9)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Data Center Regulations & Compliance</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 10)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Data Center Sustainability</a>
-                                <a href="#" onclick="openUniversalModal('expertise', 6)" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 rounded-lg transition-colors">Cities & Territories</a>
+                                <a href="#about" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 transition-colors">About</a>
+                                <a href="#contact" class="block text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 transition-colors">Contact</a>
+
+                                <!-- Team Nested Dropdown -->
+                                <div class="relative group/team">
+                                    <button onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'})" class="w-full text-left text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 transition-colors">
+                                        Team
+                                    </button>
+
+                                    <!-- Team Submenu -->
+                                    <div class="absolute right-full top-0 mr-2 w-80 bg-white shadow-xl border border-slate-200 opacity-0 invisible group-hover/team:opacity-100 group-hover/team:visible transition-all duration-200 z-50">
+                                        <div class="p-4">
+                                            <div class="space-y-2">
+                                                <a href="#" onclick="openUniversalModal('team', 0)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Dr. Saman Babaei</a>
+                                                <a href="#" onclick="openUniversalModal('team', 1)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Eduardo Llorente</a>
+                                                <a href="#" onclick="openUniversalModal('team', 2)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Prof. Hanif Livani</a>
+                                                <a href="#" onclick="openUniversalModal('team', 3)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Prof. Ali Mehrizi-Sani</a>
+                                                <a href="#" onclick="openUniversalModal('team', 4)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Nuno Costa</a>
+                                                <a href="#" onclick="openUniversalModal('team', 5)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Isabel López Ferrer</a>
+                                                <a href="#" onclick="openUniversalModal('team', 6)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Armando Santos</a>
+                                                <a href="#" onclick="openUniversalModal('team', 7)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">João Rocha</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Projects Nested Dropdown -->
+                                <div class="relative group/projects">
+                                    <button onclick="document.getElementById('portfolio-map').scrollIntoView({behavior: 'smooth'})" class="w-full text-left text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 transition-colors">
+                                        Projects
+                                    </button>
+
+                                    <!-- Projects Submenu -->
+                                    <div class="absolute right-full top-0 mr-2 w-80 bg-white shadow-xl border border-slate-200 opacity-0 invisible group-hover/projects:opacity-100 group-hover/projects:visible transition-all duration-200 z-50">
+                                        <div class="p-4">
+                                            <div class="space-y-2 max-h-96 overflow-y-auto">
+                                                <a href="#" onclick="switchProjectItem(0)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">NYPA & NYSERDA Initiatives</a>
+                                                <a href="#" onclick="switchProjectItem(1)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Dominion Energy Analysis</a>
+                                                <a href="#" onclick="switchProjectItem(2)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Project Grimes & Mark Center</a>
+                                                <a href="#" onclick="switchProjectItem(3)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">SCE Arc Events Modeling</a>
+                                                <a href="#" onclick="switchProjectItem(4)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Microgrid Integration Study</a>
+                                                <a href="#" onclick="switchProjectItem(5)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Viento Fronterizo Transmission Line</a>
+                                                <a href="#" onclick="switchProjectItem(6)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Ohio Substation Development</a>
+                                                <a href="#" onclick="switchProjectItem(7)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">MISO System Impact Study</a>
+                                                <a href="#" onclick="switchProjectItem(8)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Google Data Center Optimization</a>
+                                                <a href="#" onclick="switchProjectItem(9)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Puerto Rico Transmission & Distribution</a>
+                                                <a href="#" onclick="switchProjectItem(10)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">El Higo–Llano Sánchez Transmission</a>
+                                                <a href="#" onclick="switchProjectItem(11)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Carmona Substation Repowering</a>
+                                                <a href="#" onclick="switchProjectItem(12)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Valle 1 & 2 Evacuation Lines</a>
+                                                <a href="#" onclick="switchProjectItem(13)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Rio Maior & Torre de Bela Solar Plants</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Core Capabilities Nested Dropdown -->
+                                <div class="relative group/capabilities">
+                                    <button onclick="document.getElementById('core-capabilities').scrollIntoView({behavior: 'smooth'})" class="w-full text-left text-sm text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-3 py-2 transition-colors">
+                                        Our Core Capabilities
+                                    </button>
+
+                                    <!-- Capabilities Submenu -->
+                                    <div class="absolute right-full top-0 mr-2 w-80 bg-white shadow-xl border border-slate-200 opacity-0 invisible group-hover/capabilities:opacity-100 group-hover/capabilities:visible transition-all duration-200 z-50">
+                                        <div class="p-4">
+                                            <div class="space-y-2">
+                                                <a href="#" onclick="openUniversalModal('expertise', 0)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Renewable Energy Integration</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 1)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Power Systems Planning</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 2)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Data Center Planning & Siting</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 3)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Microgrid Design</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 4)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Hardware-in-the-Loop Testing</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 7)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Mobility & Transport</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 5)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Industry & Energy Transition</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 8)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Data Center Engineering Excellence</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 9)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Data Center Regulations & Compliance</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 10)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Data Center Sustainability</a>
+                                                <a href="#" onclick="openUniversalModal('expertise', 6)" class="block text-xs text-slate-700 hover:text-brand-primary hover:bg-slate-50 px-2 py-1 transition-colors">Cities & Territories</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- View All Services Link -->
-                        <div class="border-t border-slate-100 pt-4 mt-4">
-                            <a href="#expertise" class="block text-center text-xs font-bold uppercase tracking-widest text-brand-primary hover:bg-brand-primary hover:text-white px-4 py-2 rounded-lg transition-colors">View All Services</a>
+                        <!-- External Links -->
+                        <div class="border-t border-slate-100 pt-4 mt-4 space-y-2">
+                            <a href="https://quadranteglobal.com/landing-page/" target="_blank" class="block text-center text-xs font-bold uppercase tracking-widest text-white bg-slate-700 hover:bg-slate-800 px-4 py-2 transition-colors">Quadrante Global</a>
+                            <a href="#contact" class="block text-center text-xs font-bold uppercase tracking-widest text-white bg-brand-primary hover:bg-brand-accent px-4 py-2 transition-colors">Get in Touch</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="#portfolio-map" class="text-xs font-bold uppercase tracking-widest text-slate-700 hover:text-brand-primary transition-colors">Projects</a>
-            <div class="h-5 w-px bg-gray-300 mx-2"></div>
-            <a href="https://quadranteglobal.com/landing-page/" target="_blank" class="bg-slate-700 hover:bg-slate-800 text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-slate-700/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Quadrante Global</a>
-            <a href="#contact" class="bg-brand-primary hover:bg-brand-accent text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg hover:shadow-brand-primary/40 hover:-translate-y-1 text-xs tracking-wider uppercase">Get in Touch</a>
         </nav>
 
         <button id="mobile-menu-btn" class="md:hidden text-slate-900 p-2 relative z-[60]" aria-label="Toggle Mobile Menu">
@@ -69,6 +132,6 @@
         <a href="#core-capabilities" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Services</a>
         <a href="#portfolio-map" onclick="toggleMobileMenu()" class="text-slate-900 hover:text-brand-primary transition-colors border-b border-slate-100 pb-2">Projects</a>
     </nav>
-    <a href="https://quadranteglobal.com/landing-page/" target="_blank" onclick="toggleMobileMenu()" class="mt-10 text-center bg-slate-700 hover:bg-slate-800 text-white px-7 py-4 rounded-lg font-bold transition-all shadow-lg text-lg uppercase tracking-wider">Quadrante Global</a>
-    <a href="#contact" onclick="toggleMobileMenu()" class="mt-4 text-center bg-brand-primary hover:bg-blue-800 text-white px-7 py-4 rounded-lg font-bold transition-all shadow-lg text-lg uppercase tracking-wider">Get in Touch</a>
+    <a href="https://quadranteglobal.com/landing-page/" target="_blank" onclick="toggleMobileMenu()" class="mt-10 text-center bg-slate-700 hover:bg-slate-800 text-white px-7 py-4  font-bold transition-all shadow-lg text-lg uppercase tracking-wider">Quadrante Global</a>
+    <a href="#contact" onclick="toggleMobileMenu()" class="mt-4 text-center bg-brand-primary hover:bg-blue-800 text-white px-7 py-4  font-bold transition-all shadow-lg text-lg uppercase tracking-wider">Get in Touch</a>
 </div>

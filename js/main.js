@@ -241,12 +241,26 @@ const teamData = [
 window.addEventListener('scroll', () => {
     const header = document.getElementById('main-header');
     const progress = document.getElementById('scroll-progress');
+    const quadranteLogo = document.querySelector('img[alt="Quadrante Logo"]');
+
     if (window.scrollY > 20) {
-        header.classList.add('shadow-xl', 'py-3');
-        header.classList.remove('py-6');
+        header.classList.add('shadow-xl', 'py-2');
+        header.classList.remove('py-3');
+        // Change to round logo when scrolled and make it 70% of 300% (210% total)
+        if (quadranteLogo) {
+            quadranteLogo.src = 'assets/images/media/quadrante_logo_round.png';
+            quadranteLogo.style.transform = 'scale(2.1)'; // 300% * 70% = 210%
+            quadranteLogo.style.transition = 'all 0.3s ease';
+        }
     } else {
-        header.classList.remove('shadow-xl', 'py-3');
-        header.classList.add('py-6');
+        header.classList.remove('shadow-xl', 'py-2');
+        header.classList.add('py-3');
+        // Change back to original logo when at top
+        if (quadranteLogo) {
+            quadranteLogo.src = 'assets/images/media/logo-quadrante.png';
+            quadranteLogo.style.transform = 'scale(1.44)';
+            quadranteLogo.style.transition = 'all 0.3s ease';
+        }
     }
     const totalHeight = document.body.scrollHeight - window.innerHeight;
     const progressWidth = (window.scrollY / totalHeight) * 100;
@@ -315,6 +329,7 @@ function initializeSlider() {
         prevBtnMobile.addEventListener('touchstart', prevSlide, {passive: true});
     }
 
+
     console.log('Slider initialized with', slides.length, 'slides');
 
     // Add touch/swipe functionality for mobile
@@ -359,6 +374,7 @@ function startAutoAdvance() {
 
     console.log(`Slide ${currentSlide} will display for ${duration/1000} seconds`);
 }
+
 
 // Touch/Swipe functionality for hero slider
 function initializeSliderSwipe() {
