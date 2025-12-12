@@ -249,7 +249,12 @@ window.addEventListener('scroll', () => {
         // Change to round logo when scrolled and make it 70% of 300% (210% total)
         if (quadranteLogo) {
             quadranteLogo.src = 'assets/images/media/quadrante_logo_round.png';
-            quadranteLogo.style.transform = 'scale(2.1)'; // 300% * 70% = 210%
+            // Scale down the scroll logo on mobile for better proportions
+            if (window.innerWidth >= 768) {
+                quadranteLogo.style.transform = 'scale(2.1)'; // 300% * 70% = 210%
+            } else {
+                quadranteLogo.style.transform = 'scale(1.5)'; // More reasonable size for mobile
+            }
             quadranteLogo.style.transition = 'all 0.3s ease';
         }
     } else {
@@ -258,7 +263,8 @@ window.addEventListener('scroll', () => {
         // Change back to original logo when at top
         if (quadranteLogo) {
             quadranteLogo.src = 'assets/images/media/logo-quadrante.png';
-            quadranteLogo.style.transform = 'scale(1.44)';
+            // Remove inline transform to let CSS classes handle the scaling
+            quadranteLogo.style.transform = '';
             quadranteLogo.style.transition = 'all 0.3s ease';
         }
     }
