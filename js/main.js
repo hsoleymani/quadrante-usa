@@ -106,7 +106,7 @@ const competenciesData = [
     { // Panel 2: Power Systems Planning
         image: "assets/images/media/tower_grid_1.png",
         title: "Power Systems Planning",
-        content: `<p class="mb-4">Our team at Right Analytics can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control. We leverage best software tools and processes to find solutions for the toughest challenges facing the industry today.</p><p>Our expertise includes short-circuit analysis, load-flow studies, capacity expansion, and grid control optimization.</p>`
+        content: `<p class="mb-4">We can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control. We leverage best software tools and processes to find solutions for the toughest challenges facing the industry today.</p><p>Our expertise includes short-circuit analysis, load-flow studies, capacity expansion, and grid control optimization.</p>`
     },
     { // Panel 3: Data Center Planning and Siting
         image: "assets/images/media/data_center_1.jpeg",
@@ -180,7 +180,7 @@ const teamData = [
         title: "Eduardo Llorente",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">CEO - USA - Quadrante</h4>
-        <p class="mb-4">Eduardo Llorente leads Quadrante's operations in the United States, driving the company's growth strategy and overseeing major infrastructure projects. With a background in Civil Engineering and Executive Management, he ensures project delivery excellence.</p>
+        <p class="mb-4">Eduardo Llorente leads Quadrante's operations in the United States, driving the company's growth strategy and overseeing major infrastructure projects. With a background in Electrical Engineering and Executive Management, he ensures project delivery excellence.</p>
         <p>He focuses on fostering client relationships and integrating Quadrante's global capabilities with local US market needs.</p>
         `
     },
