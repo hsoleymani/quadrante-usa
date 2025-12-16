@@ -6,6 +6,81 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
+    // Header scroll functionality
+    console.log('Header scroll functionality loaded');
+
+    function updateHeader() {
+        const header = document.getElementById('main-header');
+        const menuButton = document.getElementById('menu-button');
+        const headerDivider = document.getElementById('header-divider');
+        const leftLogo = document.getElementById('left-logo');
+        const rightLogo = document.getElementById('right-logo');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+        console.log('Scroll Y:', window.scrollY);
+
+        // Check scroll position
+        if (window.scrollY > 50) {
+            console.log('Scrolled - switching to solid header');
+
+            // Scrolled down - make header solid white with dark text
+            if (header) {
+                header.className = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-lg py-4';
+            }
+            if (menuButton) {
+                menuButton.className = 'nav-text text-sm font-medium uppercase tracking-wider text-brand-dark hover:text-brand-accent transition-colors px-3 py-2';
+            }
+            if (headerDivider) {
+                headerDivider.className = 'h-6 w-px bg-slate-400 mx-4';
+            }
+            if (leftLogo) {
+                leftLogo.src = 'assets/images/media/quadrante_logo_round.png';
+                leftLogo.style.transform = 'scale(1.2)';
+                leftLogo.style.transition = 'transform 0.3s ease';
+            }
+            if (rightLogo) {
+                rightLogo.src = 'assets/images/media/logo-right-analytics.png';
+            }
+            if (mobileMenuBtn) {
+                mobileMenuBtn.className = 'md:hidden text-brand-dark p-2 relative z-[60]';
+            }
+        } else {
+            console.log('At top - transparent header');
+
+            // At top - transparent header with white text over hero
+            if (header) {
+                header.className = 'fixed top-6 left-6 right-6 z-20 transition-all duration-300 bg-transparent py-4';
+            }
+            if (menuButton) {
+                menuButton.className = 'nav-text text-sm font-medium uppercase tracking-wider text-white hover:text-white/80 transition-colors px-3 py-2';
+            }
+            if (headerDivider) {
+                headerDivider.className = 'h-6 w-px bg-white/40 mx-4';
+            }
+            if (leftLogo) {
+                leftLogo.src = 'assets/images/media/quadrante_logo.svg';
+                leftLogo.style.transform = 'scale(1)';
+                leftLogo.style.transition = 'transform 0.3s ease';
+            }
+            if (rightLogo) {
+                rightLogo.src = 'assets/images/media/right_analytics_logo.svg';
+            }
+            if (mobileMenuBtn) {
+                mobileMenuBtn.className = 'md:hidden text-white p-2 relative z-[60]';
+            }
+        }
+    }
+
+    // Setup header scroll functionality after components are loaded
+    setTimeout(() => {
+        // Run once on load to set initial state
+        updateHeader();
+
+        // Add scroll listener
+        window.addEventListener('scroll', updateHeader);
+        console.log('Header scroll listener added');
+    }, 200);
+
     // Add mobile menu event listener with Safari compatibility
     setTimeout(() => {
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -194,7 +269,7 @@ const teamData = [
         `
     },
     {
-        image: "assets/images/media/team-ali-mehrizi.jpeg",
+        image: "assets/images/media/team-ali-mehrizi.png",
         title: "Prof. Ali Mehrizi-Sani",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
