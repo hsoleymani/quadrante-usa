@@ -176,17 +176,17 @@ const competenciesData = [
     { // Panel 1: Renewable Energy Resources Integration
         image: "assets/images/media/wind-farm-global.png",
         title: "Renewable Energy Resources Integration",
-        content: `<p class="mb-4">Right Analytics has a long successful history of performing integration studies for renewable generations. Right Analytics capabilities for interconnection studies range from modeling of the renewable generation resources all the way to transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies.</p><p>All our studies comply with the industry standards, ensuring reliability and grid code compliance for projects of any scale.</p>`
+        content: `<p class="mb-4">We have a long and successful history of performing integration studies for renewable generation. Our capabilities for interconnection studies span from modeling renewable generation resources to conducting comprehensive interconnection analyses, all fully aligned with industry standards.</p><p>Our expertise covers transient stability, Sub-Synchronous Control Interaction (SSCI), and dynamic performance studies, ensuring reliability and grid code compliance for projects of any scale.</p>`
     },
     { // Panel 2: Power Systems Planning
         image: "assets/images/media/tower_grid_1.png",
         title: "Power Systems Planning",
-        content: `<p class="mb-4">We can provide your organization with a wide range of solutions for Transmission and Distribution Planning, and control. We leverage best software tools and processes to find solutions for the toughest challenges facing the industry today.</p><p>Our expertise includes short-circuit analysis, load-flow studies, capacity expansion, and grid control optimization.</p>`
+        content: `<p class="mb-4">We provide end-to-end power systems planning solutions that help utilities, ISOs, developers, and industrial clients design reliable and efficient energy infrastructure. Our expertise spans transmission and distribution planning, grid impact studies, new technology deployments, and integration of renewable and distributed energy resources.</p><p>By combining advanced modeling, rigorous analysis, and deep knowledge of regulatory and grid requirements, we deliver actionable insights that optimize system performance, ensure compliance, and support sustainable growth of the power network.</p>`
     },
     { // Panel 3: Data Center Planning and Siting
         image: "assets/images/media/data_center_1.jpeg",
-        title: "Data Center Planning and Siting",
-        content: `<p class="mb-4">We offer comprehensive load hosting capacity analysis to find the optimal location for building new, large-scale data centers.</p><p>Our analysis minimizes risks related to interconnection costs, grid congestion, and future energy availability, ensuring your data center infrastructure is secure and scalable.</p>`
+        title: "Engineering Data Centers from Concept to Operation",
+        content: `<p class="mb-4">We deliver precision-engineered data center solutions tailored for maximum uptime and performance, powering AI-ready infrastructure. Our services cover every stage—from site selection and planning to design, permitting, and integration with the local power grid—ensuring full compliance with planning, zoning, and environmental regulations.</p><p>We prioritize sustainable designs aligned with international standards and certifications, achieving the highest efficiency through optimized PUE and WUE performance.</p>`
     },
     { // Panel 4: Microgrid Design
         image: "assets/images/media/Microgrid Design.jpeg",
@@ -1677,19 +1677,23 @@ function updateArrowVisibility(rowId) {
 
     // Handle left arrow and left gradient
     if (scrollLeft <= 0) {
-        leftArrow.style.display = 'none';
+        leftArrow.classList.add('!hidden');
+        leftArrow.classList.remove('sm:flex');
         row.classList.remove('show-left-gradient');
     } else {
-        leftArrow.style.display = 'flex';
+        leftArrow.classList.remove('!hidden');
+        leftArrow.classList.add('sm:flex');
         row.classList.add('show-left-gradient');
     }
 
     // Handle right arrow and right gradient
     if (scrollLeft >= maxScroll - 1) {
-        rightArrow.style.display = 'none';
+        rightArrow.classList.add('!hidden');
+        rightArrow.classList.remove('sm:flex');
         row.classList.remove('show-right-gradient');
     } else {
-        rightArrow.style.display = 'flex';
+        rightArrow.classList.remove('!hidden');
+        rightArrow.classList.add('sm:flex');
         row.classList.add('show-right-gradient');
     }
 }
@@ -2144,12 +2148,24 @@ function updateProjectCounter() {
         layerGroups[type].eachLayer(() => count++);
     });
 
-    document.getElementById('project-counter').textContent = count;
+    const counter = document.getElementById('project-counter');
+    if (counter) {
+        counter.textContent = count;
+    } else {
+        console.log('project-counter element not found');
+    }
 }
 
 // Generate mobile project list
 function generateMobileProjectList() {
     const container = document.getElementById('mobile-project-list');
+
+    // Check if container exists before proceeding
+    if (!container) {
+        console.log('mobile-project-list element not found, skipping mobile list generation');
+        return;
+    }
+
     const filteredProjects = window.projectsData.filter(p => {
         if (currentRegion !== 'global' && p.region !== currentRegion) return false;
         return Object.keys(layerGroups).some(type =>
