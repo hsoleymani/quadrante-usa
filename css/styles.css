@@ -368,9 +368,17 @@ a:focus, button:focus, .cta-button:focus {
     pointer-events: none;
 }
 .modal-hidden .modal-content {
-    transform: scale(0.95);
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
+}
+#universal-modal .modal-content {
+    transform: translateX(0);
+    opacity: 1;
+}
+#universal-modal.modal-hidden .modal-content {
+    transform: translateX(100%);
+    opacity: 0;
 }
 
 /* Custom Scrollbar */

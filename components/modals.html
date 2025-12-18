@@ -1,90 +1,40 @@
 <!-- Universal Modal -->
-<div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-hidden">
+<div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-end modal-hidden">
     <div class="absolute inset-0 bg-slate-900/95 modal-backdrop" onclick="closeUniversalModal()"></div>
-    <!-- Adjusted for full screen on small devices, large on desktop -->
-    <div class="relative bg-white w-full max-w-7xl h-full md:h-[85vh] rounded-none md:rounded-2xl shadow-2xl overflow-hidden modal-content z-10 flex flex-col md:flex-row border border-slate-200" style="max-height: 100vh;">
-        <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-50 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition-colors backdrop-blur-sm"><i data-lucide="x" class="w-6 h-6"></i></button>
+    <!-- Right-side panel layout -->
+    <div class="relative bg-white w-full max-w-2xl h-full shadow-2xl overflow-hidden modal-content z-10 flex flex-col">
+        <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-50 text-slate-600 hover:text-slate-900 bg-white/90 hover:bg-white p-2 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
 
-        <!-- Sidebar / Image Section (50% on desktop, controlled height on mobile) -->
-        <div class="relative w-full md:w-1/2 h-72 md:h-full bg-slate-900 overflow-hidden group">
+        <!-- Image Section (full width at top, no padding) - max 40% of screen -->
+        <div class="relative w-full h-[280px] sm:h-[350px] md:h-[40vh] lg:h-[40vh] bg-gray-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
             <!-- Image -->
-            <img id="modal-image" src="" class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105" alt="Detail Image">
-
-            <!-- Sidebar Menu (Desktop Nav - HIDDEN until LG screen size) -->
-            <!-- The use of `hidden lg:flex` ensures this entire sidebar menu is hidden on mobile and tablet screens. -->
-            <div class="relative z-10 h-full flex flex-col p-8 overflow-y-auto dark-scrollbar hidden lg:flex" id="sidebar-menu-container">
-                <div class="mb-8">
-                    <span id="modal-section-label" class="bg-brand-primary text-white px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg">Featured</span>
-                    <h3 class="text-white font-serif text-3xl mt-4 font-bold drop-shadow-md" id="sidebar-header">Explore</h3>
-                </div>
-                <div id="modal-nav-list" class="space-y-3"></div>
-            </div>
-
-            <!-- Gradient Overlay (Default) -->
-            <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/60 to-transparent" id="sidebar-gradient"></div>
-
-            <div class="absolute bottom-4 left-6 md:hidden z-20">
-                <h3 class="text-white font-serif text-2xl font-bold drop-shadow-md" id="mobile-image-title">Title</h3>
-            </div>
+            <img id="modal-image" src="" class="w-full h-full object-cover object-top" alt="Detail Image">
         </div>
 
-        <!-- Mobile Menu Tabs (Visible only on mobile/small screens) -->
-        <div class="md:hidden w-full h-14 bg-slate-100 border-b border-slate-200 overflow-x-auto flex items-center whitespace-nowrap px-4" id="mobile-nav-list"></div>
+        <!-- Title Section -->
+        <div class="w-full bg-white px-6 md:px-12 pt-6 md:pt-8 pb-4 border-b border-slate-200 flex-shrink-0">
+            <h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-slate-900 mb-2 leading-tight">Title Here</h2>
+            <p id="modal-subtitle" class="text-sm md:text-base text-slate-600"></p>
+        </div>
 
-        <!-- Content Section (50% desktop, takes up remaining height on mobile) -->
-        <div class="w-full md:w-1/2 flex flex-col bg-white relative overflow-y-auto">
-            <div class="flex-grow overflow-y-auto p-6 md:p-12 custom-scrollbar relative z-10">
-                <!-- Title shown on mobile as well for consistency -->
-                <h2 id="modal-title" class="text-3xl md:text-5xl font-serif font-bold text-slate-900 mb-6 md:mb-8 leading-tight hidden md:block">Title Here</h2>
-                <div id="modal-body" class="prose prose-slate prose-base md:prose-lg text-slate-600 leading-relaxed mb-8"></div>
+        <!-- Navigation Tabs (visible on all screen sizes) -->
+        <div class="w-full min-h-[56px] bg-white border-b border-slate-200 overflow-x-auto flex items-center whitespace-nowrap px-4 flex-shrink-0" id="mobile-nav-list"></div>
+
+        <!-- Content Section (full width below) - min 60% with scrolling -->
+        <div class="w-full flex flex-col bg-white relative overflow-y-auto flex-grow min-h-[60vh]">
+            <div class="flex-grow overflow-y-auto p-6 md:p-12 custom-scrollbar relative z-10" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                <div id="modal-body" class="prose prose-slate prose-base md:prose-lg text-slate-700 leading-relaxed mb-8"></div>
                 <hr class="border-slate-100 my-6 md:my-8">
                 <!-- Added ID here to toggle visibility -->
                 <div id="modal-inquiry-container" class="bg-slate-50 p-6  border border-slate-100">
                     <div class="flex items-center gap-2 mb-4"><i data-lucide="message-circle-question" class="w-5 h-5 text-brand-primary"></i><h4 class="font-bold text-slate-800 text-sm uppercase tracking-wide">Ask about this topic</h4></div>
 
-                    <div id="modal-quick-chips" class="flex flex-wrap gap-2 mb-3"></div>
-
                     <div class="relative">
                         <textarea id="modal-question-box" class="w-full border border-slate-200  p-3 text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none h-24 bg-white placeholder-slate-400 text-slate-900" placeholder="Ask a specific question regarding this project or competency..."></textarea>
-                        <button onclick="openAiDraftModal('modal-question-box')" class="absolute bottom-2 right-2 flex items-center gap-2 bg-slate-100 text-slate-600 border border-slate-200 px-2 py-1 rounded-md shadow-sm hover:bg-slate-200 hover:text-brand-primary transition-all text-[10px] font-bold uppercase tracking-wider"><i data-lucide="sparkles" class="w-3 h-3"></i><span>AI Draft</span></button>
                     </div>
                     <button onclick="triggerLeadCapture('modal-question-box', 'Project/Competency Context')" class="w-full mt-4 bg-brand-primary text-white py-3  text-xs font-bold uppercase tracking-widest hover:bg-blue-800 transition-colors">
                         Submit Inquiry <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- AI Draft Modal -->
-<div id="ai-draft-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center modal-hidden">
-    <div class="absolute inset-0 bg-slate-900/80 modal-backdrop" onclick="closeAiDraftModal()"></div>
-    <div class="relative bg-white w-full max-w-sm md:max-w-lg rounded-2xl shadow-2xl overflow-hidden transform transition-all scale-95 opacity-0 modal-content z-10 border border-slate-200" id="ai-draft-content">
-        <div class="bg-brand-primary p-4 flex justify-between items-center text-white">
-            <div class="flex items-center gap-2 font-bold"><i data-lucide="sparkles" class="w-5 h-5"></i> AI Email Assistant</div>
-            <button onclick="closeAiDraftModal()" class="hover:text-blue-100"><i data-lucide="x" class="w-5 h-5"></i></button>
-        </div>
-        <div class="p-6 space-y-4">
-            <div id="prompt-section">
-                <label class="block text-sm font-bold text-slate-700 mb-2">What would you like to say?</label>
-                <textarea id="ai-prompt-input" class="w-full border border-slate-200  p-3 text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none h-24 text-slate-900" placeholder="E.g., Ask for details on the timeline for the 500kV line project..."></textarea>
-            </div>
-            <div class="flex justify-end" id="generate-btn-container">
-                <button onclick="generateDraft()" id="generate-btn" class="bg-brand-primary text-white px-4 py-2  text-sm font-bold hover:bg-blue-800 transition-colors flex items-center gap-2">Generate Draft <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
-            </div>
-            <div id="draft-result-container" class="hidden border-t border-slate-100 pt-4 mt-4 animate-fade-in">
-                <label class="block text-sm font-bold text-slate-700 mb-2">AI Generated Draft:</label>
-                <textarea id="draft-output" class="w-full bg-slate-50 border border-slate-200  p-3 text-sm h-32 mb-4 focus:outline-none text-slate-900"></textarea>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <button onclick="modifyDraft('shorten')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">Shorten</button>
-                    <button onclick="modifyDraft('expand')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">Expand</button>
-                    <button onclick="modifyDraft('formal')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">More Formal</button>
-                    <button onclick="modifyDraft('casual')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold transition-colors">More Casual</button>
-                </div>
-                <div class="flex justify-end gap-3 border-t border-slate-100 pt-4">
-                    <button onclick="closeAiDraftModal()" class="text-slate-500 text-sm font-bold hover:text-slate-700">Cancel</button>
-                    <button onclick="insertDraft()" class="bg-brand-primary text-white px-4 py-2  text-sm font-bold hover:bg-blue-800 transition-colors flex items-center gap-2">Insert into Form <i data-lucide="check" class="w-4 h-4"></i></button>
                 </div>
             </div>
         </div>
@@ -129,7 +79,7 @@
 <!-- Company Information Modal -->
 <div id="company-info-modal" class="fixed inset-0 z-[120] hidden items-center justify-center modal-hidden" style="display: none;">
     <div class="absolute inset-0 bg-slate-900/95 modal-backdrop" onclick="closeCompanyInfoModal()"></div>
-    <div class="relative bg-white w-full max-w-7xl h-full md:h-[80vh] rounded-none md:rounded-2xl shadow-2xl overflow-hidden modal-content z-10 transform scale-0.95 opacity-0 transition-all duration-300 flex flex-col">
+    <div class="relative bg-white w-full max-w-7xl h-full md:h-[80vh] shadow-2xl overflow-hidden modal-content z-10 transform scale-0.95 opacity-0 transition-all duration-300 flex flex-col">
 
         <!-- Simple Header -->
         <div class="bg-white border-b border-slate-200 p-4 relative">

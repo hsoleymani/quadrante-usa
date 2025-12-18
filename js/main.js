@@ -236,6 +236,7 @@ const teamData = [
     {
         image: "assets/images/media/team-saman-babaei.jpeg",
         title: "Dr. Saman Babaei",
+        subtitle: "Founder of Right Analytics / Chief Power Systems Engineer",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Founder of Right Analytics / Chief Power Systems Engineer</h4>
         <p class="mb-4">Dr. Saman Babaei brings over 15 years of academic and industrial experience in power systems. He specializes in advanced grid studies, including transient stability, electromagnetic transients, and renewable energy integration.</p>
@@ -253,15 +254,18 @@ const teamData = [
     {
         image: "assets/images/media/team-eduardo-llorente.jpeg",
         title: "Eduardo Llorente",
+        subtitle: "CEO - USA",
         content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">CEO - USA - Quadrante</h4>
-        <p class="mb-4">Eduardo Llorente leads Quadrante's operations in the United States, driving the company's growth strategy and overseeing major infrastructure projects. With a background in Electrical Engineering and Executive Management, he ensures project delivery excellence.</p>
-        <p>He focuses on fostering client relationships and integrating Quadrante's global capabilities with local US market needs.</p>
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">CEO - USA</h4>
+        <p class="mb-4">Eduardo Llorente serves as CEO for Quadrante's US operations, leading the strategic direction and business development across North America. He brings extensive experience in large-scale infrastructure projects and a deep understanding of the US energy market landscape.</p>
+        <p class="mb-4">With a background in Electrical Engineering and Executive Management, Eduardo ensures operational excellence and project delivery quality. He has been instrumental in establishing Quadrante USA's presence in critical sectors including power systems engineering, renewable energy integration, and data center infrastructure.</p>
+        <p>Eduardo focuses on building strategic partnerships with utilities, developers, and system operators, leveraging Quadrante's global expertise to address the unique challenges of the North American grid modernization and decarbonization efforts.</p>
         `
     },
     {
         image: "assets/images/media/team-hanif-livani.jpeg",
         title: "Prof. Hanif Livani",
+        subtitle: "Lead Power Systems",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
         <p class="mb-4">Prof. Livani serves as a Professor of Electrical Engineering while leading technical studies at Right Analytics. His academic research in wide-area monitoring and protection systems directly informs his industrial consulting work.</p>
@@ -271,6 +275,7 @@ const teamData = [
     {
         image: "assets/images/media/team-ali-mehrizi.png",
         title: "Prof. Ali Mehrizi-Sani",
+        subtitle: "Lead Power Systems",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
         <p class="mb-4">Prof. Mehrizi-Sani is a renowned expert in power electronics and microgrid control. His work bridges the gap between theoretical control strategies and practical hardware implementation.</p>
@@ -280,34 +285,45 @@ const teamData = [
     {
         image: "assets/images/media/team-nuno-costa.jpeg",
         title: "Nuno Costa",
+        subtitle: "Managing Partner - CEO",
         content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Global CEO - Quadrante</h4>
-        <p class="mb-4">Nuno Costa is the Global CEO of Quadrante Group. Under his leadership, the group has expanded to 38 offices across three continents.</p>
-        <p>He champions the "Total Design" philosophy, ensuring that engineering solutions are sustainable, economically viable, and technically superior.</p>
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Managing Partner - CEO</h4>
+        <p class="mb-4">As Managing Partner and CEO of Quadrante, Nuno Costa leads the global vision and strategic direction of the organization. Under his leadership, Quadrante has grown to become a multidisciplinary engineering powerhouse with presence across three continents.</p>
+        <p class="mb-4">Nuno champions Quadrante's "Total Design" philosophy—an integrated approach that ensures engineering solutions are sustainable, economically viable, and technically superior. His leadership emphasizes innovation, client partnership, and commitment to future generations.</p>
+        <p>He plays a pivotal role in Quadrante's expansion into the US market, bringing decades of global engineering excellence to support North America's energy transition and infrastructure modernization.</p>
         `
     },
     {
         image: "assets/images/media/team-isabel-lopez.jpeg",
         title: "Isabel López Ferrer",
+        subtitle: "VP of Energy - Head of Business Sector - Energy",
         content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Head of Energy Sector</h4>
-        <p class="mb-4">Isabel oversees the Energy Sector for Quadrante globally. She has extensive experience in managing large-scale renewable energy projects, including wind farms, solar plants, and transmission infrastructure.</p>
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Vice President of Energy - Head of Business Sector - Energy</h4>
+        <p class="mb-4">Isabel López Ferrer serves as Vice President of Energy and Head of the Business Sector for Energy at Quadrante Global. She leads the strategic direction of Quadrante's energy division, overseeing renewable energy integration, transmission infrastructure, and grid modernization projects worldwide.</p>
+        <p class="mb-4">With extensive experience in large-scale energy infrastructure, Isabel has successfully managed complex projects including wind farms, solar plants, high-voltage transmission lines, and substation development across multiple continents. Her expertise spans project development, regulatory compliance, and technical coordination.</p>
+        <p>Isabel plays a key role in advancing Quadrante's energy transition initiatives, ensuring projects meet the highest standards of sustainability, technical excellence, and economic viability while supporting global decarbonization goals.</p>
         `
     },
     {
         image: "assets/images/media/team-armando-santos.jpeg",
         title: "Armando Santos",
+        subtitle: "Global Account Lead - Energy Business Sector",
         content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Head of Energy Business Unit</h4>
-        <p class="mb-4">Armando leads the Energy Business Unit, focusing on technical excellence and operational efficiency. He plays a key role in the structural and electrical design coordination for complex substation and transmission line projects.</p>
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Global Account Lead – Energy Business Sector</h4>
+        <p class="mb-4">Armando Santos serves as Global Account Lead for Quadrante's Energy Business Sector, managing strategic client relationships and overseeing major energy infrastructure accounts worldwide. He brings deep technical expertise and a client-focused approach to delivering complex engineering solutions.</p>
+        <p class="mb-4">With extensive experience in power systems engineering, Armando specializes in the design and coordination of high-voltage substations, transmission lines, and grid interconnection projects. His technical proficiency spans structural design, electrical systems, and protection schemes for utility-scale infrastructure.</p>
+        <p>Armando ensures technical excellence and operational efficiency across Quadrante's energy portfolio, working closely with utilities, developers, and engineering teams to deliver projects that meet stringent performance, safety, and reliability standards.</p>
         `
     },
     {
         image: "assets/images/media/team-joao-rocha.png",
         title: "João Rocha",
+        subtitle: "Client Manager - Industry Business Unit",
         content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Client Manager - Data Centers</h4>
-        <p class="mb-4">João Rocha specializes in the critical infrastructure sector, managing high-stakes Data Center projects. He acts as the primary liaison between technical teams and clients like Logicalis and Google, ensuring Tier-standard compliance.</p>
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Client Manager - Industry Business Unit</h4>
+        <p class="mb-4">João Rocha serves as Client Manager for Quadrante's Industry Business Unit, with market coverage spanning Portugal, Middle East, and Africa. He specializes in mission-critical infrastructure projects, particularly data center development and industrial facilities that demand the highest levels of reliability and performance.</p>
+        <p class="mb-4">With deep expertise in data center engineering, João manages relationships with major technology clients including Google and Logicalis, ensuring projects meet stringent Tier-standard compliance requirements. He coordinates multidisciplinary teams across electrical systems, mechanical infrastructure, and facility design.</p>
+        <p>João acts as the primary liaison between clients and technical teams, translating complex business requirements into engineering deliverables while ensuring projects are delivered on time, within budget, and to exacting quality standards.</p>
         `
     }
 ];
@@ -533,14 +549,6 @@ function prevSlide() {
 }
 
 // --- MODALS ---
-function prefillMessage(targetId, text) {
-    const el = document.getElementById(targetId);
-    if (el) {
-        el.value = text;
-        el.focus();
-    }
-}
-
 function triggerLeadCapture(sourceId, context = '') {
     const messageBox = document.getElementById(sourceId);
     const messageVal = messageBox ? messageBox.value : '';
@@ -605,198 +613,6 @@ function closeCompanyInfoModal() {
     }, 300);
 }
 
-// AI DRAFT LOGIC
-let currentDraftTargetId = null;
-
-function openAiDraftModal(targetId) {
-    currentDraftTargetId = targetId;
-    document.getElementById('ai-prompt-input').value = '';
-    document.getElementById('draft-output').value = '';
-    document.getElementById('draft-result-container').classList.add('hidden');
-
-    const modal = document.getElementById('ai-draft-modal');
-    const content = document.getElementById('ai-draft-content');
-    modal.classList.remove('hidden');
-    // small timeout for transition
-    setTimeout(() => {
-        modal.classList.remove('modal-hidden');
-        content.classList.remove('scale-95', 'opacity-0');
-        content.classList.add('scale-100', 'opacity-100');
-    }, 10);
-}
-
-function closeAiDraftModal() {
-    const modal = document.getElementById('ai-draft-modal');
-    const content = document.getElementById('ai-draft-content');
-    modal.classList.add('modal-hidden');
-    content.classList.remove('scale-100', 'opacity-100');
-    content.classList.add('scale-95', 'opacity-0');
-    setTimeout(() => {
-        modal.classList.add('hidden');
-    }, 300);
-}
-
-// Gemini API call logic - START
-const apiKey = "AIzaSyDxUBgLd6LZfPPK5Lnl3xAz6_3nj7Lve-I";
-const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-async function fetchWithExponentialBackoff(payload, maxRetries = 5, delay = 1000) {
-    for (let i = 0; i < maxRetries; i++) {
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            if (response.status === 429 || response.status >= 500) {
-                if (i < maxRetries - 1) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                    continue;
-                } else {
-                    throw new Error(`API call failed after ${maxRetries} attempts.`);
-                }
-            }
-
-            if (!response.ok) {
-                throw new Error(`API call failed with status: ${response.status}`);
-            }
-
-            return response.json();
-
-        } catch (error) {
-            console.error("Fetch attempt failed:", error);
-            if (i === maxRetries - 1) throw error;
-        }
-    }
-}
-
-async function callGemini(systemInstruction, userQuery) {
-    const payload = {
-        contents: [{ parts: [{ text: userQuery }] }],
-        systemInstruction: {
-            parts: [{ text: systemInstruction }]
-        },
-    };
-
-    const result = await fetchWithExponentialBackoff(payload);
-
-    const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) {
-        console.error("Gemini response lacked text content:", result);
-        return "Failed to generate draft. Please try a different prompt or contact us directly.";
-    }
-    return text;
-}
-// Gemini API call logic - END
-
-async function generateDraft() {
-    const promptInput = document.getElementById('ai-prompt-input');
-    const userPrompt = promptInput.value.trim();
-    const btn = document.getElementById('generate-btn');
-    const originalContent = btn.innerHTML;
-
-    if (!userPrompt) {
-        promptInput.classList.add('border-red-500', 'ring-2', 'ring-red-200');
-        setTimeout(() => promptInput.classList.remove('border-red-500', 'ring-2', 'ring-red-200'), 2000);
-        return;
-    }
-
-    btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin mr-2"></i> Generating...`;
-    btn.disabled = true;
-    lucide.createIcons({ root: btn });
-
-    const systemPrompt = `Write a short, direct professional email from a client TO Quadrante USA. Keep it under 4 sentences. No filler words. Be clear and to the point.
-
-Format:
-- Start: "Dear Quadrante Team,"
-- State the need directly
-- Ask for what they want (proposal/meeting/information)
-- End: "Best regards,"
-
-Make it concise and professional. No options, no extra details, no lengthy explanations.`;
-
-    let draft = "Error: Failed to connect to the drafting service.";
-
-    try {
-        if (apiKey && apiKey.trim() !== "") {
-            draft = await callGemini(systemPrompt, userPrompt);
-        } else {
-            draft = "Error: AI service is not configured. Please contact the administrator to set up the API key.";
-        }
-    } catch (error) {
-        console.error("Gemini API error:", error);
-        draft = "Error: There was an issue connecting to the AI service. Please try again later.";
-    }
-
-    document.getElementById('draft-output').value = draft;
-    document.getElementById('draft-result-container').classList.remove('hidden');
-
-    try {
-        // Scroll to result safely
-        document.getElementById('draft-result-container').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } catch (e) {
-        console.log("Scroll failed", e);
-    }
-
-    btn.innerHTML = originalContent;
-    btn.disabled = false;
-    lucide.createIcons({ root: btn });
-}
-
-async function modifyDraft(action) {
-    const textarea = document.getElementById('draft-output');
-    const currentDraft = textarea.value.trim();
-
-    if (!currentDraft) return;
-
-    const btn = document.querySelector(`button[onclick="modifyDraft('${action}')"]`);
-    const originalText = btn.innerHTML;
-    btn.innerHTML = `...`;
-
-    let systemPrompt = `Modify this client email to Quadrante USA: "${currentDraft}". Keep it under 4 sentences and professional.`;
-
-    if (action === 'shorten') {
-        systemPrompt += ' Make it even shorter - 2-3 sentences maximum. Remove all filler words.';
-    } else if (action === 'expand') {
-        systemPrompt += ' Add one more sentence with project details. Stay concise.';
-    } else if (action === 'formal') {
-        systemPrompt += ' Use formal business language. Keep it short.';
-    } else if (action === 'casual') {
-        systemPrompt += ' Make it friendly but professional. Keep it brief.';
-    }
-
-    let newDraft = "Error: Failed to refine draft.";
-
-    try {
-        if (apiKey && apiKey.trim() !== "") {
-            newDraft = await callGemini(systemPrompt, `Refine the draft based on the following instruction: ${systemPrompt}`);
-        } else {
-            newDraft = "Error: AI service is not configured. Please set up the API key.";
-        }
-    } catch (error) {
-        console.error("Gemini API error:", error);
-        newDraft = "Error: Failed to refine draft. Please try again.";
-    }
-
-    textarea.value = newDraft;
-    btn.innerHTML = originalText;
-}
-
-function insertDraft() {
-    if (currentDraftTargetId) {
-        const draftText = document.getElementById('draft-output').value;
-        const target = document.getElementById(currentDraftTargetId);
-        if (target) {
-            target.value = draftText;
-            // visual feedback focus
-            target.focus();
-        }
-    }
-    closeAiDraftModal();
-}
-
 // Universal Modal
 let currentModalSection = '';
 let currentModalIndex = 0;
@@ -804,7 +620,6 @@ let currentModalIndex = 0;
 function openUniversalModal(section, index) {
     currentModalSection = section;
     currentModalIndex = index;
-    const navList = document.getElementById('modal-nav-list');
     const mobileNavList = document.getElementById('mobile-nav-list');
 
     let dataArray;
@@ -812,36 +627,16 @@ function openUniversalModal(section, index) {
     else if (section === 'projects') dataArray = projectModalData;
     else dataArray = teamData;
 
-    let headerText = 'Our Competencies';
-    if (section === 'team') headerText = 'Our Leadership';
-    else if (section === 'projects') headerText = 'Our Global Projects';
-
-    if (document.getElementById('sidebar-header')) {
-        document.getElementById('sidebar-header').innerText = headerText;
-    }
-
-    // Build Nav List
-    let html = '';
+    // Build horizontal navigation tabs for all screen sizes
     let mobileHtml = '';
 
     dataArray.forEach((item, i) => {
         const isActive = i === index;
-        const activeClasses = isActive ? 'bg-brand-primary/10 border-brand-primary' : 'border-transparent hover:bg-white/5';
-
-        // Desktop Nav List (sidebar over image)
-        html += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="w-full text-left p-4 flex items-center gap-4 rounded-xl transition-all duration-300 group border-l-4 ${activeClasses}">
-            <span class="text-sm font-bold transition-colors line-clamp-2 leading-tight ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}">${item.title}</span>
-        </button>`;
-
-        // Mobile Nav List (horizontal scroll tabs)
-        mobileHtml += `<button onclick="switchModalItem(${i})" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200'}">${item.title}</button>`;
+        // Horizontal tab navigation
+        mobileHtml += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}">${item.title}</button>`;
     });
 
-    // Only populate desktop nav on larger screens
-    if (navList && window.innerWidth >= 1024) {
-        navList.innerHTML = html;
-    }
-    // Always populate mobile nav (horizontal tabs)
+    // Populate horizontal tabs navigation
     if (mobileNavList) {
         mobileNavList.innerHTML = mobileHtml;
     }
@@ -875,33 +670,7 @@ function switchModalItem(index) {
     currentModalIndex = index;
     updateModalUI();
 
-    let dataArray;
-    if (currentModalSection === 'expertise') dataArray = competenciesData;
-    else if (currentModalSection === 'projects') dataArray = projectModalData;
-    else dataArray = teamData;
-
-    // Update desktop navigation highlight (only on larger screens)
-    if (window.innerWidth >= 1024) {
-        dataArray.forEach((_, i) => {
-            const navItem = document.getElementById(`nav-item-${i}`);
-            if (navItem) {
-                const span = navItem.querySelector('span');
-                if (i === index) {
-                    navItem.classList.add('bg-brand-primary/10', 'border-brand-primary');
-                    navItem.classList.remove('border-transparent', 'hover:bg-white/5');
-                    span.classList.remove('text-slate-400', 'group-hover:text-white');
-                    span.classList.add('text-white');
-                } else {
-                    navItem.classList.remove('bg-brand-primary/10', 'border-brand-primary');
-                    navItem.classList.add('border-transparent', 'hover:bg-white/5');
-                    span.classList.add('text-slate-400', 'group-hover:text-white');
-                    span.classList.remove('text-white');
-                }
-            }
-        });
-    }
-
-    // Update mobile navigation highlight
+    // Update horizontal tabs navigation highlight
     const mobileNavList = document.getElementById('mobile-nav-list');
     if (mobileNavList) {
         const buttons = mobileNavList.querySelectorAll('button');
@@ -951,17 +720,23 @@ function updateModalUI() {
     else dataArray = teamData;
 
     const data = dataArray[currentModalIndex];
-    const modalContainer = document.querySelector('#universal-modal .modal-content');
     const imgElement = document.getElementById('modal-image');
-    const sidebar = document.querySelector('#universal-modal .bg-slate-900');
-    const sidebarInnerContent = document.getElementById('sidebar-menu-container');
-    const contentSection = document.querySelector('#universal-modal .w-full.md\\:w-1\\/2'); // The right side
-    const gradientOverlay = document.getElementById('sidebar-gradient');
 
     imgElement.src = data.image;
 
-    document.getElementById('mobile-image-title').innerText = data.title;
     document.getElementById('modal-title').innerText = data.title;
+
+    // Update subtitle if it exists
+    const subtitleElement = document.getElementById('modal-subtitle');
+    if (subtitleElement) {
+        if (data.subtitle) {
+            subtitleElement.innerText = data.subtitle;
+            subtitleElement.classList.remove('hidden');
+        } else {
+            subtitleElement.innerText = '';
+            subtitleElement.classList.add('hidden');
+        }
+    }
 
     // Handle different data formats for projects vs expertise/team
     if (currentModalSection === 'projects' && data.content === undefined) {
@@ -996,38 +771,7 @@ function updateModalUI() {
         document.getElementById('modal-body').innerHTML = data.content;
     }
 
-    let label = 'Featured';
-    if (currentModalSection === 'expertise') label = 'Competency';
-    else if (currentModalSection === 'projects') label = 'Project';
-    else label = 'Leadership';
-
-    document.getElementById('modal-section-label').innerText = label;
     document.getElementById('modal-question-box').value = '';
-
-    // --- Layout Adjustments based on User Request (Map vs Others) ---
-
-    // Reset classes to default state
-    modalContainer.classList.remove('max-w-[95vw]');
-    modalContainer.classList.add('max-w-7xl');
-
-    sidebar.classList.remove('md:w-3/4', 'md:w-1/2', 'md:w-[65%]');
-    contentSection.classList.remove('md:w-1/4', 'md:w-1/2', 'md:w-[35%]');
-    imgElement.classList.remove('object-contain', 'object-cover');
-
-    // Default behavior
-    sidebar.classList.add('md:w-1/2');
-    contentSection.classList.add('md:w-1/2');
-    imgElement.classList.add('object-cover');
-    imgElement.classList.remove('bg-white');
-
-    if (sidebarInnerContent) {
-        // Reset to original state: hidden on mobile, visible on large screens
-        sidebarInnerContent.className = sidebarInnerContent.className.replace(/\bhidden\b/g, '');
-        if (!sidebarInnerContent.classList.contains('lg:flex')) {
-            sidebarInnerContent.classList.add('hidden', 'lg:flex');
-        }
-    }
-    if (gradientOverlay) gradientOverlay.classList.remove('hidden');
 
     // --- Hide/Show Inquiry Form ---
     // If it is 'team' section, we hide the inquiry box at the bottom of the modal
@@ -1040,30 +784,16 @@ function updateModalUI() {
         }
     }
 
-    // --- DYNAMIC CHIP GENERATION FOR MODAL ---
-    const chipsContainer = document.getElementById('modal-quick-chips');
-    let chipsHtml = '';
-
-    if (currentModalSection === 'expertise') {
-        chipsHtml = `
-            <button onclick="prefillMessage('modal-question-box', 'We need a feasibility study regarding this capability.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Feasibility Study</button>
-            <button onclick="prefillMessage('modal-question-box', 'Can you provide a proposal for this service?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Proposal</button>
-            <button onclick="prefillMessage('modal-question-box', 'I have a technical question about compliance standards.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Technical Question</button>
-        `;
-    } else if (currentModalSection === 'projects') {
-        chipsHtml = `
-            <button onclick="prefillMessage('modal-question-box', 'We are interested in a similar project. Can we discuss?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Similar Project</button>
-            <button onclick="prefillMessage('modal-question-box', 'Can you provide more technical details about this project?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Technical Details</button>
-            <button onclick="prefillMessage('modal-question-box', 'What was the project timeline and budget range?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Project Scope</button>
-        `;
-    } else {
-        chipsHtml = `
-            <button onclick="prefillMessage('modal-question-box', 'I would like to schedule a meeting with this person.')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Schedule Meeting</button>
-            <button onclick="prefillMessage('modal-question-box', 'Can I request a full bio or resume?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Request Resume</button>
-            <button onclick="prefillMessage('modal-question-box', 'Is this expert available for a consultation?')" class="text-xs bg-white border border-slate-200 px-3 py-1 rounded-full text-slate-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-colors">Consultation</button>
-        `;
+    // --- Hide/Show Navigation Tabs ---
+    // If it is 'team' section, we hide the navigation tabs
+    const navList = document.getElementById('mobile-nav-list');
+    if (navList) {
+        if (currentModalSection === 'team') {
+            navList.classList.add('hidden');
+        } else {
+            navList.classList.remove('hidden');
+        }
     }
-    chipsContainer.innerHTML = chipsHtml;
 
     // Re-initialize icons inside modal content
     if (window.lucide) {
@@ -1579,7 +1309,7 @@ function updateProjectModalUI() {
     if (contentDiv && project) {
         contentDiv.innerHTML = `
             <!-- Project Hero Image -->
-            <div class="relative overflow-hidden" style="height: 200px;">
+            <div class="relative overflow-hidden" style="height: 250px;">
                 <img src="${project.image}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" alt="${project.title}">
                 <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), transparent);"></div>
                 <div style="position: absolute; bottom: 16px; left: 16px; right: 16px;">
