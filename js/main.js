@@ -631,18 +631,20 @@ function openUniversalModal(section, index) {
     else dataArray = teamData;
 
     // Build horizontal navigation tabs for all screen sizes
-    let mobileHtml = '';
+    // DISABLED: Navigation tabs removed as per user request
+    // let mobileHtml = '';
 
-    dataArray.forEach((item, i) => {
-        const isActive = i === index;
-        // Horizontal tab navigation
-        mobileHtml += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}">${item.title}</button>`;
-    });
+    // dataArray.forEach((item, i) => {
+    //     const isActive = i === index;
+    //     // Horizontal tab navigation
+    //     mobileHtml += `<button onclick="switchModalItem(${i})" id="nav-item-${i}" class="inline-flex items-center gap-2 px-4 py-2 mx-1 rounded-full text-xs font-bold border transition-colors ${isActive ? 'bg-brand-primary text-white border-brand-primary' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}">${item.title}</button>`;
+    // });
 
     // Populate horizontal tabs navigation
-    if (mobileNavList) {
-        mobileNavList.innerHTML = mobileHtml;
-    }
+    // DISABLED: Keep navigation hidden
+    // if (mobileNavList) {
+    //     mobileNavList.innerHTML = mobileHtml;
+    // }
 
     updateModalUI();
 
@@ -788,14 +790,11 @@ function updateModalUI() {
     }
 
     // --- Hide/Show Navigation Tabs ---
-    // If it is 'team' section, we hide the navigation tabs
+    // DISABLED: Navigation tabs removed as per user request - keep hidden for all sections
     const navList = document.getElementById('mobile-nav-list');
     if (navList) {
-        if (currentModalSection === 'team') {
-            navList.classList.add('hidden');
-        } else {
-            navList.classList.remove('hidden');
-        }
+        // Always keep navigation hidden
+        navList.classList.add('hidden');
     }
 
     // Re-initialize icons inside modal content
