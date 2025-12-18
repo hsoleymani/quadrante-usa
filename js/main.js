@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (rightLogo) {
                 rightLogo.src = 'assets/images/media/logo-right-analytics.png';
+                rightLogo.className = 'h-8 md:h-11 w-auto object-contain ml-4 transition-all duration-300';
             }
             if (mobileMenuBtn) {
                 mobileMenuBtn.className = 'md:hidden text-brand-dark p-2 relative z-[60]';
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (rightLogo) {
                 rightLogo.src = 'assets/images/media/right_analytics_logo.svg';
+                rightLogo.className = 'h-12 md:h-16 w-auto object-contain ml-4 transition-all duration-300';
             }
             if (mobileMenuBtn) {
                 mobileMenuBtn.className = 'md:hidden text-white p-2 relative z-[60]';
@@ -239,14 +241,15 @@ const teamData = [
         subtitle: "Founder of Right Analytics / Chief Power Systems Engineer",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Founder of Right Analytics / Chief Power Systems Engineer</h4>
-        <p class="mb-4">Dr. Saman Babaei brings over 15 years of academic and industrial experience in power systems. He specializes in advanced grid studies, including transient stability, electromagnetic transients, and renewable energy integration.</p>
-        <p class="mb-4">Before founding Right Analytics, Saman worked on critical infrastructure projects across North America, developing methodologies for high-penetration renewable grids.</p>
+        <p class="mb-4">Dr. Saman Babaei brings over 15 years of academic and industry experience in power systems, with a strong focus on transmission planning, generator interconnection studies, grid modernization, and new technology deployment across major North American markets, including NYISO, PJM, MISO, and ERCOT.</p>
+        <p class="mb-4">He holds a PhD in Electrical Engineering and has published several technical papers in peer-reviewed journals and conferences.</p>
+        <p class="mb-4">Dr. Babaei has led critical infrastructure and utility-scale projects across North America, developing methodologies for high-penetration renewable and inverter-based resource grids, from early-stage interconnection through implementation and operation.</p>
         <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 mt-6">
             <h5 class="font-bold text-slate-900 mb-2">Key Expertise</h5>
             <ul class="list-disc list-inside text-sm space-y-1">
-                <li>Grid Interconnection Studies</li>
-                <li>Transient Stability Analysis</li>
-                <li>HVDC & FACTS Applications</li>
+                <li>Transmission planning & interconnection studies</li>
+                <li>New technology deployment</li>
+                <li>Power electronics applications in power systems</li>
             </ul>
         </div>
         `
