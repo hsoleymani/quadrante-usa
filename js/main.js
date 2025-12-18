@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (rightLogo) {
                 rightLogo.src = 'assets/images/media/logo-right-analytics.png';
-                rightLogo.className = 'h-8 md:h-11 w-auto object-contain ml-4 transition-all duration-300';
+                rightLogo.className = 'h-6 md:h-11 w-auto object-contain ml-2 md:ml-4 transition-all duration-300';
             }
             if (mobileMenuBtn) {
                 mobileMenuBtn.className = 'md:hidden text-brand-dark p-2 relative z-[60]';
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (rightLogo) {
                 rightLogo.src = 'assets/images/media/right_analytics_logo.svg';
-                rightLogo.className = 'h-12 md:h-16 w-auto object-contain ml-4 transition-all duration-300';
+                rightLogo.className = 'h-8 md:h-16 w-auto object-contain ml-2 md:ml-4 transition-all duration-300';
             }
             if (mobileMenuBtn) {
                 mobileMenuBtn.className = 'md:hidden text-white p-2 relative z-[60]';
