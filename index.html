@@ -258,6 +258,19 @@
                 }, 100);
             }
 
+            // Initialize mobile menu button after header is loaded
+            setTimeout(() => {
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                if (mobileMenuBtn && typeof handleMobileMenuClick === 'function') {
+                    mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
+                    if ('ontouchstart' in window) {
+                        mobileMenuBtn.addEventListener('touchstart', handleMobileMenuClick, {passive: false});
+                    }
+                    mobileMenuBtn.style.pointerEvents = 'auto';
+                    console.log('Mobile menu button initialized');
+                }
+            }, 150);
+
             // Initialize the project map after components are loaded
             if (document.getElementById('project-map') && typeof initializeProjectMap === 'function') {
                 // Wait a bit for DOM to settle

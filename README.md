@@ -82,12 +82,26 @@ All images are in `assets/images/media/`. Naming conventions:
 - Client logos: `client-logo-[number].png`
 - Project images: descriptive names (e.g., `solar_wind.jpeg`)
 
-## Form Handling
+## Form Handling (SETUP REQUIRED)
 
-Contact forms submit to Formspree. The endpoint is configured in `modals.html`:
+Contact forms use [Formspree](https://formspree.io) for submission handling. **You must configure your own Formspree endpoint before the forms will work.**
+
+### Setup Instructions
+
+1. Go to [formspree.io](https://formspree.io) and create a free account
+2. Create a new form and copy your form ID (looks like `xyzabcde`)
+3. Open `components/modals.html` and find line 54
+4. Replace `YOUR_FORMSPREE_ID` with your actual form ID:
+
 ```html
-action="https://formspree.io/f/[form-id]"
+<!-- Before -->
+<form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+
+<!-- After (example) -->
+<form action="https://formspree.io/f/xyzabcde" method="POST">
 ```
+
+5. Test the form to ensure submissions are being received
 
 ## Browser Support
 

@@ -107,21 +107,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 200);
 
     // Add mobile menu event listener with Safari compatibility
-    setTimeout(() => {
+    // Use MutationObserver to detect when header is loaded, then attach listeners
+    function attachMobileMenuListeners() {
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         if (mobileMenuBtn) {
             // Remove any existing listeners
             mobileMenuBtn.removeEventListener('click', handleMobileMenuClick);
             mobileMenuBtn.removeEventListener('touchstart', handleMobileMenuClick);
 
-            // Add only touchstart for mobile, click as fallback
+            // Add both click and touchstart for better compatibility
+            mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
             if ('ontouchstart' in window) {
                 mobileMenuBtn.addEventListener('touchstart', handleMobileMenuClick, {passive: false});
-            } else {
-                mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
             }
+
+            // Ensure button is always clickable
+            mobileMenuBtn.style.pointerEvents = 'auto';
+            mobileMenuBtn.setAttribute('data-listeners-attached', 'true');
+            return true;
         }
-    }, 100);
+        return false;
+    }
+
+    // Try immediately
+    if (!attachMobileMenuListeners()) {
+        // If button not found, try again after a short delay (for dynamic loading)
+        setTimeout(attachMobileMenuListeners, 100);
+        setTimeout(attachMobileMenuListeners, 300);
+        setTimeout(attachMobileMenuListeners, 500);
+    }
 });
 
 // ============================================================================
