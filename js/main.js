@@ -1,14 +1,43 @@
-// Main JavaScript for Quadrante USA website
+/**
+ * ============================================================================
+ * QUADRANTE USA - Main JavaScript
+ * ============================================================================
+ *
+ * This file contains all interactive functionality for the Quadrante USA website.
+ *
+ * TABLE OF CONTENTS:
+ * ------------------
+ * 1. INITIALIZATION (DOMContentLoaded)
+ * 2. MOBILE MENU
+ * 3. DATA DEFINITIONS (competenciesData, teamData, projectModalData)
+ * 4. SCROLL HEADER
+ * 5. HERO SLIDER
+ * 6. UNIVERSAL MODAL SYSTEM
+ * 7. LEAD CAPTURE MODAL
+ * 8. COMPANY INFO MODAL
+ * 9. PROJECT SLIDER & SCROLLING
+ * 10. EXPERTISE ROW SCROLLING
+ * 11. DRAG SCROLLING
+ * 12. PROJECT MAP (Leaflet)
+ *
+ * DEPENDENCIES:
+ * - Tailwind CSS (CDN)
+ * - Lucide Icons (CDN)
+ * - Leaflet.js (CDN) - for project map
+ * - Formspree - for form submissions
+ *
+ * ============================================================================
+ */
 
-// Move init to end or use DOMContentLoaded to prevent script blocking
+// ============================================================================
+// 1. INITIALIZATION
+// ============================================================================
 document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) {
         lucide.createIcons();
     }
 
     // Header scroll functionality
-    console.log('Header scroll functionality loaded');
-
     function updateHeader() {
         const header = document.getElementById('main-header');
         const menuButton = document.getElementById('menu-button');
@@ -17,11 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const rightLogo = document.getElementById('right-logo');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
-        console.log('Scroll Y:', window.scrollY);
-
         // Check scroll position
         if (window.scrollY > 50) {
-            console.log('Scrolled - switching to solid header');
 
             // Scrolled down - make header solid white with dark text
             if (header) {
@@ -46,8 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuBtn.className = 'md:hidden text-brand-dark p-2 relative z-[60]';
             }
         } else {
-            console.log('At top - transparent header');
-
             // At top - transparent header with white text over hero
             if (header) {
                 header.className = 'fixed top-6 left-6 right-6 z-[50] transition-all duration-300 bg-transparent py-4';
@@ -80,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add scroll listener
         window.addEventListener('scroll', updateHeader);
-        console.log('Header scroll listener added');
     }, 200);
 
     // Add mobile menu event listener with Safari compatibility
@@ -94,16 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add only touchstart for mobile, click as fallback
             if ('ontouchstart' in window) {
                 mobileMenuBtn.addEventListener('touchstart', handleMobileMenuClick, {passive: false});
-                console.log('Mobile menu touchstart listener added');
             } else {
                 mobileMenuBtn.addEventListener('click', handleMobileMenuClick);
-                console.log('Mobile menu click listener added');
             }
-        } else {
-            console.log('Mobile menu button not found');
         }
     }, 100);
 });
+
+// ============================================================================
+// 2. MOBILE MENU
+// ============================================================================
 
 let lastMenuToggle = 0;
 
@@ -114,21 +137,16 @@ function handleMobileMenuClick(event) {
     // Debounce: prevent double-firing within 300ms
     const now = Date.now();
     if (now - lastMenuToggle < 300) {
-        console.log('Menu toggle debounced');
         return;
     }
     lastMenuToggle = now;
 
     toggleMobileMenu();
-    console.log('Mobile menu clicked');
 }
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    if (!menu) {
-        console.error('Mobile menu element not found');
-        return;
-    }
+    if (!menu) return;
 
     const isActive = menu.classList.contains('active');
 
@@ -136,12 +154,10 @@ function toggleMobileMenu() {
         // Closing menu - slide up
         menu.classList.remove('active');
         menu.style.transform = 'translateY(-100%)';
-        console.log('Mobile menu closed');
     } else {
         // Opening menu - slide down
         menu.classList.add('active');
         menu.style.transform = 'translateY(0)';
-        console.log('Mobile menu opened');
     }
 }
 
@@ -169,9 +185,11 @@ function ensureMobileMenuResponsive() {
     }
 }
 
-// --- Data Definitions ---
+// ============================================================================
+// 3. DATA DEFINITIONS
+// ============================================================================
 
-// UPDATED COMPETENCIES DATA (5 PANELS)
+// Competencies data for expertise modal panels
 const competenciesData = [
     { // Panel 1: Renewable Energy Resources Integration
         image: "assets/images/media/wind-farm-global.png",
@@ -230,8 +248,7 @@ const competenciesData = [
     }
 ];
 
-// Experience data removed - Data Center Expertise section has been removed
-
+// Team member data for team modal panels
 const teamData = [
     {
         image: "assets/images/media/team-saman-babaei.jpeg",
@@ -329,7 +346,10 @@ const teamData = [
     }
 ];
 
-// --- SCROLL HEADER ---
+// ============================================================================
+// 4. SCROLL HEADER
+// ============================================================================
+
 window.addEventListener('scroll', () => {
     const header = document.getElementById('main-header');
     const progress = document.getElementById('scroll-progress');
@@ -368,19 +388,18 @@ window.addEventListener('scroll', () => {
     ensureMobileMenuResponsive();
 });
 
-// --- HERO SLIDER ---
+// ============================================================================
+// 5. HERO SLIDER
+// ============================================================================
+
 let slides = [];
 let currentSlide = 0;
 let slideInterval;
 
 function initializeSlider() {
     slides = document.querySelectorAll('.slide');
-    console.log('Found slides:', slides.length);
 
-    if (slides.length === 0) {
-        console.warn('No slides found');
-        return;
-    }
+    if (slides.length === 0) return;
 
     // Clear any existing interval
     if (slideInterval) {
@@ -427,9 +446,6 @@ function initializeSlider() {
         prevBtnMobile.addEventListener('touchstart', prevSlide, {passive: true});
     }
 
-
-    console.log('Slider initialized with', slides.length, 'slides');
-
     // Add touch/swipe functionality for mobile
     initializeSliderSwipe();
 }
@@ -446,7 +462,6 @@ function nextSlide() {
     if (slides.length === 0) return;
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
-    console.log('Next slide:', currentSlide);
 
     // Restart auto advance with new timing for the new slide
     if (slideInterval) {
@@ -469,8 +484,6 @@ function startAutoAdvance() {
     slideInterval = setTimeout(() => {
         nextSlide();
     }, duration);
-
-    console.log(`Slide ${currentSlide} will display for ${duration/1000} seconds`);
 }
 
 
@@ -533,14 +546,12 @@ function initializeSliderSwipe() {
         isDragging = false;
     }, {passive: true});
 
-    console.log('Swipe functionality initialized for hero slider');
 }
 
 function prevSlide() {
     if (slides.length === 0) return;
     currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(currentSlide);
-    console.log('Previous slide:', currentSlide);
 
     // Restart auto advance with new timing for the new slide
     if (slideInterval) {
@@ -549,7 +560,9 @@ function prevSlide() {
     }
 }
 
-// --- MODALS ---
+// ============================================================================
+// 6. UNIVERSAL MODAL SYSTEM
+// ============================================================================
 function triggerLeadCapture(sourceId, context = '') {
     const messageBox = document.getElementById(sourceId);
     const messageVal = messageBox ? messageBox.value : '';
@@ -621,7 +634,6 @@ let currentModalIndex = 0;
 function openUniversalModal(section, index) {
     currentModalSection = section;
     currentModalIndex = index;
-    const mobileNavList = document.getElementById('mobile-nav-list');
 
     let dataArray;
     if (section === 'expertise') dataArray = competenciesData;
@@ -650,6 +662,8 @@ function openUniversalModal(section, index) {
     const content = modal.querySelector('.modal-content');
     modal.classList.remove('hidden');
     document.body.classList.add('overflow-hidden'); // Disable background scrolling
+    // Add keyboard event listener for Escape key
+    document.addEventListener('keydown', handleUniversalModalKeyboard);
     setTimeout(() => {
         modal.classList.remove('modal-hidden');
         content.classList.add('scale-100', 'opacity-100');
@@ -664,9 +678,19 @@ function closeUniversalModal() {
     content.classList.remove('scale-100', 'opacity-100');
     content.classList.add('scale-95', 'opacity-0');
     document.body.classList.remove('overflow-hidden'); // Re-enable background scrolling
+    // Remove keyboard event listener
+    document.removeEventListener('keydown', handleUniversalModalKeyboard);
     setTimeout(() => {
         modal.classList.add('hidden');
     }, 300);
+}
+
+// Handle keyboard events for universal modal (Escape to close)
+function handleUniversalModalKeyboard(e) {
+    if (e.key === 'Escape') {
+        e.preventDefault();
+        closeUniversalModal();
+    }
 }
 
 function switchModalItem(index) {
@@ -679,7 +703,7 @@ function switchModalItem(index) {
         const buttons = mobileNavList.querySelectorAll('button');
         let activeButton = null;
 
-        buttons.forEach((button, i) => {
+        buttons.forEach((button) => {
             const onclick = button.getAttribute('onclick');
             if (onclick) {
                 const match = onclick.match(/switchModalItem\((\d+)\)/);
@@ -805,17 +829,11 @@ function updateModalUI() {
 
 // Scroll Row Function for Capabilities
 function scrollRow(rowId, direction) {
-    console.log('scrollRow called with:', rowId, direction); // Debug log
     const row = document.getElementById(rowId);
-    if (!row) {
-        console.error('Row element not found:', rowId);
-        return;
-    }
+    if (!row) return;
 
     const scrollAmount = 340; // Card width (320px) + gap (20px)
     const currentScroll = row.scrollLeft;
-    console.log('Current scroll position:', currentScroll);
-
     if (direction === 'left') {
         row.scrollTo({
             left: Math.max(0, currentScroll - scrollAmount),
@@ -834,16 +852,11 @@ function scrollRow(rowId, direction) {
 
 // Project slider scroll function
 function scrollProjectRow(rowId, direction) {
-    console.log('scrollProjectRow called with:', rowId, direction); // Debug log
     const row = document.getElementById(rowId);
-    if (!row) {
-        console.error('Project row element not found:', rowId);
-        return;
-    }
+    if (!row) return;
 
     const scrollAmount = 340; // Card width (320px) + gap (20px)
     const currentScroll = row.scrollLeft;
-    console.log('Current project scroll position:', currentScroll);
 
     if (direction === 'left') {
         row.scrollTo({
@@ -1524,11 +1537,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         initializeDragScrolling();
         initializeArrowVisibility();
-        console.log('Drag scrolling and arrow visibility initialized');
     }, 500);
 });
 
-// Enhanced Project Map functionality
+// ============================================================================
+// 12. PROJECT MAP (Leaflet)
+// ============================================================================
 let projectMap;
 let allMarkers = [];
 let layerGroups = {};
@@ -1536,24 +1550,17 @@ let currentRegion = 'usa';
 
 // Global filter and region functions (must be defined before map initialization)
 window.toggleFilter = function (type) {
-    console.log('Toggle filter called for type:', type); // Debug log
     const layer = layerGroups[type];
     const btn = document.getElementById('btn-' + type);
 
-    if (!layer || !btn) {
-        console.error('Layer or button not found for type:', type);
-        return;
-    }
+    if (!layer || !btn) return;
 
     if (projectMap && projectMap.hasLayer(layer)) {
         // Hide layer
         projectMap.removeLayer(layer);
         btn.classList.add('opacity-50', 'grayscale');
         btn.classList.remove('ring-2', 'ring-offset-1');
-
-        // Remove type-specific backgrounds
         btn.classList.remove('ring-blue-100', 'bg-blue-50', 'ring-green-100', 'bg-green-50', 'ring-indigo-100', 'bg-indigo-50');
-        console.log('Layer hidden for type:', type);
     } else if (projectMap) {
         // Show layer
         projectMap.addLayer(layer);
@@ -1561,23 +1568,15 @@ window.toggleFilter = function (type) {
         btn.classList.add('ring-2', 'ring-offset-1');
 
         // Add type-specific backgrounds
-        if (type === 'grid') {
-            btn.classList.add('ring-blue-100', 'bg-blue-50');
-        }
-        if (type === 'renew') {
-            btn.classList.add('ring-green-100', 'bg-green-50');
-        }
-        if (type === 'study') {
-            btn.classList.add('ring-indigo-100', 'bg-indigo-50');
-        }
-        console.log('Layer shown for type:', type);
+        if (type === 'grid') btn.classList.add('ring-blue-100', 'bg-blue-50');
+        if (type === 'renew') btn.classList.add('ring-green-100', 'bg-green-50');
+        if (type === 'study') btn.classList.add('ring-indigo-100', 'bg-indigo-50');
     }
     if (typeof updateProjectCounter === 'function') updateProjectCounter();
     if (typeof generateMobileProjectList === 'function') generateMobileProjectList();
 };
 
 window.focusRegion = function(region) {
-    console.log('Focusing on region:', region); // Debug log
     currentRegion = region;
 
     // Update button states - find all region buttons (usa, europe, global)
@@ -1607,7 +1606,6 @@ window.focusRegion = function(region) {
     const bounds = regionBounds[region];
     if (projectMap) {
         projectMap.setView(bounds.center, bounds.zoom);
-        console.log('Map view set to:', bounds);
     }
 
     if (typeof updateProjectCounter === 'function') updateProjectCounter();
@@ -1689,15 +1687,14 @@ function initializeProjectMap() {
     window.projectsData = projects; // Store globally for access
 
     // Add Enhanced Markers
-    projects.forEach((p, index) => {
+    projects.forEach((p) => {
         const marker = L.marker([p.lat, p.lng], {
             icon: icons[p.type].normal,
             riseOnHover: true
         });
 
-        // Enhanced click functionality with debugging
+        // Click to show project details
         marker.on('click', function(e) {
-            console.log('Marker clicked:', p.title); // Debug log
             e.originalEvent.stopPropagation();
             window.showProjectShowcase(p);
         });
@@ -1731,9 +1728,6 @@ function initializeProjectMap() {
             if (type === 'grid') btn.classList.add('ring-blue-100', 'bg-blue-50');
             if (type === 'renew') btn.classList.add('ring-green-100', 'bg-green-50');
             if (type === 'study') btn.classList.add('ring-indigo-100', 'bg-indigo-50');
-            console.log('Initialized filter button:', type);
-        } else {
-            console.error('Button not found for type:', type);
         }
     });
 
@@ -1747,42 +1741,33 @@ function initializeProjectMap() {
     }, 3000); // Show after 3 seconds
 }
 
-// Simplified Map Hint Functions
+// Map Hint Functions
 function showMapHint() {
-    console.log('🗺️ Showing map interaction hint...');
     const hint = document.getElementById('map-interaction-hint');
 
     if (hint) {
         hint.style.display = 'block';
-        console.log('✅ Map hint should now be visible!');
 
         // Hide only on map interaction (no auto-hide timer)
         if (projectMap) {
-            // Listen for map clicks, drags, or marker clicks
             projectMap.on('click', hideMapHint);
             projectMap.on('drag', hideMapHint);
             projectMap.on('zoom', hideMapHint);
-
-            console.log('🎯 Hint will stay visible until map interaction');
         }
 
         // Also hide when a project showcase is opened (marker clicked)
         const originalShowcase = window.showProjectShowcase;
         if (originalShowcase && !window.showProjectShowcase._hintModified) {
             window.showProjectShowcase = function(project) {
-                console.log('📍 Project marker clicked, hiding hint');
                 hideMapHint();
                 return originalShowcase(project);
             };
             window.showProjectShowcase._hintModified = true;
         }
-    } else {
-        console.log('❌ Map hint element not found');
     }
 }
 
 function hideMapHint() {
-    console.log('🗺️ Hiding map interaction hint...');
     const hint = document.getElementById('map-interaction-hint');
     if (hint) {
         hint.style.display = 'none';
@@ -1793,26 +1778,13 @@ function hideMapHint() {
             projectMap.off('drag', hideMapHint);
             projectMap.off('zoom', hideMapHint);
         }
-
-        console.log('✅ Map hint hidden and event listeners removed');
     }
 }
 
-// Manual test function - you can call this in console
-window.testMapHint = function() {
-    console.log('🧪 Manual test - showing map hint');
-    showMapHint();
-};
-
-// Enhanced Project Showcase
+// Project Showcase
 window.showProjectShowcase = function(project) {
-    console.log('Showing project:', project.title); // Debug log
     const showcase = document.getElementById('project-showcase');
-
-    if (!showcase) {
-        console.error('Project showcase element not found');
-        return;
-    }
+    if (!showcase) return;
 
     const typeColors = {
         grid: { bg: 'bg-blue-100', text: 'text-blue-800' },
@@ -1882,20 +1854,13 @@ function updateProjectCounter() {
     const counter = document.getElementById('project-counter');
     if (counter) {
         counter.textContent = count;
-    } else {
-        console.log('project-counter element not found');
     }
 }
 
 // Generate mobile project list
 function generateMobileProjectList() {
     const container = document.getElementById('mobile-project-list');
-
-    // Check if container exists before proceeding
-    if (!container) {
-        console.log('mobile-project-list element not found, skipping mobile list generation');
-        return;
-    }
+    if (!container) return;
 
     const filteredProjects = window.projectsData.filter(p => {
         if (currentRegion !== 'global' && p.region !== currentRegion) return false;

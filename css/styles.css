@@ -1,6 +1,27 @@
-/* Quadrante USA Website Styles */
+/**
+ * ============================================================================
+ * QUADRANTE USA - Stylesheet
+ * ============================================================================
+ *
+ * TABLE OF CONTENTS:
+ * ------------------
+ * 1. FONT FACE DECLARATIONS
+ * 2. TYPOGRAPHY STYLES
+ * 3. NAVIGATION & HEADER
+ * 4. HERO SLIDER
+ * 5. MODAL STYLES
+ * 6. SCROLLBAR CUSTOMIZATION
+ * 7. GRADIENT EFFECTS
+ * 8. LOADING ANIMATION
+ * 9. MAP MARKERS & EFFECTS
+ * 10. UTILITY CLASSES
+ *
+ * ============================================================================
+ */
 
-/* --- Font Face Declarations --- */
+/* ============================================================================
+   1. FONT FACE DECLARATIONS
+   ============================================================================ */
 @font-face {
     font-family: 'Archivo';
     src: url('../assets/Fonts/Archivo-Thin.ttf') format('truetype');
@@ -41,7 +62,9 @@
     font-display: swap;
 }
 
-/* --- Typography Styles (Archivo Font Family) --- */
+/* ============================================================================
+   2. TYPOGRAPHY STYLES
+   ============================================================================ */
 /* Headings - Large, bold, well-spaced with strong contrast */
 h1, .heading-1 {
     font-family: 'Archivo', Helvetica, Arial, sans-serif;
