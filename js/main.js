@@ -875,18 +875,22 @@ function updateProjectArrowVisibility(rowId) {
     const scrollWidth = row.scrollWidth;
     const clientWidth = row.clientWidth;
 
-    // Show/hide left arrow
+    // Show/hide left arrow and gradient
     if (scrollLeft > 10) {
         leftArrow.style.display = 'flex';
+        row.classList.add('show-left-gradient');
     } else {
         leftArrow.style.display = 'none';
+        row.classList.remove('show-left-gradient');
     }
 
-    // Show/hide right arrow
+    // Show/hide right arrow and gradient
     if (scrollLeft < scrollWidth - clientWidth - 10) {
         rightArrow.style.display = 'flex';
+        row.classList.add('show-right-gradient');
     } else {
         rightArrow.style.display = 'none';
+        row.classList.remove('show-right-gradient');
     }
 }
 
