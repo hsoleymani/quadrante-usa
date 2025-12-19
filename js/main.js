@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // At top - transparent header with white text over hero
             if (header) {
-                header.className = 'fixed top-6 left-6 right-6 z-20 transition-all duration-300 bg-transparent py-4';
+                header.className = 'fixed top-6 left-6 right-6 z-[50] transition-all duration-300 bg-transparent py-4';
             }
             if (menuButton) {
                 menuButton.className = 'nav-text text-sm font-medium uppercase tracking-wider text-white hover:text-white/80 transition-colors px-3 py-2';
@@ -133,16 +133,14 @@ function toggleMobileMenu() {
     const isActive = menu.classList.contains('active');
 
     if (isActive) {
-        // Closing menu
+        // Closing menu - slide up
         menu.classList.remove('active');
-        document.body.classList.remove('overflow-hidden');
-        menu.style.transform = 'translateX(100%)';
+        menu.style.transform = 'translateY(-100%)';
         console.log('Mobile menu closed');
     } else {
-        // Opening menu
+        // Opening menu - slide down
         menu.classList.add('active');
-        document.body.classList.add('overflow-hidden');
-        menu.style.transform = 'translateX(0)';
+        menu.style.transform = 'translateY(0)';
         console.log('Mobile menu opened');
     }
 }
@@ -200,9 +198,9 @@ const competenciesData = [
         title: "Hardware-in-the-Loop Testing, and Simulation",
         content: `<p class="mb-4">HIL testing lets you verify your controller design and other Intelligent Electronic Devices (IEDs) without the complete system hardware. Instead, rely on a real-time plant simulator that acts as a digital twin of the real system or parts of it, benefiting you in practicality and cost.</p><p>At Right Analytics, we offer a wide range of HIL tests to verify the performance of power electronics controllers, power system protection systems, and battery management systems.</p>`
     },
-    { // Panel 6: Industry & Energy Transition
-        image: "assets/images/media/wind-farm-global.png",
-        title: "Industry & Energy Transition",
+    { // Panel 6: Designing the Future of Power Infrastructure
+        image: "assets/images/media/wind_turbine_sunset.jpg",
+        title: "Designing the Future of Power Infrastructure",
         content: `<p class="mb-4">Quadrante USA leads the way in sustainable energy transition projects, combining decades of experience in renewable energy integration with cutting-edge grid modernization solutions.</p><p>Our expertise spans wind and solar power integration, energy storage systems, and grid decarbonization strategies that support the transition to clean energy while maintaining system reliability and economic viability.</p>`
     },
     { // Panel 7: Cities & Territories
@@ -260,9 +258,9 @@ const teamData = [
         subtitle: "CEO - USA",
         content: `
         <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">CEO - USA</h4>
-        <p class="mb-4">Eduardo Llorente serves as CEO for Quadrante's US operations, leading the strategic direction and business development across North America. He brings extensive experience in large-scale infrastructure projects and a deep understanding of the US energy market landscape.</p>
-        <p class="mb-4">With a background in Electrical Engineering and Executive Management, Eduardo ensures operational excellence and project delivery quality. He has been instrumental in establishing Quadrante USA's presence in critical sectors including power systems engineering, renewable energy integration, and data center infrastructure.</p>
-        <p>Eduardo focuses on building strategic partnerships with utilities, developers, and system operators, leveraging Quadrante's global expertise to address the unique challenges of the North American grid modernization and decarbonization efforts.</p>
+        <p class="mb-4">Eduardo Llorente is the U.S. CEO for Quadrante Group, leading the group's expansion into the American market with a focus on utility-scale renewable energy and power infrastructure. He brings over 25 years of international experience across Europe and the United States, combining a strong track record in business development and commercial strategy with extensive expertise in operations, project execution, and organizational growth.</p>
+        <p class="mb-4">Eduardo has held senior roles at Brookfield Renewable, Siemens Gamesa, Acciona, and ABB Power Consulting, where he directed large-scale solar, wind, hydro, biomass, and battery storage projects and built commercial strategies across multiple markets. He also served as COO of Dandelion Energy, where he brought executive leadership to scaling operations in the U.S.</p>
+        <p class="mb-4">Eduardo holds an M.Sc. in Electrical Engineering from Universidad Pontificia Comillas (ICAI) in Madrid, Spain, and is committed to leveraging Quadrante Group global expertise to help U.S. developers, IPPs, and utilities accelerate the clean energy transition.</p>
         `
     },
     {
@@ -898,7 +896,7 @@ const projectModalData = [
     {
         title: "NYPA & NYSERDA Initiatives",
         client: "New York Power Authority",
-        image: "assets/images/media/wind-farm-global.png",
+        image: "assets/images/media/NYSERDA.jpg",
         type: "Grid & Transmission",
         region: "New York, USA",
         description: "Advanced Power Flow Controller deployment and Wind power enabling technologies for grid modernization and renewable integration.",
@@ -1394,7 +1392,7 @@ function closeProjectModal() {
     }
 }
 
-// Update arrow visibility based on scroll position
+// Update arrow visibility based on scroll position (for Core Capabilities rows)
 function updateArrowVisibility(rowId) {
     const row = document.getElementById(rowId);
     if (!row) return;
@@ -1405,28 +1403,25 @@ function updateArrowVisibility(rowId) {
     if (!leftArrow || !rightArrow) return;
 
     const scrollLeft = row.scrollLeft;
-    const maxScroll = row.scrollWidth - row.clientWidth;
+    const scrollWidth = row.scrollWidth;
+    const clientWidth = row.clientWidth;
 
-    // Handle left arrow and left gradient
-    if (scrollLeft <= 0) {
-        leftArrow.classList.add('!hidden');
-        leftArrow.classList.remove('sm:flex');
-        row.classList.remove('show-left-gradient');
-    } else {
-        leftArrow.classList.remove('!hidden');
-        leftArrow.classList.add('sm:flex');
+    // Show/hide left arrow (same logic as Projects section)
+    if (scrollLeft > 10) {
+        leftArrow.style.display = 'flex';
         row.classList.add('show-left-gradient');
+    } else {
+        leftArrow.style.display = 'none';
+        row.classList.remove('show-left-gradient');
     }
 
-    // Handle right arrow and right gradient
-    if (scrollLeft >= maxScroll - 1) {
-        rightArrow.classList.add('!hidden');
-        rightArrow.classList.remove('sm:flex');
-        row.classList.remove('show-right-gradient');
-    } else {
-        rightArrow.classList.remove('!hidden');
-        rightArrow.classList.add('sm:flex');
+    // Show/hide right arrow (same logic as Projects section)
+    if (scrollLeft < scrollWidth - clientWidth - 10) {
+        rightArrow.style.display = 'flex';
         row.classList.add('show-right-gradient');
+    } else {
+        rightArrow.style.display = 'none';
+        row.classList.remove('show-right-gradient');
     }
 }
 
@@ -1666,7 +1661,7 @@ function initializeProjectMap() {
     // Enhanced Project Data with regions
     const projects = [
         // USA Projects
-        { lat: 40.7128, lng: -74.0060, title: "NYPA & NYSERDA Initiatives", client: "New York Power Authority", desc: "Advanced Power Flow Controller deployment & Wind power enabling technologies.", type: "grid", image: "assets/images/media/wind-farm-global.png", region: "usa" },
+        { lat: 40.7128, lng: -74.0060, title: "NYPA & NYSERDA Initiatives", client: "New York Power Authority", desc: "Advanced Power Flow Controller deployment & Wind power enabling technologies.", type: "grid", image: "assets/images/media/NYSERDA.jpg", region: "usa" },
         { lat: 37.5407, lng: -77.4360, title: "Dominion Energy Analysis", client: "Dominion Energy", desc: "Hosting capacity analysis & Solar integration cost analysis.", type: "study", image: "assets/images/media/solar_wind.jpeg", region: "usa" },
         { lat: 30.6333, lng: -96.3478, title: "Project Grimes & Mark Center", client: "Naturgy", desc: "138/34.5/13.8 kV Substation technical specs & ERCOT interconnection.", type: "grid", image: "assets/images/media/Grimes.jpg", region: "usa" },
         { lat: 34.0522, lng: -118.2437, title: "SCE Arc Events Modeling", client: "Southern California Edison", desc: "Power systems arc events modeling using RTDS.", type: "study", image: "assets/images/media/solar_wind.jpeg", region: "usa" },

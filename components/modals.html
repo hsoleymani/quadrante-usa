@@ -5,8 +5,8 @@
     <div class="relative bg-white w-full max-w-2xl h-full shadow-2xl overflow-hidden modal-content z-10 flex flex-col">
         <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-50 text-slate-600 hover:text-slate-900 bg-white/90 hover:bg-white p-2 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
 
-        <!-- Image Section (full width at top, no padding) - max 40% of screen -->
-        <div class="relative w-full h-[280px] sm:h-[350px] md:h-[40vh] lg:h-[40vh] bg-gray-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
+        <!-- Image Section (full width at top, no padding) - responsive heights -->
+        <div class="relative w-full h-[240px] sm:h-[280px] md:h-[300px] lg:h-[350px] xl:h-[400px] bg-gray-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
             <!-- Image -->
             <img id="modal-image" src="" class="w-full h-full object-cover object-top" alt="Detail Image">
         </div>
@@ -22,11 +22,11 @@
 
         <!-- Content Section (full width below) - min 60% with scrolling -->
         <div class="w-full flex flex-col bg-white relative overflow-y-auto flex-grow min-h-[60vh]">
-            <div class="flex-grow overflow-y-auto p-6 md:p-12 custom-scrollbar relative z-10" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
+            <div class="flex-grow overflow-y-auto p-6 md:p-12 pb-8 md:pb-16 custom-scrollbar relative z-10" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
                 <div id="modal-body" class="prose prose-slate prose-base md:prose-lg text-slate-700 leading-relaxed mb-8"></div>
                 <hr class="border-slate-100 my-6 md:my-8">
                 <!-- Added ID here to toggle visibility -->
-                <div id="modal-inquiry-container" class="bg-slate-50 p-6  border border-slate-100">
+                <div id="modal-inquiry-container" class="bg-slate-50 p-6 border border-slate-100 mb-8">
                     <div class="flex items-center gap-2 mb-4"><i data-lucide="message-circle-question" class="w-5 h-5 text-brand-primary"></i><h4 class="font-bold text-slate-800 text-sm uppercase tracking-wide">Ask about this topic</h4></div>
 
                     <div class="relative">
@@ -146,7 +146,7 @@
                         <div class="flex-1 bg-white  p-4 border border-slate-200 shadow-sm">
                             <h4 class="font-bold text-brand-primary mb-3 text-left border-b border-slate-100 pb-2">Quadrante Brings</h4>
                             <ul class="space-y-2 text-slate-600">
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-primary rounded-full"></span>Global engineering scale (1,200+ people)</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-primary rounded-full"></span>Global engineering scale (1,300+ people)</li>
                                 <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-primary rounded-full"></span>Total Design methodology</li>
                                 <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-primary rounded-full"></span>Sustainability leadership</li>
                                 <li class="flex items-center gap-2"><span class="w-2 h-2 bg-brand-primary rounded-full"></span>Multi-sector expertise</li>

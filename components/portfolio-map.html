@@ -16,13 +16,13 @@
 
             <!-- Row 1: US Projects -->
             <div class="mb-6 relative">
-                <!-- Left Arrow -->
-                <button id="projects-row1-left-arrow" onclick="scrollRow('projects-row1', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 flex items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
+                <!-- Left Arrow - Hidden on mobile, visible on desktop -->
+                <button id="projects-row1-left-arrow" onclick="scrollRow('projects-row1', 'left')" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
                     <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
-                <!-- Right Arrow -->
-                <button id="projects-row1-right-arrow" onclick="scrollRow('projects-row1', 'right')" class="absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                <!-- Right Arrow - Hidden on mobile, visible on desktop -->
+                <button id="projects-row1-right-arrow" onclick="scrollRow('projects-row1', 'right')" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
                     <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
@@ -31,7 +31,7 @@
 
                         <!-- Project 1: NYPA & NYSERDA Initiatives -->
                         <div onclick="openUniversalModal('projects', 0)" class="group cursor-pointer relative overflow-hidden shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80 h-80">
-                            <img src="assets/images/media/wind-farm-global.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="NYPA & NYSERDA Initiatives">
+                            <img src="assets/images/media/NYSERDA.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="NYPA & NYSERDA Initiatives">
                             <div class="absolute inset-0 bg-black/40"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-between">
                                 <div>
@@ -171,13 +171,13 @@
 
             <!-- Row 2: EU & International Projects -->
             <div class="mb-6 relative">
-                <!-- Left Arrow -->
-                <button id="projects-row2-left-arrow" onclick="scrollRow('projects-row2', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 flex items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
+                <!-- Left Arrow - Hidden on mobile, visible on desktop -->
+                <button id="projects-row2-left-arrow" onclick="scrollRow('projects-row2', 'left')" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
                     <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
-                <!-- Right Arrow -->
-                <button id="projects-row2-right-arrow" onclick="scrollRow('projects-row2', 'right')" class="absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 flex items-center justify-center transition-all duration-300 hover:scale-105">
+                <!-- Right Arrow - Hidden on mobile, visible on desktop -->
+                <button id="projects-row2-right-arrow" onclick="scrollRow('projects-row2', 'right')" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
                     <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
@@ -339,7 +339,7 @@
 
             <!-- Enhanced Controls Panel -->
             <div class="absolute top-6 left-6 z-[1000] bg-white/95 backdrop-blur-sm p-4  shadow-lg border border-slate-200">
-                <h5 class="font-bold text-slate-900 text-sm mb-3">Project Types</h5>
+                <h5 class="font-bold text-slate-900 text-sm mb-3">Project Cases by Category</h5>
                 <div class="space-y-2">
                     <button id="btn-grid" onclick="toggleFilter('grid')" class="w-full flex items-center gap-2 text-xs text-slate-700 hover:bg-slate-100 p-2  transition-all ring-2 ring-offset-1 ring-gray-100 bg-gray-50">
                         <span class="w-3 h-3 rounded-full bg-gray-600 shadow-sm"></span> <span class="font-bold">Grid & Transmission</span>

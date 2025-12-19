@@ -15,13 +15,13 @@
 
             <!-- Row 1: 6 cards - Scrollable -->
             <div class="mb-6 relative">
-                <!-- Left Arrow - Hidden initially, appears over the content -->
-                <button id="row1-left-arrow" onclick="scrollRow('row1', 'left')" class="!hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
+                <!-- Left Arrow - Hidden on mobile, visible on desktop -->
+                <button id="row1-left-arrow" onclick="scrollRow('row1', 'left')" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
                     <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
-                <!-- Right Arrow - Positioned outside the container -->
-                <button id="row1-right-arrow" onclick="scrollRow('row1', 'right')" class="sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
+                <!-- Right Arrow - Hidden on mobile, visible on desktop -->
+                <button id="row1-right-arrow" onclick="scrollRow('row1', 'right')" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
                     <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
@@ -132,27 +132,17 @@
 
                     </div>
                 </div>
-
-                <!-- Mobile Navigation Controls for Row 1 -->
-                <div class="flex sm:hidden justify-center mt-4 gap-3">
-                    <button onclick="scrollRow('row1', 'left')" class="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all active:scale-95" style="touch-action: manipulation;">
-                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                    </button>
-                    <button onclick="scrollRow('row1', 'right')" class="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all active:scale-95" style="touch-action: manipulation;">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </button>
-                </div>
             </div>
 
             <!-- Row 2: 5 cards - Scrollable -->
             <div class="mb-6 relative">
-                <!-- Left Arrow - Hidden initially, appears over the content -->
-                <button id="row2-left-arrow" onclick="scrollRow('row2', 'left')" class="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
+                <!-- Left Arrow - Hidden on mobile, visible on desktop -->
+                <button id="row2-left-arrow" onclick="scrollRow('row2', 'left')" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105" style="display: none;">
                     <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
-                <!-- Right Arrow - Positioned outside the container -->
-                <button id="row2-right-arrow" onclick="scrollRow('row2', 'right')" class="sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
+                <!-- Right Arrow - Hidden on mobile, visible on desktop -->
+                <button id="row2-right-arrow" onclick="scrollRow('row2', 'right')" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-50 bg-blue-600 hover:bg-blue-700 arrow-shadow w-12 h-16 md:h-20 items-center justify-center transition-all duration-300 hover:scale-105">
                     <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                 </button>
 
@@ -161,7 +151,7 @@
 
                         <!-- Panel 7: Designing the Future of Power Infrastructure -->
                         <div onclick="openUniversalModal('expertise', 5)" class="group cursor-pointer relative overflow-hidden shadow-xl hover:shadow-blue-500/30 transition-all duration-500 flex-shrink-0 w-80 h-80">
-                            <img src="assets/images/media/wind-farm-global.png" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e40af/ffffff?text=Industry+Energy'">
+                            <img src="assets/images/media/wind_turbine_sunset.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/800x600/1e40af/ffffff?text=Power+Infrastructure'">
                             <div class="absolute inset-0 bg-black/40"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-between">
                                 <div>
@@ -245,16 +235,6 @@
                         </div>
 
                     </div>
-                </div>
-
-                <!-- Mobile Navigation Controls for Row 2 -->
-                <div class="flex sm:hidden justify-center mt-4 gap-3">
-                    <button onclick="scrollRow('row2', 'left')" class="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all active:scale-95" style="touch-action: manipulation;">
-                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                    </button>
-                    <button onclick="scrollRow('row2', 'right')" class="p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all active:scale-95" style="touch-action: manipulation;">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </button>
                 </div>
             </div>
         </div>
