@@ -125,4 +125,4 @@ Contact forms use [Formspree](https://formspree.io) for submission handling. **Y
 
 ## Contact
 
-For technical questions about this codebase, refer to the inline code comments in `js/main.js` and `css/styles.css`.
+For technical questions about this codebase, contact soleymani.hamid@gmail/com.
