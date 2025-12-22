@@ -9,84 +9,176 @@
             </p>
         </div>
 
-        <!-- Professional Team Grid - 3 columns for 9 members (3 rows of 3) -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 sm:gap-2 md:gap-3 max-w-5xl mx-auto">
+        <!-- Mobile layout: Single grid with Nuno first -->
+        <div class="grid grid-cols-2 gap-1 sm:hidden">
 
-            <!-- Member 1 -->
+            <!-- Nuno Costa - First on mobile -->
+            <div onclick="openUniversalModal('team', 4)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-nuno-costa.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Nuno Costa</h4>
+                <p class="text-sm text-gray-600 leading-tight">Managing Partner - CEO</p>
+            </div>
+
+            <!-- Dr. Saman Babaei -->
             <div onclick="openUniversalModal('team', 0)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-saman-babaei.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Dr. Saman Babaei</h4>
+                <p class="text-sm text-gray-600 leading-tight">Founder of Right Analytics<br>Chief Power Systems<br>Engineer</p>
+            </div>
+
+            <!-- Eduardo Llorente -->
+            <div onclick="openUniversalModal('team', 1)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-eduardo-llorente.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Eduardo Llorente</h4>
+                <p class="text-sm text-gray-600 leading-tight">CEO - USA</p>
+            </div>
+
+            <!-- Prof. Hanif Livani -->
+            <div onclick="openUniversalModal('team', 2)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-hanif-livani.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Prof. Hanif Livani</h4>
+                <p class="text-sm text-gray-600 leading-tight">Lead Power Systems</p>
+            </div>
+
+            <!-- Prof. Ali Mehrizi-Sani -->
+            <div onclick="openUniversalModal('team', 3)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-ali-mehrizi.png" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Prof. Ali Mehrizi-Sani</h4>
+                <p class="text-sm text-gray-600 leading-tight">Lead Power Systems</p>
+            </div>
+
+            <!-- Isabel López Ferrer -->
+            <div onclick="openUniversalModal('team', 5)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-isabel-lopez.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Isabel López Ferrer</h4>
+                <p class="text-sm text-gray-600 leading-tight">VP of Energy - Head of<br>Business Sector - Energy</p>
+            </div>
+
+            <!-- Armando Santos -->
+            <div onclick="openUniversalModal('team', 6)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-armando-santos.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Armando Santos</h4>
+                <p class="text-sm text-gray-600 leading-tight">Global Account Lead<br>Energy Business Sector</p>
+            </div>
+
+            <!-- João Rocha -->
+            <div onclick="openUniversalModal('team', 7)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-joao-rocha.png" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">João Rocha</h4>
+                <p class="text-sm text-gray-600 leading-tight">Client Manager<br>Industry Business Unit</p>
+            </div>
+
+            <!-- Luis Moleirinho -->
+            <div onclick="openUniversalModal('team', 8)" class="group text-center cursor-pointer">
+                <div class="relative w-full h-60 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+                    <img src="assets/images/media/team-luis-moleirinho.png" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
+                </div>
+                <h4 class="text-base font-bold text-gray-900 mb-1">Luis Moleirinho</h4>
+                <p class="text-sm text-gray-600 leading-tight">Client Manager<br>Energy Business Unit</p>
+            </div>
+
+        </div>
+
+        <!-- Desktop layout: Two rows (4 + 5) -->
+        <!-- Row 1: 4 members centered -->
+        <div class="hidden sm:flex justify-center gap-2 md:gap-3 max-w-6xl mx-auto mb-2 md:mb-3">
+
+            <!-- Dr. Saman Babaei -->
+            <div onclick="openUniversalModal('team', 0)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-saman-babaei.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Dr. Saman Babaei</h4>
                 <p class="text-sm text-gray-600 leading-tight">Founder of Right Analytics<br>Chief Power Systems<br>Engineer</p>
             </div>
 
-            <!-- Member 2 -->
-            <div onclick="openUniversalModal('team', 1)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- Eduardo Llorente -->
+            <div onclick="openUniversalModal('team', 1)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-eduardo-llorente.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Eduardo Llorente</h4>
                 <p class="text-sm text-gray-600 leading-tight">CEO - USA</p>
             </div>
 
-            <!-- Member 3 -->
-            <div onclick="openUniversalModal('team', 2)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- Prof. Hanif Livani -->
+            <div onclick="openUniversalModal('team', 2)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-hanif-livani.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Prof. Hanif Livani</h4>
                 <p class="text-sm text-gray-600 leading-tight">Lead Power Systems</p>
             </div>
 
-            <!-- Member 4 -->
-            <div onclick="openUniversalModal('team', 3)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- Prof. Ali Mehrizi-Sani -->
+            <div onclick="openUniversalModal('team', 3)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-ali-mehrizi.png" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Prof. Ali Mehrizi-Sani</h4>
                 <p class="text-sm text-gray-600 leading-tight">Lead Power Systems</p>
             </div>
 
-            <!-- Member 5 -->
-            <div onclick="openUniversalModal('team', 4)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+        </div>
+
+        <!-- Row 2: 5 members -->
+        <div class="hidden sm:flex justify-center gap-2 md:gap-3 max-w-6xl mx-auto">
+
+            <!-- Nuno Costa -->
+            <div onclick="openUniversalModal('team', 4)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-nuno-costa.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Nuno Costa</h4>
                 <p class="text-sm text-gray-600 leading-tight">Managing Partner - CEO</p>
             </div>
 
-            <!-- Member 6 -->
-            <div onclick="openUniversalModal('team', 5)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- Isabel López Ferrer -->
+            <div onclick="openUniversalModal('team', 5)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-isabel-lopez.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Isabel López Ferrer</h4>
                 <p class="text-sm text-gray-600 leading-tight">VP of Energy - Head of<br>Business Sector - Energy</p>
             </div>
 
-            <!-- Member 7 -->
-            <div onclick="openUniversalModal('team', 6)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- Armando Santos -->
+            <div onclick="openUniversalModal('team', 6)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-armando-santos.jpeg" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Armando Santos</h4>
                 <p class="text-sm text-gray-600 leading-tight">Global Account Lead<br>Energy Business Sector</p>
             </div>
 
-            <!-- Member 8 -->
-            <div onclick="openUniversalModal('team', 7)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- João Rocha -->
+            <div onclick="openUniversalModal('team', 7)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-joao-rocha.png" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">João Rocha</h4>
                 <p class="text-sm text-gray-600 leading-tight">Client Manager<br>Industry Business Unit</p>
             </div>
 
-            <!-- Member 9 -->
-            <div onclick="openUniversalModal('team', 8)" class="group text-center cursor-pointer">
-                <div class="relative w-full h-60 sm:h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
+            <!-- Luis Moleirinho -->
+            <div onclick="openUniversalModal('team', 8)" class="group text-center cursor-pointer w-1/5">
+                <div class="relative w-full h-72 md:h-80 mx-auto mb-4 overflow-hidden bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                     <img src="assets/images/media/team-luis-moleirinho.png" class="w-full h-full object-cover object-top transition-all duration-300 group-hover:scale-105">
                 </div>
                 <h4 class="text-base md:text-lg font-bold text-gray-900 mb-1">Luis Moleirinho</h4>
