@@ -357,6 +357,18 @@ const teamData = [
         <p class="mb-4">With deep expertise in data center engineering, João manages relationships with major technology clients including Google and Logicalis, ensuring projects meet stringent Tier-standard compliance requirements. He coordinates multidisciplinary teams across electrical systems, mechanical infrastructure, and facility design.</p>
         <p>João acts as the primary liaison between clients and technical teams, translating complex business requirements into engineering deliverables while ensuring projects are delivered on time, within budget, and to exacting quality standards.</p>
         `
+    },
+    {
+        image: "assets/images/media/team-luis-moleirinho.png",
+        title: "Luis Moleirinho",
+        subtitle: "Client Manager - Energy Business Unit",
+        content: `
+        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Client Manager - Energy Business Unit</h4>
+        <p class="mb-4">With a degree in Electrotechnical and Computer Engineering, specialising in Electrical Power Systems, from FEUP, he has more than 22 years of national and international experience in projects related to Energy Production, Transmission and Distribution, Electrical Substations and Transmission and Distribution Lines.</p>
+        <p class="mb-4">His relevant professional activities include positions as Mobile Substations Project and Engineering Coordinator and Manager, performing activities related to engineering definition of HV, MV and LV systems, cost control and invoicing, commissioning, training and after-sales, mainly developed in the USA, Venezuela, Uruguay and Angola, where we highlight his active collaboration in about a hundred projects in a portfolio of 3,000 MVA.</p>
+        <p class="mb-4">We should also highlight his duties as HV Project Engineer and Grid Manager, in activities such as Substation Engineering, Evacuation Lines and Construction Supervision of the connection to the electricity grid of Renewable Power Production Centres.</p>
+        <p>Luis Moleirinho currently holds the position of Client Manager of the Energy Business Unit in the markets of Portugal, Middle East and Africa.</p>
+        `
     }
 ];
 
