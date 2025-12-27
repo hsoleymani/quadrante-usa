@@ -268,107 +268,57 @@ const teamData = [
         image: "assets/images/media/team-saman-babaei.jpeg",
         title: "Dr. Saman Babaei",
         subtitle: "Founder of Right Analytics / Chief Power Systems Engineer",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Founder of Right Analytics / Chief Power Systems Engineer</h4>
-        <p class="mb-4">Dr. Saman Babaei brings over 15 years of academic and industry experience in power systems, with a strong focus on transmission planning, generator interconnection studies, grid modernization, and new technology deployment across major North American markets, including NYISO, PJM, MISO, and ERCOT.</p>
-        <p class="mb-4">He holds a PhD in Electrical Engineering and has published several technical papers in peer-reviewed journals and conferences.</p>
-        <p class="mb-4">Dr. Babaei has led critical infrastructure and utility-scale projects across North America, developing methodologies for high-penetration renewable and inverter-based resource grids, from early-stage interconnection through implementation and operation.</p>
-        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 mt-6">
-            <h5 class="font-bold text-slate-900 mb-2">Key Expertise</h5>
-            <ul class="list-disc list-inside text-sm space-y-1">
-                <li>Transmission planning & interconnection studies</li>
-                <li>New technology deployment</li>
-                <li>Power electronics applications in power systems</li>
-            </ul>
-        </div>
-        `
+        imageClass: "object-contain scale-[1.4] translate-y-10",
+        imageBg: "bg-black",
+        content: `<p>Dr. Saman Babaei brings over 15 years of academic and industry experience in power systems, with a strong focus on transmission planning, generator interconnection studies, grid modernization, and new technology deployment across major North American markets, including NYISO, PJM, MISO, and ERCOT. He holds a PhD in Electrical Engineering and has published several technical papers in peer-reviewed journals and conferences. Dr. Babaei has led critical infrastructure and utility-scale projects across North America, developing methodologies for high-penetration renewable and inverter-based resource grids, from early-stage interconnection through implementation and operation.</p>`
     },
     {
         image: "assets/images/media/team-eduardo-llorente.jpeg",
         title: "Eduardo Llorente",
         subtitle: "CEO - USA",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">CEO - USA</h4>
-        <p class="mb-4">Eduardo Llorente is the U.S. CEO for Quadrante Group, leading the group's expansion into the American market with a focus on utility-scale renewable energy and power infrastructure. He brings over 25 years of international experience across Europe and the United States, combining a strong track record in business development and commercial strategy with extensive expertise in operations, project execution, and organizational growth.</p>
-        <p class="mb-4">Eduardo has held senior roles at Brookfield Renewable, Siemens Gamesa, Acciona, and ABB Power Consulting, where he directed large-scale solar, wind, hydro, biomass, and battery storage projects and built commercial strategies across multiple markets. He also served as COO of Dandelion Energy, where he brought executive leadership to scaling operations in the U.S.</p>
-        <p class="mb-4">Eduardo holds an M.Sc. in Electrical Engineering from Universidad Pontificia Comillas (ICAI) in Madrid, Spain, and is committed to leveraging Quadrante Group global expertise to help U.S. developers, IPPs, and utilities accelerate the clean energy transition.</p>
-        `
+        content: `<p>Eduardo Llorente is the U.S. CEO for Quadrante Group, leading the group's expansion into the American market with a focus on utility-scale renewable energy and power infrastructure. He brings over 25 years of international experience across Europe and the United States, combining a strong track record in business development and commercial strategy with extensive expertise in operations, project execution, and organizational growth. Eduardo has held senior roles at Brookfield Renewable, Siemens Gamesa, Acciona, and ABB Power Consulting, where he directed large-scale solar, wind, hydro, biomass, and battery storage projects and built commercial strategies across multiple markets. He also served as COO of Dandelion Energy, where he brought executive leadership to scaling operations in the U.S. Eduardo holds an M.Sc. in Electrical Engineering from Universidad Pontificia Comillas (ICAI) in Madrid, Spain, and is committed to leveraging Quadrante Group global expertise to help U.S. developers, IPPs, and utilities accelerate the clean energy transition.</p>`
     },
     {
         image: "assets/images/media/team-hanif-livani.jpeg",
         title: "Prof. Hanif Livani",
         subtitle: "Lead Power Systems",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
-        <p class="mb-4">Prof. Livani serves as a Professor of Electrical Engineering while leading technical studies at Right Analytics. His academic research in wide-area monitoring and protection systems directly informs his industrial consulting work.</p>
-        <p>He is an expert in state estimation, grid resilience, and the application of synchrophasor technology.</p>
-        `
+        content: `<p>Prof. Livani serves as a Professor of Electrical Engineering while leading technical studies at Right Analytics. His academic research in wide-area monitoring and protection systems directly informs his industrial consulting work. He is an expert in state estimation, grid resilience, and the application of synchrophasor technology.</p>`
     },
     {
         image: "assets/images/media/team-ali-mehrizi.png",
         title: "Prof. Ali Mehrizi-Sani",
         subtitle: "Lead Power Systems",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Lead Power Systems Engineer</h4>
-        <p class="mb-4">Prof. Mehrizi-Sani is a renowned expert in power electronics and microgrid control. His work bridges the gap between theoretical control strategies and practical hardware implementation.</p>
-        <p>At Right Analytics, he oversees Hardware-in-the-Loop (HIL) testing and advanced power electronics simulations.</p>
-        `
+        content: `<p>Prof. Mehrizi-Sani is a renowned expert in power electronics and microgrid control. His work bridges the gap between theoretical control strategies and practical hardware implementation. At Right Analytics, he oversees Hardware-in-the-Loop (HIL) testing and advanced power electronics simulations.</p>`
     },
     {
         image: "assets/images/media/team-nuno-costa.jpeg",
         title: "Nuno Costa",
         subtitle: "Managing Partner - CEO",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Managing Partner - CEO</h4>
-        <p class="mb-4">As Managing Partner and CEO of Quadrante, Nuno Costa leads the global vision and strategic direction of the organization. Under his leadership, Quadrante has grown to become a multidisciplinary engineering powerhouse with presence across three continents.</p>
-        <p class="mb-4">Nuno champions Quadrante's "Total Design" philosophy—an integrated approach that ensures engineering solutions are sustainable, economically viable, and technically superior. His leadership emphasizes innovation, client partnership, and commitment to future generations.</p>
-        <p>He plays a pivotal role in Quadrante's expansion into the US market, bringing decades of global engineering excellence to support North America's energy transition and infrastructure modernization.</p>
-        `
+        content: `<p>Nuno Pais Costa is the CEO and Founding Partner of the Company. He is a specialist in Structural Engineering from IST, has an MBA and has attended a professional services business management course at Harvard. He has 30 years of experience in the development and management of high profile and complex projects, such as airport terminals, multi-purpose complexes, shopping centres, service buildings and tourist resorts in Europe, Africa and Latin America. He is an Executive Member of the Company and has general management and strategy responsibilities.</p>`
     },
     {
         image: "assets/images/media/team-isabel-lopez.jpeg",
         title: "Isabel López Ferrer",
-        subtitle: "VP of Energy - Head of Business Sector - Energy",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Vice President of Energy - Head of Business Sector - Energy</h4>
-        <p class="mb-4">Isabel López Ferrer serves as Vice President of Energy and Head of the Business Sector for Energy at Quadrante Global. She leads the strategic direction of Quadrante's energy division, overseeing renewable energy integration, transmission infrastructure, and grid modernization projects worldwide.</p>
-        <p class="mb-4">With extensive experience in large-scale energy infrastructure, Isabel has successfully managed complex projects including wind farms, solar plants, high-voltage transmission lines, and substation development across multiple continents. Her expertise spans project development, regulatory compliance, and technical coordination.</p>
-        <p>Isabel plays a key role in advancing Quadrante's energy transition initiatives, ensuring projects meet the highest standards of sustainability, technical excellence, and economic viability while supporting global decarbonization goals.</p>
-        `
+        subtitle: "Vice President of Energy - Head of Business Sector - Energy",
+        content: `<p>Isabel López Ferrer, a prominent figure in the field of electrical engineering, has built a solid career and a legacy defined by innovation. Holding a degree in Industrial Engineering with a specialization in Electricity from the University of Oviedo, Isabel brings over 35 years of experience in management and executive positions within leading companies in the sector. Her extensive expertise and deep knowledge stem from key roles in renowned organizations such as Duro Felguera and Red Eléctrica de España (REE). Committed to continuously enhancing her leadership skills, she completed the Senior Management Programme (PADE) and the Company Directors Programme, both at the IESE Business School, strengthening her ability to lead teams and projects with strategic vision and a results-oriented approach. With her inspiring leadership and unwavering commitment to excellence, Isabel López Ferrer continues to guide the Group towards new horizons, establishing it as a benchmark in the field of electrical engineering, both nationally and internationally. Isabel López Ferrer is the Vice President of Energy and Head of the Energy Business Sector at the Quadrante Group.</p>`
     },
     {
         image: "assets/images/media/team-armando-santos.jpeg",
         title: "Armando Santos",
-        subtitle: "Global Account Lead - Energy Business Sector",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Global Account Lead – Energy Business Sector</h4>
-        <p class="mb-4">Armando Santos serves as Global Account Lead for Quadrante's Energy Business Sector, managing strategic client relationships and overseeing major energy infrastructure accounts worldwide. He brings deep technical expertise and a client-focused approach to delivering complex engineering solutions.</p>
-        <p class="mb-4">With extensive experience in power systems engineering, Armando specializes in the design and coordination of high-voltage substations, transmission lines, and grid interconnection projects. His technical proficiency spans structural design, electrical systems, and protection schemes for utility-scale infrastructure.</p>
-        <p>Armando ensures technical excellence and operational efficiency across Quadrante's energy portfolio, working closely with utilities, developers, and engineering teams to deliver projects that meet stringent performance, safety, and reliability standards.</p>
-        `
+        subtitle: "Global Account Lead – Energy Business Sector",
+        content: `<p>Master's in Electrical Engineering, with a specialization in Electrical Energy Systems from ISEP, has more than 15 years of national and international experience in energy production, transportation, and distribution projects, such as photovoltaic solar plants, energy storage systems, wind farms, mini-hydro plants, substations, and transmission lines up to 500 kV, especially in Portugal, Angola, Mozambique, Algeria, Chile, among others. Armando Santos has been linked to them since their conception phase (studies and projects), through procurement, construction, assembly, and commissioning. At Quadrante Group since 2017 he is currently Global Partner and Global Account Lead of the Energy Business Sector.</p>`
     },
     {
         image: "assets/images/media/team-joao-rocha.png",
         title: "João Rocha",
         subtitle: "Client Manager - Industry Business Unit",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Client Manager - Industry Business Unit</h4>
-        <p class="mb-4">João Rocha serves as Client Manager for Quadrante's Industry Business Unit, with market coverage spanning Portugal, Middle East, and Africa. He specializes in mission-critical infrastructure projects, particularly data center development and industrial facilities that demand the highest levels of reliability and performance.</p>
-        <p class="mb-4">With deep expertise in data center engineering, João manages relationships with major technology clients including Google and Logicalis, ensuring projects meet stringent Tier-standard compliance requirements. He coordinates multidisciplinary teams across electrical systems, mechanical infrastructure, and facility design.</p>
-        <p>João acts as the primary liaison between clients and technical teams, translating complex business requirements into engineering deliverables while ensuring projects are delivered on time, within budget, and to exacting quality standards.</p>
-        `
+        content: `<p>Holder of a Master's Degree in Civil Engineering from FEUP, with specialisation in Structures, João Rocha boasts 12 years of professional experience in Engineering and Consulting. Throughout his professional career, he has developed Building Structure projects of various types, including museums, offices, residential buildings, hotels and industrial buildings, in various markets, including Portugal, Brazil, Angola and Switzerland. He joined the Quadrante Group in 2019 and currently serves as Client Manager of the Industry Business Unit.</p>`
     },
     {
         image: "assets/images/media/team-luis-moleirinho.png",
         title: "Luis Moleirinho",
-        subtitle: "Client Manager - Energy Business Unit",
-        content: `
-        <h4 class="font-bold text-brand-primary text-sm uppercase tracking-widest mb-4">Client Manager - Energy Business Unit</h4>
-        <p class="mb-4">With a degree in Electrotechnical and Computer Engineering, specialising in Electrical Power Systems, from FEUP, he has more than 22 years of national and international experience in projects related to Energy Production, Transmission and Distribution, Electrical Substations and Transmission and Distribution Lines.</p>
-        <p class="mb-4">His relevant professional activities include positions as Mobile Substations Project and Engineering Coordinator and Manager, performing activities related to engineering definition of HV, MV and LV systems, cost control and invoicing, commissioning, training and after-sales, mainly developed in the USA, Venezuela, Uruguay and Angola, where we highlight his active collaboration in about a hundred projects in a portfolio of 3,000 MVA.</p>
-        <p class="mb-4">We should also highlight his duties as HV Project Engineer and Grid Manager, in activities such as Substation Engineering, Evacuation Lines and Construction Supervision of the connection to the electricity grid of Renewable Power Production Centres.</p>
-        <p>Luis Moleirinho currently holds the position of Client Manager of the Energy Business Unit in the markets of Portugal, Middle East and Africa.</p>
-        `
+        subtitle: "Client Manager - Energy Business Unit\nPortugal + Middle East and Africa Market",
+        content: `<p>With a degree in Electrotechnical and Computer Engineering, specialising in Electrical Power Systems, from FEUP, he has more than 22 years of national and international experience in projects related to Energy Production, Transmission and Distribution, Electrical Substations and Transmission and Distribution Lines. His relevant professional activities include positions as Mobile Substations Project and Engineering Coordinator and Manager, performing activities related to engineering definition of HV, MV and LV systems, cost control and invoicing, commissioning, training and after-sales, mainly developed in the USA, Venezuela, Uruguay and Angola, where we highlight his active collaboration in about a hundred projects in a portfolio of 3,000 MVA. We should also highlight his duties as HV Project Engineer and Grid Manager, in activities such as Substation Engineering, Evacuation Lines and Construction Supervision of the connection to the electricity grid of Renewable Power Production Centres. Luis Moleirinho currently holds the position of Client Manager of the Energy Business Unit in the markets of Portugal, Middle East and Africa.</p>`
     }
 ];
 
@@ -774,8 +724,23 @@ function updateModalUI() {
 
     const data = dataArray[currentModalIndex];
     const imgElement = document.getElementById('modal-image');
+    const imgContainer = imgElement.parentElement;
 
     imgElement.src = data.image;
+
+    // Apply custom image class if specified (e.g., object-contain for zoom out effect)
+    if (data.imageClass) {
+        imgElement.className = 'w-full h-full ' + data.imageClass + ' object-top';
+    } else {
+        imgElement.className = 'w-full h-full object-cover object-top';
+    }
+
+    // Apply custom background color to image container if specified
+    if (data.imageBg) {
+        imgContainer.className = 'relative w-full h-[50%] overflow-hidden flex-shrink-0 flex items-center justify-center ' + data.imageBg;
+    } else {
+        imgContainer.className = 'relative w-full h-[50%] bg-gray-100 overflow-hidden flex-shrink-0 flex items-center justify-center';
+    }
 
     document.getElementById('modal-title').innerText = data.title;
 
@@ -783,10 +748,10 @@ function updateModalUI() {
     const subtitleElement = document.getElementById('modal-subtitle');
     if (subtitleElement) {
         if (data.subtitle) {
-            subtitleElement.innerText = data.subtitle;
+            subtitleElement.innerHTML = data.subtitle.replace(/\n/g, '<br>');
             subtitleElement.classList.remove('hidden');
         } else {
-            subtitleElement.innerText = '';
+            subtitleElement.innerHTML = '';
             subtitleElement.classList.add('hidden');
         }
     }

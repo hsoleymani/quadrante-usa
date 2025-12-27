@@ -1,29 +1,29 @@
 <!-- Universal Modal -->
 <div id="universal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-end modal-hidden">
     <div class="absolute inset-0 bg-slate-900/95 modal-backdrop" onclick="closeUniversalModal()"></div>
-    <!-- Right-side panel layout -->
-    <div class="relative bg-white w-full max-w-2xl h-full shadow-2xl overflow-hidden modal-content z-10 flex flex-col">
+    <!-- Right-side panel layout - wider on medium screens (laptops), small margin top/bottom -->
+    <div class="relative bg-white w-full md:w-[50vw] lg:w-auto max-w-2xl lg:max-w-3xl h-[calc(100%-2rem)] my-4 shadow-2xl overflow-hidden modal-content z-10 flex flex-col">
         <button onclick="closeUniversalModal()" class="absolute top-4 right-4 z-50 text-slate-600 hover:text-slate-900 bg-white/90 hover:bg-white p-2 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
 
-        <!-- Image Section (full width at top, no padding) - responsive heights -->
-        <div class="relative w-full h-[240px] sm:h-[280px] md:h-[300px] lg:h-[350px] xl:h-[400px] bg-gray-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
+        <!-- Image Section (full width at top, no padding) - 50% height -->
+        <div class="relative w-full h-[50%] bg-gray-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
             <!-- Image -->
             <img id="modal-image" src="" class="w-full h-full object-cover object-top" alt="Detail Image">
         </div>
 
         <!-- Title Section -->
-        <div class="w-full bg-white px-6 md:px-12 pt-6 md:pt-8 pb-4 border-b border-slate-200 flex-shrink-0">
-            <h2 id="modal-title" class="text-2xl md:text-3xl font-['Archivo'] font-bold text-slate-900 mb-2 leading-tight">Title Here</h2>
+        <div class="w-full bg-white px-6 md:px-12 pt-4 md:pt-6 pb-3 border-b border-slate-200 flex-shrink-0">
+            <h2 id="modal-title" class="text-2xl md:text-3xl text-gray-900 mb-2 leading-tight">Title Here</h2>
             <p id="modal-subtitle" class="text-sm md:text-base text-slate-600"></p>
         </div>
 
         <!-- Navigation Tabs (hidden - removed as per user request) -->
         <div class="w-full min-h-[56px] bg-white border-b border-slate-200 overflow-x-auto flex items-center whitespace-nowrap px-4 flex-shrink-0 hidden" id="mobile-nav-list"></div>
 
-        <!-- Content Section (full width below) - min 60% with scrolling -->
-        <div class="w-full flex flex-col bg-white relative overflow-y-auto flex-grow min-h-[60vh]">
-            <div class="flex-grow overflow-y-auto p-6 md:p-12 pb-8 md:pb-16 custom-scrollbar relative z-10" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
-                <div id="modal-body" class="prose prose-slate prose-base md:prose-lg text-slate-700 leading-relaxed mb-8"></div>
+        <!-- Content Section (full width below) - 50% height -->
+        <div class="w-full flex flex-col bg-white relative overflow-y-auto flex-grow h-[50%]">
+            <div class="flex-grow overflow-y-auto p-6 md:p-10 pt-4 md:pt-6 pb-8 md:pb-16 custom-scrollbar relative z-10" style="overflow-y: auto; -webkit-overflow-scrolling: touch;">
+                <div id="modal-body" class="text-xs md:text-sm text-slate-700 leading-relaxed mb-8"></div>
                 <hr class="border-slate-100 my-6 md:my-8">
                 <!-- Added ID here to toggle visibility -->
                 <div id="modal-inquiry-container" class="bg-slate-50 p-6 border border-slate-100 mb-8">
