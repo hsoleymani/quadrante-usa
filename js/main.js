@@ -267,10 +267,10 @@ const teamData = [
     {
         image: "assets/images/media/team-saman-babaei.jpeg",
         title: "Dr. Saman Babaei",
-        subtitle: "Founder of Right Analytics / Chief Power Systems Engineer",
+        subtitle: "Founder of Right Analytics- COO of Quadrante USA",
         imageClass: "object-contain scale-[1.4] translate-y-10",
         imageBg: "bg-black",
-        content: `<p>Dr. Saman Babaei brings over 15 years of academic and industry experience in power systems, with a strong focus on transmission planning, generator interconnection studies, grid modernization, and new technology deployment across major North American markets, including NYISO, PJM, MISO, and ERCOT. He holds a PhD in Electrical Engineering and has published several technical papers in peer-reviewed journals and conferences. Dr. Babaei has led critical infrastructure and utility-scale projects across North America, developing methodologies for high-penetration renewable and inverter-based resource grids, from early-stage interconnection through implementation and operation.</p>`
+        content: `<p>Dr. Saman Babaei is the Chief Operating Officer of Quadrante USA and the Founder and President of Right Analytics LLC. He is an engineer, entrepreneur, and recognized thought leader with more than 15 years of experience in power systems engineering. His expertise spans transmission planning, generator interconnection studies, grid modernization, and the deployment of emerging technologies across major North American electricity markets, including NYISO, PJM, MISO, and ERCOT. Dr. Babaei founded Right Analytics in 2019 and successfully scaled it into a nationally recognized consulting firm serving tier-one clients such as NYPA, Dominion Energy, MISO, Southern California Edison, Google, and others. In 2025, Right Analytics was acquired by Quadrante Global, forming the foundation of Quadrante USA operations. Prior to founding Right Analytics, Dr. Babaei held technical and leadership roles across high-tech startups, electric utilities, technology providers, and consulting firms, giving him a broad and practical perspective on the evolving energy landscape. He holds a Ph.D. in Electrical Engineering and has authored multiple technical papers published in peer-reviewed journals and international conferences.</p>`
     },
     {
         image: "assets/images/media/team-eduardo-llorente.jpeg",
@@ -282,7 +282,7 @@ const teamData = [
         image: "assets/images/media/team-hanif-livani.jpeg",
         title: "Prof. Hanif Livani",
         subtitle: "Lead Power Systems",
-        content: `<p>Prof. Livani serves as a Professor of Electrical Engineering while leading technical studies at Right Analytics. His academic research in wide-area monitoring and protection systems directly informs his industrial consulting work. He is an expert in state estimation, grid resilience, and the application of synchrophasor technology.</p>`
+        content: `<p>Dr. Hanif Livani brings over 15 years of combined academic and industry experience in power systems, with deep expertise in transmission operation and planning, generator and large load interconnection studies, grid modernization, and the deployment of grid enhancement technologies across North America, including NYISO, PJM, and MISO. He holds a PhD in Electrical Engineering. Besides his position at RightsAnaltics-Qaudrante USA, he serves as a professor, where he has led and contributed to multiple applied research projects in collaboration with utilities and government agencies. His academic work bridges theory and practice, supporting grid modernization initiatives, reliability and resilience assessments, and the integration of advanced energy technologies. Dr. Livani has published extensively in peer-reviewed journals and international conferences and has played a key role in translating research outcomes into practical tools and methodologies adopted by industry.</p>`
     },
     {
         image: "assets/images/media/team-ali-mehrizi.png",
